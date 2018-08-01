@@ -13,8 +13,8 @@ client.on('message', message => {
   	}
   
  client.on('message', message => {
-    if (message.content === prefix +'somskick') {
-        .kick (${member})
+    if (message.content === prefix +'selfkick') {
+        .kick (${member});
     }
 });
 
