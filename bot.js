@@ -11,6 +11,11 @@ client.on('message', message => {
     if (message.content === prefix +'test') {
     	message.reply('Bot is working!');
   	}
+  
+ client.on('message', message => {
+    if (message.content === prefix +'somskick') {
+        .kick (${member})
+    }
 });
 
 // Create an event listener for new guild members
