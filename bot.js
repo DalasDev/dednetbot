@@ -9,15 +9,9 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === prefix +'test') {
-    	message.reply('Bot is working!');
+    	message.reply('Бот работает!');
   	}
 });
-
- client.on('message', message => {
-    if (message.content === prefix +'selfkick') {
-        .kick (${member});
-    }
- });
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
