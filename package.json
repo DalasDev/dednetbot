@@ -1,7 +1,7 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "Dalas Bot",
+  "description": "My first 24/7 bot!",
+  "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
