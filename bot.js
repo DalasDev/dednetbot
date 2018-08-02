@@ -3,9 +3,6 @@ const client = new Discord.Client();
 
 var prefix = '!';
 
-let messageArray = message.content.split(" ");
-let cmd = messageArray[0];
-let args = messageArray.slice(1);
 
 client.on('ready', () => {
     console.log('Bot started!');
