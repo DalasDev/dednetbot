@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === prefix +'test') {
-    	message.reply('Бот работает!');
+    	message.reply('Бот работаетХахахах!');
   	}
 });
 
