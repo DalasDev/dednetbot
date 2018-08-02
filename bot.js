@@ -1,20 +1,28 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const botconfig = require("./botconfig.json");
+const Discord = require("diskord.js");
 
-var prefix = '!';
+const bot = new Discord.Client({disableEveryone: true});
 
-
-client.on('ready', () => {
-    console.log('Bot started!');
+bot.on("ready", async () => {
+  console.log(`${bot.user.username} онлайн!`);
+  bot.user.setGame("on Dalas!")
 });
 
-client.on('message', message => {
-    if (message.content === prefix +'test') {
-    	message.reply('Бот работает!');
-  	}
+bot.on("message", async message => {
+  if(message.autor.bot) return;
+  if(message.channel.type === "dm") return;
+
+  let prefix = botconfig.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  //!test
+
+  if (cmd === `${prefix}test`){
+    return message.channel.send("Бот работает!");
+  }
+
 });
 
-
-
-// THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.botconfig.token);
