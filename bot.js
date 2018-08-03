@@ -17,23 +17,23 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  //!test
-
-  if(cmd === `${prefix}test`){
-    return message.channel.send("Бот работает!");
-  }
-
   //!info
 
   if(cmd === `${prefix}info`){
 
     let botembed = new Discord.RichEmbed()
-    .setDescription("Информация")
+    .setDescription("Bot info")
     .setColor("#1AA260")
-    .addField("Ник бота: ${bot.user.username}")
-    .addField("Версия бота: 1.0.0");
+    .addField("Bot nick:")
+    .addField("Version: 1.0.0");
 
     return message.channel.send(botembed);
+  }
+
+  //!test
+
+  if(cmd === `${prefix}test`){
+    return message.channel.send("Бот работает!");
   }
 
 });
