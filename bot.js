@@ -25,4 +25,5 @@ bot.on("message", async message => {
 
 });
 
-bot.login(process.env.botconfig.token);
+let token = botconfig.token;
+bot.login(token);
