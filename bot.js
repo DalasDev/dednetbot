@@ -21,7 +21,8 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}info`){
 
-    let botembed = new Discord.RichEmbed()
+    let botembed;
+    botembed = new Discord.RichEmbed()
     .setDescription("Bot info")
     .setColor("#1AA260")
     .addField("Bot nick:")
