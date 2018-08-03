@@ -21,9 +21,11 @@ bot.on("message", async message => {
   //!serverinfo
 
   if (cmd === `${prefix}serverinfo`) {
+    let sicon = message.guild.iconURL;
     const embed = new Discord.RichEmbed()
       .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
       .setColor("#4C8BF5")
+      .setThumbnail(sicon)
       .addField("Имя сервера:", message.guild.name, true)
       .addField("Версия сервера:", "1.8", true)
       .addField("Сервер создан:", message.guild.createdAt, true)
@@ -40,8 +42,8 @@ bot.on("message", async message => {
     const embed = new Discord.RichEmbed()
       .setTitle("ИНФОРМАЦИЯ О БОТЕ")
       .setColor("#4C8BF5")
-      .addField("Версия бота:", "1.0.0", true)
       .addField("Ник бота:", bot.user.username, true)
+      .addField("Версия бота:", "1.0.0", true)
       .addField("Бот создан:", bot.user.createdAt, true)
 
   message.channel.send({embed});
