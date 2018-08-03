@@ -21,13 +21,11 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}info`){
 
-    let botembed = new RichEmbed()
-   .setDescription("Bot info")
-   .setColor("#1AA260")
-   .addField("Bot nick:")
-   .addField("Version: 1.0.0");
+    message.channel.send({embed: {
+  color: 3447003,
+  description: "A very simple Embed!"
+}});
 
-   return message.channel.send(botembed);
  }
 
   //!test
