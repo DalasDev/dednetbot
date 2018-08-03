@@ -17,6 +17,7 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+//-----------------------------------------------------------------------------
   //!info
 
   if(cmd === `${prefix}info`){
@@ -25,20 +26,20 @@ bot.on("message", async message => {
 
   .setTitle("ИНФОРМАЦИЯ")
   .setColor("#4C8BF5")
-  .addField("Версия бота:", "1.0.0", true)
+  .addField("Версия бота:", package.version, true)
   .addField("Ник бота:", bot.user.username, true)
 
-
   message.channel.send({embed});
-
  }
 
+//-----------------------------------------------------------------------------
   //!test
 
   if(cmd === `${prefix}test`){
     return message.channel.send("Бот работает!");
   }
 
+//-----------------------------------------------------------------------------
 });
 
 bot.login(process.env.BOT_TOKEN);
