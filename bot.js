@@ -23,7 +23,7 @@ bot.on("message", async message => {
 
   if (cmd === `${prefix}report`){
 
-    let rUser - message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Пользователь не существует!");
     let reason = args.join(" ").slice(22);
 
@@ -37,7 +37,6 @@ bot.on("message", async message => {
       //.addField("Всего учасников:", message.guild.memberCount, true)
 
   message.channel.send({embed});
-
   return;
   }
 
