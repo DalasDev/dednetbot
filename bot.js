@@ -23,9 +23,10 @@ bot.on("message", async message => {
 
     const embed = new Discord.RichEmbed()
 
-  .setTitle("Info")
+  .setTitle("ИНФОРМАЦИЯ")
   .setColor("#4C8BF5")
-  .addField("Inline Field", "They can also be inline.", true)
+  .addField("Версия:", "1.0.0", true)
+  
 
   message.channel.send({embed});
 
