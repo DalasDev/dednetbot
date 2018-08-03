@@ -23,9 +23,9 @@ bot.on("message", async message => {
 
     const embed = new Discord.RichEmbed()
 
-  .setTitle("This is your title, it can hold 256 characters")
+  .setTitle("Информация")
   .setColor("#4C8BF5")
-  .setDescription("This is the main body of text, it can hold 2048 characters.")
+  .setField("Версия бота: ", package.version);
 
   message.channel.send({embed});
 
