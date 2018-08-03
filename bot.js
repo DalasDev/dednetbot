@@ -5,11 +5,11 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
-  bot.user.setGame("on Dalas!")
+  bot.user.setGame("on Dalas!");
 });
 
 bot.on("message", async message => {
-  if(message.autor.bot) return;
+  if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
   let prefix = botconfig.prefix;
@@ -19,8 +19,8 @@ bot.on("message", async message => {
 
   //!test
 
-  if (cmd === `${prefix}test`){
-    return message.channel.send("Бот работает!");
+  if(cmd === `${prefix}test`){
+    return message.channel.send("Hello!");
   }
 
 });
