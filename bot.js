@@ -20,7 +20,7 @@ bot.on("message", async message => {
   //!test
 
   if(cmd === `${prefix}test`){
-    return message.channel.send("Hello!");
+    return message.channel.send("Бот работает!");
   }
 
 });
