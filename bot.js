@@ -28,7 +28,7 @@ bot.on("message", async message => {
   .setColor("#4C8BF5")
   .addField("Версия бота:", "1.0.0", true)
   .addField("Ник бота:", bot.user.username, true)
-  .addField("Сервер создан:", bot.user.createdAt, true)
+  .addField("Бот создан:", bot.user.createdAt, true)
 
   message.channel.send({embed});
  }
