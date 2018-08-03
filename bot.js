@@ -22,7 +22,7 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}info`){
 
-    let bicon = bot.user.displayAvatarURL;
+    var bicon = bot.user.displayAvatarURL;
     const infoembed = new Discord.RichEmbed()
 
   .setTitle("ИНФОРМАЦИЯ")
