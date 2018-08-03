@@ -25,5 +25,4 @@ bot.on("message", async message => {
 
 });
 
-let token = botconfig.token;
-bot.login(token);
+bot.login('NDczODgwOTc2NTk0ODI5MzUz.DkIY8w.UzMQzOzYlgOQMzRvr0T7G8jSUHU');
