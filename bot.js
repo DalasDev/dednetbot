@@ -18,19 +18,33 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
 //-----------------------------------------------------------------------------
+  //!serverinfo
+
+  if (cmd === `${prefix}botinfo`) {
+    const serinfoembed = new Discord.RichEmbed()
+      .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
+      .setColor("#4C8BF5")
+      .addField("Имя сервера:" message.guild.name, true)
+      .addField("Версия сервера:", "1.8", true)
+      .addField("Сервер создан:", message.guild.createdAt, true)
+      .addField("Вы присоединились:", message.member.joinedAt, true)
+      .addField("Всего учасников:", message.guild.memderCount, true)
+
+  message.channel.send({serverinfoembed});
+  }
+
+//-----------------------------------------------------------------------------
   //!botinfo
 
   if(cmd === `${prefix}botinfo`){
+    const botinfoembed = new Discord.RichEmbed()
+      .setTitle("ИНФОРМАЦИЯ О БОТЕ")
+      .setColor("#4C8BF5")
+      .addField("Версия бота:", "1.0.0", true)
+      .addField("Ник бота:", bot.user.username, true)
+      .addField("Бот создан:", bot.user.createdAt, true)
 
-    const embed = new Discord.RichEmbed()
-
-  .setTitle("ИНФОРМАЦИЯ")
-  .setColor("#4C8BF5")
-  .addField("Версия бота:", "1.0.0", true)
-  .addField("Ник бота:", bot.user.username, true)
-  .addField("Бот создан:", bot.user.createdAt, true)
-
-  message.channel.send({embed});
+  message.channel.send({botinfoembed});
  }
 
 //-----------------------------------------------------------------------------
