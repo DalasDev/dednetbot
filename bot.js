@@ -18,9 +18,9 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
 //-----------------------------------------------------------------------------
-  //!info
+  //!botinfo
 
-  if(cmd === `${prefix}info`){
+  if(cmd === `${prefix}botinfo`){
 
     const embed = new Discord.RichEmbed()
 
