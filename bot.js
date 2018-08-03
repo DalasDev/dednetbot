@@ -23,6 +23,19 @@ bot.on("message", async message => {
     return message.channel.send("Бот работает!");
   }
 
+  //!info
+
+  if (cmd === `${prefix}info`){
+
+    let botembed = new Discord.RichEmbed()
+    .setDescription("Информация")
+    .setColor("#1AA260")
+    .addField("Ник бота: ", bot.user.username)
+    .addField("Версия бота: ", package.version)
+
+    return message.channel.send(botembed);
+  }
+
 });
 
 bot.login(process.env.BOT_TOKEN);
