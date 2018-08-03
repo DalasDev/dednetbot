@@ -25,8 +25,9 @@ bot.on("message", async message => {
 
   .setTitle("ИНФОРМАЦИЯ")
   .setColor("#4C8BF5")
-  .addField("Версия:", "1.0.0", true)
-  
+  .addField("Версия бота:", "1.0.0", true)
+  .addField("Ник бота:", bot.user.username, true)
+
 
   message.channel.send({embed});
 
