@@ -22,8 +22,10 @@ bot.on("message", async message => {
   if(cmd === `${prefix}info`){
 
     message.channel.send({embed: {
-  color: 3447003,
-  description: "A very simple Embed!"
+      color: "#4C8BF5",
+      description: "Информация"
+      field: "Ник бота: ${bot.user.username}"
+      field: "Версия: 1.0.0"
 }});
 
  }
