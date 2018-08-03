@@ -5,7 +5,7 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
-  bot.user.setGame("on Dalas!");
+  bot.user.setActivity("Благодарит создателя!");
 });
 
 bot.on("message", async message => {
