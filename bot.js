@@ -20,8 +20,8 @@ bot.on("message", async message => {
 //-----------------------------------------------------------------------------
   //!serverinfo
 
-  if (cmd === `${prefix}botinfo`) {
-    const serinfoembed = new Discord.RichEmbed()
+  if (cmd === `${prefix}serverinfo`) {
+    const embed = new Discord.RichEmbed()
       .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
       .setColor("#4C8BF5")
       .addField("Имя сервера:" message.guild.name, true)
@@ -30,21 +30,21 @@ bot.on("message", async message => {
       .addField("Вы присоединились:", message.member.joinedAt, true)
       .addField("Всего учасников:", message.guild.memderCount, true)
 
-  message.channel.send({serverinfoembed});
+  message.channel.send({embed});
   }
 
 //-----------------------------------------------------------------------------
   //!botinfo
 
   if(cmd === `${prefix}botinfo`){
-    const botinfoembed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
       .setTitle("ИНФОРМАЦИЯ О БОТЕ")
       .setColor("#4C8BF5")
       .addField("Версия бота:", "1.0.0", true)
       .addField("Ник бота:", bot.user.username, true)
       .addField("Бот создан:", bot.user.createdAt, true)
 
-  message.channel.send({botinfoembed});
+  message.channel.send({embed});
  }
 
 //-----------------------------------------------------------------------------
