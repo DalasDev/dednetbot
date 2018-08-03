@@ -37,6 +37,11 @@ bot.on("message", async message => {
       .addField("Жалоба:", reason, true)
 
   message.channel.send({embed});
+  let reportschannel = message.guild.channels.find(`name`, "reports");
+  if (!reportschannel) return message.channel.send("Канал жалоб не существует!");
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(embed);
   return;
   }
 
