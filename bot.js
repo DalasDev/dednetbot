@@ -23,9 +23,9 @@ bot.on("message", async message => {
 
     const embed = new Discord.RichEmbed()
 
-  .setTitle("Информация")
+  .setTitle("Info")
   .setColor("#4C8BF5")
-  .setField("Версия бота: 1.0.0")
+  .setField("Bot version: 1.0.0")
 
   message.channel.send({embed});
 
