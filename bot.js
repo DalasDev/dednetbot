@@ -31,10 +31,10 @@ bot.on("message", async message => {
       .setTitle("Жалоба")
       .setColor("#F76806")
       .addField("Жалоба на:", `${rUser}`, true)
-      //.addField("Версия сервера:", "1.8", true)
-      //.addField("Сервер создан:", message.guild.createdAt, true)
-      //.addField("Вы присоединились:", message.member.joinedAt, true)
-      //.addField("Всего учасников:", message.guild.memberCount, true)
+      .addField("Жалобу подал:", `${message.author}`, true)
+      .addField("Канал:", message.channel, true)
+      .addField("Время создания жалобы:", message.createdAt, true)
+      .addField("Жалоба:", reason, true)
 
   message.channel.send({embed});
   return;
