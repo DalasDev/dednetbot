@@ -25,13 +25,13 @@ bot.on("message", async message => {
 
   //!info
 
-  if (cmd === `${prefix}info`){
+  if(cmd === `${prefix}info`){
 
     let botembed = new Discord.RichEmbed()
     .setDescription("Информация")
     .setColor("#1AA260")
     .addField("Ник бота: ", bot.user.username)
-    .addField("Версия бота: ", package.version)
+    .addField("Версия бота: 1.0.0")
 
     return message.channel.send(botembed);
   }
