@@ -30,8 +30,8 @@ bot.on("message", async message => {
     let botembed = new Discord.RichEmbed()
     .setDescription("Информация")
     .setColor("#1AA260")
-    .addField("Ник бота: ", bot.user.username)
-    .addField("Версия бота: 1.0.0")
+    .addField("Ник бота: ${bot.user.username}")
+    .addField("Версия бота: 1.0.0");
 
     return message.channel.send(botembed);
   }
