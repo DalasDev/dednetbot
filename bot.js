@@ -25,7 +25,7 @@ bot.on("message", async message => {
 
   .setTitle("Info")
   .setColor("#4C8BF5")
-  .setField("Bot version: 1.0.0")
+  .addField("Inline Field", "They can also be inline.", true)
 
   message.channel.send({embed});
 
