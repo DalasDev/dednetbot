@@ -5,7 +5,8 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
-  bot.user.setActivity("создателя!", {type: "БЛАГОДАРИТ"});
+
+  bot.user.setActivity("tutorials!", {type: "WACHING"});
 });
 
 bot.on("message", async message => {
@@ -16,6 +17,29 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+
+//-----------------------------------------------------------------------------
+  //!report @nick Жалоба
+
+  if (cmd === `${prefix}report`){
+
+    let rUser - message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Пользователь не существует!");
+    let reason = args.join(" ").slice(22);
+
+    const embed = new Discord.RichEmbed()
+      .setTitle("Жалоба")
+      .setColor("#F76806")
+      .addField("Жалоба на:", `${rUser}`, true)
+      //.addField("Версия сервера:", "1.8", true)
+      //.addField("Сервер создан:", message.guild.createdAt, true)
+      //.addField("Вы присоединились:", message.member.joinedAt, true)
+      //.addField("Всего учасников:", message.guild.memberCount, true)
+
+  message.channel.send({embed});
+
+  return;
+  }
 
 //-----------------------------------------------------------------------------
   //!serverinfo
