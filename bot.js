@@ -22,14 +22,14 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}info`){
 
-    const infoembed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
 
   .setTitle("ИНФОРМАЦИЯ")
   .setColor("#4C8BF5")
   .addField("Версия бота:", "1.0.0", true)
   .addField("Ник бота:", bot.user.username, true)
 
-  message.channel.send({infoembed});
+  message.channel.send({embed});
  }
 
 //-----------------------------------------------------------------------------
