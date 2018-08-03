@@ -22,12 +22,12 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}info`){
 
-    let avatar = bot.user.displayAvatarURL;
+    let bicon = bot.user.displayAvatarURL;
     const infoembed = new Discord.RichEmbed()
 
   .setTitle("ИНФОРМАЦИЯ")
   .setColor("#4C8BF5")
-  .setThumbnail(avatar)
+  .setThumbnail(bicon)
   .addField("Версия бота:", "1.0.0", true)
   .addField("Ник бота:", bot.user.username, true)
 
