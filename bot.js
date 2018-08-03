@@ -28,7 +28,7 @@ bot.on("message", async message => {
       .addField("Версия сервера:", "1.8", true)
       .addField("Сервер создан:", message.guild.createdAt, true)
       .addField("Вы присоединились:", message.member.joinedAt, true)
-      .addField("Всего учасников:", message.guild.memderCount, true)
+      .addField("Всего учасников:", message.guild.memberCount, true)
 
   message.channel.send({embed});
   }
