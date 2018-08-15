@@ -35,6 +35,7 @@ bot.on("message", async message => {
       .addField("Канал:", message.channel, true)
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
+      .addField("@Стражи Порядка","обязательно напишите пострадавшему!", true)
 
   const reportschannel = message.guild.channels.find(`name`, "репорты");
   const errorschannel = message.guild.channels.find(`name`, "errors");
