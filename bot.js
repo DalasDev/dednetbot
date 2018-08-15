@@ -36,7 +36,7 @@ bot.on("message", async message => {
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
 
-  const reportschannel = message.guild.channels.find(`name`, "reports");
+  const reportschannel = message.guild.channels.find(`name`, "репорты");
   const errorschannel = message.guild.channels.find(`name`, "errors");
   if(!reportschannel) return errorschannel.send("Канал жалоб не существует!");
 
