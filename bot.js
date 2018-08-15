@@ -27,7 +27,7 @@ bot.on("message", async message => {
     if(!rUser) return message.channel.send("Пользователь не существует!");
     let reason = args.join(" ").slice(22);
 
-    const embed = new Discord.RichEmbed()
+    let embed = new Discord.RichEmbed()
       .setTitle("Жалоба")
       .setColor("#F76806")
       .addField("Жалоба на:", `${rUser}`, true)
