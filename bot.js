@@ -42,6 +42,8 @@ bot.on("message", async message => {
   message.delete().catch(O_o=>{});
   reportschannel.send(embed);
 
+  bot.channels.get("474233697789280278").send("Test message!")
+
   return;
   }
 
