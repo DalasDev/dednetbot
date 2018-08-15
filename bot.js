@@ -40,16 +40,9 @@ bot.on("message", async message => {
   if(!reportschannel) return message.channel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
-  reportschannel.send(embed);
+  reportschannel.send({embed});
 
-  bot.channels.get("474233697789280278").send(new Discord.RichEmbed()
-    .setTitle("Жалоба")
-    .setColor("#F76806")
-    .addField("Жалоба на:", `${rUser}`, true)
-    .addField("Жалобу подал:", `${message.author}`, true)
-    .addField("Канал:", message.channel, true)
-    .addField("Время создания жалобы:", message.createdAt, true)
-    .addField("Жалоба:", reason, true));
+  bot.channels.get("474233697789280278").send();
 
   return;
   }
