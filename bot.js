@@ -3,8 +3,6 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-const errorschannel = message.guild.channels.find(`name`, "errors-log");
-
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
 
