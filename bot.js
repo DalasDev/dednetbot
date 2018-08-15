@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
+const errorschannel = message.guild.channels.find(`name`, "errors-log");
+
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
 
@@ -36,8 +38,8 @@ bot.on("message", async message => {
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
 
-  const reportschannel = message.guild.channels.find(`name`, "rep");
-  if(!reportschannel) return message.channel.send("Канал жалоб не существует!");
+  const reportschannel = message.guild.channels.find(`name`, "repor");
+  if(!reportschannel) return errorschannel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
   reportschannel.send({embed});
