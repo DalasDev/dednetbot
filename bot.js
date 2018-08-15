@@ -27,7 +27,7 @@ bot.on("message", async message => {
     if(!rUser) return message.channel.send("Пользователь не существует!");
     let reason = args.join(" ").slice(22);
 
-    var embedd = new Discord.RichEmbed()
+    var embed = new Discord.RichEmbed()
       .setTitle("Жалоба")
       .setColor("#F76806")
       .addField("Жалоба на:", `${rUser}`, true)
@@ -40,9 +40,9 @@ bot.on("message", async message => {
   if(!reportschannel) return message.channel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
-  reportschannel.send(embedd);
+  reportschannel.send(embed);
 
-  bot.channels.get("474233697789280278").sendMessage(embed);
+  bot.channels.get("474233697789280278").sendMessage(${embed});
 
   return;
   }
