@@ -57,7 +57,7 @@ bot.on("message", async message => {
       .setColor("#4C8BF5")
       .setThumbnail(sicon)
       .addField("Имя сервера:", message.guild.name, true)
-      .addField("Версия сервера:", "1.8", true)
+      .addField("Версия сервера:", "1.9", true)
       .addField("Сервер создан:", message.guild.createdAt, true)
       .addField("Вы присоединились:", message.member.joinedAt, true)
       .addField("Всего учасников:", message.guild.memberCount, true)
