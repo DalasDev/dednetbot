@@ -36,13 +36,11 @@ bot.on("message", async message => {
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
 
-  const reportschannel = message.guild.channels.find(`name`, "reports");
+  const reportschannel = message.guild.channels.find(`name`, "rep");
   if(!reportschannel) return message.channel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
   reportschannel.send({embed});
-
-  bot.channels.get("474233697789280278").send();
 
   return;
   }
