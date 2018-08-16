@@ -26,7 +26,7 @@ bot.on("message", async message => {
 
       let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       if(!kUser) message.channel.send("Пользователь не существует!");
-      let kReason = args.join("").slice(22);
+      let kReason = args.join(" ").slice(22);
 
       if(!message.member.roles.some(r=>["Спец.Агент ЦРУ", "Зам.Директора ЦРУ", "Директор ЦРУ"].includes(r.name))) return message.channel.send("Кикать пользователей может только ЦРУ!");
       if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
@@ -44,7 +44,8 @@ bot.on("message", async message => {
         const repchannel = message.guild.channels.find(`name`, "репорты");
         if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
-        message.channel.send(kUser+" был кикнут за "+kReason);
+
+        message.channel.send(kUser+" был кикнут за "+ kReason);
         repchannel.send({embed});
 
     return;
