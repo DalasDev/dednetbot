@@ -33,7 +33,7 @@ bot.on("message", async message => {
 
 
       let embed = new Discord.RichEmbed()
-        .setTitle("Кик")
+        .setTitle("ОТЧЕТ О КИКЕ")
         .setColor("#DD5044")
         .addField("Кикнутый пользователь:", `${kUser}`, true)
         .addField("Пользователя кикнул:", `<@${message.author.id}>`, true)
@@ -60,7 +60,7 @@ bot.on("message", async message => {
     let reason = args.join(" ").slice(22);
 
     let embed = new Discord.RichEmbed()
-      .setTitle("Жалоба")
+      .setTitle("ЖАЛОБА")
       .setColor("#F76806")
       .addField("Жалоба на:", `${rUser}`, true)
       .addField("Жалобу подал:", `${message.author}`, true)
