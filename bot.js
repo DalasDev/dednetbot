@@ -19,6 +19,37 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
 //-----------------------------------------------------------------------------
+  //kick @member reason
+
+  if(cmd === `${prefix}kick`){
+
+
+      let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      if(!kUser) message.channel.send("Пользователь не существует!");
+      let kReason = args.join("").slice(22);
+      if(!message.member.roles.has(479644111331393536)) return message.channel.send("Кикать пользователей может только ЦРУ!");
+      if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
+
+
+      let embed = new Discord.RichEmbed()
+        .setTitle("Кик")
+        .setColor("#DD5044")
+        .addField("Кикнутый пользователь:", `${kUser}`, true)
+        .addField("Пользователя кикнул:", `<@${message.author.id}>`, true)
+        .addField("Кикнут в канале:", message.channel, true)
+        .addField("Время кика:", message.createdAt, true)
+        .addField("Был кикнут за:", kReason, true)
+
+        const repchannel = message.guild.channels.find(`name`, "репорты");
+        if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
+
+        
+        repchannel.send({embed});
+
+    return;
+  }
+
+//-----------------------------------------------------------------------------
   //!report @nick Жалоба
 
   if (cmd === `${prefix}report`){
@@ -36,13 +67,13 @@ bot.on("message", async message => {
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
 
-  const reportschannel = message.guild.channels.find(`name`, "репорты");
+  const repchannel = message.guild.channels.find(`name`, "репорты");
   const errorschannel = message.guild.channels.find(`name`, "errors");
   const roleModers = message.guild.roles.find("name", "Сражи Порядка");
-  if(!reportschannel) return errorschannel.send("Канал жалоб не существует!");
+  if(!repchannel) return errorschannel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
-  reportschannel.send({embed});
+  repchannel.send({embed});
 
   return;
   }
