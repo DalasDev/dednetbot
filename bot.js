@@ -44,7 +44,7 @@ bot.on("message", async message => {
         const repchannel = message.guild.channels.find(`name`, "репорты");
         if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
-        message.channel.send(kUser+"был кикнут за"+kReason);
+        message.channel.send(kUser+" был кикнут за "+kReason);
         repchannel.send({embed});
 
     return;
