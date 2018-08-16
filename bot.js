@@ -27,8 +27,8 @@ bot.on("message", async message => {
       let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       if(!kUser) message.channel.send("Пользователь не существует!");
       let kReason = args.join("").slice(22);
+      
       if(!message.member.roles.has(479644111331393536)) return message.channel.send("Кикать пользователей может только ЦРУ!");
-      if(!message.member.roles.has.find("name", "Сражи Порядка")) return message.channel.send("Кикать пользователей может только ЦРУ!");
       if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
 
 
