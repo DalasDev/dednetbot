@@ -35,9 +35,12 @@ bot.on("message", async message => {
       .addField("Канал:", message.channel, true)
       .addField("Время создания жалобы:", message.createdAt, true)
       .addField("Жалоба:", reason, true)
+      .addField("Займитесь этой заявкой!:", <@&479603891340836864>, true)
+
 
   const reportschannel = message.guild.channels.find(`name`, "репорты");
   const errorschannel = message.guild.channels.find(`name`, "errors");
+  const roleModers = message.guild.roles.find("name", "Сражи Порядка");
   if(!reportschannel) return errorschannel.send("Канал жалоб не существует!");
 
   message.delete().catch(O_o=>{});
