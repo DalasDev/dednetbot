@@ -21,35 +21,7 @@ bot.on("message", async message => {
 //-----------------------------------------------------------------------------
   //kick @member reason
 
-  if(cmd === `${prefix}kick`){
 
-
-      let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      if(!kUser) return message.channel.send("Пользователь не существует!");
-      let kReason = args.join(" ").slice(22);
-
-      if(!message.member.roles.some(r=>["Спец.Агент ЦРУ", "Зам.Директора ЦРУ", "Директор ЦРУ"].includes(r.name))) return message.channel.send("Кикать пользователей может только ЦРУ!");
-      if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
-
-
-      let embed = new Discord.RichEmbed()
-        .setTitle("ОТЧЕТ О КИКЕ")
-        .setColor("#DD5044")
-        .addField("Кикнутый пользователь:", `${kUser}`, true)
-        .addField("Пользователя кикнул:", `<@${message.author.id}>`, true)
-        .addField("Кикнут в канале:", message.channel, true)
-        .addField("Время кика:", message.createdAt, true)
-        .addField("Был кикнут за:", kReason, true)
-
-        const repchannel = message.guild.channels.find(`name`, "репорты");
-        const errorschannel = message.guild.channels.find(`name`, "errors");
-        if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
-
-        message.channel.send(kUser+" был кикнут за "+ kReason);
-        repchannel.send({embed});
-
-    return;
-  }
 
 //-----------------------------------------------------------------------------
   //!report @nick Жалоба
