@@ -42,6 +42,7 @@ bot.on("message", async message => {
         .addField("Был кикнут за:", kReason, true)
 
         const repchannel = message.guild.channels.find(`name`, "репорты");
+        const errorschannel = message.guild.channels.find(`name`, "errors");
         if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
         message.channel.send(kUser+" был кикнут за "+ kReason);
