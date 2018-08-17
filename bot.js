@@ -6,7 +6,6 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () => {
   console.log(`${bot.user.username} онлайн!`);
 
-  bot.user.setActivity("tutorials!", {type: "WACHING"});
 });
 
 bot.on("message", async message => {
