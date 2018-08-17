@@ -18,71 +18,7 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-//-----------------------------------------------------------------------------
-  //kick @member reason
 
-
-
-//-----------------------------------------------------------------------------
-  //!report @nick Жалоба
-
-  if (cmd === `${prefix}report`){
-
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("Пользователь не существует!");
-    let reason = args.join(" ").slice(22);
-
-    let embed = new Discord.RichEmbed()
-      .setTitle("ЖАЛОБА")
-      .setColor("#F76806")
-      .addField("Жалоба на:", `${rUser}`, true)
-      .addField("Жалобу подал:", `${message.author}`, true)
-      .addField("Канал:", message.channel, true)
-      .addField("Время создания жалобы:", message.createdAt, true)
-      .addField("Жалоба:", reason, true)
-
-  const repchannel = message.guild.channels.find(`name`, "репорты");
-  const errorschannel = message.guild.channels.find(`name`, "errors");
-  const roleModers = message.guild.roles.find("name", "Сражи Порядка");
-  if(!repchannel) return errorschannel.send("Канал жалоб не существует!");
-
-  message.delete().catch(O_o=>{});
-  repchannel.send({embed});
-
-  return;
-  }
-
-//-----------------------------------------------------------------------------
-  //!serverinfo
-
-  if (cmd === `${prefix}serverinfo`) {
-    let sicon = message.guild.iconURL;
-    const embed = new Discord.RichEmbed()
-      .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
-      .setColor("#4C8BF5")
-      .setThumbnail(sicon)
-      .addField("Имя сервера:", message.guild.name, true)
-      .addField("Версия сервера:", "1.9", true)
-      .addField("Сервер создан:", message.guild.createdAt, true)
-      .addField("Вы присоединились:", message.member.joinedAt, true)
-      .addField("Всего учасников:", message.guild.memberCount, true)
-
-  message.channel.send({embed});
-  }
-
-//-----------------------------------------------------------------------------
-  //!botinfo
-
-  if(cmd === `${prefix}botinfo`){
-    const embed = new Discord.RichEmbed()
-      .setTitle("ИНФОРМАЦИЯ О БОТЕ")
-      .setColor("#4C8BF5")
-      .addField("Ник бота:", bot.user.username, true)
-      .addField("Версия бота:", "1.0.0", true)
-      .addField("Бот создан:", bot.user.createdAt, true)
-
-  message.channel.send({embed});
- }
 
 //-----------------------------------------------------------------------------
   //!test
