@@ -44,7 +44,8 @@ bot.on("message", async message => {
            if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
            kUser.kick().then(() => {
-          // We let the message author know we were able to kick the person
+
+          
           message.reply(`Успешно кикнут ${user.tag}!`);
 
            message.channel.send(kUser+" был кикнут за "+ kReason);
