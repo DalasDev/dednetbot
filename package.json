@@ -1,13 +1,13 @@
 {
-  "name": "Dalas Bot",
-  "description": "My first 24/7 bot!",
+  "name": "DefinitelyNotBot",
+  "description": "A Discord bot coded in Discord.JS, hosted using Heroku.",
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "11.3.0",
+    "discord.js": "11.1.0",
     "request": "2.81.0"
   }
 }
