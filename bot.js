@@ -38,7 +38,7 @@ bot.on("message", async message => {
     const errorschannel = message.guild.channels.find(`name`, "errors");
     if(!repchannel) return errorschannel.send("Канал жалоб не существует!");
 
-    message.channel.send("${message.author} жалоба отправлена!");
+    message.channel.send(`${message.author}`+"жалоба отправлена!");
 
     message.delete().catch(O_o=>{});
     repchannel.send({embed});
