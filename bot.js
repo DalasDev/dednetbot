@@ -1,21 +1,30 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const botconfig = require("./botconfig.json");
+const Discord = require("discord.js");
 
-client.on('ready', () => {
-    console.log('I am ready!');
+const bot = new Discord.Client({disableEveryone: true});
+
+bot.on("ready", async () => {
+  console.log(`${bot.user.username} онлайн!`);
 });
 
-client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.channel.send('PONG!');
-  	}
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
+  let prefix = botconfig.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+
+
+//-----------------------------------------------------------------------------
+  //test
+
+  if(cmd === `${prefix}test`){
+    return message.channel.send("Бот работает!");
+  }
+
 });
 
-client.on('message', message => {
-    if (message.content === 'bing') {
-    	message.reply('BONG!');
-  	}
-});
-
-// THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
