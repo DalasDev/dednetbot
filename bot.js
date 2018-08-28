@@ -30,7 +30,7 @@ bot.on("message", async message => {
          if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
 
 
-         let kickEmbed = new Discord.RichEmbed()
+         let embed = new Discord.RichEmbed()
            .setTitle("ОТЧЕТ О КИКЕ")
            .setColor("#DD5044")
            .addField("Кикнутый пользователь:", `${kUser}`, true)
@@ -44,7 +44,7 @@ bot.on("message", async message => {
            if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
            message.channel.send(kUser+" был кикнут за "+ kReason);
-           repchannel.send({kickEmbed});
+           repchannel.send({embed});
 
        return;
      }
