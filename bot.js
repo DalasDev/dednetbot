@@ -43,10 +43,6 @@ bot.on("message", async message => {
            let errorschannel = message.guild.channels.find(`name`, "errors");
            if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
-           kUser.kick().then(() => {
-
-          
-          message.reply(`Успешно кикнут ${user.tag}!`);
 
            message.channel.send(kUser+" был кикнут за "+ kReason);
            repchannel.send({embed});
