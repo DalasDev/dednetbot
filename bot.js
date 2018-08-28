@@ -26,6 +26,6 @@ bot.on("message", async message => {
     return message.channel.send("Бот работает!");
   }
 
-
+});
 
 bot.login(process.env.BOT_TOKEN);
