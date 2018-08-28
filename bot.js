@@ -22,7 +22,7 @@ bot.on("message", async message => {
     if(cmd === `${prefix}kick`){
 
 
-         let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+         const kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
          if(!kUser) return message.channel.send("Пользователь не существует!");
          let kReason = args.join(" ").slice(22);
 
@@ -43,7 +43,9 @@ bot.on("message", async message => {
            let errorschannel = message.guild.channels.find(`name`, "errors");
            if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
-           kUser.kick();
+           kUser.kick().then(() => {
+          // We let the message author know we were able to kick the person
+          message.reply(`Успешно кикнут ${user.tag}!`);
 
            message.channel.send(kUser+" был кикнут за "+ kReason);
            repchannel.send({embed});
