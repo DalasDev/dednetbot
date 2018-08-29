@@ -16,6 +16,39 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+  //tempmute @member Time
+
+  if(cmd === `${prefix}kick`){
+
+      let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      if(!tomute) return message.reply("Пользователь не существует!");
+      if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Этот пользователь не может быть кикнут!");
+      let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
+
+      if(!muterole) return errorschannel.send("Роль мута не найдена!");
+
+      let mutetime = args[1];
+      if(!mutetime) return message.reply("Вы не указали время мута!");
+
+      let repchannel = message.guild.channels.find(`name`, "reports");
+      let errorschannel = message.guild.channels.find(`name`, "errors");
+      if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
+
+      await(tomute.addRole(muterole.id));
+      message.reply(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+
+      setTimeout(function(){
+        tomute.removeRole(muterole.id);
+        repchannel.send(`<@${tomute.id}> был размучен!`);
+      }, ms(mutetime));
+
+      return;
+
+}
+
   //-----------------------------------------------------------------------------
     //ban @member reason
 
@@ -26,7 +59,7 @@ bot.on("message", async message => {
          if(!bUser) return message.channel.send("Пользователь не существует!");
          let bReason = args.join(" ").slice(22);
 
-         if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:");
+         if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
          if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть забанен!");
 
 
@@ -63,7 +96,7 @@ bot.on("message", async message => {
          if(!kUser) return message.channel.send("Пользователь не существует!");
          let kReason = args.join(" ").slice(22);
 
-         if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking: ");
+         if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
          if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
 
 
