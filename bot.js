@@ -1,5 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const ms = require("ms");
 
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -38,7 +39,7 @@ bot.on("message", async message => {
       if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
       await(tomute.addRole(muterole.id));
-      message.channel.send(`<@${tomute.id}> был замучен`);
+      message.channel.send(`<@${tomute.id}> был замучен  на ${ms(ms(mutetime))}`);
 
       setTimeout(function(){
         tomute.removeRole(muterole.id);
