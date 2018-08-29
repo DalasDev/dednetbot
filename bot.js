@@ -25,7 +25,7 @@ bot.on("message", async message => {
 
       let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       if(!tomute) return message.reply("Пользователь не существует!");
-      if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Этот пользователь не может быть кикнут!");
+      if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Этот пользователь не может быть замучен!");
       let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
 
       if(!muterole) return errorschannel.send("Роль мута не найдена!");
@@ -38,7 +38,7 @@ bot.on("message", async message => {
       if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
       await(tomute.addRole(muterole.id));
-      message.reply(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+      message.channel.send(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
 
       setTimeout(function(){
         tomute.removeRole(muterole.id);
