@@ -21,7 +21,7 @@ bot.on("message", async message => {
 //----------------------------------------------------------------------------
   //tempmute @member Time
 
-  if(cmd === `${prefix}kick`){
+  if(cmd === `${prefix}tempmute`){
 
       let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       if(!tomute) return message.reply("Пользователь не существует!");
