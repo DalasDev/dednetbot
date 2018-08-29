@@ -26,7 +26,7 @@ bot.on("message", async message => {
          if(!bUser) return message.channel.send("Пользователь не существует!");
          let bReason = args.join(" ").slice(22);
 
-         if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :hm:");
+         if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:");
          if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть забанен!");
 
 
@@ -63,7 +63,7 @@ bot.on("message", async message => {
          if(!kUser) return message.channel.send("Пользователь не существует!");
          let kReason = args.join(" ").slice(22);
 
-         if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :hm: ");
+         if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR")) return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking: ");
          if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Этот пользователь не может быть кикнут!");
 
 
