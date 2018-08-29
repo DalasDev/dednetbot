@@ -38,7 +38,7 @@ bot.on("message", async message => {
       if(!repchannel) return errorschannel.send("Канал отчетов не существует!");
 
       await(tomute.addRole(muterole.id));
-      message.channel.send(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+      message.channel.send(`<@${tomute.id}> был замучен`);
 
       setTimeout(function(){
         tomute.removeRole(muterole.id);
