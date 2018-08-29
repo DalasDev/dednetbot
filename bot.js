@@ -158,7 +158,7 @@ bot.on("message", async message => {
   //!test
 
   if(cmd === `${prefix}test`){
-    return message.channel.send("Бот работает!");
+    return message.channel.send("Bot is online");
   }
 
 //-----------------------------------------------------------------------------
