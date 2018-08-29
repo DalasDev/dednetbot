@@ -1,2 +1,2 @@
-worker: node bot.js
 worker: npm install ms
+worker: node bot.js
