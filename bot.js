@@ -1,6 +1,5 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-const ms = require("ms");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
@@ -40,7 +39,7 @@ bot.on("message", async message => {
 
 /*
   //tempmute @member Time
-  
+
   if(cmd === `${prefix}tempmute`){
 
       let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
