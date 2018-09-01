@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
 
   await(tomute.addRole(muterole.id));
 
-  message.channel.send(`Есть, кэп! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+  message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
 
   setTimeout(function(){
     tomute.removeRole(muterole.id);
