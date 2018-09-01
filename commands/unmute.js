@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const ms = require("ms");
 
 //tempmute @member Time
 
@@ -10,11 +9,8 @@ module.exports.run = async (bot, message, args) => {
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
-
-
   if(!tounmute)
     return message.reply("Пользователь не существует!");
-
 
   if(!muterole)
     return errorschannel.send("Роль мута не найдена!");
