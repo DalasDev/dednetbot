@@ -1,9 +1,10 @@
 const Discord = require("discord.js");
+const ms = require("ms");
 
 //tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
-  
+
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
   if(!tomute)
