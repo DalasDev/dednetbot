@@ -10,14 +10,20 @@ module.exports.run = async (bot, message, args) => {
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
+
+
   if(!tounmute)
     return message.reply("Пользователь не существует!");
+
 
   if(!muterole)
     return errorschannel.send("Роль мута не найдена!");
 
-  if(!repchannel || !errorschannel)
-    return errorschannel.send("Каналы отчетов/ошибок не существуют!");
+  if(!errorschannel)
+    return message.reply("Каналы ошибок не существует!");
+
+  if(!repchannel)
+    return errorschannel.send("Канал отчетов не существует!");
 
   await(tounmute.removeRole(muterole.id));
 

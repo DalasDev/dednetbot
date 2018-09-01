@@ -11,6 +11,9 @@ module.exports.run = async (bot, message, args) => {
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
+  if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
+		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+
   if(!tomute)
     return message.reply("Пользователь не существует!");
 
