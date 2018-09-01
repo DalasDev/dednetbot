@@ -5,14 +5,18 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
 	const kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+	let kReason = args.join(" ").slice(22);
+	let repchannel = message.guild.channels.find(`name`, "reports");
+	let errorschannel = message.guild.channels.find(`name`, "errors");
+
 	if(!kUser)
 		return message.channel.send("Пользователь не существует!");
-	let kReason = args.join(" ").slice(22);
-
 	if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 	if(kUser.hasPermission("MANAGE_MESSAGES"))
 		return message.channel.send("Этот пользователь не может быть кикнут!");
+	if(!repchannel)
+		return errorschannel.send("Канал отчетов не существует!");
 
 	let embed = new Discord.RichEmbed()
 	.setTitle("ОТЧЕТ О КИКЕ")
@@ -23,17 +27,10 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Время кика:", message.createdAt, true)
 	.addField("Был кикнут за:", kReason, true)
 
-	let repchannel = message.guild.channels.find(`name`, "reports");
-	let errorschannel = message.guild.channels.find(`name`, "errors");
-
-	if(!repchannel)
-		return errorschannel.send("Канал отчетов не существует!");
-
 	message.guild.member(kUser).kick(kReason);
 
 	message.channel.send(kUser+" был кикнут за "+ kReason);
 	repchannel.send({embed});
-
 }
 
 
