@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
+console.log("db1");
 
 fs.readdir("./commands/", (err, files) => {
   if (err)
@@ -14,6 +15,7 @@ fs.readdir("./commands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) => {
+    console.log(f);
     let props = require(`./commands/${f}`);
     console.log(`Комманда ${f} загружена`);
     bot.commands.set(props.help.name, props);
