@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 	let repchannel = message.guild.channels.find(`name`, "reports");
 	let errorschannel = message.guild.channels.find(`name`, "errors");
 	let bReason = args.join(" ").slice(22);
-	
+
 	if(!bUser)
 		return message.channel.send("Пользователь не существует!");
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
