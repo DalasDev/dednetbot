@@ -15,7 +15,6 @@ fs.readdir("./commands/", (err, files) => {
   }
 
   jsfile.forEach((f, i) => {
-    console.log(f);
     let props = require(`./commands/${f}`);
     console.log(`Комманда ${f} загружена`);
     bot.commands.set(props.help.name, props);
@@ -27,7 +26,7 @@ bot.on("ready", async () => {
 });
 
 bot.on("message", async message => {
-  
+
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
