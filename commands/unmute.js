@@ -10,11 +10,8 @@ module.exports.run = async (bot, message, args) => {
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
-
-
   if(!tounmute)
     return message.reply("Пользователь не существует!");
-
 
   if(!muterole)
     return errorschannel.send("Роль мута не найдена!");
@@ -25,8 +22,16 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
+<<<<<<< HEAD
 
   if(!tounmute.roles.has(muterole.id))
+=======
+  console.log("ToMuteObject 1: " + tomute);
+
+  console.log("ToMuteObject 2: " + JSON.stringify(tomute));
+
+  if(!tomute.roles.has(muterole.id))
+>>>>>>> 9714ceb42d638dc2a1c79d675f6e2b54dbd6ee3e
     return message.reply("Пользователь не замучен!");
 
 
