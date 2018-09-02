@@ -3,14 +3,13 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
-console.log("db1");
 
 fs.readdir("./commands/", (err, files) => {
   if (err)
     console.log(err);
   let jsfile = files.filter(f => f.split(".").pop() === "js");
   if (jsfile.length <= 0) {
-    console.log("No commands found");
+    console.log("Команды не найдены!");
     return;
   }
 

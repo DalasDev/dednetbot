@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  if(!tomute.roles.has(muterole.id))
+  if(!tounmute.roles.has(muterole.id))
     return message.reply("Пользователь не замучен!");
 
   await(tounmute.removeRole(muterole.id));
