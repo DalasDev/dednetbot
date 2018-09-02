@@ -21,6 +21,13 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
+  console.log("ToMuteObject 1: " + tomute);
+
+  console.log("ToMuteObject 2: " + JSON.stringify(tomute));
+
+  if(!tomute.roles.has(muterole.id))
+    return message.reply("Пользователь не замучен!");
+
   await(tounmute.removeRole(muterole.id));
 
   message.channel.send(`Есть, капитан! <@${tounmute.id}> теперь свободен, как птичка в небе! :ok_hand: `);
