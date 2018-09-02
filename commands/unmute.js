@@ -1,36 +1,36 @@
-const Discord = require("discord.js");
+// const Discord = require("discord.js");
 
-//tempmute @member Time
+// //tempmute @member Time
 
-module.exports.run = async (bot, message, args) => {
+// module.exports.run = async (bot, message, args) => {
 
-  let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
-  let repchannel = message.guild.channels.find(`name`, "reports");
-  let errorschannel = message.guild.channels.find(`name`, "errors");
+//   let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+//   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
+//   let repchannel = message.guild.channels.find(`name`, "reports");
+//   let errorschannel = message.guild.channels.find(`name`, "errors");
 
-  if(!tounmute)
-    return message.reply("Пользователь не существует!");
+//   if(!tounmute)
+//     return message.reply("Пользователь не существует!");
 
-  if(!muterole)
-    return errorschannel.send("Роль мута не найдена!");
+//   if(!muterole)
+//     return errorschannel.send("Роль мута не найдена!");
 
-  if(!errorschannel)
-    return message.reply("Каналы ошибок не существует!");
+//   if(!errorschannel)
+//     return message.reply("Каналы ошибок не существует!");
 
-  if(!repchannel)
-    return errorschannel.send("Канал отчетов не существует!");
+//   if(!repchannel)
+//     return errorschannel.send("Канал отчетов не существует!");
 
-  if(!tounmute.roles.has(muterole.id))
-    return message.reply("Пользователь не замучен!");
+//   if(!tounmute.roles.has(muterole.id))
+//     return message.reply("Пользователь не замучен!");
 
 
-  await(tounmute.removeRole(muterole.id));
+//   await(tounmute.removeRole(muterole.id));
 
-  message.channel.send(`Есть, капитан! <@${tounmute.id}> теперь свободен, как птичка в небе! :ok_hand: `);
+//   message.channel.send(`Есть, капитан! <@${tounmute.id}> теперь свободен, как птичка в небе! :ok_hand: `);
 
-}
+// }
 
-module.exports.help = {
-  name: "unmute"
-}
+// module.exports.help = {
+//   name: "unmute"
+// }
