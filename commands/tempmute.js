@@ -34,10 +34,8 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
 
   setTimeout(function(){
-    if(tomute.roles.has(muterole.id)){
       tomute.removeRole(muterole.id);
       repchannel.send(`<@${tomute.id}> был размучен!`);
-    }
   }, ms(mutetime));
 }
 
