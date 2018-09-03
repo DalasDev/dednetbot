@@ -15,17 +15,17 @@ module.exports.run = async (bot, message, args) => {
   let warnchannel = message.guild.channels.find('name', "reports");
 
   if(reason === "")
-    return message.reply("Укажите причину");
+    return message.reply("укажите причину");
   if(!message.member.hasPermission("MOVE_MEMBERS"))
-    return message.reply("Погоди-ка, у тебя нехватка прав :eyes:");
+    return message.reply("погоди-ка, у тебя нехватка прав :eyes:");
   if(!wUser)
-    return message.reply("Пользователь не существует :thinking: ");
+    return message.reply("пользователь не существует :thinking: ");
   if(wUser.hasPermission("MANAGE_MESSAGES"))
     return message.reply("не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
-    return errorschannel.send("Роль для нарушителей не найдена!");
+    return errorschannel.send("роль для нарушителей не найдена!");
   if(!warnchannel)
-    return message.reply("Добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
+    return message.reply("добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
 
   if(!warns[wUser.id]){
     warns[wUser.id] = {
