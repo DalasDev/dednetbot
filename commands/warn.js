@@ -14,11 +14,11 @@ module.exports.run = async (bot, message, args) => {
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = "";
 
-  if(!message.member.hasPermissions("MANAGE_MEMBERS"))
+  if(!message.member.hasPermission("MOVE_MEMBERS"))
     return message.reply("Погоди-ка, у тебя нехватка прав :eyes:");
   if(!wUser)
     return message.reply("Пользователь не существует :thinking: ");
-  if(wUser.hasPermissions("MANAGE_MESSAGES"))
+  if(wUser.hasPermission("MANAGE_MESSAGES"))
     return message.reply("Не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
     return errorschannel.send("Роль для нарушителей не найдена!");
