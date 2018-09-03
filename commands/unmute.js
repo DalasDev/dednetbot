@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
   if(!tounmute.roles.has(muterole.id))
     return message.reply("Пользователь не замучен!");
 
-  repchannel.send("<@${tounmute.id}> был размучен администратором!");
+  repchannel.send(`<@${tounmute.id}> был размучен администратором!`);
 
   await(tounmute.removeRole(muterole.id));
 
