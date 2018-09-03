@@ -35,33 +35,20 @@ module.exports.run = async (bot, message, args) => {
     if (err)
       console.log(err);
   });
-  
-  // let sicon = message.guild.iconURL;
-  // const embed = new Discord.RichEmbed()
-  // .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
-  // .setColor("#4C8BF5")
-  // .setThumbnail(sicon)
-  // .addField("Имя сервера:", message.guild.name, true)
-  // .addField("Версия сервера:", "1.9", true)
-  // .addField("Сервер создан:", message.guild.createdAt, true)
-  // .addField("Вы присоединились:", message.member.joinedAt, true)
-  // .addField("Всего учасников:", message.guild.memberCount, true)
-
-  // message.channel.send({embed});
 
   let sicon = message.guild.iconURL;
+
+  console.log("user: " JSON.stringify(wUser));
 
   const embed = new Discord.RichEmbed()
   .setTitle("Отчет о варне")
   .setColor("#fc6400")
-  .addField("Жертва", wUser.tag, true)
+  .addField("Жертва", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)
   .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
   .addField("Причина", reason, true);
 
   warnchannel.send({embed});
-
-  // console.log("message sent to channel");
 
   // if(warns[wUser.id].warns == 2){
   //   mutetime = "5m";
