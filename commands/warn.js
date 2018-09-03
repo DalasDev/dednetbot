@@ -6,7 +6,36 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 //tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
+  
+  let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  let reason = args.join(" ").slice(22);
+  let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
+  let mutetime = "";
+  var warnchannel = message.guild.channels.find('name', "reports");
 
+  if(!message.member.hasPermission("MOVE_MEMBERS"))
+    return message.reply("Погоди-ка, у тебя нехватка прав :eyes:");
+  if(!wUser)
+    return message.reply("Пользователь не существует :thinking: ");
+  if(wUser.hasPermission("MANAGE_MESSAGES"))
+    return message.reply("не, этого дядьку заварнить не получится :thinking: ");
+  if(!muterole)
+    return errorschannel.send("Роль для нарушителей не найдена!");
+  if(!warnchannel)
+    return message.reply("Добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
+
+  if(!warns[wUser.id])
+    warns[wUser.id] = {
+      warns: 0
+    }
+
+  warns[wUser.id].warns++;
+
+  fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
+    if (err)
+      console.log(err);
+  });
+  
   let sicon = message.guild.iconURL;
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
@@ -19,39 +48,10 @@ module.exports.run = async (bot, message, args) => {
   .addField("Всего учасников:", message.guild.memberCount, true)
 
   message.channel.send({embed});
-  
-  // let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  // let reason = args.join(" ").slice(22);
-  // let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
-  // let mutetime = "";
-  // var warnchannel = message.guild.channels.find('name', "reports");
-
-  // if(!message.member.hasPermission("MOVE_MEMBERS"))
-  //   return message.reply("Погоди-ка, у тебя нехватка прав :eyes:");
-  // if(!wUser)
-  //   return message.reply("Пользователь не существует :thinking: ");
-  // if(wUser.hasPermission("MANAGE_MESSAGES"))
-  //   return message.reply("не, этого дядьку заварнить не получится :thinking: ");
-  // if(!muterole)
-  //   return errorschannel.send("Роль для нарушителей не найдена!");
-  // if(!warnchannel)
-  //   return message.reply("Добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
-
-  // if(!warns[wUser.id])
-  //   warns[wUser.id] = {
-  //     warns: 0
-  //   }
-
-  // warns[wUser.id].warns++;
-
-  // fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-  //   if (err)
-  //     console.log(err);
-  // });
 
   // let sicon = message.guild.iconURL;
 
-  // const warnEmbed = new Discord.RichEmbed()
+  // const embed = new Discord.RichEmbed()
   // .setTitle("Отчет о варне")
   // .setColor("#fc6400")
   // .addField("Жертва", wUser.tag, true)
@@ -59,7 +59,7 @@ module.exports.run = async (bot, message, args) => {
   // .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
   // .addField("Причина", reason, true);
 
-  // warnchannel.send({warnEmbed});
+  // warnchannel.send({embed});
 
   // console.log("message sent to channel");
 
