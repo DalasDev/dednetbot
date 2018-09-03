@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
   if(!wUser)
     return message.reply("Пользователь не существует :thinking: ");
   if(wUser.hasPermission("MANAGE_MESSAGES"))
-    return message.reply("Не, этого дядьку заварнить не получится :thinking: ");
+    return message.reply("не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
     return errorschannel.send("Роль для нарушителей не найдена!");
 
@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Жертва", wUser.tag)
     .addField("Предупреждение выдано в", message.channel)
     .addField("Предупреждений у нарушителя", warns[wUser.id].warns)
-    .addField("Причина", reason)
+    .addField("Причина", reason);
 
     let warnchannel = message.guild.channels.find('name', "reports");
 
