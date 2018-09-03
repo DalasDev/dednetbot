@@ -33,12 +33,12 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
-  if(tovmute.roles.has(vmuterole.id)){
-    setTimeout(function(){
+  setTimeout(function(){
+    if(tovmute.roles.has(vmuterole.id)){
       tovmute.removeRole(vmuterole.id);
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
-    }, ms(vmutetime));
-  }
+    }
+  }, ms(vmutetime));
 }
 
 module.exports.help = {

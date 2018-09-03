@@ -24,87 +24,88 @@ module.exports.run = async (bot, message, args) => {
   if(!warnchannel)
     return message.reply("Добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
 
-  if(!warns[wUser.id])
+  if(!warns[wUser.id]){
     warns[wUser.id] = {
       warns: 0
     }
-
-    warns[wUser.id].warns++;
-
-    fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-      if (err)
-        console.log(err);
-    });
-
-    let sicon = message.guild.iconURL;
-
-    const embed = new Discord.RichEmbed()
-    .setTitle(":star: Отчет о варне нахуй :star:")
-    .setColor("#fc6400")
-    .addField("Жертва", `<@${wUser.id}>`, true)
-    .addField("Предупреждение выдано в", message.channel, true)
-    .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
-    .addField("Причина", reason, true);
-
-    warnchannel.send({embed});
-
-    if(warns[wUser.id].warns == 1){
-      message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
-    }
-
-    if(warns[wUser.id].warns == 2){
-      mutetime = "5m";
-      await(wUser.addRole(muterole.id));
-      message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
-
-      if(wUser.roles.has(muterole.id)){
-        setTimeout(function(){
-          wUser.removeRole(muterole.id);
-          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
-        }, ms(mutetime));
-      }
-    }
-
-    if(warns[wUser.id].warns == 3){
-      mutetime = "15m";
-      await(wUser.addRole(muterole.id));
-      message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
-
-      if(wUser.roles.has(muterole.id)){
-        setTimeout(function(){
-          wUser.removeRole(muterole.id);
-          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
-        }, ms(mutetime));
-      }
-    }
-
-    if(warns[wUser.id].warns == 4){
-      mutetime = "30m";
-      await(wUser.addRole(muterole.id));
-      message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
-
-      if(wUser.roles.has(muterole.id)){
-        setTimeout(function(){
-          wUser.removeRole(muterole.id);
-          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
-        }, ms(mutetime));
-      }
-    }
-
-    if(warns[wUser.id].warns == 5){
-      mutetime = "1h";
-      await(wUser.addRole(muterole.id));
-      message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
-
-      if(wUser.roles.has(muterole.id)){
-        setTimeout(function(){
-          wUser.removeRole(muterole.id);
-          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
-        }, ms(mutetime));
-      }
-    }
   }
 
-  module.exports.help = {
-    name: "warn"
+  warns[wUser.id].warns++;
+
+  fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
+    if (err)
+      console.log(err);
+  });
+
+  let sicon = message.guild.iconURL;
+
+  const embed = new Discord.RichEmbed()
+  .setTitle(":star: Отчет о варне нахуй :star:")
+  .setColor("#fc6400")
+  .addField("Жертва", `<@${wUser.id}>`, true)
+  .addField("Предупреждение выдано в", message.channel, true)
+  .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
+  .addField("Причина", reason, true);
+
+  warnchannel.send({embed});
+
+  if(warns[wUser.id].warns == 1){
+    message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
   }
+
+  if(warns[wUser.id].warns == 2){
+    mutetime = "5m";
+    await(wUser.addRole(muterole.id));
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
+
+    setTimeout(function(){
+      if(wUser.roles.has(muterole.id)){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }
+    }, ms(mutetime));
+  }
+
+  if(warns[wUser.id].warns == 3){
+    mutetime = "15m";
+    await(wUser.addRole(muterole.id));
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
+
+    setTimeout(function(){
+      if(wUser.roles.has(muterole.id)){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }
+    }, ms(mutetime));
+  }
+
+  if(warns[wUser.id].warns == 4){
+    mutetime = "30m";
+    await(wUser.addRole(muterole.id));
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
+
+    setTimeout(function(){
+      if(wUser.roles.has(muterole.id)){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }
+    }, ms(mutetime));
+  }
+
+  if(warns[wUser.id].warns == 5){
+    mutetime = "1h";
+    await(wUser.addRole(muterole.id));
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
+
+    setTimeout(function(){
+      if(wUser.roles.has(muterole.id)){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }
+    }, ms(mutetime));
+  }
+}
+
+module.exports.help = {
+  name: "warn"
+}
