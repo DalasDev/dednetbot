@@ -49,50 +49,50 @@ module.exports.run = async (bot, message, args) => {
   warnchannel.send({embed});
 
   if(warns[wUser.id].warns == 1){
-    message.channel.send(wUser.tag + " получил свое первое предупреждение! Не нарушай больше!");
+    message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
   }
 
   if(warns[wUser.id].warns == 2){
     mutetime = "5m";
     await(wUser.addRole(muterole.id));
-    message.channel.send(wUser.tag + " посидит " + mutetime + ",  подумает...");
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
     setTimeout(function(){
       wUser.removeRole(muterole.id);
-      warnchannel.reply(`${wUser.tag} был автоматически размучен!`);
+      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
     }, ms(mutetime));
   }
 
   if(warns[wUser.id].warns == 3){
     mutetime = "15m";
     await(wUser.addRole(muterole.id));
-    message.channel.send(wUser.tag + " посидит " + mutetime + ",  подумает...");
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
     setTimeout(function(){
       wUser.removeRole(muterole.id);
-      warnchannel.reply(`${wUser.tag} был автоматически размучен!`);
+      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
     }, ms(mutetime));
   }
 
   if(warns[wUser.id].warns == 4){
     mutetime = "30m";
     await(wUser.addRole(muterole.id));
-    message.channel.send(wUser.tag + " посидит " + mutetime + ",  подумает...");
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
     setTimeout(function(){
       wUser.removeRole(muterole.id);
-      warnchannel.reply(`${wUser.tag} был автоматически размучен!`);
+      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
     }, ms(mutetime));
   }
 
   if(warns[wUser.id].warns == 5){
     mutetime = "1h";
     await(wUser.addRole(muterole.id));
-    message.channel.send(wUser.tag + " посидит " + mutetime + ",  подумает...");
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
     setTimeout(function(){
       wUser.removeRole(muterole.id);
-      warnchannel.reply(`${wUser.tag} был автоматически размучен!`);
+      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
     }, ms(mutetime));
   }
 }
