@@ -35,8 +35,10 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-  if(commandfile)
+  if(commandfile){
+    console.log("Command to execute: " + cmd);
     commandfile.run(bot, message, args);
+  }
 });
 
 bot.login(process.env.BOT_TOKEN);
