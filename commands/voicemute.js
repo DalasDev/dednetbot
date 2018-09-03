@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
-		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
   if(!tovmute)
     return message.reply("Пользователь не существует!");
@@ -35,8 +35,8 @@ module.exports.run = async (bot, message, args) => {
 
   if(tovmute.roles.has(vmuterole.id)){
     setTimeout(function(){
-        tovmute.removeRole(vmuterole.id);
-        repchannel.send(`<@${tovmute.id}> снова может говорить!`);
+      tovmute.removeRole(vmuterole.id);
+      repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }, ms(vmutetime));
   }
 }

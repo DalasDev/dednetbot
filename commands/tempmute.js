@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
-		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
   if(!tomute)
     return message.reply("Пользователь не существует!");
@@ -33,12 +33,12 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
 
-  setTimeout(function(){
-    if(tomute.roles.has(muterole.id)){
-        tomute.removeRole(muterole.id);
-        repchannel.send(`<@${tomute.id}> был размучен!`);
-    }
-  }, ms(mutetime));
+  if(tomute.roles.has(muterole.id)){
+    setTimeout(function(){
+      tomute.removeRole(muterole.id);
+      repchannel.send(`<@${tomute.id}> был размучен!`);
+    }, ms(mutetime));
+  }
 }
 
 module.exports.help = {
