@@ -31,12 +31,12 @@ module.exports.run = async (bot, message, args) => {
 
   await(tovmute.addRole(vmuterole.id));
 
-  message.channel.send(`Понял, принял! <@${tovmute.id}> был замучен на ${ms(ms(vmutetime))}`);
+  message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
     if(tovmute.roles.has(vmuterole.id)){
         tovmute.removeRole(vmuterole.id);
-        repchannel.send(`<@${tovmute.id}> был размучен!`);
+        repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }
   }, ms(vmutetime));
 }

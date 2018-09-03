@@ -24,11 +24,11 @@ module.exports.run = async (bot, message, args) => {
   if(!tovunmute.roles.has(vmuterole.id))
     return message.reply("Пользователь не замучен!");
 
-  repchannel.send(`<@${tovunmute.id}> был размучен администратором!`);
+  repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
   await(tovunmute.removeRole(vmuterole.id));
 
-  message.channel.send(`Есть, капитан! <@${tovunmute.id}> теперь свободен, как птичка в небе! :ok_hand: `);
+  message.channel.send(`Есть, капитан! <@${tovunmute.id}> снова может говорить! :ok_hand: `);
 
 }
 
