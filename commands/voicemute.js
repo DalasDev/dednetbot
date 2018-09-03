@@ -1,46 +1,46 @@
 const Discord = require("discord.js");
 const ms = require("ms");
 
-//tempmute @member Time
+//voicemute @member Time
 
 module.exports.run = async (bot, message, args) => {
 
-  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
-  let mutetime = args[1];
+  let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  let vmuterole = message.guild.roles.find(`name`, "Изолятор (Ноу_коннект)");
+  let vmutetime = args[1];
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
-  if(!tomute)
+  if(!tovmute)
     return message.reply("Пользователь не существует!");
 
-  if(tomute.hasPermission("MANAGE_MESSAGES"))
+  if(tovmute.hasPermission("MANAGE_MESSAGES"))
     return message.reply("Этот пользователь не может быть замучен!");
 
-  if(!muterole)
+  if(!vmuterole)
     return errorschannel.send("Роль мута не найдена!");
 
-  if(!mutetime)
+  if(!vmutetime)
     return message.reply("Вы не указали время мута!");
 
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  await(tomute.addRole(muterole.id));
+  await(tovmute.addRole(vmuterole.id));
 
-  message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+  message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
-    if(tomute.roles.has(muterole.id)){
-        tomute.removeRole(muterole.id);
-        repchannel.send(`<@${tomute.id}> был размучен!`);
+    if(tovmute.roles.has(vmuterole.id)){
+        tovmute.removeRole(vmuterole.id);
+        repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }
-  }, ms(mutetime));
+  }, ms(vmutetime));
 }
 
 module.exports.help = {
-  name: "tempmute"
+  name: "voicemute"
 }

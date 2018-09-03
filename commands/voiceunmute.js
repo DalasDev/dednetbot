@@ -1,18 +1,18 @@
 const Discord = require("discord.js");
 
-//unmute @member
+//voiceunmute @member Time
 
 module.exports.run = async (bot, message, args) => {
 
-  let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
+  let tovunmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  let vmuterole = message.guild.roles.find(`name`, "Изолятор (Ноу_коннект)");
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
-  if(!tounmute)
+  if(!tovunmute)
     return message.reply("Пользователь не существует!");
 
-  if(!muterole)
+  if(!vmuterole)
     return errorschannel.send("Роль мута не найдена!");
 
   if(!errorschannel)
@@ -21,17 +21,17 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  if(!tounmute.roles.has(muterole.id))
+  if(!tovunmute.roles.has(vmuterole.id))
     return message.reply("Пользователь не замучен!");
 
-  repchannel.send(`<@${tounmute.id}> был размучен администратором!`);
+  repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
-  await(tounmute.removeRole(muterole.id));
+  await(tovunmute.removeRole(vmuterole.id));
 
-  message.channel.send(`Есть, капитан! <@${tounmute.id}> теперь свободен, как птичка в небе! :ok_hand: `);
+  message.channel.send(`Есть, капитан! <@${tovunmute.id}> снова может говорить! :ok_hand: `);
 
 }
 
 module.exports.help = {
-  name: "unmute"
+  name: "voiceunmute"
 }
