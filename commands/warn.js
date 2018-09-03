@@ -7,7 +7,7 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 module.exports.run = async (bot, message, args) => {
 
-  console.log("Trying to warn someone");
+  console.log("DB1");
   
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let reason = args.join(" ").slice(22);
@@ -23,6 +23,8 @@ module.exports.run = async (bot, message, args) => {
   if(!muterole)
     return errorschannel.send("Роль для нарушителей не найдена!");
 
+  console.log("DB2");
+
   if(!warns[wUser.id])
     warns[wUser.id] = {
       warns: 0
@@ -35,6 +37,8 @@ module.exports.run = async (bot, message, args) => {
         console.log(err);
     });
 
+    console.log("DB3");
+
     let warnEmbed = new Discord.RichEmbed()
     .setDescription("Отчет о варне")
     .setAuthor(message.author.username)
@@ -46,10 +50,14 @@ module.exports.run = async (bot, message, args) => {
 
     let warnchannel = message.guild.channels.find('name', "reports");
 
+    console.log("DB4");
+
     if(!warnchannel)
       return message.reply("Добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
 
     warnchannel.send(warnEmbed);
+
+    console.log("DB5");
 
     if(warns[wUser.id].warns == 2){
       mutetime = "5m";
@@ -94,6 +102,8 @@ module.exports.run = async (bot, message, args) => {
         warnchannel.reply(`${wUser.tag} был автоматически размучен!`);
       }, ms(mutetime));
     }
+
+    console.log("DB6");
 
 }
 
