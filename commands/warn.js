@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("public/warnings.json", "utf8"));
+let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 //tempmute @member Time
 
@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   let warnchannel = message.guild.channels.find('name', "reports");
 
   if(reason === "")
-    return message.reply("укажите причину");
+    return message.reply("укажите причину!");
   if(!message.member.hasPermission("MOVE_MEMBERS"))
     return message.reply("погоди-ка, у тебя нехватка прав :eyes:");
   if(!wUser)
