@@ -6,6 +6,8 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 //tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
+
+  console.log("Trying to warn someone");
   
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let reason = args.join(" ").slice(22);
