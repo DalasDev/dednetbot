@@ -38,8 +38,6 @@ module.exports.run = async (bot, message, args) => {
 
   let sicon = message.guild.iconURL;
 
-  console.log("user: " + JSON.stringify(wUser));
-
   const embed = new Discord.RichEmbed()
   .setTitle(":star: Отчет о варне нахуй :star:")
   .setColor("#fc6400")
