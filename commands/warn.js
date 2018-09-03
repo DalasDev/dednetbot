@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
   console.log("user: " + JSON.stringify(wUser));
 
   const embed = new Discord.RichEmbed()
-  .setTitle(":star: Отчет о варне :star:")
+  .setTitle(":star: Отчет о варне нахуй :star:")
   .setColor("#fc6400")
   .addField("Жертва", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)
