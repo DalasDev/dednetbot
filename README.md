@@ -1,2 +1,3 @@
-# DalasBot
-MyFirst 24/7 bot!
+# RetroValleyBot
+
+Our Discord bot project for RetroValley server
