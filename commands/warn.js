@@ -36,6 +36,8 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
   });
 
+  let sicon = message.guild.iconURL;
+
   const warnEmbed = new Discord.RichEmbed()
   // .setTitle("Отчет о варне")
   // .setColor("#fc6400")
