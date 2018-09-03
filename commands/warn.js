@@ -36,30 +36,30 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
   });
   
-  let sicon = message.guild.iconURL;
-  const embed = new Discord.RichEmbed()
-  .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
-  .setColor("#4C8BF5")
-  .setThumbnail(sicon)
-  .addField("Имя сервера:", message.guild.name, true)
-  .addField("Версия сервера:", "1.9", true)
-  .addField("Сервер создан:", message.guild.createdAt, true)
-  .addField("Вы присоединились:", message.member.joinedAt, true)
-  .addField("Всего учасников:", message.guild.memberCount, true)
-
-  message.channel.send({embed});
-
   // let sicon = message.guild.iconURL;
-
   // const embed = new Discord.RichEmbed()
-  // .setTitle("Отчет о варне")
-  // .setColor("#fc6400")
-  // .addField("Жертва", wUser.tag, true)
-  // .addField("Предупреждение выдано в", message.channel, true)
-  // .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
-  // .addField("Причина", reason, true);
+  // .setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")
+  // .setColor("#4C8BF5")
+  // .setThumbnail(sicon)
+  // .addField("Имя сервера:", message.guild.name, true)
+  // .addField("Версия сервера:", "1.9", true)
+  // .addField("Сервер создан:", message.guild.createdAt, true)
+  // .addField("Вы присоединились:", message.member.joinedAt, true)
+  // .addField("Всего учасников:", message.guild.memberCount, true)
 
-  // warnchannel.send({embed});
+  // message.channel.send({embed});
+
+  let sicon = message.guild.iconURL;
+
+  const embed = new Discord.RichEmbed()
+  .setTitle("Отчет о варне")
+  .setColor("#fc6400")
+  .addField("Жертва", wUser.tag, true)
+  .addField("Предупреждение выдано в", message.channel, true)
+  .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
+  .addField("Причина", reason, true);
+
+  warnchannel.send({embed});
 
   // console.log("message sent to channel");
 
