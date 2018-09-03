@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   let reason = args.join(" ").slice(22);
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = "";
-  var warnchannel = message.guild.channels.find('name', "reports");
+  let warnchannel = message.guild.channels.find('name', "reports");
 
   if(!message.member.hasPermission("MOVE_MEMBERS"))
     return message.reply("Погоди-ка, у тебя нехватка прав :eyes:");
@@ -57,10 +57,12 @@ module.exports.run = async (bot, message, args) => {
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
-    setTimeout(function(){
-      wUser.removeRole(muterole.id);
-      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
-    }, ms(mutetime));
+    if(wUser.roles.has(muterole.id)){
+      setTimeout(function(){
+        wUser.removeRole(muterole.id);
+        warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+      }, ms(mutetime));
+    }
   }
 
   if(warns[wUser.id].warns == 3){
@@ -68,10 +70,12 @@ module.exports.run = async (bot, message, args) => {
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
-    setTimeout(function(){
-      wUser.removeRole(muterole.id);
-      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
-    }, ms(mutetime));
+    if(wUser.roles.has(muterole.id)){
+      setTimeout(function(){
+        wUser.removeRole(muterole.id);
+        warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+      }, ms(mutetime));
+    }
   }
 
   if(warns[wUser.id].warns == 4){
@@ -79,10 +83,12 @@ module.exports.run = async (bot, message, args) => {
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
-    setTimeout(function(){
-      wUser.removeRole(muterole.id);
-      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
-    }, ms(mutetime));
+    if(wUser.roles.has(muterole.id)){
+      setTimeout(function(){
+        wUser.removeRole(muterole.id);
+        warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+      }, ms(mutetime));
+    }
   }
 
   if(warns[wUser.id].warns == 5){
@@ -90,10 +96,12 @@ module.exports.run = async (bot, message, args) => {
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
-    setTimeout(function(){
-      wUser.removeRole(muterole.id);
-      warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
-    }, ms(mutetime));
+    if(wUser.roles.has(muterole.id)){
+      setTimeout(function(){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }, ms(mutetime));
+    }
   }
 }
 
