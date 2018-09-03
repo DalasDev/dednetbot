@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Время создания жалобы:", message.createdAt, true)
 	.addField("Жалоба:", reason, true)
 
-	message.channel.send(`${message.author}`+" жалоба отправлена!");
+	message.channel.send(`${message.author}`+", жалоба отправлена!");
 
 	message.delete().catch(O_o=>{});
 	repchannel.send({embed});
