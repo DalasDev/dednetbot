@@ -6,7 +6,7 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 //tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
-  
+
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let reason = args.join(" ").slice(22);
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
@@ -60,7 +60,7 @@ module.exports.run = async (bot, message, args) => {
       if(wUser.roles.has(muterole.id)){
         setTimeout(function(){
           wUser.removeRole(muterole.id);
-          warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
         }, ms(mutetime));
       }
     }
@@ -73,7 +73,7 @@ module.exports.run = async (bot, message, args) => {
       if(wUser.roles.has(muterole.id)){
         setTimeout(function(){
           wUser.removeRole(muterole.id);
-          warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
         }, ms(mutetime));
       }
     }
@@ -86,7 +86,7 @@ module.exports.run = async (bot, message, args) => {
       if(wUser.roles.has(muterole.id)){
         setTimeout(function(){
           wUser.removeRole(muterole.id);
-          warnchannel.reply(`<@${wUser.id}> был автоматически размучен!`);
+          warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
         }, ms(mutetime));
       }
     }
