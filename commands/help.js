@@ -21,7 +21,8 @@ module.exports.run = async (bot, message, args) => {
 	.addField("!voicemute user Xs/m/h/d", "Мут микрофона на X времени", true)
 	.addField("!voiceunmute", "Анмут микрофона преждевременно", true)
 	.addField("!warn user reason", "Варны, сами опробуете, накопительная система", true)
-	.addField("Продолжение следует...", ":dab:", true)
+	.setFooter("Продолжение следует...", "")
+	.setImage("https://giphy.com/embed/l2Jeai4sW0NCl4cla")
 
 	message.channel.send({embed});
 }
