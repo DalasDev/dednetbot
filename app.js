@@ -3,8 +3,12 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 const express = require('express');
+const exphbs = require('express-handlebars');
 const app = express();
 bot.commands = new Discord.Collection();
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
