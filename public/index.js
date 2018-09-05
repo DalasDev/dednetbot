@@ -4,7 +4,8 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 const express = require('express');
 const app = express();
+let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 function warnings() {
-   document.getElementById("warns").innerHTML = "Warns will be showed here";
+   document.getElementById("warns").innerHTML = JSON.stringify(warns);
 }
