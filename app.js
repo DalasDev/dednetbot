@@ -7,9 +7,6 @@ const app = express();
 bot.commands = new Discord.Collection();
 
 app.use(express.static('public'));
-// app.get('/', function (req, res) {
-//   res.send('Hello World!')
-// })
 
 app.listen(process.env.PORT || 8080, () => 
   console.log("All is set")
