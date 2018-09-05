@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("!voiceunmute", "Анмут микрофона преждевременно", true)
 	.addField("!warn user reason", "Варны, сами опробуете, накопительная система", true)
 	.setFooter("Продолжение следует...", "")
-	.setImage("https://giphy.com/embed/l2Jeai4sW0NCl4cla")
+	.setImage("./public/images/easy.gif")
 
 	message.channel.send({embed});
 }
