@@ -9,27 +9,27 @@ bot.commands = new Discord.Collection();
 app.use(express.static('public'));
 
 app.listen(process.env.PORT || 8080, () => 
-  console.log("Сайт запущен")
-)
+  console.log("[app.js] Сайт запущен")
+);
 
 fs.readdir("./commands/", (err, files) => {
   if (err)
     console.log(err);
   let jsfile = files.filter(f => f.split(".").pop() === "js");
   if (jsfile.length <= 0) {
-    console.log("Команды не найдены!");
+    console.log("[app.js] Команды не найдены");
     return;
   }
 
   jsfile.forEach((f, i) => {
     let props = require(`./commands/${f}`);
-    console.log(`Комманда ${f} загружена`);
+    console.log(`[app.js] Комманда ${f} загружена`);
     bot.commands.set(props.help.name, props);
   })
 })
 
 bot.on("ready", async () => {
-  console.log(`${bot.user.username} онлайн!`);
+  console.log(`[app.js] ${bot.user.username} онлайн`);
 });
 
 bot.on("message", async message => {
@@ -44,7 +44,7 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
   if(commandfile){
-    console.log("Command to execute: " + cmd);
+    console.log("[app.js] Command to execute: " + cmd);
     commandfile.run(bot, message, args);
   }
 });
