@@ -4,4 +4,3 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 const express = require('express');
 const app = express();
-
