@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("!voicemute user Xs/m/h/d", "Мут микрофона на X времени", true)
 	.addField("!voiceunmute", "Анмут микрофона преждевременно", true)
 	.addField("!warn user reason", "Варны, сами опробуете, накопительная система", true)
-	.addField("Продолжение следует...", true)
+	.addField("Продолжение следует...")
 
 	message.channel.send({embed});
 }
