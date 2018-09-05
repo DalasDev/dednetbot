@@ -9,7 +9,7 @@ bot.commands = new Discord.Collection();
 app.use(express.static('public'));
 
 app.listen(process.env.PORT || 8080, () => 
-  console.log("All is set")
+  console.log("Сайт запущен")
 )
 
 fs.readdir("./commands/", (err, files) => {
