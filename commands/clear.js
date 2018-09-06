@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete().catch(O_o=>{});
   if(!message.member.hasPermission("MANAGE_ROLES"))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!args[0])
