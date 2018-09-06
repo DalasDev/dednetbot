@@ -13,6 +13,7 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .addField("ID пользователя:", `${iUser.id}`, true)
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
   .addField("Зарегистрировался:", `${iUser.createdAt}`, true)
+}
 
 module.exports.help = {
   name: "userinfo"
