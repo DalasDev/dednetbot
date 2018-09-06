@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Ник бота:", bot.user.username, true)
 	.addField("Версия бота:", "1.0.0", true)
 	.addField("Бот создан:", bot.user.createdAt, true)
+	.addField("Bot developers:", `${Rick Sanchez#6666} и ${Dalas#8328}`, true)
 
 	message.channel.send({embed});
 }
