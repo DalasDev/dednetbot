@@ -1,5 +1,5 @@
 function warnings() {
-	let warns = JSON.parse("https://retrobotproject.herokuapp.com/warnings.json", "utf8");
+	let warns = JSON.parse('public/warnings.json');
 	let data = JSON.parse(warns);
 	document.getElementById("warns").innerHTML = data;
 }
