@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-  let avatar = iUser.iconURL;
+  let avatar = iUser.user.iconURL;
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
   .setColor("#4C8BF5")
@@ -12,8 +12,8 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .addField("Ник пользователя:", `${iUser}`, true)
   .addField("ID пользователя:", `${iUser.id}`, true)
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
-  .addField("Зарегистрировался:", iUser.createdAt, true)
-  .addField("E-mail аккаунта:", iUser.email, true)
+  .addField("Зарегистрировался:", iUser.user.createdAt, true)
+  .addField("E-mail аккаунта:", iUser.user.email, true)
 
 
   message.channel.send({embed});
