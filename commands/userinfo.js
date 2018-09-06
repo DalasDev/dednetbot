@@ -14,7 +14,7 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .addField("Дискорд Тег:", iUser.user.tag, true);
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
   .addField("Зарегистрировался:", iUser.user.createdAt, true)
-  .addField("Зарегистрировался:", iUser.user.lastMessage, true)
+  .addField("Зарегистрировался:", iUser.user.createdAt, true)
 
   message.channel.send({embed});
 }
