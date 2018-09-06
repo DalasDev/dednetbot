@@ -6,7 +6,7 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
 
   console.log(iUser);
 
-  let avatar = iUser.avatarURL;
+  let avatar = iUser.avatar;
 //  let isprem = (iUser.premium == true) ? "конечно же!" : "увы, но нету"; 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
