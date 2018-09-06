@@ -10,7 +10,8 @@ module.exports.run = async (bot, message, args) => {
   if(isNaN(args[0])){
     message.channel.send(`Укажи число а не какую-то хрень!`).then(msg => msg.delete(4000));
   }
-  if(args[0] < 2){
+  let number = args[0];
+  if(number < 2){
     message.channel.send(`укажи число в пределах от 2 до 100`).then(msg => msg.delete(4000));
   }
   message.channel.bulkDelete(args[0]).then(() => {
