@@ -5,15 +5,25 @@ const bot = new Discord.Client({disableEveryone: true});
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
+var router = express.Router();
 bot.commands = new Discord.Collection();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
 app.set('view engine', 'handlebars');
 
+var warns = require('./public/warnings.json');
+var indexpage = require('./public/main/index')
+
+app.use(express.static('public'));
 // GET роут
-app.get('/', function (req, res) {
-  res.send("test");
-});
+// app.get('/', function (req, res) {
+//   app.use('/', indexpage);
+// });
+
+// app.get('/warnings', function (req, res) {
+//   app.use('/warnings', warns);
+// });
 
 // POST роут
 // app.post('/', function (req, res) {
