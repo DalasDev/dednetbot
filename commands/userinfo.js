@@ -4,8 +4,10 @@ module.exports.run = async (bot, message, args) => {
 
 let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
+  console.log(iUser);
+
   let avatar = iUser.avatarURL;
-  let isprem = (iUser.premium === true) ? "конечно же!" : "увы, но нету"; 
+//  let isprem = (iUser.premium == true) ? "конечно же!" : "увы, но нету"; 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
   .setColor("#4C8BF5")
@@ -15,7 +17,7 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .addField("Дискорд Тег:", iUser.user.tag, true)
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
   .addField("Зарегистрировался:", iUser.user.createdAt, true)
-  .addField("Nitro user?", isprem, true);
+//  .addField("Nitro user?", isprem, true);
 
   message.channel.send({embed});
 }
