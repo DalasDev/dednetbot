@@ -13,7 +13,7 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .addField("ID пользователя:", `${iUser.id}`, true)
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
   .addField("Зарегистрировался:", iUser.user.createdAt, true)
-  .addField("Nitro?:", iUser.user.premium, true);
+  .addField("Nitro?:", iUser.premium, true);
 
 
   message.channel.send({embed});
