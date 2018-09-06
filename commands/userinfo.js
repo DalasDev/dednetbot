@@ -12,10 +12,10 @@ let iUser = message.guild.member(message.mentions.users.first()) || message.guil
   .setThumbnail(avatar)
   .addField("Ник пользователя:", `${iUser}`, true)
   .addField("ID пользователя:", `${iUser.id}`, true)
+  .addField("Дискорд Тег:", iUser.user.tag, true)
   .addField("Присоединился:", `${iUser.joinedAt}`, true)
   .addField("Зарегистрировался:", iUser.user.createdAt, true)
-  .addField("Nitro?:", ispremm, true);
-
+  .addField("Nitro user?", isprem, true);
 
   message.channel.send({embed});
 }
