@@ -12,7 +12,7 @@ app.set('view engine', 'handlebars');
 
 // GET роут
 app.get('/', function (req, res) {
-  res.send('/public/main/index.html');
+  res.send("test");
 });
 
 // POST роут
