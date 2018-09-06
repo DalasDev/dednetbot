@@ -2,9 +2,9 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-  let avatar = iUser.user.avatar;
+  let avatar = iUser.user.avatarURL;
 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
