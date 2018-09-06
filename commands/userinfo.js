@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-  let avatar = iUser.user.avatarURL;
+  let avatar = iUser.avatarURL;
   let isprem = (iUser.premium === true) ? "конечно же!" : "увы, но нету"; 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
