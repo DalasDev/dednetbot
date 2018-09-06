@@ -10,7 +10,15 @@ bot.commands = new Discord.Collection();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(express.static('public'));
+// GET роут
+app.get('/', function (req, res) {
+  res.send('/public/main/index.html');
+});
+
+// POST роут
+// app.post('/', function (req, res) {
+//   res.send('/public/main/index.html');
+// });
 
 app.listen(process.env.PORT || 8080, () => 
   console.log("[app.js] Сайт запущен")
