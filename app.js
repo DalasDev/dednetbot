@@ -13,7 +13,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 var warns = require('./public/warnings.json');
-var indexpage = require('./public/index');
+//var indexpage = require('./public/index.html');
 
 app.use(express.static('public'));
 // GET роут
