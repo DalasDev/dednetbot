@@ -3,10 +3,14 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
   let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  
+  if (!iUser)
+    return message.reply("Пользователь не найден / не указан");
+
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
   let avatar = iUser.user.avatarURL;
-  if(message.author.premium)
-    console.log("U r premium");
 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
