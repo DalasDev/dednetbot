@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
 
   setTimeout(function(){
     if(tovmute.roles.has(vmuterole.id)){
-      ttovmute.setDeaf(false));
+      ttovmute.setDeaf(false);
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }
   }, ms(vmutetime));
