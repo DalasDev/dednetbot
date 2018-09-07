@@ -29,13 +29,13 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  await(tovmute.addRole(vmuterole.id));
+  await(tovmute.setDeaf(true));
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
     if(tovmute.roles.has(vmuterole.id)){
-      tovmute.removeRole(vmuterole.id);
+      ttovmute.setDeaf(false));
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }
   }, ms(vmutetime));
