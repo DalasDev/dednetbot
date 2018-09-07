@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
   repchannel.send(`<@${tounban.id}> был разбанен администратором!`);
 
-  message.guild.unban(tounban);
+  guild.unban(tounban);
 
   message.channel.send(`Есть, капитан! <@${tounban.id}> теперь снова получил визу в наш город! :ok_hand: `);
 
