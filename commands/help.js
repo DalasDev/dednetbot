@@ -21,8 +21,10 @@ module.exports.run = async (bot, message, args) => {
 	.addField("!voicemute user Xs/m/h/d", "Мут микрофона на X времени", true)
 	.addField("!voiceunmute", "Анмут микрофона преждевременно", true)
 	.addField("!warn user reason", "Варны, сами опробуете, накопительная система", true)
+	.addField("!unban", "Попробуйте сами угадать", true)
+	.addField("!clear X", "Удалить последние Х сообщений с чата (от 2 до 100)", true)
 	.setFooter("Продолжение следует...", "")
-	.setImage("https://retrobotproject.herokuapp.com/images/easy.gif")
+	.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
 	message.channel.send({embed});
 }
