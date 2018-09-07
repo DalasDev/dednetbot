@@ -15,16 +15,16 @@ module.exports.run = async (bot, message, args) => {
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
   if(!tomute)
-    return message.reply("Пользователь не существует!");
+    return message.reply("пользователь не существует!");
 
   if(tomute.hasPermission("MANAGE_MESSAGES"))
-    return message.reply("Этот пользователь не может быть замучен!");
+    return message.reply("этот пользователь не может быть замучен!");
 
   if(!muterole)
     return errorschannel.send("Роль мута не найдена!");
 
   if(!mutetime)
-    return message.reply("Вы не указали время мута!");
+    return message.reply("вы не указали время мута!");
 
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");

@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("пользователь не найден / не указан");
 
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+    return message.channel.send("похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
   let avatar = iUser.user.avatarURL;
 
