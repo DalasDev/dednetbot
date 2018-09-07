@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  if(!tovunmute.setMute(true))
+  if(tovunmute.setMute(false))
     return message.reply("Пользователь не замучен!");
 
   repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);

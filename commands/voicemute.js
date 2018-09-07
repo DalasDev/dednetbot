@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
-    if(tovmute.roles.has(vmuterole.id)){
+    if(tovmute.setMute(false)){
       tovmute.setMute(false);
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
     }
