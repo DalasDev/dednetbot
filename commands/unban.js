@@ -20,11 +20,11 @@ module.exports.run = async (bot, message, args) => {
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  repchannel.send(`<@${tounmute.id}> был разбанен администратором!`);
+  repchannel.send(`<@${tounban.id}> был разбанен администратором!`);
 
   message.guild.unban(tounban);
 
-  message.channel.send(`Есть, капитан! <@${tounmute.id}> теперь снова получил визу в наш город! :ok_hand: `);
+  message.channel.send(`Есть, капитан! <@${tounban.id}> теперь снова получил визу в наш город! :ok_hand: `);
 
 }
 
