@@ -11,8 +11,6 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
-  if(!tounban)
-    return message.reply("Пользователь не существует!");
 
   if(!errorschannel)
     return message.reply("Каналы ошибок не существует!");
@@ -22,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 
   repchannel.send(`<@${tounban.id}> был разбанен администратором!`);
 
-  guild.unban(tounban);
+  message.guild.unban(tounban);
 
   message.channel.send(`Есть, капитан! <@${tounban.id}> теперь снова получил визу в наш город! :ok_hand: `);
 
