@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
   setTimeout(function(){
     if(rMember.roles.has(gRole.id)){
       rMember.removeRole(gRole.id);
-      repchannel.send(`<@${rMember.id}> потерял роль ${gRole.id} автоматически!`);
+      repchannel.send(`<@${rMember.id}> потерял роль ${gRole.name} автоматически!`);
     }
   }, ms(roletime));
 }
