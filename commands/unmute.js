@@ -10,19 +10,19 @@ module.exports.run = async (bot, message, args) => {
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
   if(!tounmute)
-    return message.reply("Пользователь не существует!");
+    return message.reply("пользователь не существует!");
 
   if(!muterole)
     return errorschannel.send("Роль мута не найдена!");
 
   if(!errorschannel)
-    return message.reply("Каналы ошибок не существует!");
+    return message.reply("каналы ошибок не существует!");
 
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
   if(!tounmute.roles.has(muterole.id))
-    return message.reply("Пользователь не замучен!");
+    return message.reply("пользователь не замучен!");
 
   repchannel.send(`<@${tounmute.id}> был размучен администратором!`);
 
