@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 
   await(rMember.addRole(gRole.id));
 
-  message.channel.send(`Понял, принял! <@${rMember.id}> получил роль ${gRole.id} на ${ms(ms(roletime))}`);
+  message.channel.send(`Понял, принял! <@${rMember.id}> получил роль ${gRole.name} на ${ms(ms(roletime))}`);
 
   setTimeout(function(){
     if(rMember.roles.has(gRole.id)){
