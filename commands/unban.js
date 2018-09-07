@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 
-  if(!tounban)
+  if(!tounban!unban @Rick Sanchez)
     return message.reply("Пользователь не существует!");
 
   if(!errorschannel)
