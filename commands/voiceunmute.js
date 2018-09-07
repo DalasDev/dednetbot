@@ -8,6 +8,9 @@ module.exports.run = async (bot, message, args) => {
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
 
+  if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
+    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+
   if(!tovunmute)
     return message.reply("пользователь не существует!");
 
@@ -16,9 +19,6 @@ module.exports.run = async (bot, message, args) => {
 
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
-
-  if(!tovunmute.roles.has(vmuterole.id))
-    return message.reply("пользователь не замучен!");
 
   repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
