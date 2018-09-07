@@ -6,7 +6,6 @@ const ms = require("ms");
 module.exports.run = async (bot, message, args) => {
 
   let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let vmuterole = message.guild.roles.find(`name`, "Изолятор (Ноу_коннект)");
   let vmutetime = args[1];
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
@@ -20,24 +19,19 @@ module.exports.run = async (bot, message, args) => {
   if(tovmute.hasPermission("MANAGE_MESSAGES"))
     return message.reply("этот пользователь не может быть замучен!");
 
-  if(!vmuterole)
-    return errorschannel.send("Роль мута не найдена!");
-
   if(!vmutetime)
     return message.reply("вы не указали время мута!");
 
   if(!repchannel)
     return errorschannel.send("Канал отчетов не существует!");
 
-  await(tovmute.addRole(vmuterole.id));
+  await(tovmute.setMute(true));
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
-    if(tovmute.roles.has(vmuterole.id)){
-      tovmute.removeRole(vmuterole.id);
+      tovmute.setMute(false);
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
-    }
   }, ms(vmutetime));
 }
 
