@@ -5,6 +5,8 @@ module.exports.run = async (bot, message, args) => {
   let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
   let avatar = iUser.user.avatarURL;
+  if(message.author.premium)
+    console.log("U r premium");
 
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
