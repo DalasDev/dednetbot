@@ -22,6 +22,9 @@ module.exports.run = async (bot, message, args) => {
 		if (!isNumeric(arrayOfNumbers[0]) || !isNumeric(arrayOfNumbers[1])){
 			return message.channel.send("Пробуй с числами (и только с позитивными) :thinking: ");
 		}
+		if (arrayOfNumbers[1] < arrayOfNumbers[0]){
+			return message.channel.send("Ты числа местами не попутал? :thinking: ");
+		}
 		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
 			var min = Number(arrayOfNumbers[0]);
 			var max = Number(arrayOfNumbers[1]);
