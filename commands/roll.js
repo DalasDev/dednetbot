@@ -5,7 +5,9 @@ module.exports.run = async (bot, message, args) => {
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
-	if (!args){
+	let diap = args;
+
+	if (!diap){
 		return message.channel.send("Укажите диапазон, к примеру 1-12");
 	}
 
