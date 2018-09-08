@@ -3,6 +3,11 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
+
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+  
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!rMember)

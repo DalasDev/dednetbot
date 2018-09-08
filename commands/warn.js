@@ -14,6 +14,10 @@ module.exports.run = async (bot, message, args) => {
   let mutetime = "";
   let warnchannel = message.guild.channels.find('name', "reports");
 
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+  
   if(reason === "")
     return message.reply("укажите причину!");
   if(!message.member.hasPermission("MOVE_MEMBERS"))

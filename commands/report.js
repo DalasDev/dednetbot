@@ -2,6 +2,10 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+
 	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	let repchannel = message.guild.channels.find(`name`, "reports");
 	let errorschannel = message.guild.channels.find(`name`, "errors");
