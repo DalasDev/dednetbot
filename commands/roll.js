@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     return;
 
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
-		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
+		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking: ");
 
 	if (!args[0]){
 		var min = 1;
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 		var arrayOfNumbers = args[0].split(separator);
 		console.log("Min is " + arrayOfNumbers[0] + " and Max is " + arrayOfNumbers[1]);
 		if (!isNumeric(arrayOfNumbers[0]) || !isNumeric(arrayOfNumbers[1])){
-			return message.channel.send("Пробуй с цифрами :thinking:");
+			return message.channel.send("Пробуй с цифрами :thinking: ");
 		}
 		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
 			var min = Number(arrayOfNumbers[0]);
@@ -30,12 +30,12 @@ module.exports.run = async (bot, message, args) => {
 			return message.channel.send("Крутанул 🎲 и выпало " + result);
 		}
 		else if (arrayOfNumbers[1] == arrayOfNumbers[0]){
-			return message.channel.send("Это уже не рандом :this_is_simple:");
+			return message.channel.send("Это уже не рандом :hmm: ");
 		}
-		return message.channel.send("Я чего-то не допонял :thinking:");
+		return message.channel.send("Я чего-то не допонял :thinking: ");
 	}
 	else {
-		return message.channel.send("Я чего-то не допонял :thinking:");
+		return message.channel.send("Я чего-то не допонял :thinking: ");
 	}
 }
 
