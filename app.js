@@ -69,15 +69,16 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 
   let prefix = botconfig.prefix;
-  console.log('The character at index 0 is ' + message.content.charAt(0));
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+  if (message.content.charAt(0) === prefix){
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-  if(commandfile){
-    console.log("[app.js] Command to execute: " + cmd);
-    commandfile.run(bot, message, args);
+    if(commandfile){
+      console.log("[app.js] Command to execute: " + cmd);
+      commandfile.run(bot, message, args);
+    }
   }
 });
 

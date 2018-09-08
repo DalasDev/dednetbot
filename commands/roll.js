@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
   // if(!message.member.hasPermission("MANAGE_MESSAGES"))
   //   return;
-  
+
 	if (!args[0]){
 		var min = 1;
 		var max = 6;
@@ -19,7 +19,6 @@ module.exports.run = async (bot, message, args) => {
 	else if (!args[1]){
 		var separator = "-";
 		var arrayOfNumbers = args[0].split(separator);
-		console.log("Min is " + arrayOfNumbers[0] + " and Max is " + arrayOfNumbers[1]);
 		if (!isNumeric(arrayOfNumbers[0]) || !isNumeric(arrayOfNumbers[1])){
 			return message.channel.send("Пробуй с числами (и только с позитивными) :thinking: ");
 		}
