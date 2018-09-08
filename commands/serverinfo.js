@@ -6,6 +6,8 @@ module.exports.run = async (bot, message, args) => {
 	  if(!message.member.hasPermission("MANAGE_MESSAGES"))
 	    return;
 
+	message.delete().catch(O_o=>{});
+
 	let sicon = message.guild.iconURL;
 	const embed = new Discord.RichEmbed()
 	.setTitle("ИНФОРМАЦИЯ О СЕРВЕРЕ")

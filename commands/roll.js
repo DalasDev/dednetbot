@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
 
-	if (!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
+	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
 	let diap = args;

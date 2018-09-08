@@ -6,12 +6,14 @@ module.exports.run = async (bot, message, args) => {
 
 	const kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	let kReason = args.join(" ").slice(22);
-	let repchannel = message.guild.channels.find(`name`, "reports");
-	let errorschannel = message.guild.channels.find(`name`, "errors");
+	let repchannel = message.guild.channels.find(`name`, "reports_bots");
+	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
 	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
 	  if(!message.member.hasPermission("MANAGE_MESSAGES"))
 	    return;
+
+	message.delete().catch(O_o=>{});
 
 	if(!kUser)
 		return message.channel.send("Пользователь не существует!");
@@ -19,8 +21,14 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
 	if(kUser.hasPermission("MANAGE_MESSAGES"))
 		return message.channel.send("Этот пользователь не может быть кикнут!");
+
+	if(!errorschannel)
+		return message.channel.send("Канал ошибок не существует!");
+	if(!repchannel){
+		errorschannel.send("Канал репортов не существует!");
+	}
 	if(!repchannel)
-		return errorschannel.send("Канал отчетов не существует!");
+		return message.channel.send("Канал репортов не существует!");
 
 	let embed = new Discord.RichEmbed()
 	.setTitle("ОТЧЕТ О КИКЕ")

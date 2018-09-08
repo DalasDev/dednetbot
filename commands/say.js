@@ -7,6 +7,8 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
 
+  message.delete().catch(O_o=>{});
+
       let mainchannel = message.guild.channels.find(`name`, "💬общение");
       if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
        return;

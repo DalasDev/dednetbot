@@ -4,9 +4,11 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete().catch(O_o=>{});
+
   let tovunmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let repchannel = message.guild.channels.find(`name`, "reports");
-  let errorschannel = message.guild.channels.find(`name`, "errors");
+  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -19,12 +21,13 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("пользователь не существует!");
 
   if(!errorschannel)
-    return message.reply("каналы ошибок не существует!");
-
+    return message.channel.send("Канал ошибок не существует!");
+  if(!repchannel){
+    errorschannel.send("Канал репортов не существует!");
+  }
   if(!repchannel)
-    return errorschannel.send("Канал отчетов не существует!");
+    return message.channel.send("Канал репортов не существует!");
 
-  repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
   await(tovunmute.setMute(false));
 

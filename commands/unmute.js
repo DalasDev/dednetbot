@@ -6,8 +6,10 @@ module.exports.run = async (bot, message, args) => {
 
   let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
-  let repchannel = message.guild.channels.find(`name`, "reports");
-  let errorschannel = message.guild.channels.find(`name`, "errors");
+  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let errorschannel = message.guild.channels.find(`name`, "errors_bots");
+
+  message.delete().catch(O_o=>{});
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -23,13 +25,12 @@ module.exports.run = async (bot, message, args) => {
     return errorschannel.send("Роль мута не найдена!");
 
   if(!errorschannel)
-    return message.reply("Каналы ошибок не существует!");
-
+    return message.channel.send("Канал ошибок не существует!");
+  if(!repchannel){
+    errorschannel.send("Канал репортов не существует!");
+  }
   if(!repchannel)
-    return errorschannel.send("Канал отчетов не существует!");
-
-  if(!tounmute.roles.has(muterole.id))
-    return message.reply("Пользователь не замучен!");
+    return message.channel.send("Канал репортов не существует!");
 
   repchannel.send(`<@${tounmute.id}> был размучен администратором!`);
 

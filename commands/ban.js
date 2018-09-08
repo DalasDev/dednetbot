@@ -13,14 +13,22 @@ module.exports.run = async (bot, message, args) => {
 	if(!message.member.hasPermission("MANAGE_MESSAGES"))
 		return;
 
+	message.delete().catch(O_o=>{});
+
 	if(!bUser)
 		return message.channel.send("Пользователь не существует!");
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 	if(bUser.hasPermission("MANAGE_MESSAGES"))
 		return message.channel.send("Этот пользователь не может быть забанен!");
+
+	if(!errorschannel)
+		return message.channel.send("Канал ошибок не существует!");
+	if(!repchannel){
+		errorschannel.send("Канал репортов не существует!");
+	}
 	if(!repchannel)
-		return errorschannel.send("Канал отчетов не существует!");
+		return message.channel.send("Канал репортов не существует!");
 
 	let embed = new Discord.RichEmbed()
 	.setTitle("ОТЧЕТ О БАНЕ")

@@ -7,17 +7,20 @@ let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete().catch(O_o=>{});
+
   let reason = "";
   reason = args.join(" ").slice(22);
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = "";
-  let warnchannel = message.guild.channels.find('name', "reports");
+  let warnchannel = message.guild.channels.find(`name`, "reports_bots");
+	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
-  
+
   if(reason === "")
     return message.reply("укажите причину!");
   if(!message.member.hasPermission("MOVE_MEMBERS"))
@@ -28,8 +31,14 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
     return errorschannel.send("роль для нарушителей не найдена!");
+
+  if(!errorschannel)
+    return message.channel.send("Канал ошибок не существует!");
+  if(!warnchannel){
+    errorschannel.send("Канал репортов не существует!");
+  }
   if(!warnchannel)
-    return message.reply("добавьте, пожулайста, канал для отчетов с названием reports :thinking: ")
+    return message.channel.send("Канал репортов не существует!");
 
   if(!warns[wUser.id]){
     warns[wUser.id] = {
@@ -47,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
   let sicon = message.guild.iconURL;
 
   const embed = new Discord.RichEmbed()
-  .setTitle(":star: Отчет о варне нахуй :star:")
+  .setTitle(":star: Отчет о варне :star:")
   .setColor("#fc6400")
   .addField("Жертва", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)

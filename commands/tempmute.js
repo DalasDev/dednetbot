@@ -9,11 +9,13 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
 
+  message.delete().catch(O_o=>{});
+
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = args[1];
-  let repchannel = message.guild.channels.find(`name`, "reports");
-  let errorschannel = message.guild.channels.find(`name`, "errors");
+  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -34,12 +36,18 @@ module.exports.run = async (bot, message, args) => {
   if(!mutetime)
     return message.reply("вы не указали время мута!");
 
+  if(!errorschannel)
+    return message.channel.send("Канал ошибок не существует!");
+  if(!repchannel){
+      errorschannel.send("Канал репортов не существует!");
+  }
   if(!repchannel)
-    return errorschannel.send("Канал отчетов не существует!");
+    return message.channel.send("Канал репортов не существует!");
 
   await(tomute.addRole(muterole.id));
 
   message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+  repchannel.send(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
 
   setTimeout(function(){
     if(tomute.roles.has(muterole.id)){
