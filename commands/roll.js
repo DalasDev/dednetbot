@@ -12,13 +12,16 @@ module.exports.run = async (bot, message, args) => {
 	let diap = args;
 
 	if (!diap){
+		console.log("DB1");
 		return message.channel.send("Прокрутить от 1 до 6");
 	}
 
 	else if (!args[1]){
+		console.log("DB2");
 		return message.channel.send(args);
 	}
 	else {
+		console.log("DB3");
 		return message.channel.send("Найдено больше одного аргумента");
 	}
 }
