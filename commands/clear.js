@@ -4,12 +4,12 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
-  if(!message.member.hasPermission("MANAGE_ROLES"))
+  if(!message.member.hasPermission("MANAGE_ROLES","ADMINISTRATOR"))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!args[0])
     return message.channel.send("Ты не написал сколько сообщений удалить!");
   if(isNaN(args[0])){
-    return message.channel.send(`Укажи количестко сообщений для удаления`);
+    return message.channel.send(`Укажи количестко сообщений для удаления!`);
   }
   let number = args[0];
   if(number < 2 || number > 100){

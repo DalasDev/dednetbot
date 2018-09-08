@@ -5,8 +5,8 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
 	const bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-	let repchannel = message.guild.channels.find(`name`, "reports");
-	let errorschannel = message.guild.channels.find(`name`, "errors");
+	let repchannel = message.guild.channels.find(`name`, "reports_bots");
+	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 	let bReason = args.join(" ").slice(22);
 
 	if(!bUser)
