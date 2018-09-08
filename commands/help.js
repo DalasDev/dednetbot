@@ -29,6 +29,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("^warn user reason", "Варны, накопительная система", true)
 	.addField("^unban", "Попробуйте сами угадать", true)
 	.addField("^clear X", "Удалить последние Х сообщений с чата (от 2 до 100)", true)
+	.addField("^roll X-Y", "Кинуть 🎲 между X и Y", true)
 	.setFooter("Продолжение следует...", "")
 	.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
