@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 		var separator = "-";
 		var arrayOfNumbers = args[0].split(separator);
 		console.log("Min is " + arrayOfNumbers[0] + " and Max is " + arrayOfNumbers[1]);
-		if (arrayOfNumbers[1] > arrayOfNumbers[0] && arrayOfNumbers[0] = "1"){
+		if ((arrayOfNumbers[1] > arrayOfNumbers[0]) && (arrayOfNumbers[0] = "1")){
 			var result = Math.floor(Math.random() * arrayOfNumbers[1]) + 1;
 			return message.channel.send("Крутанул 🎲 и выпало " + result);
 		}
