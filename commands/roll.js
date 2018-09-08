@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 	let diap = args;
 	console.log(args);
 
-	if (diap === ""){
+	if (diap === "[]"){
 		console.log("DB1");
 		return message.channel.send("Прокрутить от 1 до 6");
 	}
