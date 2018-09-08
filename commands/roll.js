@@ -1,5 +1,9 @@
 const Discord = require("discord.js");
 
+function isNumeric(value) {
+    return /^\d+$/.test(value);
+}
+
 module.exports.run = async (bot, message, args) => {
 
 //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
