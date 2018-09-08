@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
 		else if (arrayOfNumbers[1] == arrayOfNumbers[0]){
 			return message.channel.send("Эту уже не рандом :this_is_simple:");
 		}
-		return message.channel.send("Я чего-то не допонял :facepalm: Ты цифры местами не попутал?");
+		return message.channel.send("Я чего-то не допонял :thinking:");
 	}
 	else {
 		return message.channel.send("Я чего-то не допонял :thinking:");
