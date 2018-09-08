@@ -10,14 +10,14 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
 	if (!args[0]){
-		return message.channel.send("Прокрутить от 1 до 6");
+		return message.channel.send("random 1-6");
 	}
 
 	else if (!args[1]){
-		return message.channel.send(args);
+		return message.channel.send("random " + args[0]);
 	}
 	else {
-		return message.channel.send("Найдено больше одного аргумента");
+		return message.channel.send("Я чего-то не допонял :thinking:");
 	}
 }
 
