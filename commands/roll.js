@@ -24,7 +24,9 @@ module.exports.run = async (bot, message, args) => {
 			return message.channel.send("Пробуй с цифрами :thinking:");
 		}
 		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
-			var result = Math.floor(Math.random() * (arrayOfNumbers[1] - arrayOfNumbers[0] + 1)) + arrayOfNumbers[0];
+			var min = arrayOfNumbers[0];
+			var max = arrayOfNumbers[1];
+			var result = Math.floor(Math.random() * (max - min + 1)) + min;
 			return message.channel.send("Крутанул 🎲 и выпало " + result);
 		}
 		else if (arrayOfNumbers[1] == arrayOfNumbers[0]){
