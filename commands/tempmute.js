@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = args[1];
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
-	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
+	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
