@@ -10,26 +10,28 @@ module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
 
-
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
-  if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!rMember) return message.reply("Пользователь не существует!");
   let role = args.join(" ").slice(22);
-  if(!role) return message.reply("Укажите роль!");
   let gRole = message.guild.roles.find(`name`, role);
-  if(!gRole) return message.reply("Не могу найти роль!");
 
+  if(!message.member.hasPermission("MANAGE_ROLES"))
+    return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
+  if(!rMember)
+    return message.reply("Пользователь не существует!");
+  if(!role)
+    return message.reply("Укажите роль!");
+  if(!gRole)
+    return message.reply("Не могу найти роль!");
   if(!errorschannel)
 		return message.channel.send("Канал ошибок не существует!");
-	if(!repchannel){
+	if(!repchannel)
 		errorschannel.send("Канал репортов не существует!");
-	}
 	if(!repchannel)
 		return message.channel.send("Канал репортов не существует!");
-    
-  if(rMember.roles.has(gRole.id)) return message.reply("У него уже есть эта роль!");
+  if(rMember.roles.has(gRole.id))
+    return message.reply("У него уже есть эта роль!");
   await(rMember.addRole(gRole.id));
 
   message.channel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`);

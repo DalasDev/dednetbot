@@ -13,12 +13,11 @@ module.exports.run = async (bot, message, args) => {
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = "";
   let warnchannel = message.guild.channels.find(`name`, "🌘reports_bots");
-	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
+  let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
-
   if(reason === "")
     return message.reply("укажите причину!");
   if(!message.member.hasPermission("MOVE_MEMBERS"))
@@ -29,15 +28,13 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
     return errorschannel.send("роль для нарушителей не найдена!");
-
   if(!errorschannel)
     return message.channel.send("Канал ошибок не существует!");
-  if(!warnchannel){
+  if(!warnchannel)
     errorschannel.send("Канал репортов не существует!");
-  }
   if(!warnchannel)
     return message.channel.send("Канал репортов не существует!");
-
+  
   if(!warns[wUser.id]){
     warns[wUser.id] = {
       warns: 0

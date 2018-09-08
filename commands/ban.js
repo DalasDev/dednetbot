@@ -19,12 +19,10 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 	if(bUser.hasPermission("MANAGE_MESSAGES"))
 		return message.channel.send("Этот пользователь не может быть забанен!");
-
 	if(!errorschannel)
 		return message.channel.send("Канал ошибок не существует!");
-	if(!repchannel){
+	if(!repchannel)
 		errorschannel.send("Канал репортов не существует!");
-	}
 	if(!repchannel)
 		return message.channel.send("Канал репортов не существует!");
 

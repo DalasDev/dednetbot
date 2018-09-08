@@ -3,18 +3,17 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  let mainchannel = message.guild.channels.find(`name`, "💬общение");
+  const sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
+    return;
 
-  message.delete().catch(O_o=>{});
-
-      let mainchannel = message.guild.channels.find(`name`, "💬общение");
-      if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
-       return;
-      const sayMessage = args.join(" ");
-      message.delete().catch();
-      mainchannel.send(sayMessage);
+  message.delete().catch();
+  mainchannel.send(sayMessage);
 }
 
 module.exports.help = {

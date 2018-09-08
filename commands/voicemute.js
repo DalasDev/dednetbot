@@ -13,27 +13,20 @@ module.exports.run = async (bot, message, args) => {
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
-
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
-
   if(!tovmute)
     return message.reply("пользователь не существует!");
-
   if(tovmute.hasPermission("MANAGE_MESSAGES"))
     return message.reply("этот пользователь не может быть замучен!");
-
   if(!vmutetime)
     return message.reply("вы не указали время мута!");
-
   if(!errorschannel)
   	return message.channel.send("Канал ошибок не существует!");
-	if(!repchannel){
+	if(!repchannel)
 		errorschannel.send("Канал репортов не существует!");
-  }
   if(!repchannel)
   	return message.channel.send("Канал репортов не существует!");
-
   await(tovmute.setMute(true));
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
