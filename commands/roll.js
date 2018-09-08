@@ -21,11 +21,10 @@ module.exports.run = async (bot, message, args) => {
 		var arrayOfNumbers = args[0].split(separator);
 		console.log("Min is " + arrayOfNumbers[0] + " and Max is " + arrayOfNumbers[1]);
 		if (arrayOfNumbers[0] === NaN || arrayOfNumbers[1] === NaN){
-			console.log("Tried to roll not a number");
 			return message.channel.send("Пробуй с цифрами :thinking:");
 		}
-		if ((arrayOfNumbers[1] > arrayOfNumbers[0]) && (arrayOfNumbers[0] == "1")){
-			var result = Math.floor(Math.random() * arrayOfNumbers[1]) + 1;
+		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
+			var result = Math.floor(Math.random() * (arrayOfNumbers[1] - arrayOfNumbers[0] + 1)) + arrayOfNumbers[0];
 			return message.channel.send("Крутанул 🎲 и выпало " + result);
 		}
 		else if (arrayOfNumbers[1] == arrayOfNumbers[0]){
