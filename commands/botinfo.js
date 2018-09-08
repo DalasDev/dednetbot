@@ -2,6 +2,10 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+
 	let bicon = bot.user.avatarURL;
 	const embed = new Discord.RichEmbed()
 	.setTitle("ИНФОРМАЦИЯ О БОТЕ")

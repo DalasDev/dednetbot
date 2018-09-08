@@ -5,11 +5,19 @@ const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
 
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = args[1];
   let repchannel = message.guild.channels.find(`name`, "reports");
   let errorschannel = message.guild.channels.find(`name`, "errors");
+
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
 
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");

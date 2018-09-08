@@ -9,6 +9,10 @@ module.exports.run = async (bot, message, args) => {
 	let repchannel = message.guild.channels.find(`name`, "reports");
 	let errorschannel = message.guild.channels.find(`name`, "errors");
 
+	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+	  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+	    return;
+
 	if(!kUser)
 		return message.channel.send("Пользователь не существует!");
 	if(!message.member.hasPermission("KICK_MEMBERS", "ADMINISTRATOR"))

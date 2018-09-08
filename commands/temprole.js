@@ -5,6 +5,10 @@ const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
 
+  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+  if(!message.member.hasPermission("MANAGE_MESSAGES"))
+    return;
+
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
   let rMemberOld = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   console.log("Member object: " + JSON.stringify(rMemberOld));
