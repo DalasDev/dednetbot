@@ -5,6 +5,7 @@ const bot = new Discord.Client({disableEveryone: true});
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
+const ms = require("ms");
 var router = express.Router();
 bot.commands = new Discord.Collection();
 
@@ -50,8 +51,16 @@ fs.readdir("./commands/", (err, files) => {
   })
 })
 
+function idle_repeat(){
+  console.log("Timer set");
+  setTimeout(function(){
+    idle_repeat();
+  }, ms("14m"));
+}
+
 bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
+  idle_repeat();
 });
 
 bot.on("message", async message => {
