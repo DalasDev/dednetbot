@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
 
-  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 

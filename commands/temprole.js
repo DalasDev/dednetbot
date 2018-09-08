@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
   let roletime = args[2];
   if(!roletime) return message.reply("Укажите время");
 
-  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   if(!errorschannel)

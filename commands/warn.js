@@ -7,14 +7,12 @@ let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 module.exports.run = async (bot, message, args) => {
 
-  message.delete().catch(O_o=>{});
-
   let reason = "";
   reason = args.join(" ").slice(22);
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = "";
-  let warnchannel = message.guild.channels.find(`name`, "reports_bots");
+  let warnchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал

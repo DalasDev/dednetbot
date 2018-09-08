@@ -9,12 +9,10 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
 
-  message.delete().catch(O_o=>{});
-
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = args[1];
-  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
@@ -38,9 +36,7 @@ module.exports.run = async (bot, message, args) => {
 
   if(!errorschannel)
     return message.channel.send("Канал ошибок не существует!");
-  if(!repchannel){
-      errorschannel.send("Канал репортов не существует!");
-  }
+
   if(!repchannel)
     return message.channel.send("Канал репортов не существует!");
 

@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
   message.delete().catch(O_o=>{});
 
 	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-	let repchannel = message.guild.channels.find(`name`, "reports_bots");
+	let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 	let reason = args.join(" ").slice(22);
 

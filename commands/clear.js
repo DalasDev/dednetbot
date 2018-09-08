@@ -8,6 +8,7 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   message.delete().catch(O_o=>{});
+  
   if(!message.member.hasPermission("MANAGE_ROLES","ADMINISTRATOR"))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!args[0])

@@ -17,7 +17,16 @@ module.exports.run = async (bot, message, args) => {
 	}
 
 	else if (!args[1]){
-		return message.channel.send(args);
+		var separator = "-";
+		var arrayOfNumbers = args[0].split(separator);
+		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
+			var result = Math.floor(Math.random() * (arrayOfNumbers[1] - arrayOfNumbers[0] + 1)) + arrayOfNumbers[0];
+			return message.channel.send(result);
+		}
+		else if (arrayOfNumbers[1] = arrayOfNumbers[0]){
+			return message.channel.send("Эту уже не рандом :this_is_simple:");
+		}
+		return message.channel.send("Я чего-то не допонял :facepalm: Ты цифры местами не попутал?");
 	}
 	else {
 		return message.channel.send("Я чего-то не допонял :thinking:");

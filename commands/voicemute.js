@@ -5,11 +5,9 @@ const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
 
-  message.delete().catch(O_o=>{});
-
   let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let vmutetime = args[1];
-  let repchannel = message.guild.channels.find(`name`, "reports_bots");
+  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
   let errorschannel = message.guild.channels.find(`name`, "errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
