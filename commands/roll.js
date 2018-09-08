@@ -10,11 +10,14 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
 	if (!args[0]){
-		return message.channel.send("random 1-6");
+		var min = 1;
+		var max = 6;
+		var result = Math.floor(Math.random() * (max - min + 1)) + min;
+		return message.channel.send(result);
 	}
 
 	else if (!args[1]){
-		return message.channel.send("random " + args[0]);
+		return message.channel.send(args);
 	}
 	else {
 		return message.channel.send("Я чего-то не допонял :thinking:");
