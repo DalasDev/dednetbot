@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
 		var arrayOfNumbers = args[0].split(separator);
 		console.log("Min is " + arrayOfNumbers[0] + " and Max is " + arrayOfNumbers[1]);
 		if (!isNumeric(arrayOfNumbers[0]) || !isNumeric(arrayOfNumbers[1])){
-			return message.channel.send("Пробуй с цифрами :thinking: ");
+			return message.channel.send("Пробуй с числами (и только с позитивными) :thinking: ");
 		}
 		if (arrayOfNumbers[1] > arrayOfNumbers[0]){
 			var min = Number(arrayOfNumbers[0]);
@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
 			return message.channel.send("Крутанул 🎲 и выпало " + result);
 		}
 		else if (arrayOfNumbers[1] == arrayOfNumbers[0]){
-			return message.channel.send("Это уже не рандом :hmm: ");
+			return message.channel.send("Это уже не рандом :smirk: ");
 		}
 		return message.channel.send("Я чего-то не допонял :thinking: ");
 	}
