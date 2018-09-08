@@ -2,19 +2,19 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
+	if (!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
 	let diap = args;
 
 	if (!diap){
-		return message.channel.send("Укажите диапазон, к примеру 1-12");
+		return message.channel.send("Прокрутить от 1 до 6");
 	}
 
-	else if(!args[1]){
+	else if (!args[1]){
 		return message.channel.send(args);
 	}
-	else{
+	else {
 		return message.channel.send("Найдено больше одного аргумента");
 	}
 }
