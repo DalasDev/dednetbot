@@ -6,12 +6,9 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
-
-	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
-		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking: ");
-
+  // if(!message.member.hasPermission("MANAGE_MESSAGES"))
+  //   return;
+  
 	if (!args[0]){
 		var min = 1;
 		var max = 6;
