@@ -91,6 +91,18 @@ bot.on("message", async message => {
       console.log("[app.js] Command to execute: " + cmd);
       commandfile.run(bot, message, args);
     }
+  } 
+  else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
+     && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+    let commandfile = warn2;
+
+    if(commandfile){
+      console.log("[app.js] Command to execute: " + cmd);
+      commandfile.run(bot, message, args);
+    }
   }
 });
 
