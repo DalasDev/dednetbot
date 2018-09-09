@@ -55,10 +55,11 @@ fs.readdir("./commands/", (err, files) => {
 function idle_repeat(){
   console.log("[app.js] IDLE timer is set until next minute");
 
-  var cronindex = 0;
+  var cronindex = 1;
   var CronJob = require('cron').CronJob;
   new CronJob('0 * * * * *', function() {
-    console.log("Таймер до след минуты, прошло " + cronindex + " минут с момента запуска бота.");
+    let i = (cronindex == 1) ? "minute" : "minutes" ;
+    console.log("[app.js] CronJob: Bot is online for " + cronindex + i);
     cronindex++;
   }, null, true, 'Europe/Paris');
   // Seconds: 0-59
