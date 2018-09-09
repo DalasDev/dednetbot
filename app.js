@@ -68,10 +68,6 @@ function idle_repeat(){
   // Day of Month: 1-31
   // Months: 0-11 (Jan-Dec)
   // Day of Week: 0-6 (Sun-Sat)
-  
-  // setTimeout(function(){
-  //   idle_repeat();
-  // }, ms("1m"));
 }
 
 bot.on("ready", async () => {
