@@ -58,7 +58,7 @@ function idle_repeat(){
   var cronindex = 1;
   var CronJob = require('cron').CronJob;
   new CronJob('0 * * * * *', function() {
-    let i = (cronindex == 1) ? "minute" : "minutes" ;
+    let i = (cronindex == 1) ? " minute" : " minutes";
     console.log("[app.js] CronJob: Bot is online for " + cronindex + i);
     cronindex++;
   }, null, true, 'Europe/Paris');
