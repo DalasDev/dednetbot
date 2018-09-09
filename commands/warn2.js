@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 //tempmute @member Time
 
@@ -23,7 +22,6 @@ module.exports.run = async (bot, message, args) => {
   .addField("Нарушитель", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)
   .addField("Предупреждение выдал", message.member, true)
-  .addField("Предупреждений у нарушителя в нашей базе", warns[wUser.id].warns, true)
   .addField("Причина", reason, true);
 
   warnchannel.send({embed});
