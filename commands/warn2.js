@@ -24,7 +24,11 @@ module.exports.run = async (bot, message, args) => {
   .addField("Предупреждение выдал", message.member, true)
   .addField("Причина", reason, true);
 
-  warnchannel.send({embed});
+  if(warnchannel){
+    warnchannel.send({embed});
+  } else {
+    console.log("No warnchannel defined");
+  }
 }
 
 module.exports.help = {
