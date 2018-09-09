@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
   	var min = 1;
   	var max = 6;
   	var result = Math.floor(Math.random() * (max - min + 1)) + min;
-  	return message.channel.send("Крутанул 🎲 и выпало " + result);
+  	return message.channel.send(message.member + " крутанул 🎲 и выпало " + result);
   }
 
   else if (!args[1]){
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
   		var min = Number(arrayOfNumbers[0]);
   		var max = Number(arrayOfNumbers[1]);
   		var result = Math.floor(Math.random() * (max - min + 1)) + min;
-  		return message.channel.send("Крутанул 🎲 и выпало " + result);
+  		return message.channel.send(message.member + " крутанул 🎲 и выпало " + result);
   	}
   	else if (arrayOfNumbers[1] === arrayOfNumbers[0])
   		return message.channel.send("Это уже не рандом :smirk: ");
