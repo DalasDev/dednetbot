@@ -64,7 +64,12 @@ module.exports.run = async (bot, message, args) => {
   let id = `<@${wUser.id}>`;
   var myData = new warnUser({
     discordID: id,
-    warnedFor: reason
+      warnes: [
+        warnedFor: reason,
+        warnedBy: message.member,
+        when: Date.now(),
+        channel: message.channel
+      ]
   });
   myData.save()
   .then(item => {
