@@ -8,7 +8,8 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var warnSchema = new mongoose.Schema({
  discordID: String,
- warnedFor: String
+ warnedFor: String,
+ warnedBy: String
 });
 
 //tempmute @member Time
@@ -42,7 +43,7 @@ module.exports.run = async (bot, message, args) => {
     errorschannel.send("Канал репортов не существует!");
   if(!warnchannel)
     return message.channel.send("Канал репортов не существует!");
-  
+
   if(!warns[wUser.id]){
     warns[wUser.id] = {
       warns: 0
@@ -56,9 +57,11 @@ module.exports.run = async (bot, message, args) => {
   console.log("mongoDB connect");
   var warnUser = mongoose.model("warnUser", warnSchema);
   let id = `<@${wUser.id}>`;
+  let id2 = message.member;
   var myData = new warnUser({
     discordID: id,
-    warnedFor: reason
+    warnedFor: reason,
+    warnedBy: id2
   });
   myData.save()
   .then(item => {
