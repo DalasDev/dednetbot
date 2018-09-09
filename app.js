@@ -95,9 +95,9 @@ bot.on("message", async message => {
   else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
      && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
+    let cmd = "!warn";
     let args = messageArray.slice(1);
-    let commandfile = warn2;
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
       console.log("[app.js] Command to execute: " + cmd);
