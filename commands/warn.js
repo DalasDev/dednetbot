@@ -9,12 +9,12 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 var warnSchema = new mongoose.Schema({
   discordID: String,
   userID: String,
-    warnes: [
+    warnes: {
       warnedFor: String,
       warnedBy: String,
       when: String,
       channel: String
-    ]
+    }
   }
 );
 
@@ -66,12 +66,12 @@ module.exports.run = async (bot, message, args) => {
   var myData = new warnUser({
     discordID: id,
     userID: wUser.id,
-      warnes: [
+      warnes: {
         warnedFor: reason,
         warnedBy: message.member,
         when: Date.now(),
         channel: message.channel
-      ]
+      }
   });
   myData.save()
   .then(item => {
