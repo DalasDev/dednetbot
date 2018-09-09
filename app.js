@@ -89,7 +89,6 @@ bot.on("message", async message => {
 
     if(commandfile){
       console.log("[app.js] Command to execute: " + cmd);
-      console.log("message.member is : " + message.member);
       commandfile.run(bot, message, args);
     }
   }

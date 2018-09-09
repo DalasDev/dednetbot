@@ -55,6 +55,7 @@ module.exports.run = async (bot, message, args) => {
   .setColor("#fc6400")
   .addField("Жертва", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)
+  .addField("Предупреждение выдал", message.member, true)
   .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
   .addField("Причина", reason, true);
 
