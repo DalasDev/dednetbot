@@ -52,8 +52,8 @@ module.exports.run = async (bot, message, args) => {
   warns[wUser.id].warns++;
 
   //mongoose test
-  
-  console.log("mongoose test 1");
+
+  console.log("mongoDB connect");
   var warnUser = mongoose.model("warnUser", warnSchema);
   let id = `<@${wUser.id}>`;
   var myData = new warnUser({
@@ -62,10 +62,10 @@ module.exports.run = async (bot, message, args) => {
   });
   myData.save()
   .then(item => {
-    console.log("mongoose test 2");
+    console.log("Added item: " + item);
   })
   .catch(err => {
-    console.log("mongoose test 3");
+    console.log("Error: " + err);
   });
 
   //end of mongoose test
