@@ -52,10 +52,10 @@ fs.readdir("./commands/", (err, files) => {
 })
 
 function idle_repeat(){
-  console.log("Timer set");
+  console.log("[app.js] IDLE timer is set until next minute");
   setTimeout(function(){
     idle_repeat();
-  }, ms("14m"));
+  }, ms("1m"));
 }
 
 bot.on("ready", async () => {
