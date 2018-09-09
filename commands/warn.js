@@ -1,7 +1,10 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
+var mongoose = require("mongoose");
 let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
+
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
 //tempmute @member Time
 
@@ -42,6 +45,27 @@ module.exports.run = async (bot, message, args) => {
   }
 
   warns[wUser.id].warns++;
+
+  //mongoose test
+
+  console.log("mongoose test 1");
+  var warnUser = mongoose.model("warnUser", warnSchema);
+  let id = `<@${wUser.id}>`;
+  var myData = new warnUser({
+    discordID: id,
+    warnedFor: reason
+  });
+  myData.save()
+  .then(item => {
+    console.log("mongoose test 2");
+    res.send("item saved to database");
+  })
+  .catch(err => {
+    console.log("mongoose test 3");
+    res.status(400).send("unable to save to database");
+  });
+
+  //end of mongoose test
 
   fs.writeFile("./public/warnings.json", JSON.stringify(warns), (err) => {
     if (err)

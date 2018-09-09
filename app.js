@@ -8,7 +8,15 @@ const app = express();
 const ms = require("ms");
 var CronJob = require('cron').CronJob;
 var router = express.Router();
+var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
+
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+
+var warnSchema = new mongoose.Schema({
+ discordID: String,
+ warnedFor: String
+});
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
@@ -17,7 +25,12 @@ app.set('view engine', 'handlebars');
 var warns = require('./public/warnings.json');
 //var indexpage = require('./public/index.html');
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
+
+app.use("/", (req, res) => {
+ res.sendFile(__dirname + "/public/index.html");
+});
+
 // GET роут
 // app.get('/', function (req, res) {
 //   app.use('/', indexpage);
@@ -34,7 +47,7 @@ app.use(express.static('public'));
 
 app.listen(process.env.PORT || 8080, () => 
   console.log("[app.js] Сайт запущен")
-);
+  );
 
 fs.readdir("./commands/", (err, files) => {
   if (err)
@@ -93,17 +106,17 @@ bot.on("message", async message => {
     }
   } 
   else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
-     && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
+   && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
-    let cmd = "!warn2";
-    let args = messageArray.slice(1);
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+  let cmd = "!warn2";
+  let args = messageArray.slice(1);
+  let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-    if(commandfile){
-      console.log("[app.js] Command to execute: " + cmd);
-      commandfile.run(bot, message, args);
-    }
+  if(commandfile){
+    console.log("[app.js] Command to execute: " + cmd);
+    commandfile.run(bot, message, args);
   }
+}
 });
 
 bot.login(process.env.BOT_TOKEN);
