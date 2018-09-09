@@ -6,6 +6,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
+var CronJob = require('cron').CronJob;
 var router = express.Router();
 bot.commands = new Discord.Collection();
 
@@ -53,9 +54,23 @@ fs.readdir("./commands/", (err, files) => {
 
 function idle_repeat(){
   console.log("[app.js] IDLE timer is set until next minute");
-  setTimeout(function(){
-    idle_repeat();
-  }, ms("1m"));
+
+  var cronindex = 0;
+  var CronJob = require('cron').CronJob;
+  new CronJob('0 * * * * *', function() {
+    console.log("Таймер до след минуты, прошло " + cronindex + " минут с момента запуска бота.");
+    cronindex++;
+  }, null, true, 'Europe/Paris');
+  // Seconds: 0-59
+  // Minutes: 0-59
+  // Hours: 0-23
+  // Day of Month: 1-31
+  // Months: 0-11 (Jan-Dec)
+  // Day of Week: 0-6 (Sun-Sat)
+  
+  // setTimeout(function(){
+  //   idle_repeat();
+  // }, ms("1m"));
 }
 
 bot.on("ready", async () => {
