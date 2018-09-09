@@ -13,11 +13,6 @@ bot.commands = new Discord.Collection();
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
-var warnSchema = new mongoose.Schema({
- discordID: String,
- warnedFor: String
-});
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');

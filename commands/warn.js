@@ -6,6 +6,11 @@ let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
+var warnSchema = new mongoose.Schema({
+ discordID: String,
+ warnedFor: String
+});
+
 //tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
