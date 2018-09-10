@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
   /* Onboarding */
 
   function circleBounceRepeat() {
@@ -329,4 +327,3 @@ $(document).ready(function() {
       maxY: 128
     }
   });
-});
