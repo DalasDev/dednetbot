@@ -9,9 +9,11 @@ module.exports.run = async (bot, message) => {
 
 	User.findOne({
 	 	userID: message.member.id 
-	}, function (err, user_obj) {
+	}, function (err, res) {
 		if (err)
-			console.log("Error occured: " + err);;
+			console.log("Error occured: " + err);
+		else
+			var user_obj = res;
 	});
 
 	if (user_obj.userID == message.member.id){
