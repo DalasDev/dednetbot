@@ -3,18 +3,20 @@ const fs = require("fs");
 const ms = require("ms");
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-var User = require('./../schemas/user_model.js');
+var Users = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message) => {
 
-	User.findOne({
+	let user_obj = Users.findOne({
 	 	userID: message.member.id 
-	}, function (err, user_obj) {
+	}, function (err, res) {
 		if (err)
 			console.log("Error occured: " + err);
 		else
 			console.log("Found a user: " + user_obj);
 	});
+
+	console.log("USER: " + JSON.stringify(user_obj));
 
 	var myData = new User({
 		userID: message.member.id,
