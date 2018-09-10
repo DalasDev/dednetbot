@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 		displayName: message.member.displayName,
 		highestRole: message.member.highestRole.name,
 		joinedAt: message.member.joinedAt,
-		messages: 1;
+		messages: 1,
 		infractions: 0,
 		retrocoins: 0,
 	});
