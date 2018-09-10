@@ -5,7 +5,7 @@ let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-var warnUser = require('./../schemas/warnuser_model.js');
+var warnUser = require('./../schemas/warn_model.js');
 
 //tempmute @member Time
 

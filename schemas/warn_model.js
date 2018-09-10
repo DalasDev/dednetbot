@@ -10,4 +10,4 @@ var warnSchema = new mongoose.Schema({
 	warnedVia: String
 });
 
-module.exports = mongoose.model('warnusers', warnSchema);
+module.exports = mongoose.model('warns', warnSchema);
