@@ -17,7 +17,7 @@ module.exports.run = async (bot, message) => {
 		else
 			user_obj = res;
 	});
-
+	console.log("User object" + user_obj);
 	if (user_obj.userID == message.member.id){
 		console.log("User already in base");
 	}
