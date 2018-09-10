@@ -14,8 +14,10 @@ module.exports.run = async (bot, message) => {
 	}, function (err, res) {
 		if (err)
 			console.log("Error occured: " + err);
-		else
-			user_obj = res;
+		else{
+			console.log("Response: " + res);
+			console.log("User ID: " + res.userID)
+		}
 	});
 	console.log("User object" + user_obj);
 	if (user_obj.userID == message.member.id){
