@@ -7,34 +7,34 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message) => {
 
-	let user_obj = User.findOne({
+	User.findOne({
 	 	userID: message.member.id 
 	}, function (err, res) {
 		if (err)
 			console.log("Error occured: " + err);
 		else
-			console.log("Found a user: " + user_obj);
+			console.log("Found a user: " + res);
 	});
+	
+	console.log("User: " + User);
 
-	console.log("Data: " + user_obj.userID);
+	// var myData = new User({
+	// 	userID: message.member.id,
+	// 	displayName: message.member.displayName,
+	// 	highestRole: message.member.highestRole.name,
+	// 	joinedAt: message.member.joinedAt,
+	// 	messages: 1,
+	// 	infractions: 0,
+	// 	retrocoins: 0,
+	// });
 
-	var myData = new User({
-		userID: message.member.id,
-		displayName: message.member.displayName,
-		highestRole: message.member.highestRole.name,
-		joinedAt: message.member.joinedAt,
-		messages: 1,
-		infractions: 0,
-		retrocoins: 0,
-	});
-
-	myData.save()
-	.then(item => {
-		console.log("New user added!");
-	})
-	.catch(err => {
-		console.log("Error: " + err);
-	});
+	// myData.save()
+	// .then(item => {
+	// 	console.log("New user added!");
+	// })
+	// .catch(err => {
+	// 	console.log("Error: " + err);
+	// });
 }
 
 module.exports.help = {
