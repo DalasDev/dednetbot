@@ -3,11 +3,11 @@ const fs = require("fs");
 const ms = require("ms");
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-var Users = require('./../schemas/user_model.js');
+var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message) => {
 
-	let user_obj = Users.findOne({
+	let user_obj = User.findOne({
 	 	userID: message.member.id 
 	}, function (err, res) {
 		if (err)
