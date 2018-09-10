@@ -37,13 +37,17 @@ module.exports.run = async (bot, message, args) => {
   //mongoose add
 
   console.log("mongoDB connect");
+  
   var myData = new warnUser({
     userID: wUser.id,
+    userNickname: wUser.displayName,
     warnedFor: reason,
     warnedBy: message.member.id,
+    warnerNickname: message.member.displayName,
     when: Date.now(),
-    channel: message.channel.id,
-    warnedVia: "MEE6"
+    channelID: message.channel.id,
+    channelName: message.channel.name,
+    warnedVia: "RetroBot"
   });
 
   myData.save()
