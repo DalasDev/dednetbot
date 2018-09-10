@@ -16,6 +16,9 @@ module.exports.run = async (bot, message) => {
 			console.log("Found a user: " + user_obj);
 	});
 
+	console.log("OBJ: " + JSON.stringify({user_obj}));
+	console.log("OBJ2: " + stringify({user_obj}));
+
 	var myData = new User({
 		userID: message.member.id,
 		displayName: message.member.displayName,
