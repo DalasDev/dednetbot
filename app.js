@@ -84,8 +84,10 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => {
 
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
+  if(message.author.bot)
+    return;
+  if(message.channel.type === "dm")
+    return;
 
   let prefix = botconfig.prefix;
   if (message.content.charAt(0) === prefix){
@@ -95,22 +97,27 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
-      console.log("[app.js] Command to execute: " + cmd);
       commandfile.run(bot, message, args);
     }
   } 
   else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
    && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
-  let cmd = "!warn2";
-  let args = messageArray.slice(1);
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    let cmd = "!warn2";
+    let args = messageArray.slice(1);
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-  if(commandfile){
-    console.log("[app.js] Command to execute: " + cmd);
-    commandfile.run(bot, message, args);
+    if(commandfile){
+      commandfile.run(bot, message, args);
+    }
   }
-}
+  else {
+    let cmd = "scanuser";
+    let commandfile = bot.commands.get(cmd);
+    if(commandfile){
+      commandfile.run(bot, message, args);
+    }
+  }
 });
 
 bot.login(process.env.BOT_TOKEN);

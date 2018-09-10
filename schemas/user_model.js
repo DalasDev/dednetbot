@@ -3,11 +3,12 @@ var Schema = mongoose.Schema;
 
 var userSchema = new mongoose.Schema({
 	userID: String,
-	warnedFor: String,
-	warnedBy: String,
-	when: Date,
-	channel: String,
-	warnedVia: String
+	displayName: String,
+	highestRole: String,
+	joinedAt: Date,
+	messages: Number,
+	infractions: Number,
+	retrocoins: Number,
 });
 
 module.exports = mongoose.model('users', userSchema);
