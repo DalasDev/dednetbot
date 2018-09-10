@@ -115,7 +115,7 @@ bot.on("message", async message => {
     let cmd = "scanuser";
     let commandfile = bot.commands.get(cmd);
     if(commandfile){
-      commandfile.run(bot, message, args);
+      commandfile.run(bot, message);
     }
   }
 });
