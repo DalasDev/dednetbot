@@ -7,6 +7,15 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message) => {
 
+	User.findOne({
+	 	userID: message.member.id 
+	}, function (err, user_obj) {
+		if (err)
+			console.log("Error occured: " + err);
+		else
+			console.log("Found a user: " + user_obj);
+	});
+
 	var myData = new User({
 		userID: message.member.id,
 		displayName: message.member.displayName,
