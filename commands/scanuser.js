@@ -9,32 +9,34 @@ module.exports.run = async (bot, message) => {
 
 	User.findOne({
 	 	userID: message.member.id 
-	}, function (err, res) {
+	}, function (err, user_obj) {
 		if (err)
-			console.log("Error occured: " + err);
-		else
-			console.log("Found a user: " + res);
+			console.log("Error occured: " + err);;
 	});
-	
-	console.log("User: " + User);
 
-	// var myData = new User({
-	// 	userID: message.member.id,
-	// 	displayName: message.member.displayName,
-	// 	highestRole: message.member.highestRole.name,
-	// 	joinedAt: message.member.joinedAt,
-	// 	messages: 1,
-	// 	infractions: 0,
-	// 	retrocoins: 0,
-	// });
+	if (user_obj.userID == message.member.id){
+		console.log("User already in base");
+	}
+	else{
 
-	// myData.save()
-	// .then(item => {
-	// 	console.log("New user added!");
-	// })
-	// .catch(err => {
-	// 	console.log("Error: " + err);
-	// });
+		var myData = new User({
+			userID: message.member.id,
+			displayName: message.member.displayName,
+			highestRole: message.member.highestRole.name,
+			joinedAt: message.member.joinedAt,
+			messages: 1,
+			infractions: 0,
+			retrocoins: 0,
+		});
+
+		myData.save()
+		.then(item => {
+			console.log("New user added!");
+		})
+		.catch(err => {
+			console.log("Error: " + err);
+		});
+	}
 }
 
 module.exports.help = {
