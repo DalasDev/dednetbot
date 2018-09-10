@@ -2,7 +2,8 @@
 @import "https://fonts.googleapis.com/css?family=Press+Start+2P";
 @import "https://fonts.googleapis.com/css?family=Mr+Dafoe";
 @import "https://fonts.googleapis.com/css?family=Changa+One";
-body {
+
+body, html {
   background: #000;
   background-image: linear-gradient(to bottom, #6A0275 10%, #040C4A 60%);
   height: 100vh;
