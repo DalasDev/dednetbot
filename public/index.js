@@ -1,6 +1,4 @@
-$(document).ready(function() {
-
-  /* Onboarding */
+/* Onboarding */
 
   function circleBounceRepeat() {
     circleBounce.invalidate().restart();
@@ -329,4 +327,3 @@ $(document).ready(function() {
       maxY: 128
     }
   });
-});
