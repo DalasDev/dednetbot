@@ -20,11 +20,11 @@ app.set('view engine', 'handlebars');
 var warns = require('./public/warnings.json');
 //var indexpage = require('./public/index.html');
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
-app.use("/", (req, res) => {
- res.sendFile(__dirname + "/public/index.html");
-});
+// app.use("/", (req, res) => {
+//  res.sendFile(__dirname + "/public/index.html");
+// });
 
 // GET роут
 // app.get('/', function (req, res) {
