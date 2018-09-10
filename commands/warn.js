@@ -1,22 +1,11 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-var mongoose = require("mongoose");
 let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
+var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-
-var warnSchema = new mongoose.Schema({
-  discordID: String,
-  userID: String,
-    warnes: {
-      warnedFor: String,
-      warnedBy: String,
-      when: String,
-      channel: String
-    }
-  }
-);
+var warnUser = require('./../schemas/warnuser_model.js');
 
 //tempmute @member Time
 
@@ -58,21 +47,18 @@ module.exports.run = async (bot, message, args) => {
 
   warns[wUser.id].warns++;
 
-  //mongoose test
+  //mongoose add
 
   console.log("mongoDB connect");
-  var warnUser = mongoose.model("warnUser", warnSchema);
-  let id = `<@${wUser.id}>`;
   var myData = new warnUser({
-    discordID: id,
     userID: wUser.id,
-      warnes: {
-        warnedFor: reason,
-        warnedBy: message.member,
-        when: Date.now(),
-        channel: message.channel
-      }
+    warnedFor: reason,
+    warnedBy: message.member.id,
+    when: Date.now(),
+    channel: message.channel.id,
+    warnedVia: "RetroBot"
   });
+
   myData.save()
   .then(item => {
     console.log("Added item: " + item);
@@ -81,7 +67,7 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
-  //end of mongoose test
+  //end of mongoose
 
   fs.writeFile("./public/warnings.json", JSON.stringify(warns), (err) => {
     if (err)

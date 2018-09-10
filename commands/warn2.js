@@ -2,7 +2,11 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
 
-//tempmute @member Time
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+var warnUser = require('./../schemas/warnuser_model.js');
+
+//warn2 (Mee6 warns)
 
 module.exports.run = async (bot, message, args) => {
 
@@ -29,6 +33,29 @@ module.exports.run = async (bot, message, args) => {
   } else {
     console.log("No warnchannel defined");
   }
+
+  //mongoose add
+
+  console.log("mongoDB connect");
+  var myData = new warnUser({
+    userID: wUser.id,
+    warnedFor: reason,
+    warnedBy: message.member.id,
+    when: Date.now(),
+    channel: message.channel.id,
+    warnedVia: "MEE6"
+  });
+
+  myData.save()
+  .then(item => {
+    console.log("Added item: " + item);
+  })
+  .catch(err => {
+    console.log("Error: " + err);
+  });
+
+  //end of mongoose
+
 }
 
 module.exports.help = {
