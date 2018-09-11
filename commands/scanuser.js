@@ -15,6 +15,7 @@ module.exports.run = async (bot, message) => {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
+			console.log("RES: " + res);
 			if (res.userID == message.member.id){
 				console.log("This user is already in our database, ignoring!");
 			}
