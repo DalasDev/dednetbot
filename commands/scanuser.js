@@ -10,39 +10,34 @@ module.exports.run = async (bot, message) => {
 	var user_obj = {};
 
 	User.findOne({
-	 	userID: message.member.id 
+		userID: message.member.id 
 	}, function (err, res) {
 		if (err)
-			console.log("Error occured: " + err);
-		else{
-			console.log("Response: " + res);
-			console.log("User ID: " + res.userID)
+			console.log("Error on database findOne: " + err);
+		else {
+			if (res.userID == message.member.id){
+				console.log("This user is already in our database, ignoring!");
+			}
+			else {
+				var myData = new User({
+					userID: message.member.id,
+					displayName: message.member.displayName,
+					highestRole: message.member.highestRole.name,
+					joinedAt: message.member.joinedAt,
+					messages: 1,
+					infractions: 0,
+					retrocoins: 0,
+				});
+				myData.save()
+				.then(item => {
+					console.log("New user added to database!");
+				})
+				.catch(err => {
+					console.log("Error on database save: " + err);
+				});
+			}
 		}
 	});
-	console.log("User object" + user_obj);
-	if (user_obj.userID == message.member.id){
-		console.log("User already in base");
-	}
-	else{
-
-		var myData = new User({
-			userID: message.member.id,
-			displayName: message.member.displayName,
-			highestRole: message.member.highestRole.name,
-			joinedAt: message.member.joinedAt,
-			messages: 1,
-			infractions: 0,
-			retrocoins: 0,
-		});
-
-		myData.save()
-		.then(item => {
-			console.log("New user added!");
-		})
-		.catch(err => {
-			console.log("Error: " + err);
-		});
-	}
 }
 
 module.exports.help = {
