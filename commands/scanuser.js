@@ -45,6 +45,8 @@ module.exports.run = async (bot, message) => {
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
 						foundObj.messages++;
 						foundObj.retrocoins += coinrandom;
+						foundObj.displayName = message.member.displayName;
+						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
 						foundObj.save(function(err, updatedObj){
 							if(err)
