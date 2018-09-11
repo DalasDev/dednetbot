@@ -56,7 +56,6 @@ module.exports.run = async (bot, message, args) => {
 
   myData.save()
   .then(item => {
-    console.log("Added item: " + item);
   })
   .catch(err => {
     console.log("Error: " + err);
