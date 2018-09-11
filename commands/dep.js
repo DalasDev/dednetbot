@@ -13,10 +13,8 @@ module.exports.run = async (bot, message, args) => {
 
 	console.log("Args: " + args);
 	console.log("args 0: " + args[0]);
-	console.log("args 1: " + args[1]);
-	console.log("args 2: " + args[2]);
 
-	if (args[0] === "a" && args[1] === "l" && args[2] === "l"){
+	if (args[0] === "all"){
 		console.log("DB2");
 		var user_obj = User.findOne({
 			userID: message.member.id 
