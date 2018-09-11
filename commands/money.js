@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
-			return message.reply("у тебя на счету " + foundObj.retrocoins + "ⓟ (ретриков)!");
+			return message.reply("у тебя на счету " + foundObj.retrocoins + " ⓟ (ретриков)");
 		}
 	});
 }
