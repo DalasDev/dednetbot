@@ -11,16 +11,21 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
+	console.log("DB1");
+
 	if (args[0] === "a" && args[1] === "l" && args[2] === "l"){
+		console.log("DB2");
 		var user_obj = User.findOne({
 			userID: message.member.id 
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				console.log("DB3");
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
+					console.log("DB4");
 					var actBank = foundObj.retrocoinBank;
 					var actCash = foundObj.retrocoinCash;
 					var newBank = actCash + actBank;
@@ -32,6 +37,7 @@ module.exports.run = async (bot, message, args) => {
 							console.log(err);
 					})
 
+					console.log("DB5");
 					var avatar = message.member.user.avatarURL;
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 
