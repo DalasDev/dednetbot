@@ -5,6 +5,10 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 
+function isNumeric(value) {
+	return /^\d+$/.test(value);
+}
+
 module.exports.run = async (bot, message, args) => {
 	
 	if (args[1] = "all"){
@@ -41,6 +45,9 @@ module.exports.run = async (bot, message, args) => {
 				}
 			}
 		});
+	}
+	else if (isNumeric(args[1])){
+		console.log("Let's dep " + args[1]);
 	}
 }
 
