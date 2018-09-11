@@ -74,8 +74,12 @@ module.exports.run = async (bot, message, args) => {
         var actInfractions = foundObj.infractions;
         var newInfractions = actInfractions + 1;
 
-        console.log("DB1");
-
+        foundObj.infractions = newInfractions;
+        foundObj.save(function(err, updatedObj){
+          if(err)
+            console.log(err);
+        });
+        //
         let sicon = message.guild.iconURL;
 
         const embed = new Discord.RichEmbed()
@@ -89,8 +93,6 @@ module.exports.run = async (bot, message, args) => {
 
         warnchannel.send({embed});
 
-        console.log("DB2");
-        
         if(newInfractions == 1){
           message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
         }
@@ -146,12 +148,7 @@ module.exports.run = async (bot, message, args) => {
             }
           }, ms(mutetime));
         }
-        console.log("DB3");
-        foundObj.infractions = newInfractions;
-        foundObj.save(function(err, updatedObj){
-          if(err)
-            console.log(err);
-        });
+        //
       }
     }
   });
