@@ -62,6 +62,8 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
+  var newInfractions = 0;
+  
   var user_obj = User.findOne({
     userID: wUser.id 
   }, function (err, foundObj) {
@@ -72,7 +74,7 @@ module.exports.run = async (bot, message, args) => {
         console.log("Something stange happend");
       else {
         var actInfractions = foundObj.infractions;
-        var newInfractions = actInfractions++;
+        newInfractions = actInfractions++;
 
         foundObj.infractions = newInfractions;
         foundObj.save(function(err, updatedObj){
