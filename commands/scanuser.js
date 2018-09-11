@@ -22,7 +22,7 @@ module.exports.run = async (bot, message) => {
 					messages: 1,
 					infractions: 0,
 					retrocoinCash: 0,
-					retrocoinBank: 0;
+					retrocoinBank: 0,
 					lastScan: Date.now()
 				});
 				myData.save()
