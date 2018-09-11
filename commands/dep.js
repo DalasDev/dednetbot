@@ -10,17 +10,23 @@ function isNumeric(value) {
 }
 
 module.exports.run = async (bot, message, args) => {
+
+	console.log("DB1");
 	
 	if (args[1] === "all"){
+		console.log("DB2");
 		var user_obj = User.findOne({
 			userID: message.member.id 
 		}, function (err, foundObj) {
+			console.log("DB3");
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				console.log("DB4");
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
+					console.log("DB5");
 					var actBank = foundObj.retrocoinBank;
 					var actCash = foundObj.retrocoinCash;
 					var newBank = actCash + actBank;
@@ -28,12 +34,16 @@ module.exports.run = async (bot, message, args) => {
 					foundObj.retrocoinCash = 0;
 					foundObj.retrocoinBank = newBank;
 					foundObj.save(function(err, updatedObj){
+						console.log("DB6");
 						if(err)
 							console.log(err);
 					})
 
 					var avatar = message.member.user.avatarURL;
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
+
+					console.log("DB7");
+
 					const embed = new Discord.RichEmbed()
 					.setTitle("Все ⓟ (ретрики) были переведены в банк! Новый баланс " + message.member.displayName)
 					.setColor("#0000FF")
