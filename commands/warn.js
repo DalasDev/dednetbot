@@ -62,8 +62,9 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
+  console.log("DB1");
   var newInfractions = 0;
-  
+
   var user_obj = User.findOne({
     userID: wUser.id 
   }, function (err, foundObj) {
@@ -73,8 +74,11 @@ module.exports.run = async (bot, message, args) => {
       if (!foundObj)
         console.log("Something stange happend");
       else {
+        console.log("DB2");
         var actInfractions = foundObj.infractions;
+        console.log("actInfractions: " + actInfractions);
         newInfractions = actInfractions++;
+        console.log("newInfractions 1: " + newInfractions);
 
         foundObj.infractions = newInfractions;
         foundObj.save(function(err, updatedObj){
@@ -84,6 +88,9 @@ module.exports.run = async (bot, message, args) => {
       }
     }
   });
+
+  console.log("DB3");
+  console.log("newInfractions 2: " + newInfractions);
 
   let sicon = message.guild.iconURL;
 
@@ -98,6 +105,8 @@ module.exports.run = async (bot, message, args) => {
 
   warnchannel.send({embed});
 
+  console.log("DB4");
+  
   if(newInfractions == 1){
     message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
   }
