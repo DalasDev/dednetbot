@@ -15,7 +15,6 @@ module.exports.run = async (bot, message) => {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
-			console.log("RES: " + res);
 			if (res === null){
 				var myData = new User({
 					userID: message.member.id,
@@ -28,14 +27,11 @@ module.exports.run = async (bot, message) => {
 				});
 				myData.save()
 				.then(item => {
-					console.log("New user added to database!");
+					console.log("New user " + message.member.displayName + " added to database");
 				})
 				.catch(err => {
 					console.log("Error on database save: " + err);
 				});
-			}
-			else {
-				console.log("This user exists, ignoring");
 			}
 		}
 	});
