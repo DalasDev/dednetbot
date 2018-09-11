@@ -8,7 +8,8 @@ var userSchema = new mongoose.Schema({
 	joinedAt: Date,
 	messages: Number,
 	infractions: Number,
-	retrocoins: Number,
+	retrocoinCash: Number,
+	retrocoinBank: Number,
 	lastScan: Date,
 });
 

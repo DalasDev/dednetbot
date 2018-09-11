@@ -21,7 +21,8 @@ module.exports.run = async (bot, message) => {
 					joinedAt: message.member.joinedAt,
 					messages: 1,
 					infractions: 0,
-					retrocoins: 0,
+					retrocoinCash: 0,
+					retrocoinBank: 0;
 					lastScan: Date.now()
 				});
 				myData.save()
@@ -44,7 +45,7 @@ module.exports.run = async (bot, message) => {
 						var max = 15;
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
 						foundObj.messages++;
-						foundObj.retrocoins += coinrandom;
+						foundObj.retrocoinBank += coinrandom;
 						foundObj.displayName = message.member.displayName;
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
