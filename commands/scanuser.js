@@ -32,6 +32,7 @@ module.exports.run = async (bot, message) => {
 				});
 			}
 			else{
+				console.log("Users messages: " + res.messages);
 				var new_messages = res.messages++;
 				User.updateOne({
 					userID: message.member.id
