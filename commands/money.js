@@ -12,13 +12,15 @@ module.exports.run = async (bot, message, args) => {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
+			var avatar = message.member.user.avatarURL;
 			var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 			const embed = new Discord.RichEmbed()
-			.setTitle(`Личный счет <@${message.member.id}>`)
+			.setTitle("Личный счет " + message.member.displayName)
 			.setColor("#0000FF")
 			.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 			.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
 			.addField("Всего", total + " ⓟ (ретриков)", true)
+			.setThumbnail(avatar)
 //			.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
 			message.channel.send({embed});
