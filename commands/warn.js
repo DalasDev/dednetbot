@@ -62,19 +62,6 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
-  let sicon = message.guild.iconURL;
-
-  const embed = new Discord.RichEmbed()
-  .setTitle(":star: Отчет о варне :star:")
-  .setColor("#fc6400")
-  .addField("Жертва", `<@${wUser.id}>`, true)
-  .addField("Предупреждение выдано в", message.channel, true)
-  .addField("Предупреждение выдал", message.member, true)
-  .addField("Предупреждений у нарушителя", warns[wUser.id].warns, true)
-  .addField("Причина", reason, true);
-
-  warnchannel.send({embed});
-
   var user_obj = User.findOne({
     userID: wUser.id 
   }, function (err, foundObj) {
@@ -95,6 +82,19 @@ module.exports.run = async (bot, message, args) => {
       }
     }
   });
+
+  let sicon = message.guild.iconURL;
+
+  const embed = new Discord.RichEmbed()
+  .setTitle(":star: Отчет о варне :star:")
+  .setColor("#fc6400")
+  .addField("Жертва", `<@${wUser.id}>`, true)
+  .addField("Предупреждение выдано в", message.channel, true)
+  .addField("Предупреждение выдал", message.member, true)
+  .addField("Предупреждений у нарушителя", newInfractions, true)
+  .addField("Причина", reason, true);
+
+  warnchannel.send({embed});
 
   if(newInfractions == 1){
     message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
