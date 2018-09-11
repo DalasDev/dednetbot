@@ -33,7 +33,7 @@ module.exports.run = async (bot, message) => {
 			}
 			else{
 				var new_messages = res.messages++;
-				User.update({
+				User.updateOne({
 					userID: message.member.id
 				},{
 					$set:{
