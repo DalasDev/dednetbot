@@ -38,7 +38,7 @@ module.exports.run = async (bot, message) => {
 				else {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
-					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 300;
+					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if(timestampLimit < timestamp) {
 						var min = 1;
 						var max = 15;
@@ -49,9 +49,6 @@ module.exports.run = async (bot, message) => {
 							if(err)
 								console.log(err);
 						})
-					}
-					else{
-						console.log("writing to often, not counting this");
 					}
 				}
 			}
