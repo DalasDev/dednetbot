@@ -76,11 +76,11 @@ module.exports.run = async (bot, message, args) => {
 						.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 						.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
 						.setThumbnail(avatar)
-						
+
 						message.channel.send({embed});
 					}
 					else {
-						return message.channel.send("У тебя разве хватает ретриков на такое действие? :thinking:");
+						return message.channel.send("У тебя разве хватает ⓟ (ретриков) на такое действие? :thinking:");
 					}
 				}
 			}
