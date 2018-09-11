@@ -32,11 +32,17 @@ module.exports.run = async (bot, message) => {
 				});
 			}
 			else{
-				//messages++;
+				var new_messages = res.messages++;
+				User.update({
+					userID: message.member.id
+				},{
+					$set:{
+						messages: new_messages 
+					}
+				}).exec();
 			}
 		}
 	});
-	console.log(Object.keys(user_obj));
 }
 
 module.exports.help = {
