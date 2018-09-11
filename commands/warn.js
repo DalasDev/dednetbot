@@ -74,12 +74,6 @@ module.exports.run = async (bot, message, args) => {
         var actInfractions = foundObj.infractions;
         var newInfractions = actInfractions++;
 
-        foundObj.infractions = newInfractions;
-        foundObj.save(function(err, updatedObj){
-          if(err)
-            console.log(err);
-        });
-        
         let sicon = message.guild.iconURL;
 
         const embed = new Discord.RichEmbed()
@@ -148,6 +142,12 @@ module.exports.run = async (bot, message, args) => {
             }
           }, ms(mutetime));
         }
+
+        foundObj.infractions = newInfractions;
+        foundObj.save(function(err, updatedObj){
+          if(err)
+            console.log(err);
+        });
       }
     }
   });
