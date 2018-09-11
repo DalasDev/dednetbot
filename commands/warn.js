@@ -1,11 +1,13 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./public/warnings.json", "utf8"));
 
 var mongoose = require("mongoose");
+
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-var warnUser = require('./../schemas/warn_model.js');
+
+var Warn = require('./../schemas/warn_model.js');
+var User = require('./../schemas/user_model.js');
 
 //tempmute @member Time
 
@@ -22,6 +24,7 @@ module.exports.run = async (bot, message, args) => {
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
+
   if(reason === "")
     return message.reply("укажите причину!");
   if(!message.member.hasPermission("MOVE_MEMBERS"))
@@ -38,20 +41,8 @@ module.exports.run = async (bot, message, args) => {
     errorschannel.send("Канал репортов не существует!");
   if(!warnchannel)
     return message.channel.send("Канал репортов не существует!");
-
-  if(!warns[wUser.id]){
-    warns[wUser.id] = {
-      warns: 0
-    }
-  }
-
-  warns[wUser.id].warns++;
-
-  //mongoose add
-
-  console.log("mongoDB connect");
   
-  var myData = new warnUser({
+  var myData = new Warn({
     userID: wUser.id,
     userNickname: wUser.displayName,
     warnedFor: reason,
@@ -71,13 +62,6 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
-  //end of mongoose
-
-  fs.writeFile("./public/warnings.json", JSON.stringify(warns), (err) => {
-    if (err)
-      console.log(err);
-  });
-
   let sicon = message.guild.iconURL;
 
   const embed = new Discord.RichEmbed()
@@ -91,11 +75,32 @@ module.exports.run = async (bot, message, args) => {
 
   warnchannel.send({embed});
 
-  if(warns[wUser.id].warns == 1){
+  var user_obj = User.findOne({
+    userID: wUser.id 
+  }, function (err, foundObj) {
+    if (err)
+      console.log("Error on database findOne: " + err);
+    else {
+      if (!foundObj)
+        console.log("Something stange happend");
+      else {
+        var actInfractions = foundObj.infractions;
+        var newInfractions = actInfractions++;
+
+        foundObj.infractions = newInfractions;
+        foundObj.save(function(err, updatedObj){
+          if(err)
+            console.log(err);
+        });
+      }
+    }
+  });
+
+  if(newInfractions == 1){
     message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
   }
 
-  if(warns[wUser.id].warns == 2){
+  if(newInfractions == 2){
     mutetime = "5m";
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
@@ -108,8 +113,8 @@ module.exports.run = async (bot, message, args) => {
     }, ms(mutetime));
   }
 
-  if(warns[wUser.id].warns == 3){
-    mutetime = "15m";
+  if(newInfractions == 3){
+    mutetime = "10m";
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
@@ -121,21 +126,21 @@ module.exports.run = async (bot, message, args) => {
     }, ms(mutetime));
   }
 
-  if(warns[wUser.id].warns == 4){
+  if(newInfractions == 4){
+    mutetime = "20m";
+    await(wUser.addRole(muterole.id));
+    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
+
+    setTimeout(function(){
+      if(wUser.roles.has(muterole.id)){
+        wUser.removeRole(muterole.id);
+        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
+      }
+    }, ms(mutetime));
+  }
+
+  if(newInfractions >= 5){
     mutetime = "30m";
-    await(wUser.addRole(muterole.id));
-    message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
-
-    setTimeout(function(){
-      if(wUser.roles.has(muterole.id)){
-        wUser.removeRole(muterole.id);
-        warnchannel.send(`<@${wUser.id}> был автоматически размучен!`);
-      }
-    }, ms(mutetime));
-  }
-
-  if(warns[wUser.id].warns == 5){
-    mutetime = "1h";
     await(wUser.addRole(muterole.id));
     message.channel.send(`<@${wUser.id}>` + " посидит " + mutetime + ",  подумает...");
 
