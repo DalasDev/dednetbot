@@ -19,10 +19,10 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var actBank = foundObj.retrocoinBank;
 					var actCash = foundObj.retrocoinCash;
-					var newCash = actCash + actBank;
+					var newBank = actCash + actBank;
 
-					foundObj.retrocoinCash = newCash;
-					foundObj.retrocoinBank = 0;
+					foundObj.retrocoinCash = 0;
+					foundObj.retrocoinBank = newBank;
 					foundObj.save(function(err, updatedObj){
 						if(err)
 							console.log(err);
@@ -45,5 +45,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-	name: "with"
+	name: "dep"
 }
