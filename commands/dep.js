@@ -47,7 +47,44 @@ module.exports.run = async (bot, message, args) => {
 		});
 	}
 	else if (isNumeric(args[1])){
-		console.log("Let's dep " + args[1]);
+		var user_obj = User.findOne({
+			userID: message.member.id 
+		}, function (err, foundObj) {
+			if (err)
+				console.log("Error on database findOne: " + err);
+			else {
+				if (!foundObj)
+					console.log("Something stange happend");
+				else {
+					var actBank = foundObj.retrocoinBank;
+					var actCash = foundObj.retrocoinCash;
+					var toDep = Number(args[1]);
+					var newBank = actBank + toDep;
+					var newCash = actCash - toDep;
+					if (newCash >= 0){
+						foundObj.retrocoinCash = newCash;
+						foundObj.retrocoinBank = newBank;
+						foundObj.save(function(err, updatedObj){
+							if(err)
+								console.log(err);
+						})
+						var avatar = message.member.user.avatarURL;
+						var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
+						const embed = new Discord.RichEmbed()
+						.setTitle("Личный счет " + message.member.displayName)
+						.setColor("#0000FF")
+						.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
+						.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
+						.setThumbnail(avatar)
+						
+						message.channel.send({embed});
+					}
+					else {
+						return message.channel.send("У тебя разве хватает ретриков на такое действие? :thinking:");
+					}
+				}
+			}
+		});
 	}
 }
 
