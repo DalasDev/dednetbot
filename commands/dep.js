@@ -11,9 +11,12 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
-	console.log("DB1");
+	console.log("Args: " + args);
+	console.log("args 0: " + args[0]);
+	console.log("args 1: " + args[1]);
+	console.log("args 2: " + args[2]);
 
-	if (args.charAt(0) === "a" && args.charAt(1) === "l" && args.charAt(2) === "l"){
+	if (args[0] === "a" && args[1] === "l" && args[2] === "l"){
 		console.log("DB2");
 		var user_obj = User.findOne({
 			userID: message.member.id 
