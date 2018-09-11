@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 			.setColor("#0000FF")
 			.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 			.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
-			.addField("Всего", total + " ⓟ (ретриков)", true)
+//			.addField("Всего", total + " ⓟ (ретриков)", true)
 			.setThumbnail(avatar)
 //			.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
