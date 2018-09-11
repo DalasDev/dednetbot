@@ -9,11 +9,11 @@ module.exports.run = async (bot, message) => {
 
 	var user_obj = User.findOne({
 		userID: message.member.id 
-	}, function (err, res) {
+	}, function (err, foundObj) {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
-			if (res === null){
+			if (foundObj === null){
 				var myData = new User({
 					userID: message.member.id,
 					displayName: message.member.displayName,
@@ -31,16 +31,18 @@ module.exports.run = async (bot, message) => {
 					console.log("Error on database save: " + err);
 				});
 			}
-			else{
-				console.log("Users messages: " + res.messages);
-				var new_messages = res.messages++;
-				User.updateOne({
-					userID: message.member.id
-				},{
-					$set:{
-						messages: new_messages 
-					}
-				}).exec();
+			else {
+				if (!foundObj)
+					console.log("Something stange happend");
+				else {
+					foundObj.messages++;
+					foundObj.save(function(err, updatedObj){
+						if(err)
+							console.log(err);
+						else
+							console.log(updatedObj);
+					})
+				}
 			}
 		}
 	});
