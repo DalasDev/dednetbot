@@ -33,6 +33,9 @@ module.exports.run = async (bot, message) => {
 					console.log("Error on database save: " + err);
 				});
 			}
+			else{
+				//have to add incrementation on "messages" variable
+			}
 		}
 	});
 }
