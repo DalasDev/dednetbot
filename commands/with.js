@@ -7,7 +7,7 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message, args) => {
 	
-	if (args[1] = "all"){
+	if (args[1] == "all"){
 		var user_obj = User.findOne({
 			userID: message.member.id 
 		}, function (err, foundObj) {
