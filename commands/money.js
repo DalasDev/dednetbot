@@ -23,13 +23,12 @@ module.exports.run = async (bot, message, args) => {
 				.setColor("#0000FF")
 				.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 				.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
-	//			.addField("Всего", total + " ⓟ (ретриков)", true)
 				.setThumbnail(avatar)
 
 				message.channel.send({embed});
 			}
 		});
-	}else{
+	} else {
 		var user_obj = User.findOne({
 			userID: toScan.id 
 		}, function (err, foundObj) {
@@ -43,7 +42,6 @@ module.exports.run = async (bot, message, args) => {
 				.setColor("#0000FF")
 				.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 				.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
-	//			.addField("Всего", total + " ⓟ (ретриков)", true)
 				.setThumbnail(avatar)
 
 				message.channel.send({embed});
