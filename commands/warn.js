@@ -72,7 +72,9 @@ module.exports.run = async (bot, message, args) => {
         console.log("Something stange happend");
       else {
         var actInfractions = foundObj.infractions;
-        var newInfractions = actInfractions++;
+        var newInfractions = actInfractions + 1;
+
+        console.log("DB1");
 
         let sicon = message.guild.iconURL;
 
@@ -87,6 +89,8 @@ module.exports.run = async (bot, message, args) => {
 
         warnchannel.send({embed});
 
+        console.log("DB2");
+        
         if(newInfractions == 1){
           message.channel.send(`<@${wUser.id}>` + " получил свое первое предупреждение! Не нарушай больше!");
         }
@@ -142,7 +146,7 @@ module.exports.run = async (bot, message, args) => {
             }
           }, ms(mutetime));
         }
-
+        console.log("DB3");
         foundObj.infractions = newInfractions;
         foundObj.save(function(err, updatedObj){
           if(err)
