@@ -47,7 +47,7 @@ module.exports.run = async (bot, message, args) => {
     when: Date.now(),
     channelID: message.channel.id,
     channelName: message.channel.name,
-    warnedVia: "RetroBot"
+    warnedVia: "MEE6"
   });
 
   myData.save()
