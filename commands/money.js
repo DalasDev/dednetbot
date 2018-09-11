@@ -16,9 +16,9 @@ module.exports.run = async (bot, message, args) => {
 			const embed = new Discord.RichEmbed()
 			.setTitle("Личный счет")
 			.setColor("#0000FF")
-			.addField("Наличкой", foundObj.retrocoinCash + "ⓟ (ретриков)", true)
-			.addField("В банке", foundObj.retrocoinBank + "ⓟ (ретриков)", true)
-			.addField("Всего", total + "ⓟ (ретриков)", true)
+			.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
+			.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
+			.addField("Всего", total + " ⓟ (ретриков)", true)
 //			.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
 			message.channel.send({embed});
