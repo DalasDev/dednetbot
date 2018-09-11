@@ -36,6 +36,7 @@ module.exports.run = async (bot, message) => {
 			}
 		}
 	});
+	console.log("Test1: " + user_obj);
 }
 
 module.exports.help = {
