@@ -7,9 +7,7 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message) => {
 
-	var user_obj = {};
-
-	User.findOne({
+	var user_obj = User.findOne({
 		userID: message.member.id 
 	}, function (err, res) {
 		if (err)
@@ -34,7 +32,7 @@ module.exports.run = async (bot, message) => {
 				});
 			}
 			else{
-				//have to add incrementation on "messages" variable
+				//messages++;
 			}
 		}
 	});
