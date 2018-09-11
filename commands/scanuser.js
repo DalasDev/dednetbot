@@ -25,7 +25,7 @@ module.exports.run = async (bot, message) => {
 				});
 				myData.save()
 				.then(item => {
-					console.log("New user " + message.member.displayName + " added to database");
+					console.log('New user "' + message.member.displayName + '" added to database');
 				})
 				.catch(err => {
 					console.log("Error on database save: " + err);
@@ -35,7 +35,11 @@ module.exports.run = async (bot, message) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
+					var min = 1;
+  					var max = 15;
+  					var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
 					foundObj.messages++;
+					foundObj.retrocoins += coinrandom;
 					foundObj.save(function(err, updatedObj){
 						if(err)
 							console.log(err);
