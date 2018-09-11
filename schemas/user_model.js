@@ -9,6 +9,7 @@ var userSchema = new mongoose.Schema({
 	messages: Number,
 	infractions: Number,
 	retrocoins: Number,
+	lastScan: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);

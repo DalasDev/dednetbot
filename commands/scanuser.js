@@ -22,6 +22,7 @@ module.exports.run = async (bot, message) => {
 					messages: 1,
 					infractions: 0,
 					retrocoins: 0,
+					lastScan: Date.now()
 				});
 				myData.save()
 				.then(item => {
@@ -35,15 +36,20 @@ module.exports.run = async (bot, message) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					var min = 1;
-  					var max = 15;
-  					var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
-					foundObj.messages++;
-					foundObj.retrocoins += coinrandom;
-					foundObj.save(function(err, updatedObj){
-						if(err)
-							console.log(err);
-					})
+					var dateTime = Date.now();
+					var timestamp = Math.floor(dateTime/1000);
+					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 300;
+					if(timestampLimit < timestamp) {
+						var min = 1;
+						var max = 15;
+						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
+						foundObj.messages++;
+						foundObj.retrocoins += coinrandom;
+						foundObj.save(function(err, updatedObj){
+							if(err)
+								console.log(err);
+						})
+					}
 				}
 			}
 		}
