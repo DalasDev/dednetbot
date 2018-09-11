@@ -50,6 +50,9 @@ module.exports.run = async (bot, message) => {
 								console.log(err);
 						})
 					}
+					else{
+						console.log("writing to often, not counting this");
+					}
 				}
 			}
 		}
