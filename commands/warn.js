@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
 
   var user_obj = User.findOne({
     userID: wUser.id 
-  }, function (err, foundObj) {
+  }, async function (err, foundObj) {
     if (err)
       console.log("Error on database findOne: " + err);
     else {
