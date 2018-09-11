@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
 					var avatar = message.member.user.avatarURL;
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 					const embed = new Discord.RichEmbed()
-					.setTitle("Личный счет " + message.member.displayName)
+					.setTitle("Все ⓟ (ретрики) были переведены в банк! Новый баланс " + message.member.displayName)
 					.setColor("#0000FF")
 					.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
 					.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
