@@ -39,12 +39,13 @@ module.exports.run = async (bot, message) => {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
-					if(timestampLimit < timestamp) {
+					if (timestampLimit < timestamp) {
 						var min = 1;
 						var max = 15;
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
 						foundObj.messages++;
 						foundObj.retrocoins += coinrandom;
+						foundObj.lastScan = Date.now();
 						foundObj.save(function(err, updatedObj){
 							if(err)
 								console.log(err);
