@@ -43,23 +43,25 @@ module.exports.run = async (bot, message, args) => {
 								console.log(err);
 							});
 							if (winner == true)
-								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :bravo:");
+								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
 							else
-								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :harold:");
+								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
   						}
   						else
-  							return message.reply("видимо у тебя не достаточно ретриков на руках :harold:");
+  							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 					}
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
 					else if (Number(args[1]) < 1 || Number(args[1]) > 6)
-						return message.reply("у куба всего 6 сторон, дядя :this_is_simple:");
+						return message.reply("у куба всего 6 сторон, дядя :sweet_smile:");
 				}
 			}
 		});
 	}
-	else
-		return message.reply("Чеееее :wut:");
+	else if (!args[0])
+		return message.reply("укажи ставку и твой прогноз!");
+	else if (!args[1])
+		return message.reply("на что ставить будем? От 1 до 6...");
 }
 
 module.exports.help = {
