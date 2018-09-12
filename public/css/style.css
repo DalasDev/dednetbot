@@ -5,6 +5,21 @@ body {
   text-align: center;
 }
 
+.Text1{
+  font-family: Gamja Flower;
+  text-align: center;
+  padding-top: 170px;
+  font-size: 90px;
+  color: #101010;
+}
+
+.Text2{
+  font-family: Gamja Flower;
+  text-align: center;
+  font-size: 40px;
+  color: #101010;
+}
+
 .background {
   height: 100%;
   position: absolute;
