@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("погоди-ка, у тебя нехватка прав :eyes:");
   if(!wUser)
     return message.reply("пользователь не существует :thinking: ");
-  if(wUser.hasPermission("MANAGE_MESSAGES"))
+  if(wUser.hasPermission("MANAGE_ROLES"))
     return message.reply("не, этого дядьку заварнить не получится :thinking: ");
   if(!muterole)
     return errorschannel.send("роль для нарушителей не найдена!");

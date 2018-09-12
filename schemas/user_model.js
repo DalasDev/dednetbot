@@ -10,6 +10,7 @@ var userSchema = new mongoose.Schema({
 	infractions: Number,
 	retrocoinCash: Number,
 	retrocoinBank: Number,
+	retrocoinTotal: Number,
 	lastScan: Date,
 });
 
