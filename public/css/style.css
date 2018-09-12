@@ -1,4 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+@font-face{
+
+font-family: 'YorkWhiteLetter';
+
+src: url('../fonts/yorkwhiteletter.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+
 body {
   background: #fff;
   overflow-x: hidden;
@@ -6,7 +20,7 @@ body {
 }
 
 .Text1{
-  font-family: Gamja Flower;
+  font-family: YorkWhiteLetter;
   text-align: center;
   padding-top: 170px;
   font-size: 90px;
