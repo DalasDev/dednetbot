@@ -49,12 +49,13 @@ module.exports.run = async (bot, message, args) => {
 								console.log(err);
 							});
 							message.channel.send("Закидываю 🎲 ...");
-							sleep(5000);
-							if (winner == true){
-								return message.channel.send("...и вылетает " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
-							}
-							else
-								return message.channel.send("...и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
+							setTimeout(function(){ 
+								if (winner == true){
+									return message.channel.send("...и вылетает " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
+								}
+								else
+									return message.channel.send("...и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
+						    }, 3000);
   						}
   						else
   							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
