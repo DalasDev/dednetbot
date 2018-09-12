@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastDice/1000) + 60;
-					if (timestampLimit < timestamp)
+					if (timestampLimit > timestamp)
 						return message.reply("эээ, крути-верти, но не чаще одного раза в минуту...");
 					if (Number(args[0]) >= 100 && Number(args[1]) >= 1 && Number(args[1]) <= 6){
 						var actCash = foundObj.retrocoinCash;
