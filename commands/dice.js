@@ -24,9 +24,9 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
-					var timestampLimit = Math.floor(foundObj.lastDice/1000) + 60;
+					var timestampLimit = Math.floor(foundObj.lastDice/1000) + 30;
 					if (timestampLimit > timestamp)
-						return message.reply("эээ, крути-верти, но не чаще одного раза в минуту...");
+						return message.reply("эээ, крути-верти, но не чаще, чем раз в пол минуты...");
 					if (Number(args[0]) >= 100 && Number(args[1]) >= 1 && Number(args[1]) <= 6){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
@@ -48,10 +48,13 @@ module.exports.run = async (bot, message, args) => {
 							if(err)
 								console.log(err);
 							});
-							if (winner == true)
-								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
+							message.channel.send("Закидываю 🎲 ...");
+							sleep(5000);
+							if (winner == true){
+								return message.channel.send("...и вылетает " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
+							}
 							else
-								return message.reply("закидываю 🎲 и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
+								return message.channel.send("...и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
   						}
   						else
   							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
