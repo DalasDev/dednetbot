@@ -12,6 +12,29 @@ font-style: normal;
 
 }
 
+@font-face{
+
+font-family: 'RetroRocket';
+
+src: url('../fonts/RetroRocket.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+@font-face{
+
+font-family: 'Good Chair';
+
+src: url('../fonts/9535.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
 
 body {
   background: #fff;
@@ -20,15 +43,15 @@ body {
 }
 
 .Text1{
-  font-family: YorkWhiteLetter;
+  font-family: Good Chair;
   text-align: center;
-  padding-top: 170px;
-  font-size: 90px;
+  padding-top: 180px;
+  font-size: 80px;
   color: #101010;
 }
 
 .Text2{
-  font-family: Gamja Flower;
+  font-family: Good Chair;
   text-align: center;
   font-size: 40px;
   color: #101010;
