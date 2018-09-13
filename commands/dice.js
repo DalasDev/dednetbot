@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
 							message.channel.send("Закидываю 🎲 ...");
 							setTimeout(function(){ 
 								if (winner == true){
-									return message.channel.send("...и вылетает " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
+									return message.channel.send(`...и вылетает ${result}! <@${message.member.id}>, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
 								}
 								else
 									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
