@@ -29,7 +29,7 @@ function send_money(payed_id, toPay){
 				});
 			}
 		}
-	}
+	});
 }
 
 module.exports.run = async (bot, message, args) => {
