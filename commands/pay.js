@@ -30,6 +30,7 @@ function send_money(payed_id, toPay){
 				if(err)
 					console.log(err);
 				});
+				return message.reply("Вы отдали " + toPay + " ретриков!");
 			}
 		}
 	});
@@ -56,16 +57,12 @@ module.exports.run = async (bot, message, args) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					
 					console.log("DB4");
-
 					var actCash = foundObj.retrocoinCash;
 					var toPay = Number(args[1]);
 					var newCash = actCash - toPay;
-					
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
-
 					console.log("DB5");
 					send_money(payed.id, toPay);
 					console.log("DB9");
@@ -79,7 +76,6 @@ module.exports.run = async (bot, message, args) => {
 				}
 			}
 		});
-		console.log("DB0");
 	}
 	else
 		return message.reply("чеееее :thinking:");
