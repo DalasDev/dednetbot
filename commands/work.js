@@ -36,31 +36,31 @@ module.exports.run = async (bot, message, args) => {
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 
-				var answer = [];
-				answer.push("1");
-				answer.push("2");
-				answer.push("3");
-				answer.push("4");
-				answer.push("5");
-				answer.push("6");
-				answer.push("7");
-				answer.push("8");
-				answer.push("9");
-				answer.push("10");
-				answer.push("11");
-				answer.push("12");
-				answer.push("13");
-				answer.push("14");
-				answer.push("15");
-				answer.push("16");
-				answer.push("17");
-				answer.push("18");
-				answer.push("19");
-				answer.push("20");
+				var answers = [];
+				answers.push("1");
+				answers.push("2");
+				answers.push("3");
+				answers.push("4");
+				answers.push("5");
+				answers.push("6");
+				answers.push("7");
+				answers.push("8");
+				answers.push("9");
+				answers.push("10");
+				answers.push("11");
+				answers.push("12");
+				answers.push("13");
+				answers.push("14");
+				answers.push("15");
+				answers.push("16");
+				answers.push("17");
+				answers.push("18");
+				answers.push("19");
+				answers.push("20");
 				let index = Math.floor((Math.random() * answer.length));
-				let message = answer[index];
+				let answer = answers[index];
 
-				message.reply("Answer number " + message + ", won " + toPay + " retro coins!");
+				message.reply("Answer number " + answer + ", won " + toPay + " retro coins!");
 
 				foundObj.save(function(err, updatedObj){
 				if(err)
