@@ -79,7 +79,7 @@ function idle_repeat(){
 
 bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
-  bot.user.setActivit("за порядком в Retro Valley", {type: "WATCHING"});
+ // bot.user.setActivit("за порядком в Retro Valley", {type: "WATCHING"});
   idle_repeat();
 });
 
