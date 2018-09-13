@@ -27,15 +27,42 @@ module.exports.run = async (bot, message, args) => {
 			if (!foundObj)
 				console.log("Something stange happend");
 			else {
+
 				let toPay = random(45, 300);
 				let newCash = foundObj.retrocoinCash + toPay;
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
+
+				var answer = [];
+				answer.push("1");
+				answer.push("2");
+				answer.push("3");
+				answer.push("4");
+				answer.push("5");
+				answer.push("6");
+				answer.push("7");
+				answer.push("8");
+				answer.push("9");
+				answer.push("10");
+				answer.push("11");
+				answer.push("12");
+				answer.push("13");
+				answer.push("14");
+				answer.push("15");
+				answer.push("16");
+				answer.push("17");
+				answer.push("18");
+				answer.push("19");
+				answer.push("20");
+				let index = Math.floor((Math.random() * answer.length));
+				let message = answer[index];
+
 				foundObj.save(function(err, updatedObj){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы заработали ${toPay} ретриков!`);
+				return message.reply("Answer number " + message + ", won " + toPay " retro coins!");
+//				return message.reply(`вы заработали ${toPay} ретриков!`);
 			}
 		}
 	});
