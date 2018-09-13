@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
   if(!tovmute)
     return message.reply("пользователь не существует!");
-  if(tovmute.hasPermission("MANAGE_MESSAGES"))
+  if(tovmute.hasPermission("MANAGE_ROLES"))
     return message.reply("этот пользователь не может быть замучен!");
   if(!vmutetime)
     return message.reply("вы не указали время мута!");
