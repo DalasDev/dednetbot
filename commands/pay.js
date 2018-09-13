@@ -9,7 +9,7 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function send_money(payed_id, toPay){
+function send_money(payed_id, toPay, message){
 	console.log("DB6");
 	var user_obj = User.findOne({
 		userID: payed_id 
@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
 					console.log("DB5");
-					send_money(payed.id, toPay);
+					send_money(payed.id, toPay, message);
 					console.log("DB9");
 					foundObj.retrocoinCash = newCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
