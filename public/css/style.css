@@ -1,8 +1,60 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+@font-face{
+
+font-family: 'YorkWhiteLetter';
+
+src: url('../fonts/yorkwhiteletter.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+@font-face{
+
+font-family: 'RetroRocket';
+
+src: url('../fonts/RetroRocket.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+@font-face{
+
+font-family: 'Good Chair';
+
+src: url('../fonts/9535.ttf') format('truetype');
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
 body {
   background: #fff;
   overflow-x: hidden;
   text-align: center;
+}
+
+.Text1{
+  font-family: RetroRocket;
+  text-align: center;
+  padding-top: 170px;
+  font-size: 80px;
+  color: #101010;
+}
+
+.Text2{
+  font-family: RetroRocket;
+  text-align: center;
+  font-size: 50px;
+  color: #101010;
 }
 
 .background {
