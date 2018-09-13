@@ -10,7 +10,7 @@ function isNumeric(value) {
 }
 
 function send_money(payed, toPay, message){
-	console.log("DB6");
+	
 	var user_obj = User.findOne({
 		userID: payed.id 
 	}, function (err, foundObj) {
@@ -18,11 +18,9 @@ function send_money(payed, toPay, message){
 			console.log("Error on database findOne: " + err);
 		}
 		else {
-			console.log("DB7");
 			if (!foundObj)
 				console.log("Something stange happend");
 			else {
-				console.log("DB8");
 				let newCash = foundObj.retrocoinCash + toPay;
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
@@ -43,29 +41,27 @@ module.exports.run = async (bot, message, args) => {
 	if (!payed)
 		return message.reply("пользователь не найден / не указан!");
 
-	console.log("DB1");
-
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
-		console.log("DB2");
+		
 		var user_obj = User.findOne({
 			userID: message.member.id 
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
-				console.log("DB3");
+				
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					console.log("DB4");
+					
 					var actCash = foundObj.retrocoinCash;
 					var toPay = Number(args[1]);
 					var newCash = actCash - toPay;
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
-					console.log("DB5");
+					
 					send_money(payed, toPay, message);
-					console.log("DB9");
+					
 					foundObj.retrocoinCash = newCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 
