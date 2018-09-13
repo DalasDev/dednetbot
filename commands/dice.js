@@ -54,7 +54,7 @@ module.exports.run = async (bot, message, args) => {
 									return message.channel.send("...и вылетает " + result + "! Ты только что выиграл " + won + "ⓟ! Поздравляю :drum:");
 								}
 								else
-									return message.channel.send("...и вылетает... " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
+									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
 						    }, 3000);
   						}
   						else
