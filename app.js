@@ -79,7 +79,12 @@ function idle_repeat(){
 
 bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
-  bot.user.setActivity('RetroValley', {type: 'WATCHING'});
+  bot.user.setPresence({
+    game: {
+      name: 'test',
+      type: 0
+    }
+  });
   idle_repeat();
 });
 
