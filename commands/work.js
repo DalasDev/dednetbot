@@ -57,7 +57,7 @@ module.exports.run = async (bot, message, args) => {
 				answers.push("18");
 				answers.push("19");
 				answers.push("20");
-				let index = Math.floor((Math.random() * answer.length));
+				let index = Math.floor((Math.random() * answers.length));
 				let answer = answers[index];
 
 				message.reply("Answer number " + answer + ", won " + toPay + " retro coins!");
