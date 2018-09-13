@@ -9,10 +9,10 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function send_money(payed_id, toPay, message){
+function send_money(payed, toPay, message){
 	console.log("DB6");
 	var user_obj = User.findOne({
-		userID: payed_id 
+		userID: payed.id 
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -30,7 +30,7 @@ function send_money(payed_id, toPay, message){
 				if(err)
 					console.log(err);
 				});
-				return message.reply("Вы отдали " + toPay + " ретриков!");
+				return message.reply(`вы перевели ${payed.id} ${toPay} ретриков!`);
 			}
 		}
 	});
@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
 					console.log("DB5");
-					send_money(payed.id, toPay, message);
+					send_money(payed, toPay, message);
 					console.log("DB9");
 					foundObj.retrocoinCash = newCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
