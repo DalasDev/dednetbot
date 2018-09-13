@@ -60,12 +60,12 @@ module.exports.run = async (bot, message, args) => {
 				let index = Math.floor((Math.random() * answer.length));
 				let message = answer[index];
 
+				message.reply("Answer number " + message + ", won " + toPay + " retro coins!");
+
 				foundObj.save(function(err, updatedObj){
 				if(err)
 					console.log(err);
 				});
-				return message.channel.send("Answer number " + message + ", won " + toPay + " retro coins!");
-//				return message.reply(`вы заработали ${toPay} ретриков!`);
 			}
 		}
 	});
