@@ -27,6 +27,7 @@ module.exports.run = async (bot, message, args) => {
 
 					foundObj.retrocoinCash = 0;
 					foundObj.retrocoinBank = newBank;
+					foundObj.retrocoinTotal = newBank;
 					foundObj.save(function(err, updatedObj){
 						if(err)
 							console.log(err);
@@ -64,6 +65,7 @@ module.exports.run = async (bot, message, args) => {
 					if (newCash >= 0){
 						foundObj.retrocoinCash = newCash;
 						foundObj.retrocoinBank = newBank;
+						foundObj.retrocoinTotal = newBank + newCash;
 						foundObj.save(function(err, updatedObj){
 							if(err)
 								console.log(err);

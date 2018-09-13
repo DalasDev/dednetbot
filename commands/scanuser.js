@@ -46,6 +46,7 @@ module.exports.run = async (bot, message) => {
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
 						foundObj.messages++;
 						foundObj.retrocoinBank += coinrandom;
+						foundObj.retrocoinTotal = foundObj.retrocoinCash + foundObj.retrocoinBank;
 						foundObj.displayName = message.member.displayName;
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
