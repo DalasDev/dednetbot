@@ -11,6 +11,9 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 	
+	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
+	if(!message.member.hasPermission("MANAGE_ROLES"))
+		return;
 
 	if (isNumeric(args[0]) && isNumeric(args[1])){
 		var user_obj = User.findOne({
