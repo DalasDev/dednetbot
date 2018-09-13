@@ -10,6 +10,7 @@ function isNumeric(value) {
 }
 
 function send_money(payed_id, toPay){
+	console.log("DB6");
 	var user_obj = User.findOne({
 		userID: payed_id 
 	}, function (err, foundObj) {
@@ -17,9 +18,11 @@ function send_money(payed_id, toPay){
 			console.log("Error on database findOne: " + err);
 		}
 		else {
+			console.log("DB7");
 			if (!foundObj)
 				console.log("Something stange happend");
 			else {
+				console.log("DB8");
 				let newCash = foundObj.retrocoinCash + toPay;
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
@@ -34,43 +37,52 @@ function send_money(payed_id, toPay){
 
 module.exports.run = async (bot, message, args) => {
 
-// 	var payed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-// 	if (!payed)
-// 		return message.reply("пользователь не найден / не указан!");
+	var payed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-// 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
-// 		var user_obj = User.findOne({
-// 			userID: message.member.id 
-// 		}, function (err, foundObj) {
-// 			if (err)
-// 				console.log("Error on database findOne: " + err);
-// 			else {
-// 				if (!foundObj)
-// 					console.log("Something stange happend");
-// 				else {
+	if (!payed)
+		return message.reply("пользователь не найден / не указан!");
+
+	console.log("DB1");
+
+	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
+		console.log("DB2");
+		var user_obj = User.findOne({
+			userID: message.member.id 
+		}, function (err, foundObj) {
+			if (err)
+				console.log("Error on database findOne: " + err);
+			else {
+				console.log("DB3");
+				if (!foundObj)
+					console.log("Something stange happend");
+				else {
 					
-// 					var actCash = foundObj.retrocoinCash;
-// 					var toPay = Number(args[1]);
-// 					var newCash = actCash - toPay;
+					console.log("DB4");
+
+					var actCash = foundObj.retrocoinCash;
+					var toPay = Number(args[1]);
+					var newCash = actCash - toPay;
 					
-// 					if (newCash < 0)
-// 						return message.reply("у тебя нехватка нала для такой операции!");
+					if (newCash < 0)
+						return message.reply("у тебя нехватка нала для такой операции!");
 
-// 					send_money(payed.id, toPay);
+					console.log("DB5");
+					send_money(payed.id, toPay);
+					console.log("DB9");
+					foundObj.retrocoinCash = newCash;
+					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 
-// 					foundObj.retrocoinCash = newCash;
-// 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
-
-// 					foundObj.save(function(err, updatedObj){
-// 					if(err)
-// 						console.log(err);
-// 					})
-// 				}
-// 			}
-// 		});
-// 	}
-// 	else
-// 		return message.reply("чеееее :thinking:");
+					foundObj.save(function(err, updatedObj){
+					if(err)
+						console.log(err);
+					})
+				}
+			}
+		});
+		console.log("DB0");
+	}
+	else
+		return message.reply("чеееее :thinking:");
 }
 
 module.exports.help = {
