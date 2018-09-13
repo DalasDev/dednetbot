@@ -80,7 +80,7 @@ function idle_repeat(){
 bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
   console.log("ALEXIS: " + bot.user);
-  bot.user.setActivity("за порядком в Retro Valley", {type: "WATCHING"});
+  client.user.setActivity("за порядком в Retro Valley", {type: "WATCHING"});
   idle_repeat();
 });
 
