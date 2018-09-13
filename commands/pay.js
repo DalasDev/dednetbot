@@ -28,7 +28,7 @@ function send_money(payed, toPay, message){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы перевели ${payed.id} ${toPay} ретриков!`);
+				return message.reply(`вы перевели ${payed} ${toPay} ретриков!`);
 			}
 		}
 	});
