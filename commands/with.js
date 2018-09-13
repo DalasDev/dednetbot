@@ -86,7 +86,7 @@ module.exports.run = async (bot, message, args) => {
 		});
 	}
 	else
-		return message.reply("Чеееее :thinking:");
+		return message.reply("чеееее :thinking:");
 }
 
 module.exports.help = {

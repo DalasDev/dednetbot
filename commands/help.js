@@ -19,7 +19,10 @@ module.exports.run = async (bot, message, args) => {
 	.addField("^serverinfo", "Информация о сервере", true)
 	.addField("^report (@user) (Причина)", "Отправляет жалобу в скрытый канал", true)
 	.addField("^roll (MIX-MAX)", "Кинуть 🎲 между X и Y", true)
-	.addField("^money", "Показать количество Ретриков", true)
+	.addField("^money", "Показать количество ретриков", true)
+	.addField("^with X/all", "Показать количество ретриков", true)
+	.addField("^dep X/all", "Показать количество ретриков", true)
+	.addField("^dice 100+ 1-6", "Игра в кости, ставки от 100 ретриков", true)
 	.setFooter("Продолжение следует...", "")
 	.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
