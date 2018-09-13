@@ -61,7 +61,7 @@ module.exports.run = async (bot, message, args) => {
 				if(err)
 					console.log(err);
 				});
-				return message.reply("Answer number " + message + ", won " + toPay + " retro coins!");
+				return message.channel.send("Answer number " + message + ", won " + toPay + " retro coins!");
 //				return message.reply(`вы заработали ${toPay} ретриков!`);
 			}
 		}
