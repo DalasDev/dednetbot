@@ -81,8 +81,8 @@ bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
   bot.user.setPresence({
     game: {
-      name: 'test',
-      type: 0
+      name: "за Retro Valley!",
+      type: 3
     }
   });
   idle_repeat();
