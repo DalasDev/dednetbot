@@ -18,6 +18,7 @@ function random(min, max) {
 module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
+	var simpleIcon = bot.emojis.find("name", "this_is_simple");
 
 	var user_obj = User.findOne({
 		userID: message.member.id
@@ -35,7 +36,7 @@ module.exports.run = async (bot, message, args) => {
 				var timestampLimit = Math.floor(foundObj.lastWork/1000) + 900;
 
 				if (timestampLimit > timestamp)
-					return message.reply("Ты слишком устал... Отдохни еще немного.");
+					return message.reply(`ты слишком устал... Отдохни еще немного, работать можно раз в 15 минут ${simpleIcon}`);
 
 				let toPay = random(75, 200);
 				let newCash = foundObj.retrocoinCash + toPay;
