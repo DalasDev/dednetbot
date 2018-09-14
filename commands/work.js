@@ -17,9 +17,6 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-	console.log("1 " + message);
-	console.log("2 " + message.channel);
-
 	var user_obj = User.findOne({
 		userID: message.member.id  
 	}, function (err, foundObj) {
