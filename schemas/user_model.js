@@ -13,6 +13,7 @@ var userSchema = new mongoose.Schema({
 	retrocoinTotal: Number,
 	lastDice: Date,
 	lastScan: Date,
+	lastWork: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);
