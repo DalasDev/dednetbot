@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
 				if (timestampLimit > timestamp)
 					return message.reply("Ты слишком устал... Отдохни еще немного.");
 
-				let toPay = random(50, 300);
+				let toPay = random(75, 200);
 				let newCash = foundObj.retrocoinCash + toPay;
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
