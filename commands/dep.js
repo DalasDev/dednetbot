@@ -11,6 +11,8 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
+	var retricIcon = bot.emojis.find("name", "retric");
+
 	if (args[0] === "all"){
 		var user_obj = User.findOne({
 			userID: message.member.id

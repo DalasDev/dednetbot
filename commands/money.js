@@ -7,6 +7,8 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
+	var retricIcon = bot.emojis.find("name", "retric");
+
 	let toScan = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
 	if(!toScan){
@@ -21,8 +23,8 @@ module.exports.run = async (bot, message, args) => {
 				const embed = new Discord.RichEmbed()
 				.setTitle("Личный счет " + message.member.displayName)
 				.setColor("#0000FF")
-				.addField("Наличкой", foundObj.retrocoinCash + "  :retric:  (ретриков)", true)
-				.addField("В банке", foundObj.retrocoinBank + "  :retric:  (ретриков)", true)
+				.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon}`, true)
+				.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon}`, true)
 				.setThumbnail(avatar)
 
 				message.channel.send({embed});
@@ -40,8 +42,8 @@ module.exports.run = async (bot, message, args) => {
 				const embed = new Discord.RichEmbed()
 				.setTitle("Личный счет " + toScan.displayName)
 				.setColor("#0000FF")
-				.addField("Наличкой", foundObj.retrocoinCash + "  :retric:  (ретриков)", true)
-				.addField("В банке", foundObj.retrocoinBank + "  :retric:  (ретриков)", true)
+				.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon}`, true)
+				.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon}`, true)
 				.setThumbnail(avatar)
 
 				message.channel.send({embed});

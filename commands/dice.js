@@ -10,6 +10,8 @@ function isNumeric(value) {
 }
 
 module.exports.run = async (bot, message, args) => {
+
+	var retricIcon = bot.emojis.find("name", "retric");
 	
 	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
 	// if(!message.member.hasPermission("MANAGE_ROLES"))

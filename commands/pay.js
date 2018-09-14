@@ -11,6 +11,8 @@ function isNumeric(value) {
 
 function send_money(payed, toPay, message){
 	
+	var retricIcon = bot.emojis.find("name", "retric");
+	
 	var user_obj = User.findOne({
 		userID: payed.id 
 	}, function (err, foundObj) {

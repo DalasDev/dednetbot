@@ -6,6 +6,8 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
+  var retricIcon = bot.emojis.find("name", "retric");
+
   // if(!message.member.hasPermission("MANAGE_MESSAGES"))
   //   return;
 
