@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
 	if (args[0] === "all"){
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -37,10 +37,10 @@ module.exports.run = async (bot, message, args) => {
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 
 					const embed = new Discord.RichEmbed()
-					.setTitle("Все ⓟ (ретрики) были переведены в банк! Новый баланс " + message.member.displayName)
+					.setTitle("Все  :retric:  (ретрики) были переведены в банк! Новый баланс " + message.member.displayName)
 					.setColor("#0000FF")
-					.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
-					.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
+					.addField("Наличкой", foundObj.retrocoinCash + "  :retric:  (ретриков)", true)
+					.addField("В банке", foundObj.retrocoinBank + "  :retric:  (ретриков)", true)
 
 					message.channel.send({embed});
 				}
@@ -49,7 +49,7 @@ module.exports.run = async (bot, message, args) => {
 	}
 	else if (isNumeric(args[0])){
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -75,13 +75,13 @@ module.exports.run = async (bot, message, args) => {
 						const embed = new Discord.RichEmbed()
 						.setTitle(toDep + " ретриков переведено в банк! Новый баланс " + message.member.displayName)
 						.setColor("#0000FF")
-						.addField("Наличкой", foundObj.retrocoinCash + " ⓟ (ретриков)", true)
-						.addField("В банке", foundObj.retrocoinBank + " ⓟ (ретриков)", true)
+						.addField("Наличкой", foundObj.retrocoinCash + "  :retric:  (ретриков)", true)
+						.addField("В банке", foundObj.retrocoinBank + "  :retric:  (ретриков)", true)
 
 						message.channel.send({embed});
 					}
 					else {
-						return message.channel.send("У тебя разве хватает ⓟ (ретриков) на такое действие? :thinking:");
+						return message.channel.send("У тебя разве хватает  :retric:  (ретриков) на такое действие? :thinking:");
 					}
 				}
 			}
