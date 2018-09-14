@@ -83,7 +83,7 @@ module.exports.run = async (bot, message, args) => {
 						message.channel.send({embed});
 					}
 					else {
-						return message.channel.send(`У тебя разве хватает ${retric} (ретриков) на такое действие? :thinking:);
+						return message.channel.send(`У тебя разве хватает ${retric} (ретриков) на такое действие? :thinking:`);
 					}
 				}
 			}
