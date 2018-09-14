@@ -10,7 +10,7 @@ function isNumeric(value) {
 }
 
 function send_money(payed, toPay, message){
-	
+
 	var retricIcon = bot.emojis.find("name", "retric");
 	
 	var user_obj = User.findOne({
@@ -30,7 +30,7 @@ function send_money(payed, toPay, message){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы перевели ${payed} ${toPay} ретриков!`);
+				return message.reply(`вы перевели ${payed} ${toPay}${retricIcon}!`);
 			}
 		}
 	});
