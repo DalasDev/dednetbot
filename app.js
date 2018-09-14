@@ -60,7 +60,7 @@ fs.readdir("./commands/", (err, files) => {
 })
 
 function idle_repeat(){
-  console.log("[app.js] New CronJob started!");
+  console.log("[app.js] New CronJob started");
 
   var cronindex = 1;
   var CronJob = require('cron').CronJob;
