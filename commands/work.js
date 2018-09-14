@@ -18,7 +18,7 @@ function random(min, max) {
 module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	var simpleIcon = bot.emojis.find("name", "this_is_simple");
+	var simpleIcon = bot.emojis.find("name", "2zgif_think");
 
 	var user_obj = User.findOne({
 		userID: message.member.id
