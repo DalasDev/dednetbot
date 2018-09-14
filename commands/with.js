@@ -4,8 +4,8 @@ const ms = require("ms");
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
-var bot = new Discord.Client({disableEveryone: true});
-var retricIcon = bot.emojis.find("name", "retric");
+// var bot = new Discord.Client({disableEveryone: true});
+// var retricIcon = bot.emojis.find("name", "retric");
 
 function isNumeric(value) {
 	return /^\d+$/.test(value);
