@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
   .setColor("#fc6400")
 
   repchannel.send({embed});
-  
+
   message.channel.send(`Есть, капитан! <@${tovunmute.id}> снова может говорить! :ok_hand: `);
 
 }
