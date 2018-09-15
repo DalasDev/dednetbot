@@ -128,6 +128,7 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
+      console.log("db1");
       commandfile.run(bot, message, args);
     }
   }
