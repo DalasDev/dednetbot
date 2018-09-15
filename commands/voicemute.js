@@ -6,7 +6,7 @@ const ms = require("ms");
 module.exports.run = async (bot, message, args) => {
 
   let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let vmutetime = message.guild.members.get(args[1]);
+  let vmutetime = args.join(" ").slice(22);
   let vmreason = args[2];
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
