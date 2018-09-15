@@ -118,9 +118,9 @@ bot.on("message", async message => {
     }
   }
   else if (message.content.charAt(0) === "?" && message.content.charAt(1) === "s" && message.content.charAt(2) === "e"
-   && message.content.charAt(3) === "l" && message.content.charAt(4) === "l" && message.content.charAt(4) === "-" 
-   && message.content.charAt(4) === "i" && message.content.charAt(4) === "t" && message.content.charAt(4) === "e" 
-   && message.content.charAt(4) === "m"){
+   && message.content.charAt(3) === "l" && message.content.charAt(4) === "l" && message.content.charAt(5) === "-" 
+   && message.content.charAt(6) === "i" && message.content.charAt(7) === "t" && message.content.charAt(8) === "e" 
+   && message.content.charAt(9) === "m"){
     let messageArray = message.content.split(" ");
     let cmd = "sellscan";
     let args = messageArray.slice(1);
