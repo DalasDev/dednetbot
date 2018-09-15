@@ -7,6 +7,7 @@ module.exports.run = async (bot, message, args) => {
 
   let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let vmutetime = args[1];
+  let vmreason = args[2];
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
@@ -27,6 +28,18 @@ module.exports.run = async (bot, message, args) => {
 		errorschannel.send("Канал репортов не существует!");
   if(!repchannel)
   	return message.channel.send("Канал репортов не существует!");
+
+
+    const embed = new Discord.RichEmbed()
+    .setTitle(":star: Отчет о войсмуте :star:")
+    .setColor("#fc6400")
+    .addField("Жертва", `<@${tovmute.id}>`, true)
+    .addField("Мут выдан в", message.channel, true)
+    .addField("Мут выдал", message.member, true)
+    .addField("Причина", vmreason, true);
+
+    repchannel.send({embed});
+
   await(tovmute.setMute(true));
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
