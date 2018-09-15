@@ -39,10 +39,10 @@ module.exports.run = async (bot, message, args) => {
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 
 					const embed = new Discord.RichEmbed()
-					.setTitle(`Все ${retric} (ретрики) сняты с банковского счета! Новый баланс ${message.member.displayName}`)
+					.setTitle(`Все ${retricIcon} (ретрики) сняты с банковского счета! Новый баланс ${message.member.displayName}`)
 					.setColor("#0000FF")
-					.addField("Наличкой", `${foundObj.retrocoinCash} ${retric} (ретриков)`, true)
-					.addField("В банке", `${foundObj.retrocoinBank} ${retric} (ретриков)`, true)
+					.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon} (ретриков)`, true)
+					.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon} (ретриков)`, true)
 
 					message.channel.send({embed});
 				}
@@ -77,13 +77,13 @@ module.exports.run = async (bot, message, args) => {
 						const embed = new Discord.RichEmbed()
 						.setTitle(toWith + " ретриков снято со счета! Новый баланс " + message.member.displayName)
 						.setColor("#0000FF")
-						.addField("Наличкой", `${foundObj.retrocoinCash} ${retric} (ретриков)`, true)
-						.addField("В банке", `${foundObj.retrocoinBank} ${retric} (ретриков)`, true)
+						.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon} (ретриков)`, true)
+						.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon} (ретриков)`, true)
 
 						message.channel.send({embed});
 					}
 					else {
-						return message.channel.send(`У тебя разве хватает ${retric} (ретриков) на такое действие? :thinking:`);
+						return message.channel.send(`У тебя разве хватает ${retricIcon} (ретриков) на такое действие? :thinking:`);
 					}
 				}
 			}
