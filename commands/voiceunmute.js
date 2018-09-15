@@ -24,12 +24,11 @@ module.exports.run = async (bot, message, args) => {
 
   await(tovunmute.setMute(false));
 
-  repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
   const embed = new Discord.RichEmbed()
-  .setTitle(`ОТЧЕТ О РАЗМУТЕ АДМИНОМ`)
-  .addField("Размученый пользователь:", `<@${tovunmute.id}>`, true)
-  .addField("Пользователя размутил:", `${message.member}`, true)
+  .setTitle(`:star: Отчет о размуте админом :star:`)
+  .addField("Размученый:", `<@${tovunmute.id}>`, true)
+  .addField("Размутил:", `${message.member}`, true)
   .setColor("#1BA364")
 
   repchannel.send({embed});
