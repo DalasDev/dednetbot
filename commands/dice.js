@@ -12,7 +12,7 @@ function isNumeric(value) {
 module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	var wut = bot.emojis.find("name", "wut~1");
+	var nopeIcon = bot.emojis.find("name", "nope");
 	
 	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
 	// if(!message.member.hasPermission("MANAGE_ROLES"))
@@ -69,7 +69,7 @@ module.exports.run = async (bot, message, args) => {
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
 					else if (Number(args[1]) < 1 || Number(args[1]) > 6)
-						return message.reply(`у куба всего 6 сторон, дядя ${wut}`);
+						return message.reply(`у куба всего 6 сторон, дядя ${nopeIcon}`);
 				}
 			}
 		});
