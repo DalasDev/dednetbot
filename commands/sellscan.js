@@ -7,8 +7,6 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 module.exports.run = async (bot, message, args) => {
 
-  console.log("DB1");
-
   let warnchannel = message.guild.channels.find(`name`, "🌘reports_bots");
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
