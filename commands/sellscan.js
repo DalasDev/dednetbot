@@ -11,14 +11,15 @@ module.exports.run = async (bot, message, args) => {
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
   let sicon = message.guild.iconURL;
+  var wut = bot.emojis.find("name", "wut");
 
   const sellMessage = args.join(" ");
 
   const embed = new Discord.RichEmbed()
-  .setTitle("Возможный багоюзер")
+  .setTitle(`Возможный абуз ${wut}`)
   .setColor("#ff0000")
   .addField("Возможный нарушитель", message.member, true)
-  .addField("Попытался юзануть команду в", message.channel, true)
+  .addField("Канал", message.channel, true)
   .addField("Полный текст", sellMessage, true);
 
   if(warnchannel){

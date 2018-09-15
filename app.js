@@ -130,6 +130,17 @@ bot.on("message", async message => {
       commandfile.run(bot, message, args);
     }
   }
+  else if (message.content.charAt(0) === "?" && message.content.charAt(1) === "s" && message.content.charAt(2) === "e"
+   && message.content.charAt(3) === "l" && message.content.charAt(4) === "l"){
+    let messageArray = message.content.split(" ");
+    let cmd = "!sellscan";
+    let args = messageArray.slice(1);
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+
+    if(commandfile){
+      commandfile.run(bot, message, args);
+    }
+  }
   else {
     let cmd = "scanuser";
     let commandfile = bot.commands.get(cmd);

@@ -9,7 +9,7 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function send_money(payed, toPay, message){
+function send_money(payed, toPay, message, bot){
 
 	var retricIcon = bot.emojis.find("name", "retric");
 	
@@ -62,7 +62,7 @@ module.exports.run = async (bot, message, args) => {
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
 					
-					send_money(payed, toPay, message);
+					send_money(payed, toPay, message, bot);
 					
 					foundObj.retrocoinCash = newCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
