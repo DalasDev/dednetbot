@@ -6,10 +6,10 @@ module.exports.run = async (bot, message, args) => {
 	if(!message.member.hasPermission("MANAGE_ROLES"))
 		return;
 	
-	const voiceChannel = msg.member.voiceChannel;
+	const voiceChannel = message.member.voiceChannel;
 			
 	if (!voiceChannel || voiceChannel.type !== 'voice')
-		return msg.reply('I couldn\'t connect to your voice channel...');
+		return message.reply('I couldn\'t connect to your voice channel...');
 	voiceChannel.join().then(connection => console.log('Connected')).catch(console.log(err));
 }
 
