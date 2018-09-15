@@ -45,7 +45,6 @@ module.exports.run = async (bot, message, args) => {
   await(tovmute.setMute(true));
 
   message.channel.send(`Понял, принял! <@${tovmute.id}> теперь немой на ${ms(ms(vmutetime))}! :ok_hand:`);
-  repchannel.send(`Пользователю <@${tovmute.id}> был отключен голос на ${ms(ms(vmutetime))}! :ok_hand:`);
 
   setTimeout(function(){
       tovmute.setMute(false);
