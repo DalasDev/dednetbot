@@ -6,7 +6,6 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
-var FFMPEG = require('ffmpeg');
 var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
