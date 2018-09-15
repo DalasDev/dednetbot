@@ -23,6 +23,9 @@ module.exports.run = async (bot, message, args) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
+					if (foundObj.actCash == 0){
+						return message.reply("чеееее :thinking: У тебя нету ретриков на руках!");
+					}
 					var actBank = foundObj.retrocoinBank;
 					var actCash = foundObj.retrocoinCash;
 					var newBank = actCash + actBank;
