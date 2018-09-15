@@ -25,6 +25,13 @@ module.exports.run = async (bot, message, args) => {
   await(tovunmute.setMute(false));
 
   repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
+
+  const embed = new Discord.RichEmbed()
+  .setTitle(`Голос <@${tovunmute.id}> был размучен администратором ${message.member}!`)
+  .setColor("#fc6400")
+
+  repchannel.send({embed});
+  
   message.channel.send(`Есть, капитан! <@${tovunmute.id}> снова может говорить! :ok_hand: `);
 
 }
