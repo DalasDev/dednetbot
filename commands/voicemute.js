@@ -5,6 +5,8 @@ const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
 
+  var wutIcon = bot.emojis.find("name", "wut");
+
   let tovmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let vmutetime = args[1];
   let vmreason = args.join(" ").slice(22);
@@ -15,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return;
   if(!message.member.hasPermission("MOVE_MEMBERS", "ADMINISTRATOR"))
-    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:. ");
+    return message.channel.send(`Похоже у тебя недостаточно на это прав, дружище ${wutIcon}`);
   if(!tovmute)
     return message.reply("пользователь не существует!");
   if(tovmute.hasPermission("MANAGE_ROLES"))

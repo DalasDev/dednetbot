@@ -13,6 +13,8 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
+  var wutIcon = bot.emojis.find("name", "wut");
+
   let reason = "";
   reason = args.join(" ").slice(22);
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -30,9 +32,9 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MOVE_MEMBERS"))
     return message.reply("погоди-ка, у тебя нехватка прав :eyes:");
   if(!wUser)
-    return message.reply("пользователь не существует :thinking: ");
+    return message.reply(`пользователь не существует ${wutIcon}`);
   if(wUser.hasPermission("MANAGE_ROLES"))
-    return message.reply("не, этого дядьку заварнить не получится :thinking: ");
+    return message.reply(`не, этого дядьку заварнить не получится ${wutIcon}`);
   if(!muterole)
     return errorschannel.send("роль для нарушителей не найдена!");
   if(!errorschannel)
