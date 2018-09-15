@@ -27,8 +27,10 @@ module.exports.run = async (bot, message, args) => {
   repchannel.send(`Голос <@${tovunmute.id}> был размучен администратором!`);
 
   const embed = new Discord.RichEmbed()
-  .setTitle(`Голос <@${tovunmute.id}> был размучен администратором ${message.member}!`)
-  .setColor("#fc6400")
+  .setTitle(`ОТЧЕТ О РАЗМУТЕ АДМИНОМ`)
+  .addField("Размученый пользователь:", `<@${tovunmute.id}>`, true)
+  .addField("Пользователя размутил:", `${message.member}`, true)
+  .setColor("#1BA364")
 
   repchannel.send({embed});
 

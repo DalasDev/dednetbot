@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
   //mongoose add
 
   console.log("mongoDB connect");
-  
+
   var myData = new warnUser({
     userID: wUser.id,
     userNickname: wUser.displayName,

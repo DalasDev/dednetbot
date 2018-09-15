@@ -8,7 +8,7 @@ var User = require('./../schemas/user_model.js');
 module.exports.run = async (bot, message) => {
 
 	var user_obj = User.findOne({
-		userID: message.member.id 
+		userID: message.member.id
 	}, function (err, foundObj) {
 		if (err)
 			console.log("Error on database findOne: " + err);

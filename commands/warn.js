@@ -43,7 +43,7 @@ module.exports.run = async (bot, message, args) => {
     errorschannel.send("Канал репортов не существует!");
   if(!warnchannel)
     return message.channel.send("Канал репортов не существует!");
-  
+
   var myData = new Warn({
     userID: wUser.id,
     userNickname: wUser.displayName,
@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
   });
 
   var user_obj = User.findOne({
-    userID: wUser.id 
+    userID: wUser.id
   }, async function (err, foundObj) {
     if (err)
       console.log("Error on database findOne: " + err);
