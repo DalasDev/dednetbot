@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
 					var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 
 					const embed = new Discord.RichEmbed()
-					.setTitle(`Все  ${retricIcon}  (ретрики) были переведены в банк! Новый баланс ` + message.member.displayName)
+					.setTitle(`Все ретрики были переведены в банк! Новый баланс ` + message.member.displayName)
 					.setColor("#0000FF")
 					.addField("Наличкой", foundObj.retrocoinCash + `  ${retricIcon}  `, true)
 					.addField("В банке", foundObj.retrocoinBank + `  ${retricIcon}  `, true)
@@ -83,7 +83,7 @@ module.exports.run = async (bot, message, args) => {
 						message.channel.send({embed});
 					}
 					else {
-						return message.channel.send(`У тебя разве хватает  ${retricIcon}  (ретриков) на такое действие? :thinking:`);
+						return message.channel.send(`У тебя разве хватает ${retricIcon} (ретриков) на такое действие? :thinking:`);
 					}
 				}
 			}
