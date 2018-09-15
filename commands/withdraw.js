@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					if (foundObj.actBank == 0){
+					if (foundObj.retrocoinBank == 0){
 						return message.reply("чеееее :thinking: У тебя в банке пусто!");
 					}
 					var actBank = foundObj.retrocoinBank;
