@@ -23,7 +23,6 @@ module.exports.run = async (bot, message, args) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					console.log("Found obj: " + JSON.stringify(foundObj));
 					if (foundObj.retrocoinBank === 0)
 						message.reply("чеееее :thinking: У тебя в банке пусто!");
 					else {
