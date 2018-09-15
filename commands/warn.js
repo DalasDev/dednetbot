@@ -13,6 +13,7 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
+  console.log('warn');
   var wutIcon = bot.emojis.find("name", "wut");
 
   let reason = "";
@@ -24,8 +25,8 @@ module.exports.run = async (bot, message, args) => {
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
+  // if(!message.member.hasPermission("MANAGE_MESSAGES"))
+  //   return;
 
   if(reason === "")
     return message.reply("укажите причину!");
