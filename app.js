@@ -121,6 +121,7 @@ bot.on("message", async message => {
    && message.content.charAt(3) === "l" && message.content.charAt(4) === "l" && message.content.charAt(5) === "-" 
    && message.content.charAt(6) === "i" && message.content.charAt(7) === "t" && message.content.charAt(8) === "e" 
    && message.content.charAt(9) === "m"){
+    console.log("DB0")
     let messageArray = message.content.split(" ");
     let cmd = "sellscan";
     let args = messageArray.slice(1);
