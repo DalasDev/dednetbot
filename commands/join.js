@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 			
 	if (!voiceChannel || voiceChannel.type !== 'voice')
 		return message.reply('I couldn\'t connect to your voice channel...');
-	voiceChannel.join().then(connection => console.log('Connected')).catch(console.log(err));
+	voiceChannel.join().then(connection => console.log('Connected')).catch(console.log("Got an error"));
 }
 
 module.exports.help = {
