@@ -6,8 +6,8 @@ module.exports.run = async (bot, message, args) => {
   let number = args[0];
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
+  // if(!message.member.hasPermission("MANAGE_MESSAGES"))
+  //   return;
 
   message.delete().catch(O_o=>{});
 
