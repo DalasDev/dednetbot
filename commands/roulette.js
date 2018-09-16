@@ -57,8 +57,6 @@ module.exports.run = async (bot, message, args) => {
   								var won = toPlay * 2;
   								newCash = actCash + won;
   							}
-  							else
-  								console.log("player lost");
   							foundObj.retrocoinCash = newCash;
 							foundObj.retrocoinTotal = newCash + foundObj.retrocoinBank;
 							foundObj.lastRoulette = Date.now();
@@ -69,11 +67,11 @@ module.exports.run = async (bot, message, args) => {
 							message.channel.send("Закидываю 🎲 ...");
 							setTimeout(function(){ 
 								if (winner == x){
-									return message.channel.send(`...и вылетает ${r}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
+									return message.channel.send(`...и вылетает ${r} ${args[1]}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
 								}
 								else
 									return message.channel.send("...и вылетает " + r + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
-						    }, 10000);
+						    }, 3000);
   						}
   						else
   							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
