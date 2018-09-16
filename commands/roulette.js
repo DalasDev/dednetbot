@@ -40,12 +40,15 @@ module.exports.run = async (bot, message, args) => {
 						var toPlay = Number(args[0]);
 						var winner = "";
 						if (actCash - toPlay >= 0){
-							if (foundObj.retrocoinCash <= 0){
-								return message.reply("ты попытался робнуть, но у челика проблемы с наличкой")
-							}
+							if (foundObj.retrocoinCash <= 0)
+								return message.reply("ты попытался робнуть, но у челика проблемы с наличкой");
 							var newCash = actCash - toPlay;
 							var min = 1;
   							var max = 36;
+  							if (args[1] == "red")
+  								x = "red";
+  							else
+  								x = "black";
   							var r = Math.floor(Math.random() * (max - min + 1)) + min;
   							if (r == 1 || r == 3 || r == 5 || r == 7 || r == 9 || r == 12 || r == 14 ||
   							 r == 16 || r == 18 || r == 19 || r == 21 || r == 23 || r == 25 || r == 27 || r == 30 || r == 32 || r == 34 || r == 36)
