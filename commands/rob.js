@@ -66,6 +66,8 @@ module.exports.run = async (bot, message, args) => {
 				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
 				var toRob = foundObj.retrocoinCash / 100 * 40;
 				toRob = Math.round(toRob);
+				if (foundObj.retrocoinCash - toRob <= 0)
+					return message.reply("Ты пытаешься робнуть бедняка");
 				var user_obj = User.findOne({
 					userID: message.member.id 
 				}, function (err, foundObj2) {
