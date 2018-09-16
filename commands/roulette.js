@@ -72,7 +72,7 @@ module.exports.run = async (bot, message, args) => {
 									return message.channel.send(`...и вылетает ${r}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
 								}
 								else
-									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
+									return message.channel.send("...и вылетает " + r + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
 						    }, 10000);
   						}
   						else
@@ -80,8 +80,8 @@ module.exports.run = async (bot, message, args) => {
 					}
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
-					else if (Number(args[1]) < 1 || Number(args[1]) > 6)
-						return message.reply(`у куба всего 6 сторон, дядя ${nopeIcon}`);
+					// else if (Number(args[1]) < 1 || Number(args[1]) > 36)
+					// 	return message.reply(`в рулетке можно ставить от 1 до 36, дядя ${nopeIcon}`);
 				}
 			}
 		});
