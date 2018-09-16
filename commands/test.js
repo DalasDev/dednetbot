@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
     },
     title: "Пример юзер инфо",
     description: "(что то о пользевателе)",
+    image: "https://retrobotproject.herokuapp.com/images/purpose.gif",
     fields: [{
       name: "Никнейм",
       value: "(тут может быть никнейм)"
