@@ -8,20 +8,23 @@ module.exports.run = async (bot, message, args) => {
       name: bot.user.username,
       icon_url: bot.user.avatarURL
     },
-    title: "This is an embed",
-    url: "http://google.com",
-    description: "This is a test embed to showcase what they look like and what they can do.",
+    title: "Пример юзер инфо",
+    description: "(что то о пользевателе)",
     fields: [{
-      name: "Fields",
-      value: "They can have different fields with small headlines."
+      name: "Никнейм",
+      value: "(тут может быть никнейм)"
     },
     {
-      name: "Masked links",
-      value: "You can put [masked links](http://google.com) inside of rich embeds."
+      name: "Нарушения",
+      value: "(тут может быть[ссылка](http://www.retro-bot.com) на нарушения прользователя)"
     },
     {
-      name: "Markdown",
-      value: "You can put all the *usual* **__Markdown__** inside of them."
+      name: "Тест статы",
+      value: "```тест:test\nтест2:test2```"
+    },
+    {
+      name: "Разметка",
+      value: "*Разметка* **__Разметка__**"
     }
     ],
     timestamp: new Date(),
