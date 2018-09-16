@@ -14,6 +14,7 @@ var userSchema = new mongoose.Schema({
 	lastDice: Date,
 	lastScan: Date,
 	lastWork: Date,
+	lastRoulette: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);
