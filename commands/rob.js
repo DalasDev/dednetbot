@@ -31,12 +31,13 @@ function rob(message, bot, toRob, robResult, robed){
 				}
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
+				foundObj.lastRob = Date.now();
 				foundObj.save(function(err, updatedObj){
 				if(err)
 					console.log(err);
 				});
 				if(robResult == true)
-					return message.reply(`вы че то там ${robed} ${toRob}${retricIcon}!`);
+					return message.reply(`ты свистнул у ${robed} ${toRob}${retricIcon}!`);
 				else
 					return message.reply(`ты влетел на ${toRob}${retricIcon}!`)
 			}
@@ -65,6 +66,16 @@ module.exports.run = async (bot, message, args) => {
   				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
 				var toRob = foundObj.retrocoinCash / 100 * 40;
 				toRob = Math.round(toRob);
+				var user_obj = User.findOne({
+					userID: message.member.id 
+				}, function (err, foundObj2) {
+					var dateTime = Date.now();
+					var timestamp = Math.floor(dateTime/1000);
+					var timestampLimit = Math.floor(foundObj2.lastDice/1000) + 30;
+					if (timestampLimit > timestamp)
+						return message.reply("эээ, грабь, но не чаще, чем раз в пол минуты...");
+				});
+
 				if (robResult == true){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
