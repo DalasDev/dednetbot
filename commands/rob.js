@@ -61,6 +61,7 @@ module.exports.run = async (bot, message, args) => {
   				var max = 2;
   				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
 				var toRob = foundObj.retrocoinCash / 100 * 40;
+				toRob = Math.round(toRob);
 				if (robResult == true){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
