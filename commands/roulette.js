@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
   							else
   								winner = "black";
   							if (x == winner){
-  								var won = toPlay * 2;
+  								var won = toPlay;
   								newCash = actCash + won;
   							}
   							foundObj.retrocoinCash = newCash;
