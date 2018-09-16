@@ -73,7 +73,7 @@ module.exports.run = async (bot, message, args) => {
 								}
 								else
 									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
-						    }, 3000);
+						    }, 10000);
   						}
   						else
   							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
