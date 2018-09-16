@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  const embed = new Discord.RichEmbed(
-  {
+  message.channel.send({embed: {
     color: 3447003,
     author: {
       name: bot.user.username,
@@ -31,12 +30,10 @@ module.exports.run = async (bot, message, args) => {
     timestamp: new Date(),
     footer: {
       icon_url: bot.user.avatarURL,
-      text: "© автор запроса"
+      text: "© Example"
     }
-  })
-  .setImage("https://retrobotproject.herokuapp.com/images/purpose.gif")
-
-  message.channel.send(embed);
+  }
+});
 
 }
 
