@@ -33,8 +33,8 @@ function rob(message, bot, toRob, robResult, robed){
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 				foundObj.lastRob = Date.now();
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 				if(robResult == true)
 					return message.reply(`ты свистнул у ${robed} ${toRob}${retricIcon}!`);
@@ -62,8 +62,8 @@ module.exports.run = async (bot, message, args) => {
 				console.log("Something stange happend");
 			else {				
 				var min = 1;
-  				var max = 2;
-  				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
+				var max = 2;
+				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
 				var toRob = foundObj.retrocoinCash / 100 * 40;
 				toRob = Math.round(toRob);
 				var user_obj = User.findOne({
@@ -74,21 +74,21 @@ module.exports.run = async (bot, message, args) => {
 					var timestampLimit = Math.floor(foundObj2.lastRob/1000) + 30;
 					if (timestampLimit > timestamp)
 						return message.reply("эээ, грабь, но не чаще, чем раз в пол минуты...");
+					else {
+						if (robResult == true){
+							foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
+							foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+							rob(message, bot, toRob, robResult, robed);
+						}
+						else {
+							rob(message, bot, toRob, robResult, robed);
+						}
+						foundObj.save(function(err, updatedObj){
+							if(err)
+								console.log(err);
+						})
+					}
 				});
-
-				if (robResult == true){
-					foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
-					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					rob(message, bot, toRob, robResult, robed);
-				}
-				else {
-					console.log("Rob failed");
-					rob(message, bot, toRob, robResult, robed);
-				}
-				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
-				})
 			}
 		}
 	});
