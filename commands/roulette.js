@@ -35,11 +35,14 @@ module.exports.run = async (bot, message, args) => {
 					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 30;
 					if (timestampLimit > timestamp)
 						return message.reply("эээ, крути-верти, но не чаще, чем раз в пол минуты...");
-					if ((Number(args[0]) >= 100 && args[1] == "red") || (Number(args[0]) >= 100 && args[1] == "red")){
+					if ((Number(args[0]) >= 100 && args[1] == "red") || (Number(args[0]) >= 100 && args[1] == "black")){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
 						var winner = "";
 						if (actCash - toPlay >= 0){
+							if (foundObj.retrocoinCash <= 0){
+								return message.reply("ты попытался робнуть, но у челика проблемы с наличкой")
+							}
 							var newCash = actCash - toPlay;
 							var min = 1;
   							var max = 36;
