@@ -7,6 +7,10 @@ var User = require('./../schemas/user_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
+	const numberWithCommas = (x) => {
+	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	var retricIcon = bot.emojis.find("name", "retric");
 
 	let toScan = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -21,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 				const embed = new Discord.RichEmbed()
-				.setTitle("Личный счет " + message.member.displayName)
+				.setTitle("Личный счет " + numberWithCommas(message.member.displayName))
 				.setColor("#0000FF")
 				.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon}`, true)
 				.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon}`, true)
