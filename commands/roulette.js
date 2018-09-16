@@ -13,6 +13,8 @@ module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
 	var nopeIcon = bot.emojis.find("name", "nope");
+	var bravoIcon = bot.emojis.find("name", "bravo");
+	var pepeIcon = bot.emojis.find("name", "pepe_hmm");
 
 	if (isNumeric(args[0]) && (args[1])) {
 		var user_obj = User.findOne({
@@ -64,14 +66,13 @@ module.exports.run = async (bot, message, args) => {
 							if(err)
 								console.log(err);
 							});
-							message.channel.send("Закидываю 🎲 ...");
+							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){ 
-								if (winner == x){
-									return message.channel.send(`...и вылетает ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
-								}
+								if (winner == x)
+									return message.reply(`вылетаело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю ${bravoIcon}`);
 								else
-									return message.channel.send("...и вылетает " + r + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
-						    }, 3000);
+									return message.reply(`увы, но вылетаело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+						    }, 10000);
   						}
   						else
   							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
