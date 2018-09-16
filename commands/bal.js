@@ -5,11 +5,11 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 
-module.exports.run = async (bot, message, args) => {
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-	const numberWithCommas = (x) => {
-	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
+module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
 
@@ -24,10 +24,11 @@ module.exports.run = async (bot, message, args) => {
 			else {
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
+				var c = numberWithCommas(foundObj.retrocoinCash);
 				const embed = new Discord.RichEmbed()
-				.setTitle("Личный счет " + numberWithCommas(message.member.displayName))
+				.setTitle("Личный счет " + message.member.displayName)
 				.setColor("#0000FF")
-				.addField("Наличкой", `${foundObj.retrocoinCash} ${retricIcon}`, true)
+				.addField("Наличкой", `${c} ${retricIcon}`, true)
 				.addField("В банке", `${foundObj.retrocoinBank} ${retricIcon}`, true)
 				.setThumbnail(avatar)
 
