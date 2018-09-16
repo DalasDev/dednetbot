@@ -9,6 +9,10 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
@@ -26,11 +30,6 @@ module.exports.run = async (bot, message, args) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
-					// var dateTime = Date.now();
-					// var timestamp = Math.floor(dateTime/1000);
-					// var timestampLimit = Math.floor(foundObj.lastDice/1000) + 30;
-					// if (timestampLimit > timestamp)
-					// 	return message.reply("эээ, крути-верти, но не чаще, чем раз в пол минуты...");
 					if (Number(args[0]) >= 100){
 						var x = "";
 						if (args[1] == "красное"){
@@ -69,7 +68,7 @@ module.exports.run = async (bot, message, args) => {
 							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){ 
 								if (winner == x)
-									return message.reply(`вылетаело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетаело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								else
 									return message.reply(`увы, но вылетаело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
 						    }, 10000);
@@ -79,8 +78,6 @@ module.exports.run = async (bot, message, args) => {
 					}
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
-					// else if (Number(args[1]) < 1 || Number(args[1]) > 36)
-					// 	return message.reply(`в рулетке можно ставить от 1 до 36, дядя ${nopeIcon}`);
 				}
 			}
 		});
