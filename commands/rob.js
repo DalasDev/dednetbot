@@ -35,7 +35,10 @@ function rob(message, bot, toRob, robResult, robed){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы че то там ${robed} ${toRob}${retricIcon}!`);
+				if(robResult == true)
+					return message.reply(`вы че то там ${robed} ${toRob}${retricIcon}!`);
+				else
+					return message.reply(`ты влетел на ${toRob}${retricIcon}!`)
 			}
 		}
 	});
