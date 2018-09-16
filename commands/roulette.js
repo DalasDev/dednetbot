@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
 					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 30;
 					if (timestampLimit > timestamp)
 						return message.reply("эээ, крути-верти, но не чаще, чем раз в пол минуты...");
-					if ((Number(args[0]) >= 100 && args[1] == "red") || (Number(args[0]) >= 100 && args[1] == "black")){
+					if ((Number(args[0]) >= 100 && args[1] == "красное") || (Number(args[0]) >= 100 && args[1] == "черное")){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
 						var winner = "";
@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
 							var newCash = actCash - toPlay;
 							var min = 1;
   							var max = 36;
-  							if (args[1] == "red")
+  							if (args[1] == "красное")
   								x = "red";
   							else
   								x = "black";
@@ -67,9 +67,9 @@ module.exports.run = async (bot, message, args) => {
 								console.log(err);
 							});
 							message.channel.send("Новая игра в рулетку началась...");
-							setTimeout(function(){ 
+							setTimeout(function(){
 								if (winner == x)
-									return message.reply(`вылетело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r} ${numberWithCommas(args[1])}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
 						    }, 10000);
