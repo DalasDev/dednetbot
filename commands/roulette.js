@@ -53,8 +53,10 @@ module.exports.run = async (bot, message, args) => {
   								winner = "red";
   							else
   								winner = "black";
-  							if (x == winner)
-  								newCash = actCash + toPlay * 2;
+  							if (x == winner){
+  								var won = toPlay * 2;
+  								newCash = actCash + won;
+  							}
   							else
   								console.log("player lost");
   							foundObj.retrocoinCash = newCash;
@@ -66,8 +68,8 @@ module.exports.run = async (bot, message, args) => {
 							});
 							message.channel.send("Закидываю 🎲 ...");
 							setTimeout(function(){ 
-								if (winner == true){
-									return message.channel.send(`...и вылетает ${result}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
+								if (winner == x){
+									return message.channel.send(`...и вылетает ${r}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
 								}
 								else
 									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");
