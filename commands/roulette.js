@@ -68,8 +68,10 @@ module.exports.run = async (bot, message, args) => {
 							});
 							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){
-								if (winner == x)
+								if (winner == x){
+									won = won * 2;
 									return message.reply(`вылетело ${r} ${numberWithCommas(args[1])}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
 						    }, 10000);
