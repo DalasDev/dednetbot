@@ -24,7 +24,7 @@ function rob(message, bot, toRob, robResult, robed){
 				console.log("Something stange happend");
 			else {
 				var newCash = 0;
-				if (tobResult == true)
+				if (robResult == true)
 					newCash = foundObj.retrocoinCash + toRob;
 				else {
 					newCash = foundObj.retrocoinCash - toRob;
