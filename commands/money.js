@@ -15,6 +15,9 @@ module.exports.run = async (bot, message, args) => {
 
 	let toScan = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
+	if(toScan.roles.some(r=>["Бездушные"].includes(r.name)))
+		return;
+
 	if(!toScan){
 		var user_obj = User.findOne({
 			userID: message.member.id
