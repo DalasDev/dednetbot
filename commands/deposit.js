@@ -85,7 +85,7 @@ module.exports.run = async (bot, message, args) => {
 						.setTitle(toDep + " ретриков переведено в банк! Новый баланс " + message.member.displayName)
 						.setColor("#0000FF")
 						.addField("Наличкой", `${numberWithCommas(foundObj.retrocoinCash)} ${retricIcon}  `, true)
-						.addField("В банке", `${numberWithCommas(foundObj.retrocoinCash)} ${retricIcon}  `, true)
+						.addField("В банке", `${numberWithCommas(foundObj.retrocoinBank)} ${retricIcon}  `, true)
 
 						message.channel.send({embed});
 					}
