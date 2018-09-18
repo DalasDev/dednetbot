@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
-					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 60;
+					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 15;
 					if (timestampLimit > timestamp)
 						return message.reply("эээ, крути-верти, но не чаще, чем раз в минуту...");
 					if ((Number(args[0]) >= 100 && args[1] == "красное") || (Number(args[0]) >= 100 && args[1] == "черное")){
@@ -118,7 +118,7 @@ module.exports.run = async (bot, message, args) => {
 else if (!args[0])
 	return message.reply("укажи ставку и твой прогноз!");
 else if (!args[1])
-	return message.reply("на что ставить будем? Доступные на данный момент варианты: красное/черное");
+	return message.reply("укажи ставку и твой прогноз!");
 else
 	return message.reply("что-то явно пошло не так =)")
 }
