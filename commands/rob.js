@@ -64,7 +64,10 @@ module.exports.run = async (bot, message, args) => {
 				var min = 1;
 				var max = 2;
 				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
-				var toRob = foundObj.retrocoinCash / 100 * 40;
+				min = 35;
+  				max = 45;
+  				var random = Math.floor(Math.random() * (max - min + 1)) + min;
+				var toRob = foundObj.retrocoinCash / 100 * random;
 				toRob = Math.round(toRob);
 				if (foundObj.retrocoinCash - toRob <= 0)
 					return message.reply("у человека туго с наличкой, его робнуть не получится!");
