@@ -10,8 +10,8 @@ module.exports.run = async (bot, message, args) => {
 	let bReason = args.join(" ").slice(22);
 
 	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-	if(!message.member.hasPermission("MANAGE_MESSAGES"))
-		return;
+	// if(!message.member.hasPermission("MANAGE_MESSAGES"))
+	// 	return;
 
 	if(!bUser)
 		return message.channel.send("Пользователь не существует!");

@@ -112,7 +112,7 @@ module.exports.run = async (bot, message, args) => {
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
 					else
-						return message.reply("не, набирай ^roulette-info");
+						return message.reply("не, набирай ?roulette-info (пока что)");
 				}
 			}
 		});

@@ -25,6 +25,7 @@ module.exports.run = async (bot, message, args) => {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				console.log("foundObj: " + JSON.stringify(foundObj));
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 				const embed = new Discord.RichEmbed()
