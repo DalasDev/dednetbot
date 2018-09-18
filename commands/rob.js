@@ -76,9 +76,9 @@ module.exports.run = async (bot, message, args) => {
 				}, function (err, foundObj2) {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
-					var timestampLimit = Math.floor(foundObj2.lastRob/1000) + 30;
+					var timestampLimit = Math.floor(foundObj2.lastRob/1000) + (60*15);
 					if (timestampLimit > timestamp)
-						return message.reply("эээ, грабь, но не чаще, чем раз в пол минуты...");
+						return message.reply("эээ, грабь, но не чаще, чем раз 15 минут...");
 					else {
 						if (robResult == true){
 							foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
