@@ -32,9 +32,9 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
-					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 15;
+					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 5;
 					if (timestampLimit > timestamp)
-						return message.reply("эээ, крути-верти, но не чаще, чем раз в минуту...");
+						return message.reply("эээ, крути-верти, но не чаще, чем раз в 5 сек...");
 					if ((Number(args[0]) >= 100 && args[1] == "красное") || (Number(args[0]) >= 100 && args[1] == "черное")){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
@@ -72,7 +72,7 @@ module.exports.run = async (bot, message, args) => {
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 10000);
+							}, 1000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
@@ -104,7 +104,7 @@ module.exports.run = async (bot, message, args) => {
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 10000);
+							}, 1000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
