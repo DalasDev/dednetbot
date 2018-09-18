@@ -68,7 +68,7 @@ module.exports.run = async (bot, message, args) => {
 							setTimeout(function(){
 								if (winner == x){
 									won = won * 2;
-									return message.reply(`вылетело ${r} ${numberWithCommas(args[1])}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
@@ -87,7 +87,7 @@ module.exports.run = async (bot, message, args) => {
 							var max = 36;
 							var r = Math.floor(Math.random() * (max - min + 1)) + min;
 							if (((args[1] == "1-12") && (r >= 1 && r <= 12)) || ((args[1] == "13-24") && (r >= 13 && r <= 24)) || ((args[1] == "25-36") && (r >= 25 && r <= 36))){
-								var won = toPlay * 2;
+								var won = toPlay * 3;
 								newCash = actCash + won;
 							}
 							foundObj.retrocoinCash = newCash;
