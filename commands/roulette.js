@@ -10,7 +10,7 @@ function isNumeric(value) {
 }
 
 const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -40,31 +40,29 @@ module.exports.run = async (bot, message, args) => {
 						var toPlay = Number(args[0]);
 						var winner = "";
 						if (actCash - toPlay >= 0){
-							if (foundObj.retrocoinCash <= 0)
-								return message.reply("ты попытался робнуть, но у челика проблемы с наличкой");
 							var newCash = actCash - toPlay;
 							var min = 1;
-  							var max = 36;
-  							if (args[1] == "красное")
-  								x = "red";
-  							else
-  								x = "black";
-  							var r = Math.floor(Math.random() * (max - min + 1)) + min;
-  							if (r == 1 || r == 3 || r == 5 || r == 7 || r == 9 || r == 12 || r == 14 ||
-  							 r == 16 || r == 18 || r == 19 || r == 21 || r == 23 || r == 25 || r == 27 || r == 30 || r == 32 || r == 34 || r == 36)
-  								winner = "red";
-  							else
-  								winner = "black";
-  							if (x == winner){
-  								var won = toPlay;
-  								newCash = actCash + won;
-  							}
-  							foundObj.retrocoinCash = newCash;
+							var max = 36;
+							if (args[1] == "красное")
+								x = "red";
+							else
+								x = "black";
+							var r = Math.floor(Math.random() * (max - min + 1)) + min;
+							if (r == 1 || r == 3 || r == 5 || r == 7 || r == 9 || r == 12 || r == 14 ||
+								r == 16 || r == 18 || r == 19 || r == 21 || r == 23 || r == 25 || r == 27 || r == 30 || r == 32 || r == 34 || r == 36)
+								winner = "red";
+							else
+								winner = "black";
+							if (x == winner){
+								var won = toPlay;
+								newCash = actCash + won;
+							}
+							foundObj.retrocoinCash = newCash;
 							foundObj.retrocoinTotal = newCash + foundObj.retrocoinBank;
 							foundObj.lastRoulette = Date.now();
 							foundObj.save(function(err, updatedObj){
-							if(err)
-								console.log(err);
+								if(err)
+									console.log(err);
 							});
 							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){
@@ -74,21 +72,55 @@ module.exports.run = async (bot, message, args) => {
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-						    }, 10000);
-  						}
-  						else
-  							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
+							}, 10000);
+						}
+						else
+							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
+					}
+					else if ((Number(args[0]) >= 100 && args[1] == "1-12") || (Number(args[0]) >= 100 && args[1] == "13-24") || (Number(args[0]) >= 100 && args[1] == "25-36")){
+						var actCash = foundObj.retrocoinCash;
+						var toPlay = Number(args[0]);
+						var winner = "";
+						if (actCash - toPlay >= 0){
+							var newCash = actCash - toPlay;
+							var min = 1;
+							var max = 36;
+							var r = Math.floor(Math.random() * (max - min + 1)) + min;
+							if (((args[1] == "1-12") && (r >= 1 && r <= 12)) || ((args[1] == "13-24") && (r >= 13 && r <= 24)) || ((args[1] == "25-36") && (r >= 25 && r <= 36))){
+								var won = toPlay * 2;
+								newCash = actCash + won;
+							}
+							foundObj.retrocoinCash = newCash;
+							foundObj.retrocoinTotal = newCash + foundObj.retrocoinBank;
+							foundObj.lastRoulette = Date.now();
+							foundObj.save(function(err, updatedObj){
+								if(err)
+									console.log(err);
+							});
+							message.channel.send("Новая игра в рулетку началась...");
+							setTimeout(function(){
+								if (won){
+									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+								}
+								else
+									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+							}, 10000);
+						}
+						else
+							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 					}
 					else if (Number(args[0]) < 100)
 						return message.reply("минимальная ставка - 100 ретриков!");
 				}
 			}
 		});
-	}
-	else if (!args[0])
-		return message.reply("укажи ставку и твой прогноз!");
-	else if (!args[1])
-		return message.reply("на что ставить будем? Доступные на данный момент варианты: красное/черное");
+}
+else if (!args[0])
+	return message.reply("укажи ставку и твой прогноз!");
+else if (!args[1])
+	return message.reply("на что ставить будем? Доступные на данный момент варианты: красное/черное");
+else
+	return message.reply("что-то явно пошло не так =)")
 }
 
 module.exports.help = {
