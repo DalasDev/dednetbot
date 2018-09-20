@@ -28,21 +28,18 @@ module.exports.run = async (bot, message, args) => {
       color: 3447003,
       image:{
         url: `${iUser.user.avatarURL}`
-      }
-      author: {
-        name: `**Retro Valley** ${dabIcon} ${iUser}`,
-        icon_url: message.guild.iconURL
       },
       title: "***Личный статус***",
       description: "__не установлен__",
-      fields: [{
-        name: `***Личный баланс :*** ${retricIcon}`
-        value: `***Нарушений :*** овер миллион`
-      },
-      {
-        name: "```тест:test\nтест2:test2```"
-        value: "```тест3:test3\nтест4:test4```"
-      }
+      fields: [
+        {
+          name: `***Личный баланс :*** ${retricIcon}`
+          value: `***Нарушений :*** овер миллион`
+        },
+        {
+          name: "```тест:test\nтест2:test2```"
+          value: "```тест3:test3\nтест4:test4```"
+        }
       ],
       timestamp: new Date(),
       footer: {
