@@ -27,9 +27,6 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send({embed: {
       color: 3447003,
       icon_url: message.guild.iconURL
-      thumbnail:{
-        url: `${iUser.user.avatarURL}`
-      },
       title: `**Retro Valley** ${dabIcon} ${iUser}`,
       description: "_________",
       fields: [
@@ -50,6 +47,9 @@ module.exports.run = async (bot, message, args) => {
       footer: {
         icon_url: message.author.avatarURL,
         text: `© ${message.member.displayName}`
+      },
+      thumbnail: {
+        url: `${iUser.user.avatarURL}`
       }
     }
   });
