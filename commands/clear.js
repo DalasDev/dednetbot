@@ -18,11 +18,12 @@ module.exports.run = async (bot, message, args) => {
   if(isNaN(args[0])){
     return message.channel.send(`Укажи количестко сообщений для удаления!`);
   }
-  if(number < 2 || number > 100){
-    return message.channel.send(`Укажи число в пределах от 2 до 100`);
+  if(number < 2 || number > 99){
+    return message.channel.send(`Укажи число в пределах от 2 до 99`);
   }
-  message.channel.bulkDelete(args[0]).then(() => {
-  message.channel.send(`Удалено ${args[0]} сообщений. :ok_hand:`).then(msg => msg.delete(4000));
+  number = number + 1;
+  message.channel.bulkDelete(number).then(() => {
+  message.channel.send(`Удалено ${args[0]} сообщений. :ok_hand:`).then(msg => msg.delete(2000));
 });
 
 }
