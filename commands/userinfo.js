@@ -33,11 +33,9 @@ module.exports.run = async (bot, message, args) => {
       title: "***Личный статус***",
       description: "__не установлен__",
       fields: [{
-        name: `***Личный баланс :*** ${retricIcon}`,
-        value: ""
+        name: `***Личный баланс :*** ${retricIcon}`
       },
       {
-        name: "",
         value: "```тест:test\nтест2:test2```"
       }
       ],
