@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
           color: 3447003,
           icon_url: message.guild.iconURL,
           title: `**Retro Valley** :zap: **${iUser.displayName}**`,
-          description: `(**высшая роль:** __**${iUser.highestRole.name}**__)`,
+          description: `(**высшая роль :** __**${iUser.highestRole.name}**__)`,
           fields: [
           {
             name: `***Личный статус*** :speech_left:`,
@@ -42,11 +42,11 @@ module.exports.run = async (bot, message, args) => {
           },
           {
             name: `***Личный баланс : *** ${numberWithCommas(foundObj.retrocoinTotal)} ${retricIcon}`,
-            value: `__**Нарушений : ${foundObj.infractions}**__`
+            value: `__**Нарушений**__ : ${foundObj.infractions}`
           },
           {
             name: "***Взаимодействия :***",
-            value: `Обнят(а)           : ${foundObj.huged}\nПоцелован(а) : ${foundObj.kissed}\nТрахнут(а) : ${foundObj.fcked}\nПобит(а) : ${foundObj.hit}\nЗапой : ${foundObj.drunk}\nУбит(а) : ${foundObj.killed}`
+            value: `Поцелован(а) : ${foundObj.kissed}\nТрахнут(а) : ${foundObj.fcked}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`
           },
           {
             name: "***Доступные перки :***",
