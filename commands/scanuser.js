@@ -80,7 +80,7 @@ module.exports.run = async (bot, message) => {
 					hit: 0,
 					killed: 0,
 					drunk: 0,
-					status: "не установлен",
+					status: "__не установлен__",
 					lastScan: Date.now()
 				});
 				myData.save()
@@ -109,7 +109,7 @@ module.exports.run = async (bot, message) => {
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
 						//all the stats below to remove from scan later
-						foundObj.status = "не установлен";
+						foundObj.status = "__не установлен__";
 						foundObj.kissed = 0;
 						foundObj.huged = 0;
 						foundObj.fcked = 0;
