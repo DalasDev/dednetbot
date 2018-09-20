@@ -14,6 +14,11 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
+  if (!foundObj){
+    console.log("User not found in database");
+    return;
+  }
+
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
   .setColor("#4C8BF5")

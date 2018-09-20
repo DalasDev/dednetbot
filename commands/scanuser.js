@@ -74,6 +74,12 @@ module.exports.run = async (bot, message) => {
 					retrocoinCash: 0,
 					retrocoinBank: 0,
 					retrocoinTotal: 0,
+					kissed: 0,
+					huged: 0,
+					fcked: 0,
+					hit: 0,
+					killed: 0,
+					drunk: 0,
 					lastScan: Date.now()
 				});
 				myData.save()
@@ -101,6 +107,12 @@ module.exports.run = async (bot, message) => {
 						foundObj.displayName = message.member.displayName;
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
+						foundObj.kissed = 0;
+						foundObj.huged = 0;
+						foundObj.fcked = 0;
+						foundObj.hit = 0;
+						foundObj.killed = 0;
+						foundObj.drunk = 0;
 						foundObj.save(function(err, updatedObj){
 							if(err)
 								console.log(err);

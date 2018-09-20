@@ -16,6 +16,18 @@ var userSchema = new mongoose.Schema({
 	lastWork: Date,
 	lastRoulette: Date,
 	lastRob: Date,
+	kissed: Number,
+	lastKiss: Date,
+	huged: Number,
+	lastHug: Date,
+	fcked: Number,
+	lastFck: Date,
+	hit: Number,
+	lastHit: Date,
+	killed: Number,
+	lastKill: Date,
+	drunk: Number,
+	lastDrunk: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);

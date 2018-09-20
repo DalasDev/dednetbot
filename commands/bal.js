@@ -25,6 +25,10 @@ module.exports.run = async (bot, message, args) => {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				if (!foundObj){
+					console.log("User not found in database");
+					return;
+				}
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 				const embed = new Discord.RichEmbed()
@@ -44,6 +48,8 @@ module.exports.run = async (bot, message, args) => {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				if (foundObj === null)
+					return;
 				var avatar = toScan.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 				const embed = new Discord.RichEmbed()

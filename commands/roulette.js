@@ -109,13 +109,45 @@ module.exports.run = async (bot, message, args) => {
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 					}
-					else if (Number(args[0]) < 100)
-						return message.reply("минимальная ставка - 100 ретриков!");
-					else
-						return message.reply("не, набирай ?roulette-info (пока что)");
+					else if ((Number(args[0]) >= 100 && args[1] == "1-12") || (Number(args[0]) >= 100 && args[1] == "13-24") || (Number(args[0]) >= 100 && args[1] == "25-36")){
+						var actCash = foundObj.retrocoinCash;
+						var toPlay = Number(args[0]);
+						var winner = "";
+						if (actCash - toPlay >= 0){
+							var newCash = actCash - toPlay;
+							var min = 1;
+							var max = 36;
+							var r = Math.floor(Math.random() * (max - min + 1)) + min;
+							if (((args[1] == "1-12") && (r >= 1 && r <= 12)) || ((args[1] == "13-24") && (r >= 13 && r <= 24)) || ((args[1] == "25-36") && (r >= 25 && r <= 36))){
+								var won = toPlay * 3;
+								newCash = actCash + won;
+							}
+							foundObj.retrocoinCash = newCash;
+							foundObj.retrocoinTotal = newCash + foundObj.retrocoinBank;
+							foundObj.lastRoulette = Date.now();
+							foundObj.save(function(err, updatedObj){
+								if(err)
+									console.log(err);
+							});
+							message.channel.send("Новая игра в рулетку началась...");
+							setTimeout(function(){
+								if (won){
+									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+								}
+								else
+									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+							}, 1000);
+						}
+						else
+							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 				}
+				else if (Number(args[0]) < 100)
+					return message.reply("минимальная ставка - 100 ретриков!");
+				else
+					return message.reply("не, набирай ?roulette-info (пока что)");
 			}
-		});
+		}
+	});
 }
 else if (!args[0])
 	return message.reply("укажи ставку и твой прогноз!");

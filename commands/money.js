@@ -15,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
 
 	let toScan = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-	if(toScan && toScan.roles.some(r=>["Бездушные"].includes(r.name)))
-		return;
+	// if(toScan && toScan.roles.some(r=>["Бездушные"].includes(r.name)))
+	// 	return;
 
 	if(!toScan){
 		var user_obj = User.findOne({
@@ -25,6 +25,10 @@ module.exports.run = async (bot, message, args) => {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
+				if (!foundObj){
+					console.log("User not found in database");
+					return;
+				}
 				console.log("foundObj: " + JSON.stringify(foundObj));
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;

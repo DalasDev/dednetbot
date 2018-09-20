@@ -58,8 +58,10 @@ module.exports.run = async (bot, message, args) => {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
-			if (!foundObj)
-				console.log("Something stange happend");
+			if (!foundObj){
+				console.log("User not found in database");
+				return;
+			}
 			else {				
 				var min = 1;
 				var max = 2;

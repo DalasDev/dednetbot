@@ -51,11 +51,11 @@ module.exports.run = async (bot, message, args) => {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
-				
-				if (!foundObj)
-					console.log("Something stange happend");
-				else {
-					
+				if (!foundObj){
+					console.log("User not found in database");
+					return;
+				}
+				else {	
 					var actCash = foundObj.retrocoinCash;
 					var toPay = Number(args[1]);
 					var newCash = actCash - toPay;
