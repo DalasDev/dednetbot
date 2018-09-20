@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
+  if(!message.member.hasPermission("MANAGE_ROLES"))
+    return;
 
   let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if (!iUser)
