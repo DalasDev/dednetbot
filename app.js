@@ -94,7 +94,13 @@ bot.on("message", async message => {
     console.log("DB1");
     if(!message.member.roles.some(r=>["Mantaro"].includes(r.name))){
       console.log("DB2");
-      message.delete().catch(O_o=>{});
+      if(message.deletable == true)
+        console.log("DB2.1");
+      else
+        console.log("DB2.2");
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+      .catch(console.error);
     }
     console.log("DB3");
     return;
