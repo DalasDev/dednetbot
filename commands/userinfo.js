@@ -27,11 +27,11 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send({embed: {
       color: 3447003,
       icon_url: message.guild.iconURL,
-      title: `***Retro Valley*** ${iUser.displayName}`,
+      title: `***Retro Valley*** :zap: ${iUser.displayName}`,
       description: `**Высшая роль:** ${iUser.highestRole.name}`,
       fields: [
         {
-          name: `***Личный статус***`,
+          name: `***Личный статус*** :speech_left:`,
           value: `__не установлен__`
         },
         {
