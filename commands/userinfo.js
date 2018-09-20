@@ -24,9 +24,9 @@ module.exports.run = async (bot, message, args) => {
 
   // message.channel.send({embed});
 
-    let hrole = iUser.roles.firstKey();
+    let hrole = iUser.roles.lastKey();
     console.log("hrole: " + hrole);
-    let hrole2 = iUser.roles.first();
+    let hrole2 = iUser.roles.last();
     console.log("hrole2: " + hrole2);
 
     message.channel.send({embed: {
