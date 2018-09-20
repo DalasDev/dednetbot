@@ -33,11 +33,11 @@ module.exports.run = async (bot, message, args) => {
       description: "__не установлен__",
       fields: [
         {
-          name: `***Личный баланс :*** ${retricIcon}`
+          name: `***Личный баланс :*** ${retricIcon}`,
           value: `***Нарушений :*** овер миллион`
         },
         {
-          name: "```тест:test\nтест2:test2```"
+          name: "```тест:test\nтест2:test2```",
           value: "```тест3:test3\nтест4:test4```"
         }
       ],
