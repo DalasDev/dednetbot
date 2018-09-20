@@ -91,10 +91,13 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
 
   if(message.author.bot){
-    if(message.member.roles.some(r=>["Mantaro"].includes(r.name))){
-      message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author.username}`))
-      .catch(console.error);
+    if(message.member.roles){
+      if(message.member.roles.some(r=>["Mantaro"].includes(r.name))){
+        console.log("channel: " + message.channel.name);
+        message.delete()
+        .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+        .catch(console.error);
+      }
     }
     return;
   }
