@@ -91,9 +91,12 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
 
   if(message.author.bot){
+    console.log("DB1");
     if(!message.member.roles.some(r=>["Mantaro"].includes(r.name))){
+      console.log("DB2");
       message.delete().catch(O_o=>{});
     }
+    console.log("DB3");
     return;
   }
 
