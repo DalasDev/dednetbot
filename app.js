@@ -90,8 +90,13 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => {
 
-  if(message.author.bot)
+  if(message.author.bot){
+    if(!message.member.roles.some(r=>["Mantaro"].includes(r.name))){
+      message.delete().catch(O_o=>{});
+    }
     return;
+  }
+
   if(message.channel.type === "dm")
     return;
 
