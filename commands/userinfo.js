@@ -23,21 +23,20 @@ module.exports.run = async (bot, message, args) => {
   // .addField("Зарегистрировался:", iUser.user.createdAt, true)
 
   // message.channel.send({embed});
-  let x1 = `**Retro Valley** ${dabIcon} ${iUser}`;
-  let x2 = "";
 
     message.channel.send({embed: {
       color: 3447003,
-      author: {
-        name: x1,
-        icon_url: message.guild.iconURL
-      },
-      image:{
+      icon_url: message.guild.iconURL
+      thumbnail:{
         url: `${iUser.user.avatarURL}`
       },
-      title: "***Личный статус***",
-      description: "__не установлен__",
+      title: `**Retro Valley** ${dabIcon} ${iUser}`,
+      description: "_________",
       fields: [
+        {
+          name: `***Личный статус***`,
+          value: `__не установлен__`
+        },
         {
           name: `***Личный баланс :*** ${retricIcon}`,
           value: `***Нарушений :*** овер миллион`
