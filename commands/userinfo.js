@@ -2,23 +2,15 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  let avatar = iUser.user.avatarURL;
-  message.delete().catch(O_o=>{});
-
-  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
-  if (!iUser)
-    return message.reply("пользователь не найден / не указан!");
   if(!message.member.hasPermission("MANAGE_MESSAGES"))
     return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
 
-  if (!foundObj){
-    console.log("User not found in database");
-    return;
-  }
+  let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if (!iUser)
+    return message.reply("пользователь не найден / не указан!");
 
+  let avatar = iUser.user.avatarURL;
+  
   const embed = new Discord.RichEmbed()
   .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
   .setColor("#4C8BF5")
@@ -29,6 +21,39 @@ module.exports.run = async (bot, message, args) => {
   .addField("Зарегистрировался:", iUser.user.createdAt, true)
 
   message.channel.send({embed});
+
+  //   message.channel.send({embed: {
+  //     color: 3447003,
+  //     author: {
+  //       name: bot.user.username,
+  //       icon_url: bot.user.avatarURL
+  //     },
+  //     title: "Пример юзер инфо",
+  //     description: "(что то о пользевателе)",
+  //     fields: [{
+  //       name: "Никнейм",
+  //       value: "(тут может быть никнейм)"
+  //     },
+  //     {
+  //       name: "Нарушения",
+  //       value: "(тут может быть[ссылка](http://www.retro-bot.com) на нарушения прользователя)"
+  //     },
+  //     {
+  //       name: "Тест статы",
+  //       value: "```тест:test\nтест2:test2```"
+  //     },
+  //     {
+  //       name: "Разметка",
+  //       value: "*Разметка* **__Разметка__**"
+  //     }
+  //     ],
+  //     timestamp: new Date(),
+  //     footer: {
+  //       icon_url: bot.user.avatarURL,
+  //       text: "© Example"
+  //     }
+  //   }
+  // });
 }
 
 module.exports.help = {
