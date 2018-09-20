@@ -26,6 +26,9 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send({embed: {
       color: 3447003,
+      image:{
+        url: `${iUser.user.avatarURL}`
+      }
       author: {
         name: `**Retro Valley** ${dabIcon} ${iUser}`,
         icon_url: message.guild.iconURL
