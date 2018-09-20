@@ -27,8 +27,8 @@ module.exports.run = async (bot, message, args) => {
       value: `***Нарушений :*** овер миллион`
     },
     {
-      name: "```тест:test\nтест2:test2```",
-      value: "```тест3:test3\nтест4:test4```"
+      name: "```:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n```:red_circle: закрыто\n",
+      value: "```Обнят(а) : 0\nПоцелован(а) : 0\nТрахнут(а) : 0\nПобит(а) : 0\nЗапой : 0\nУбит(а) : 0```"
     }
     ],
     timestamp: new Date(),
