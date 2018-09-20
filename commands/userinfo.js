@@ -12,35 +12,51 @@ module.exports.run = async (bot, message, args) => {
   var retricIcon = bot.emojis.find("name", "retric");
   var hmmIcon = bot.emojis.find("name", "hmm");
 
-  message.channel.send({embed: {
-    color: 3447003,
-    icon_url: message.guild.iconURL,
-    title: `***Retro Valley*** :zap: ${iUser.displayName}`,
-    description: `(**высшая роль:** ${iUser.highestRole.name})`,
-    fields: [
-    {
-      name: `***Личный статус*** :speech_left:`,
-      value: `__не установлен__`
-    },
-    {
-      name: `***Личный баланс :*** ${retricIcon}`,
-      value: `***Нарушений :*** овер миллион`
-    },
-    {
-      name: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто",
-      value: "```Обнят(а)     : 0\nПоцелован(а) : 0\nТрахнут(а)   : 0\nПобит(а)     : 0\nЗапой        : 0\nУбит(а)      : 0```"
+  var user_obj = User.findOne({
+    userID: iUser.id
+  }, function (err, foundObj) {
+    if (err)
+      console.log("Error on database findOne: " + err);
+    else {
+      if (!foundObj)
+        console.log("Something stange happend");
+      else {
+        message.channel.send({embed: {
+          color: 3447003,
+          icon_url: message.guild.iconURL,
+          title: `***Retro Valley*** :zap: ${iUser.displayName}`,
+          description: `(**высшая роль:** ${iUser.highestRole.name})`,
+          fields: [
+          {
+            name: `***Личный статус*** :speech_left:`,
+            value: `${foundObj.status}`
+          },
+          {
+            name: `***Личный баланс :*** ${foundObj.retrocoinTotal}`,
+            value: `***Нарушений :*** ${foundObj.infractions}`
+          },
+          {
+            name: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто",
+            value: `Обнят(а)     : ${foundObj.huged}\nПоцелован(а) : ${foundObj.kissed}\nТрахнут(а)   : ${foundObj.fcked}\nПобит(а)     : ${foundObj.hit}\nЗапой        : ${foundObj.drunk}\nУбит(а)      : ${foundObj.killed}`
+          }
+          ],
+          timestamp: new Date(),
+          footer: {
+            icon_url: message.author.avatarURL,
+            text: `© ${message.member.displayName}`
+          },
+          thumbnail: {
+            url: `${iUser.user.avatarURL}`
+          }
+        }
+      });
+        // foundObj.save(function(err, updatedObj){
+        //   if(err)
+        //     console.log(err);
+        // });
+      }
     }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: message.author.avatarURL,
-      text: `© ${message.member.displayName}`
-    },
-    thumbnail: {
-      url: `${iUser.user.avatarURL}`
-    }
-  }
-});
+  });
 }
 
 module.exports.help = {
