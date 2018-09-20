@@ -5,6 +5,10 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 module.exports.run = async (bot, message, args) => {
 
   if(!message.member.hasPermission("MANAGE_ROLES"))
@@ -37,12 +41,16 @@ module.exports.run = async (bot, message, args) => {
             value: `${foundObj.status}`
           },
           {
-            name: `***Личный баланс :*** ${foundObj.retrocoinTotal}`,
+            name: `***Личный баланс : *** ${numberWithCommas(foundObj.retrocoinTotal)} ${retricIcon}`,
             value: `***Нарушений :*** ${foundObj.infractions}`
           },
           {
-            name: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто",
+            name: "***Взаимодействия :***",
             value: `Обнят(а)     : ${foundObj.huged}\nПоцелован(а) : ${foundObj.kissed}\nТрахнут(а)   : ${foundObj.fcked}\nПобит(а)     : ${foundObj.hit}\nЗапой        : ${foundObj.drunk}\nУбит(а)      : ${foundObj.killed}`
+          },
+          {
+            name: "***Доступные перки :***",
+            value: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто"
           }
           ],
           timestamp: new Date(),
