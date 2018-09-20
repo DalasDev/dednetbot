@@ -27,8 +27,8 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send({embed: {
       color: 3447003,
       icon_url: message.guild.iconURL,
-      title: `**Retro Valley** ${dabIcon} ${iUser.displayName}`,
-      description: "_________",
+      title: `***Retro Valley*** житель: ${iUser.displayName}`,
+      description: `**Высшая роль:** ${iUser.roles.first}`,
       fields: [
         {
           name: `***Личный статус***`,
