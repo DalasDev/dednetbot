@@ -24,16 +24,11 @@ module.exports.run = async (bot, message, args) => {
 
   // message.channel.send({embed});
 
-    let hrole = iUser.roles.lastKey();
-    console.log("hrole: " + hrole);
-    let hrole2 = iUser.roles.last();
-    console.log("hrole2: " + hrole2);
-
     message.channel.send({embed: {
       color: 3447003,
       icon_url: message.guild.iconURL,
       title: `***Retro Valley*** ${iUser.displayName}`,
-      description: `**Высшая роль:** ${hrole}`,
+      description: `**Высшая роль:** ${iUser.highestRole.name}`,
       fields: [
         {
           name: `***Личный статус***`,
