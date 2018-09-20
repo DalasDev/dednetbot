@@ -91,7 +91,7 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
 
   if(message.author.bot){
-    if(message.member.roles != null){
+    if(message.member != null){
       if(message.member.roles.some(r=>["Mantaro"].includes(r.name))){
         if(message.channel.name == "📵канализация"){
           message.delete()

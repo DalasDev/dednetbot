@@ -10,50 +10,44 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("пользователь не найден / не указан!");
 
   let avatar = iUser.user.avatarURL;
-  
-  const embed = new Discord.RichEmbed()
-  .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
-  .setColor("#4C8BF5")
-  .setThumbnail(avatar)
-  .addField("Ник пользователя:", `${iUser}`, true)
-  .addField("ID пользователя:", `${iUser.id}`, true)
-  .addField("Присоединился:", `${iUser.joinedAt}`, true)
-  .addField("Зарегистрировался:", iUser.user.createdAt, true)
+  var dabIcon = bot.emojis.find("name", "dab");
+  var retricIcon = bot.emojis.find("name", "retric");
+  var hmmIcon = bot.emojis.find("name", "hmm");
+  // const embed = new Discord.RichEmbed()
+  // .setTitle("ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ")
+  // .setColor("#4C8BF5")
+  // .setThumbnail(avatar)
+  // .addField("Ник пользователя:", `${iUser}`, true)
+  // .addField("ID пользователя:", `${iUser.id}`, true)
+  // .addField("Присоединился:", `${iUser.joinedAt}`, true)
+  // .addField("Зарегистрировался:", iUser.user.createdAt, true)
 
-  message.channel.send({embed});
+  // message.channel.send({embed});
 
-  //   message.channel.send({embed: {
-  //     color: 3447003,
-  //     author: {
-  //       name: bot.user.username,
-  //       icon_url: bot.user.avatarURL
-  //     },
-  //     title: "Пример юзер инфо",
-  //     description: "(что то о пользевателе)",
-  //     fields: [{
-  //       name: "Никнейм",
-  //       value: "(тут может быть никнейм)"
-  //     },
-  //     {
-  //       name: "Нарушения",
-  //       value: "(тут может быть[ссылка](http://www.retro-bot.com) на нарушения прользователя)"
-  //     },
-  //     {
-  //       name: "Тест статы",
-  //       value: "```тест:test\nтест2:test2```"
-  //     },
-  //     {
-  //       name: "Разметка",
-  //       value: "*Разметка* **__Разметка__**"
-  //     }
-  //     ],
-  //     timestamp: new Date(),
-  //     footer: {
-  //       icon_url: bot.user.avatarURL,
-  //       text: "© Example"
-  //     }
-  //   }
-  // });
+    message.channel.send({embed: {
+      color: 3447003,
+      author: {
+        name: `**Retro Valley** ${dabIcon} ${iUser}`,
+        icon_url: message.guild.iconURL
+      },
+      title: "***Личный статус***",
+      description: "__не установлен__",
+      fields: [{
+        name: `***Личный баланс :*** ${retricIcon}`,
+        value: ""
+      },
+      {
+        name: "",
+        value: "```тест:test\nтест2:test2```"
+      }
+      ],
+      timestamp: new Date(),
+      footer: {
+        icon_url: message.author.avatarURL,
+        text: `© ${message.member.displayName}`
+      }
+    }
+  });
 }
 
 module.exports.help = {
