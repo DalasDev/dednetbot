@@ -12,9 +12,9 @@ function isNumeric(value) {
 function kiss(kissed, message, bot){
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	
+
 	var user_obj = User.findOne({
-		userID: kissed.id 
+		userID: kissed.id
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -44,9 +44,12 @@ module.exports.run = async (bot, message, args) => {
 	if (!kissed)
 		return message.reply("пользователь не найден / не указан!");
 
+	if (message.member == kissed)
+		return message.reply("самого себя поцеловать не выйдет!");
+
 	if (!args[1]) {
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -61,9 +64,9 @@ module.exports.run = async (bot, message, args) => {
 					var timestampLimit = Math.floor(foundObj.lastKiss/1000) + 900;
 					if (timestampLimit > timestamp)
 						return message.reply("нельзя так часто целоваться!");
-					
+
 					kiss(kissed, message, bot);
-					
+
 					foundObj.lastKiss = dateTime;
 
 					foundObj.save(function(err, updatedObj){
