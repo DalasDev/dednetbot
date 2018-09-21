@@ -11,7 +11,7 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.hasPermission("MANAGE_ROLES"))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
   let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
