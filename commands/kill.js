@@ -12,9 +12,9 @@ function isNumeric(value) {
 function kill(killed, message, bot){
 
 	var killIcon = bot.emojis.find("name", "pepe_pistol");
-	
+
 	var user_obj = User.findOne({
-		userID: killed.id 
+		userID: killed.id
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -44,9 +44,12 @@ module.exports.run = async (bot, message, args) => {
 	if (!killed)
 		return message.reply("пользователь не найден / не указан!");
 
+	if (message.member == killed)
+		return message.reply("ах ты суицидник! Сам себя ты не убьешь!");
+
 	if (!args[1]) {
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -60,10 +63,10 @@ module.exports.run = async (bot, message, args) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastKill/1000) + 900;
 					if (timestampLimit > timestamp)
-						return message.reply("нельзя так часто целоваться!");
-					
+						return message.reply("нельзя так часто убивать!");
+
 					kill(killed, message, bot);
-					
+
 					foundObj.lastKill = dateTime;
 
 					foundObj.save(function(err, updatedObj){

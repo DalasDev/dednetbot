@@ -12,9 +12,9 @@ function isNumeric(value) {
 function hug(huged, message, bot){
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	
+
 	var user_obj = User.findOne({
-		userID: huged.id 
+		userID: huged.id
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -44,9 +44,12 @@ module.exports.run = async (bot, message, args) => {
 	if (!huged)
 		return message.reply("пользователь не найден / не указан!");
 
+	if (message.member == huged)
+		return message.reply("ты не такой гибкий чтоб обнять самого себя!");
+
 	if (!args[1]) {
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -60,10 +63,10 @@ module.exports.run = async (bot, message, args) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastHug/1000) + 900;
 					if (timestampLimit > timestamp)
-						return message.reply("нельзя так часто целоваться!");
-					
+						return message.reply("нельзя так часто обниматься!");
+
 					hug(huged, message, bot);
-					
+
 					foundObj.lastHug = dateTime;
 
 					foundObj.save(function(err, updatedObj){
