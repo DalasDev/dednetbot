@@ -29,7 +29,6 @@ module.exports.run = async (bot, message, args) => {
 					console.log("User not found in database");
 					return;
 				}
-				console.log("foundObj: " + JSON.stringify(foundObj));
 				var avatar = message.member.user.avatarURL;
 				var total = foundObj.retrocoinCash + foundObj.retrocoinBank;
 				const embed = new Discord.RichEmbed()
