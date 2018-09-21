@@ -36,6 +36,9 @@ function kiss(kissed, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
+	if(!message.member.hasPermission("MANAGE_ROLES"))
+    	return;
+
 	var kissed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
 	if (!kissed)
