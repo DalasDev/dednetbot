@@ -11,8 +11,6 @@ function isNumeric(value) {
 
 function kiss(kissed, message, bot){
 
-	console.log("DB4");
-
 	var retricIcon = bot.emojis.find("name", "retric");
 	
 	var user_obj = User.findOne({
@@ -25,7 +23,6 @@ function kiss(kissed, message, bot){
 			if (!foundObj)
 				console.log("Something stange happend");
 			else {
-				console.log("DB5");
 				foundObj.kissed = foundObj.kissed + 1;
 				foundObj.save(function(err, updatedObj){
 				if(err)
@@ -39,10 +36,8 @@ function kiss(kissed, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
-	console.log("DB1");
-
-	if(!message.member.hasPermission("MANAGE_ROLES"))
-    	return;
+	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+		return;
 
 	var kissed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
@@ -61,14 +56,12 @@ module.exports.run = async (bot, message, args) => {
 					return;
 				}
 				else {
-					console.log("DB2");
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastKiss/1000) + 900;
 					if (timestampLimit > timestamp)
 						return message.reply("нельзя так часто целоваться!");
 					
-					console.log("DB3");
 					kiss(kissed, message, bot);
 					
 					foundObj.lastKiss = dateTime;
