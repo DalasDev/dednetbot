@@ -15,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   var topusers = User.find().sort({retrocoinTotal: -1}).limit(3);
-  topusers.forEach(function(user){
-    console.log(user);
+  topusers.keys(a).forEach(function(key){
+    console.log(a[key]);
   })
 }
 
