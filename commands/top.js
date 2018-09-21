@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
   if(!message.member.hasPermission("MANAGE_ROLES"))
     return;
-
+  console.log("DB");
   var topusers = User.find().sort({retrocoinTotal: -1}).limit(3);
   console.log(JSON.stringify(topusers));
 }
