@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
   var user2 = topusersArray[1];
   var user3 = topusersArray[2];
   console.log("db");
-  console.log("Users: \n"user1 + "\n" + user2 + "\n" + user3);
+  console.log("Users: \n" + user1 + "\n" + user2 + "\n" + user3);
 }
 
 module.exports.help = {
