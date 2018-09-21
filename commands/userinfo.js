@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, args) => {
           },
           {
             name: "***Взаимодействия :***",
-            value: `Поцелован(а) : ${foundObj.kissed}\nТрахнут(а) : ${foundObj.fcked}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`
+            value: `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`
           },
           {
             name: "***Доступные перки :***",
