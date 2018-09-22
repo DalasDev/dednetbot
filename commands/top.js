@@ -37,7 +37,7 @@ ${doc[9].displayName}:\n${numberWithCommas(doc[9].retrocoinTotal)}`;
           fields: [
           {
             name: "(кошелек просто по швам идет)",
-            value: "```"+text+"```"
+            value: text
           }
           ],
           timestamp: new Date(),
