@@ -20,13 +20,7 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
-        message.channel.send({embed: {
-          color: 3447003,
-          title: `**Retro Valley** :zap: **LEADERBOARD**`,
-          fields: [
-          {
-            name: "(кошелек просто по швам идет)",
-            value: `${doc[0].displayName} : ${numberWithCommas(doc[0].retrocoinTotal)}\n
+      var text = `${doc[0].displayName} : ${numberWithCommas(doc[0].retrocoinTotal)}\n
                     ${doc[1].displayName} : ${numberWithCommas(doc[1].retrocoinTotal)}\n
                     ${doc[2].displayName} : ${numberWithCommas(doc[2].retrocoinTotal)}\n
                     ${doc[3].displayName} : ${numberWithCommas(doc[3].retrocoinTotal)}\n
@@ -35,7 +29,15 @@ module.exports.run = async (bot, message, args) => {
                     ${doc[6].displayName} : ${numberWithCommas(doc[6].retrocoinTotal)}\n
                     ${doc[7].displayName} : ${numberWithCommas(doc[7].retrocoinTotal)}\n
                     ${doc[8].displayName} : ${numberWithCommas(doc[8].retrocoinTotal)}\n
-                    ${doc[9].displayName} : ${numberWithCommas(doc[9].retrocoinTotal)}`
+                    ${doc[9].displayName} : ${numberWithCommas(doc[9].retrocoinTotal)}`;
+        
+        message.channel.send({embed: {
+          color: 3447003,
+          title: `**Retro Valley** :zap: **LEADERBOARD**`,
+          fields: [
+          {
+            name: "(кошелек просто по швам идет)",
+            value: "```"+text+"```"
           }
           ],
           timestamp: new Date(),
