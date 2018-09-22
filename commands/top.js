@@ -14,10 +14,11 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_ROLES"))
     return;
   console.log("DB");
-  var topusers = User.find().sort({retrocoinTotal: -1}).limit(3, function (err, docs) {
+  var topusers = User.find().sort({retrocoinTotal: -1}).limit(3)( function (err, docs) {
     if (err)
       console.log("Error on database findOne: " + err);
     else {
+      console.log("db");
       console.log(docs);
     }
   });
