@@ -16,22 +16,26 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_ROLES"))
     return;
 
-  var topusers = User.find().sort({retrocoinTotal: -1}).limit(2).lean().exec(function(err, doc) {
+  var topusers = User.find().sort({retrocoinTotal: -1}).limit(10).lean().exec(function(err, doc) {
     if(err)
       console.log(err);
     else{
-      var n1 = doc[0].displayName;
-      var n2 = doc[1].displayName;
-      var s1 = doc[0].retrocoinTotal;
-      var s2 = doc[1].retrocoinTotal;
-      console.log("TOP1: "+n1+", score: "+s1+", TOP2: "+n2+", score: "+s2);
         message.channel.send({embed: {
           color: 3447003,
           title: `**Retro Valley** :zap: **LEADERBOARD**`,
           fields: [
           {
-            name: "Тест",
-            value: `${n1}:${s1}\n${n2}:${s2}`
+            name: "(кошелек просто по швам идет)",
+            value: `${doc[0].displayName} : ${numberWithCommas(doc[0].retrocoinTotal)}\n
+                    ${doc[1].displayName} : ${numberWithCommas(doc[1].retrocoinTotal)}\n
+                    ${doc[2].displayName} : ${numberWithCommas(doc[2].retrocoinTotal)}\n
+                    ${doc[3].displayName} : ${numberWithCommas(doc[3].retrocoinTotal)}\n
+                    ${doc[4].displayName} : ${numberWithCommas(doc[4].retrocoinTotal)}\n
+                    ${doc[5].displayName} : ${numberWithCommas(doc[5].retrocoinTotal)}\n
+                    ${doc[6].displayName} : ${numberWithCommas(doc[6].retrocoinTotal)}\n
+                    ${doc[7].displayName} : ${numberWithCommas(doc[7].retrocoinTotal)}\n
+                    ${doc[8].displayName} : ${numberWithCommas(doc[8].retrocoinTotal)}\n
+                    ${doc[9].displayName} : ${numberWithCommas(doc[9].retrocoinTotal)}`
           }
           ],
           timestamp: new Date(),
