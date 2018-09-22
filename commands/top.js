@@ -18,8 +18,8 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
-      console.log("1ST: " + doc[0]);
-      console.log("2ND: " + doc[1]);
+      console.log("1ST: " + doc[0].displayName);
+      console.log("2ND: " + doc[1].displayName);
     }
   });
 }
