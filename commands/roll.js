@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   	var separator = "-";
   	var arrayOfNumbers = args[0].split(separator);
   	if (!isNumeric(arrayOfNumbers[0]) || !isNumeric(arrayOfNumbers[1]))
-  		return message.channel.send("Пробуй с числами (и только с позитивными) :thinking: ");
+  		return message.channel.send("Че то я не понял :thinking: Пробуй от-до");
   	if (Number(arrayOfNumbers[1]) < Number(arrayOfNumbers[0]))
   		return message.channel.send("Ты числа местами не попутал? :thinking: ");
   	if (Number(arrayOfNumbers[1]) > Number(arrayOfNumbers[0])){
