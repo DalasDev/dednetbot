@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
                         `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
                         `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
                         `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x].infractions)} раз(а)`;+"``"
+                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x].infractions)} раз(а)`+"``"
           }
           ],
           timestamp: new Date(),
