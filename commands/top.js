@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
           fields: [
           {
             name: "(кошелек просто по швам идет)",
-            value: text
+            value: "``"+text+"``"
           }
           ],
           timestamp: new Date(),
