@@ -20,16 +20,17 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
-      var text = `${doc[0].displayName}:\n${numberWithCommas(doc[0].retrocoinTotal)}
-${doc[1].displayName}:\n${numberWithCommas(doc[1].retrocoinTotal)}
-${doc[2].displayName}:\n${numberWithCommas(doc[2].retrocoinTotal)}
-${doc[3].displayName}:\n${numberWithCommas(doc[3].retrocoinTotal)}
-${doc[4].displayName}:\n${numberWithCommas(doc[4].retrocoinTotal)}
-${doc[5].displayName}:\n${numberWithCommas(doc[5].retrocoinTotal)}
-${doc[6].displayName}:\n${numberWithCommas(doc[6].retrocoinTotal)}
-${doc[7].displayName}:\n${numberWithCommas(doc[7].retrocoinTotal)}
-${doc[8].displayName}:\n${numberWithCommas(doc[8].retrocoinTotal)}
-${doc[9].displayName}:\n${numberWithCommas(doc[9].retrocoinTotal)}`;
+      var text = `
+#1 ${doc[0].displayName}\n${numberWithCommas(doc[0].retrocoinTotal)}\n
+#2 ${doc[1].displayName}\n${numberWithCommas(doc[1].retrocoinTotal)}\n
+#3 ${doc[2].displayName}\n${numberWithCommas(doc[2].retrocoinTotal)}\n
+#4 ${doc[3].displayName}\n${numberWithCommas(doc[3].retrocoinTotal)}\n
+#5 ${doc[4].displayName}\n${numberWithCommas(doc[4].retrocoinTotal)}\n
+#6 ${doc[5].displayName}\n${numberWithCommas(doc[5].retrocoinTotal)}\n
+#7 ${doc[6].displayName}\n${numberWithCommas(doc[6].retrocoinTotal)}\n
+#8 ${doc[7].displayName}\n${numberWithCommas(doc[7].retrocoinTotal)}\n
+#9 ${doc[8].displayName}\n${numberWithCommas(doc[8].retrocoinTotal)}\n
+#10 ${doc[9].displayName}\n${numberWithCommas(doc[9].retrocoinTotal)}`;
         
         message.channel.send({embed: {
           color: 3447003,
