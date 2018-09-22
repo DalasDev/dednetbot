@@ -17,8 +17,10 @@ module.exports.run = async (bot, message, args) => {
   var topusers = User.find().sort({retrocoinTotal: -1}).limit(3).lean().exec(function(err, doc) {
     if(err)
       console.log(err);
-    else
-      console.log(doc);
+    else{
+      console.log("1ST: " + doc[0]);
+      console.log("2ND: " + doc[1]);
+    }
   });
 }
 
