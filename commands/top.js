@@ -20,6 +20,8 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
+      var x = 0;
+      var y = 0;
       var text = `\n
       **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
       **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
