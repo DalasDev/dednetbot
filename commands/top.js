@@ -14,8 +14,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_ROLES"))
     return;
   console.log("DB");
-  var topusers = User.find().sort({retrocoinTotal: -1}).limit(3);
-  var usr_obj = topusers.toObject();
+  var topusers = User.find().sort({retrocoinTotal: -1}).limit(3).toObject();
   console.log("usr_obj: " + usr_obj);
 }
 
