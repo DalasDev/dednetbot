@@ -25,14 +25,22 @@ module.exports.run = async (bot, message, args) => {
       var s1 = doc[0].retrocoinTotal;
       var s2 = doc[1].retrocoinTotal;
       console.log("TOP1: "+n1+", score: "+s1+", TOP2: "+n2+", score: "+s2);
-      const embed = new Discord.RichEmbed()
-      .setTitle("Retro Valley Leaderboard")
-      .setColor("#4C8BF5")
-      .setThumbnail(retricIcon)
-      .addField(n1, s1, true)
-      .addField(n2, s2, true)
-
-      message.channel.send({embed});
+        message.channel.send({embed: {
+          color: 3447003,
+          title: `**Retro Valley** :zap: **LEADERBOARD**`,
+          fields: [
+          {
+            name: "Тест",
+            value: `${n1}:${s1}\n${n2}:${s2}`
+          }
+          ],
+          timestamp: new Date(),
+          footer: {
+            icon_url: message.author.avatarURL,
+            text: `© ${message.member.displayName}`
+          },
+        }
+      });
     }
   });
 }
