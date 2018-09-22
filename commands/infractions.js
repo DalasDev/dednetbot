@@ -21,17 +21,18 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
     else{
       var x = 0;
+      var y = 0;
       var text = `\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
-        #${x} ${doc[x].displayName}\n    ${numberWithCommas(doc[x].infractions)} раз(а)`;
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x++].infractions)} раз(а)\n
+        #${y=x+1} ${doc[x].displayName}\n    ${numberWithCommas(doc[x].infractions)} раз(а)`;
 
         message.channel.send({embed: {
           color: 3447003,
