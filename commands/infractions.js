@@ -21,16 +21,16 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
     else{
       var text = `\n
-#1 ${doc[0].displayName}\n    ${numberWithCommas(doc[0].retrocoinTotal)} варнов\n
-#2 ${doc[1].displayName}\n    ${numberWithCommas(doc[1].retrocoinTotal)} варнов\n
-#3 ${doc[2].displayName}\n    ${numberWithCommas(doc[2].retrocoinTotal)} варнов\n
-#4 ${doc[3].displayName}\n    ${numberWithCommas(doc[3].retrocoinTotal)} варнов\n
-#5 ${doc[4].displayName}\n    ${numberWithCommas(doc[4].retrocoinTotal)} варнов\n
-#6 ${doc[5].displayName}\n    ${numberWithCommas(doc[5].retrocoinTotal)} варнов\n
-#7 ${doc[6].displayName}\n    ${numberWithCommas(doc[6].retrocoinTotal)} варнов\n
-#8 ${doc[7].displayName}\n    ${numberWithCommas(doc[7].retrocoinTotal)} варнов\n
-#9 ${doc[8].displayName}\n    ${numberWithCommas(doc[8].retrocoinTotal)} варнов\n
-#10 ${doc[9].displayName}\n   ${numberWithCommas(doc[9].retrocoinTotal)} варнов`;
+#1 ${doc[0].displayName}\n    ${numberWithCommas(doc[0].infractions)} варнов\n
+#2 ${doc[1].displayName}\n    ${numberWithCommas(doc[1].infractions)} варнов\n
+#3 ${doc[2].displayName}\n    ${numberWithCommas(doc[2].infractions)} варнов\n
+#4 ${doc[3].displayName}\n    ${numberWithCommas(doc[3].infractions)} варнов\n
+#5 ${doc[4].displayName}\n    ${numberWithCommas(doc[4].infractions)} варнов\n
+#6 ${doc[5].displayName}\n    ${numberWithCommas(doc[5].infractions)} варнов\n
+#7 ${doc[6].displayName}\n    ${numberWithCommas(doc[6].infractions)} варнов\n
+#8 ${doc[7].displayName}\n    ${numberWithCommas(doc[7].infractions)} варнов\n
+#9 ${doc[8].displayName}\n    ${numberWithCommas(doc[8].infractions)} варнов\n
+#10 ${doc[9].displayName}\n   ${numberWithCommas(doc[9].infractions)} варнов`;
 
         message.channel.send({embed: {
           color: 3447003,
