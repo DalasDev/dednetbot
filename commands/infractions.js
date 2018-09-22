@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
       if(infractions % 10 == 1){
         infTag = "варн";
       } else {
-        infTag = (infractions % 10 == 2 || infractions % 10 == 3 || infractions % 10 == 4) ? "варна" : "варнов");
+        infTag = (infractions % 10 == 2 || infractions % 10 == 3 || infractions % 10 == 4) ? "варна" : "варнов";
       }
 
       var text = `\n
