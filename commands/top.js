@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
-      var text = `${doc[0].displayName}:${numberWithCommas(doc[0].retrocoinTotal)}                    
+      var text = `${doc[0].displayName}:${numberWithCommas(doc[0].retrocoinTotal)}                 
 ${doc[1].displayName}:${numberWithCommas(doc[1].retrocoinTotal)}
 ${doc[2].displayName}:${numberWithCommas(doc[2].retrocoinTotal)}
 ${doc[3].displayName}:${numberWithCommas(doc[3].retrocoinTotal)}
