@@ -21,16 +21,16 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
     else{
       var text = `\n
-#1 ${doc[0].displayName}\n${numberWithCommas(doc[0].retrocoinTotal)}${retricIcon}\n
-#2 ${doc[1].displayName}\n${numberWithCommas(doc[1].retrocoinTotal)}${retricIcon}\n
-#3 ${doc[2].displayName}\n${numberWithCommas(doc[2].retrocoinTotal)}${retricIcon}\n
-#4 ${doc[3].displayName}\n${numberWithCommas(doc[3].retrocoinTotal)}${retricIcon}\n
-#5 ${doc[4].displayName}\n${numberWithCommas(doc[4].retrocoinTotal)}${retricIcon}\n
-#6 ${doc[5].displayName}\n${numberWithCommas(doc[5].retrocoinTotal)}${retricIcon}\n
-#7 ${doc[6].displayName}\n${numberWithCommas(doc[6].retrocoinTotal)}${retricIcon}\n
-#8 ${doc[7].displayName}\n${numberWithCommas(doc[7].retrocoinTotal)}${retricIcon}\n
-#9 ${doc[8].displayName}\n${numberWithCommas(doc[8].retrocoinTotal)}${retricIcon}\n
-#10 ${doc[9].displayName}\n${numberWithCommas(doc[9].retrocoinTotal)}${retricIcon}`;
+#1 ${doc[0].displayName}\n    ${numberWithCommas(doc[0].retrocoinTotal)} ретриков\n
+#2 ${doc[1].displayName}\n    ${numberWithCommas(doc[1].retrocoinTotal)} ретриков\n
+#3 ${doc[2].displayName}\n    ${numberWithCommas(doc[2].retrocoinTotal)} ретриков\n
+#4 ${doc[3].displayName}\n    ${numberWithCommas(doc[3].retrocoinTotal)} ретриков\n
+#5 ${doc[4].displayName}\n    ${numberWithCommas(doc[4].retrocoinTotal)} ретриков\n
+#6 ${doc[5].displayName}\n    ${numberWithCommas(doc[5].retrocoinTotal)} ретриков\n
+#7 ${doc[6].displayName}\n    ${numberWithCommas(doc[6].retrocoinTotal)} ретриков\n
+#8 ${doc[7].displayName}\n    ${numberWithCommas(doc[7].retrocoinTotal)} ретриков\n
+#9 ${doc[8].displayName}\n    ${numberWithCommas(doc[8].retrocoinTotal)} ретриков\n
+#10 ${doc[9].displayName}\n   ${numberWithCommas(doc[9].retrocoinTotal)} ретриков`;
         
         message.channel.send({embed: {
           color: 3447003,
