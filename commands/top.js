@@ -29,8 +29,8 @@ module.exports.run = async (bot, message, args) => {
       .setTitle("Retro Valley Leaderboard")
       .setColor("#4C8BF5")
       .setThumbnail(retricIcon)
-      .addField(doc[0].displayName, doc[0].retrocoinTotal, true)
-      .addField(doc[1].displayName, doc[1].retrocoinTotal, true)
+      .addField(n1, s1, true)
+      .addField(n2, s2, true)
 
       message.channel.send({embed});
     }
