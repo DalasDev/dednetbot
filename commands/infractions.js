@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
   var retricIcon = bot.emojis.find("name", "retric");
 
-  if(!message.member.hasPermission("MANAGE_ROLES"))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
   var topusers = User.find().sort({infractions: -1}).limit(10).lean().exec(function(err, doc) {
@@ -23,33 +23,33 @@ module.exports.run = async (bot, message, args) => {
       var x = 0;
       var y = 0;
       var text = `\n
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
-        **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x].infractions)} варнов(а)**`;
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**
+      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x].infractions)} варнов(а)**`;
 
-        message.channel.send({embed: {
-          color: 3447003,
-          title: `**Retro Valley** :zap: **WARNS LEADERBOARD**`,
-          fields: [
-          {
-            name: "(наши бундари)",
-            value: text
-          }
-          ],
-          timestamp: new Date(),
-          footer: {
-            icon_url: message.author.avatarURL,
-            text: `© ${message.member.displayName}`
-          },
+      message.channel.send({embed: {
+        color: 3447003,
+        title: `**Retro Valley** :zap: **WARNS LEADERBOARD**`,
+        fields: [
+        {
+          name: "(наши бундари)",
+          value: text
         }
-      });
+        ],
+        timestamp: new Date(),
+        footer: {
+          icon_url: message.author.avatarURL,
+          text: `© ${message.member.displayName}`
+        },
+      }
+    });
     }
   });
 }
