@@ -22,6 +22,17 @@ module.exports.run = async (bot, message, args) => {
     else{
       var x = 0;
       var y = 0;
+      var text = `\n
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x++].infractions)} раз(а)**
+        **${y=x+1}.** ${doc[x].displayName}-**${numberWithCommas(doc[x].infractions)} раз(а)**`;
 
         message.channel.send({embed: {
           color: 3447003,
@@ -29,16 +40,7 @@ module.exports.run = async (bot, message, args) => {
           fields: [
           {
             name: "(наши бундари)",
-            value: "``"+`${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x++].infractions)} раз(а)`
-                        `${y=x+1}. ${doc[x].displayName}\n${numberWithCommas(doc[x].infractions)} раз(а)`+"``"
+            value: text
           }
           ],
           timestamp: new Date(),
