@@ -42,12 +42,12 @@ module.exports.run = async (bot, message, args) => {
   });
   newItem.save()
   .then(item => {
-    console.log('New item "'+args[0]+'" added to database');
+    console.log('New item "'+itm+'" added to database');
   })
   .catch(err => {
     console.log("Error on database save: " + err);
   });
-  return message.reply(`"${args[0]}" добавлено в магазин`);
+  return message.reply(`"${itm}" добавлено в магазин`);
 }
 
 module.exports.help = {
