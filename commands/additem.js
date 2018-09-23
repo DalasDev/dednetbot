@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
   console.log("Content: " + message.cleanContent);
-  itm = message.cleanContent.split('"').pop();
+  itm = message.cleanContent.split('"', 1).pop();
   console.log("Item name: " + itm);
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
