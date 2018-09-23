@@ -11,6 +11,8 @@ module.exports.run = async (bot, message, args) => {
     return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
+  if(!args)
+    return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
   var itm = "";
   var prc = 0;
   var ifU = "-";
