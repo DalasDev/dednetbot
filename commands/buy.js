@@ -30,9 +30,11 @@ module.exports.run = async (bot, message, args) => {
 							return message.reply("не достаточно налички для покупки");
 						user.retrocoinCash = user.retrocoinCash - item.itemPrice;
 						var newItem = new Object({itemName: item.itemName});
-						console.log("DB");
-						console.log("newItem: " + newItem);
 						user.inv.push(newItem);
+						user_obj.save(function (err) {
+						  if (err)
+						  	return handleError(err);
+						});
 					}
 				});
 			}
