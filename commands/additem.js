@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
   if(!args)
-    return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
+    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
   var itm = "";
   var prc = 0;
   var ifU = "-";
@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args) => {
     ifD = (args[4] == '+') ? true : false;
   }
   if(!args[4])
-    return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
+    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
   var newItem = new Item({
     itemName: itm,
     itemPrice: prc,
