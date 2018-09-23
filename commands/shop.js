@@ -22,9 +22,10 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
     else{
       var maxX = doc.length;
+      console.log("max X: " + maxX);
       var x = 0;
       var y = 0;
-      var text = `**${y=x+1}.** ${doc[x].itemName} • **${Number(doc[x++].price)} ретриков**`;
+      var text = `**${y=x+1}.** ${doc[x].itemName} • **${doc[x].price} ретриков**`;
 
       message.channel.send({embed: {
         color: 3447003,
