@@ -19,6 +19,8 @@ module.exports.run = async (bot, message, args) => {
   if(message.cleanContent.indexOf('"') > -1){
     itm = message.cleanContent.split('"', 2).pop();
     prc = message.cleanContent.split(" ", 4).pop();
+    var newStr = message.cleanContent.split('"').pop();
+    console.log("newStr: " + newStr);
     ifU = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
     ifS = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
     ifD = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
