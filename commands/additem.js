@@ -31,6 +31,7 @@ module.exports.run = async (bot, message, args) => {
   .catch(err => {
     console.log("Error on database save: " + err);
   });
+  return message.reply(`${args[0]} добавлено в магазин`);
 }
 
 module.exports.help = {
