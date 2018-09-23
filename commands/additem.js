@@ -7,8 +7,8 @@ var Item = require('./../schemas/shop_model.js');
 module.exports.run = async (bot, message, args) => {
 
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_ROLES"))
-    return;
+  // if(!message.member.hasPermission("MANAGE_ROLES"))
+  //   return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
   if(!args)
