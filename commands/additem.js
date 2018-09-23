@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
     ifD = (newStr.split(" ", 5).pop() == "+") ? true : false;
   }
   else {
-    prc = Number(argc[1]);
+    prc = Number(args[1]);
     itm = args[0];
     ifU = (args[2] == '+') ? true : false;
     ifS = (args[3] == '+') ? true : false;
