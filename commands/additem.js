@@ -14,6 +14,7 @@ module.exports.run = async (bot, message, args) => {
   console.log("Content: " + message.cleanContent);
   var str = "Abc: Lorem ipsum sit amet";
   str = str.split(":").pop();
+  console.log("Str: " + str);
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
   if(args[5])
