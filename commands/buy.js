@@ -31,6 +31,9 @@ module.exports.run = async (bot, message, args) => {
 						user.retrocoinCash = user.retrocoinCash - item.itemPrice;
 						var newItem = new Object({itemName: item.itemName});
 						user.inv.push(newItem);
+						user_obj.visits.$inc();
+						user_obj.save();
+						console.log("DB");
 						user_obj.save(function (err) {
 						  if (err)
 						  	return handleError(err);
