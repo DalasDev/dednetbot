@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
       var y = 0;
       var text = ``;
       while(x < maxX)
-        text += `**${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**`;
+        text += `**${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].infractions)} варнов(а)**\n`;
 
       message.channel.send({embed: {
         color: 3447003,
