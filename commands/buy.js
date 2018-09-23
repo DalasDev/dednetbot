@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
 		
 		var user_obj = User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
 			if(err)
-				console.log(err);;
+				console.log(err);
 			else{
 				var itemToBuy = Item.findOne({itemName: args[0]}).lean().exec(function(err, item) {
 					if(err)
