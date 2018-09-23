@@ -18,11 +18,25 @@ module.exports.run = async (bot, message, args) => {
 			if(err)
 				console.log(err);
 			else{
+				if (!user)
+					return message.reply("юзер не найден");
 				var itemToBuy = Item.findOne({itemName: args[0]}).lean().exec(function(err, item) {
 					if(err)
 						console.log(err);
 					else{
-						console.log("User " + user.displayName + " want's to buy a " + item.itemName);
+						if(!item)
+							return message.reply("итем не найден");
+						if (user.retrocoinCash - item.itemPrice <= 0)
+							return message.reply("не достаточно налички для покупки");
+						user.retrocoinCash = user.retrocoinCash - item.itemPrice;
+						var newItem = new object({
+							itemName: item.itemName
+						});
+						user.inv.push(newItem);
+						user.save(function(err, updatedUsr){
+						if(err)
+							console.log(err);
+						});
 					}
 				});
 			}
