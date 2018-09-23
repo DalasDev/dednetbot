@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   var prc = 0;
   if(message.cleanContent.indexOf('"') > -1){
     itm = message.cleanContent.split('"', 2).pop();
-    prc = message.cleanContent.split(" ").pop();
+    prc = message.cleanContent.split(" ", 4).pop();
     console.log("Price: " + prc);
   }
   else {
