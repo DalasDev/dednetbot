@@ -14,8 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
   // var retricIcon = bot.emojis.find("name", "retric");
 
-  // if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
-  //   return;
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+    return;
 
   var items = Item.find().sort({created: -1}).lean().exec(function(err, doc) {
     if(err)
