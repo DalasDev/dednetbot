@@ -87,7 +87,7 @@ module.exports.run = async (bot, message, args) => {
         console.log(err);
       else{
         if (!items)
-          return message.reply("Похоже третей страницы пока-что нету :thinking:");
+          return message.reply("похоже третей страницы пока-что нету :thinking:");
         var maxX = doc.length;
         var x = 30;
         var y = 0;
@@ -115,6 +115,8 @@ module.exports.run = async (bot, message, args) => {
       }
     });
   }
+  else
+    return message.reply("похоже запрошеной страницы еще не существует :thinking:");
 }
 
 module.exports.help = {
