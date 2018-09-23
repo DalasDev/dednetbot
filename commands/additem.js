@@ -13,23 +13,28 @@ module.exports.run = async (bot, message, args) => {
     return;
   var itm = "";
   var prc = 0;
+  var ifU = "-";
+  var ifS = "-";
+  var ifD = "-";
   if(message.cleanContent.indexOf('"') > -1){
     itm = message.cleanContent.split('"', 2).pop();
     prc = message.cleanContent.split(" ", 4).pop();
-    console.log("Price: " + prc);
+    ifU = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
+    ifS = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
+    ifD = (message.cleanContent.split(" ", 5).pop() == "+") ? true : false;
   }
   else {
     prc = Number(argc[1]);
     itm = args[0];
+    ifU = (args[2] == '+') ? true : false;
+    ifS = (args[3] == '+') ? true : false;
+    ifD = (args[4] == '+') ? true : false;
   }
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
-  var ifU = (args[2] == '+') ? true : false;
-  var ifS = (args[3] == '+') ? true : false;
-  var ifD = (args[4] == '+') ? true : false;
   var newItem = new Item({
     itemName: itm,
-    itemPrice: Number(args[1]),
+    itemPrice: prc,
     usable: ifU,
     sellable: ifS,
     deletable: ifD,
