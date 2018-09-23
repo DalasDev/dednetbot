@@ -20,19 +20,12 @@ module.exports.run = async (bot, message, args) => {
     if(err)
       console.log(err);
     else{
+      var maxX = doc.length;
       var x = 0;
       var y = 0;
-      var text = `\n
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретриков**
-      **${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x].retrocoinTotal)} ретриков**`;
+      var text = ``;
+      while(x < maxX)
+        text += `**${y=x+1}.** ${doc[x].displayName} • **${numberWithCommas(doc[x++].retrocoinTotal)} ретрика(ов)**\n`;
 
       message.channel.send({embed: {
         color: 3447003,
