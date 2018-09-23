@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
       var y = 0;
       var text = ``;
       while (x < maxX){
-        text += `**${y=x+1}.** ${doc[x].itemName} • **${doc[x++].itemPrice} ретриков**\n`;
+        text += `**${y=x+1}.** ${doc[x].itemName} • **${numberWithCommas(doc[x++].itemPrice)} ретриков**\n`;
       }
 
       message.channel.send({embed: {
