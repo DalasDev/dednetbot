@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
-  if (!args[0]){
+  if (!args[0] || args[0] == '1'){
     var items = Item.find().sort({itemPrice: 1}).limit(15).lean().exec(function(err, doc) {
       if(err)
         console.log(err);
