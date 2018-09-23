@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   if (!args[0]){
-    var items = Item.find().sort({itemPrice: 1}).limit(10).lean().exec(function(err, doc) {
+    var items = Item.find().sort({itemPrice: 1}).limit(15).lean().exec(function(err, doc) {
       if(err)
         console.log(err);
       else{
@@ -50,12 +50,12 @@ module.exports.run = async (bot, message, args) => {
     });
   }
   else if (args[0] == '2'){
-    var items = Item.find().sort({itemPrice: 1}).limit(20).lean().exec(function(err, doc) {
+    var items = Item.find().sort({itemPrice: 1}).limit(30).lean().exec(function(err, doc) {
       if(err)
         console.log(err);
       else{
         var maxX = doc.length;
-        var x = 10;
+        var x = 15;
         var y = 0;
         var text = ``;
         while (x < maxX){
@@ -82,12 +82,14 @@ module.exports.run = async (bot, message, args) => {
     });
   }
   else if (args[0] == '3'){
-    var items = Item.find().sort({itemPrice: 1}).limit(30).lean().exec(function(err, doc) {
+    var items = Item.find().sort({itemPrice: 1}).limit(45).lean().exec(function(err, doc) {
       if(err)
         console.log(err);
       else{
+        if (!items)
+          return message.reply("Похоже третей страницы пока-что нету :thinking:");
         var maxX = doc.length;
-        var x = 20;
+        var x = 30;
         var y = 0;
         var text = ``;
         while (x < maxX){
