@@ -2,15 +2,15 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  message.channel.send('Занятся сексом? 30 сек')
+  message.channel.send('Занятся сексом? 10 сек')
   .then(() => {
     message.channel.awaitMessages(response => response.content === 'да', {
-      max: 3,
-      time: 30000,
+      max: 1,
+      time: 10000,
       errors: ['time'],
     })
     .then((collected) => {
-      message.channel.send(`Найдено: ${collected.first().content}`);
+      message.channel.send(`${collected.first().content}! Чпок чпок!`);
     })
     .catch(() => {
       message.channel.send('Видимо, это отказ');
