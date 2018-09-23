@@ -15,15 +15,14 @@ module.exports.run = async (bot, message, args) => {
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
 		
 		var user_obj = User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
-			if(err)
-				console.log(err);
-			else{
-				var itemToBuy = Item.findOne({itemName: args[0]}).lean().exec(function(err, item) {
-					if(err)
-						console.log(err);
-					else{
-						console.log("User " + user.displayName + " want's to buy a " + item.itemName);
-					}
+		if(err)
+			console.log(err);
+		else{
+			var itemToBuy = Item.findOne({itemName: args[0]}).lean().exec(function(err, item) {
+				if(err)
+					console.log(err);
+				else
+					console.log("User " + user.displayName + " want's to buy a " + item.itemName);
 				});
 			}
 		}
@@ -31,6 +30,7 @@ module.exports.run = async (bot, message, args) => {
 	else
 		return message.reply("чеееее :thinking:");
 }
+
 module.exports.help = {
 	name: "buy"
 }
