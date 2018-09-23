@@ -23,7 +23,7 @@ function hit(hited, message, bot){
 			if (!foundObj)
 				console.log("Something stange happend");
 			else {
-				foundObj.hited = foundObj.hited + 1;
+				foundObj.hit = foundObj.hit + 1;
 				foundObj.save(function(err, updatedObj){
 				if(err)
 					console.log(err);
