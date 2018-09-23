@@ -15,7 +15,9 @@ module.exports.run = async (bot, message, args) => {
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
 		
 		var user_obj = User.findOne({userID: message.member.id});
+		console.log("user_obj: " + user_obj);
 		var itemToBuy = Item.findOne({itemName: args[0]});
+		console.log("item: " + itemToBuy);
 		console.log("User " + user_obj.displayName + " want's to buy a " + itemToBuy.itemName);
 	}
 	else
