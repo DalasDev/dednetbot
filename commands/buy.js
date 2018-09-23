@@ -33,9 +33,9 @@ module.exports.run = async (bot, message, args) => {
 							itemName: item.itemName
 						};
 						user.inv.push(newItem);
-						user.save(function(err, updatedUsr){
-						if(err)
-							console.log(err);
+						user.save(function (err) {
+						  if (err)
+						  	return handleError(err);
 						});
 					}
 				});
