@@ -13,6 +13,7 @@ module.exports.run = async (bot, message, args) => {
     return;
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
+  console.log("Content: " + message.cleanContent);
   var ifU = (args[2] == '+') ? true : false;
   var ifS = (args[3] == '+') ? true : false;
   var ifD = (args[4] == '+') ? true : false;
