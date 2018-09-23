@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
 									return message.reply(`вылетело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
 								else
-									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+									return message.reply(`увы, но вылетело ${r} ${winner}! Видимо ${args[1]} - не твое ${pepeIcon}`);
 							}, 5000);
 						}
 						else
