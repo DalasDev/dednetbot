@@ -11,11 +11,11 @@ module.exports.run = async (bot, message, args) => {
     return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
+  console.log("Content: " + message.cleanContent);
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
   if(args[5])
-    return message.reply('Что то не так...');
-  console.log("Content: " + message.cleanContent);
+    return message.reply('что то не так...');
   var ifU = (args[2] == '+') ? true : false;
   var ifS = (args[3] == '+') ? true : false;
   var ifD = (args[4] == '+') ? true : false;
