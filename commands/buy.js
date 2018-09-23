@@ -26,12 +26,12 @@ module.exports.run = async (bot, message, args) => {
 					else{
 						if(!item)
 							return message.reply("итем не найден");
-						if (user.retrocoinCash - item.itemPrice <= 0)
+						if (user.retrocoinCash - item.itemPrice < 0)
 							return message.reply("не достаточно налички для покупки");
 						user.retrocoinCash = user.retrocoinCash - item.itemPrice;
-						var newItem = new object({
+						var newItem = {
 							itemName: item.itemName
-						});
+						};
 						user.inv.push(newItem);
 						user.save(function(err, updatedUsr){
 						if(err)
