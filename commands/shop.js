@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
 
       message.channel.send({embed: {
         color: 3447003,
-        title: `**Retro Valley** :soon: **Магазин**`,
+        title: `**Retro Valley** :shopping_cart: **Магазин**`,
         fields: [
         {
           name: "(налетай-покупай)",
