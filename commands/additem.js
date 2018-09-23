@@ -11,18 +11,20 @@ module.exports.run = async (bot, message, args) => {
     return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
-  console.log("Content: " + message.cleanContent);
-  itm = message.cleanContent.split('"', 2).pop();
-  console.log("Item name: " + itm);
+  var itm = "";
+  if(message.cleanContent.indexOf('"') > -1){
+    itm = message.cleanContent.split('"', 2).pop();
+    console.log("Item name: " + itm);
+  }
+  else
+    itm = args[0];
   if(!args[4])
     return message.reply(`name price U(+/-) S(+/-) D(+/-)`);
-  if(args[5])
-    return message.reply('что то не так...');
   var ifU = (args[2] == '+') ? true : false;
   var ifS = (args[3] == '+') ? true : false;
   var ifD = (args[4] == '+') ? true : false;
   var newItem = new Item({
-    itemName: args[0],
+    itemName: itm,
     itemPrice: Number(args[1]),
     usable: ifU,
     sellable: ifS,
