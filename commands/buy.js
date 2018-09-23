@@ -29,9 +29,9 @@ module.exports.run = async (bot, message, args) => {
 						if (user.retrocoinCash - item.itemPrice < 0)
 							return message.reply("не достаточно налички для покупки");
 						user.retrocoinCash = user.retrocoinCash - item.itemPrice;
-						var newItem = {
-							itemName: item.itemName
-						};
+						var newItem = new Object({itemName: item.itemName});
+						console.log("DB");
+						console.log("newItem: " + newItem);
 						user.inv.push(newItem);
 					}
 				});
