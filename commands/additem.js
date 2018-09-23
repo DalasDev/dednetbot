@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     itm = message.cleanContent.split('"', 2).pop();
     var newStr = message.cleanContent.split('"').pop();
     console.log("New Str: " + newStr);
-    prc = newStr.split(" ").pop();
+    prc = newStr.split(" ", 1).pop();
     console.log("Price: " + prc);
     ifU = (newStr.split(" ", 2).pop() == "+") ? true : false;
     ifS = (newStr.split(" ", 3).pop() == "+") ? true : false;
