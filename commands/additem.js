@@ -20,11 +20,11 @@ module.exports.run = async (bot, message, args) => {
     itm = message.cleanContent.split('"', 2).pop();
     var newStr = message.cleanContent.split('"').pop();
     console.log("New Str: " + newStr);
-    prc = newStr.split(" ", 1).pop();
+    prc = newStr.split(" ", 2).pop();
     console.log("Price: " + prc);
-    ifU = (newStr.split(" ", 2).pop() == "+") ? true : false;
-    ifS = (newStr.split(" ", 3).pop() == "+") ? true : false;
-    ifD = (newStr.split(" ", 4).pop() == "+") ? true : false;
+    ifU = (newStr.split(" ", 3).pop() == "+") ? true : false;
+    ifS = (newStr.split(" ", 4).pop() == "+") ? true : false;
+    ifD = (newStr.split(" ", 5).pop() == "+") ? true : false;
   }
   else {
     prc = Number(argc[1]);
