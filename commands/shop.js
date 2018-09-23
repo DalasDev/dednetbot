@@ -22,7 +22,6 @@ module.exports.run = async (bot, message, args) => {
       console.log(err);
     else{
       var maxX = doc.length;
-      console.log("max X: " + maxX);
       var x = 0;
       var y = 0;
       var text = ``;
