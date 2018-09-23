@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
 		
-		var user_obj = User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
+		var user_obj = User.findOneAndUpdate({userID: message.member.id}).lean().exec(function(err, user) {
 			if(err)
 				console.log(err);
 			else{
