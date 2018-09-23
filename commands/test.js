@@ -2,38 +2,20 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  message.channel.send({embed: {
-    color: 3447003,
-    author: {
-      name: bot.user.username,
-      icon_url: bot.user.avatarURL
-    },
-    title: "Пример юзер инфо",
-    description: "(что то о пользевателе)",
-    fields: [{
-      name: "Никнейм",
-      value: "(тут может быть никнейм)"
-    },
-    {
-      name: "Нарушения",
-      value: "(тут может быть[ссылка](http://www.retro-bot.com) на нарушения прользователя)"
-    },
-    {
-      name: "Тест статы",
-      value: "```тест:test\nтест2:test2```"
-    },
-    {
-      name: "Разметка",
-      value: "*Разметка* **__Разметка__**"
-    }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: bot.user.avatarURL,
-      text: "© Example"
-    }
-  }
-});
+  message.channel.send('Тест на 30 сек')
+  .then(() => {
+    message.channel.awaitMessages(response => response.content === 'да', {
+      max: 1,
+      time: 30000,
+      errors: ['time'],
+    })
+    .then((collected) => {
+      message.channel.send(`Найдено: ${collected.first().content}`);
+    })
+    .catch(() => {
+      message.channel.send('Ничего не было указано');
+    });
+  });
 
 }
 
