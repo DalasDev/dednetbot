@@ -97,11 +97,11 @@ function idle_repeat(){
 // });
 
 bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('493288106699653123').send('**' + member.user.username + '**, переехал в наш город!');
+    member.guild.channels.get('493288106699653123').send(':green_heart: **' + member.user.username + '**, переехал в наш город!');
 });
 
 bot.on('guildMemberRemove', member => {
-    member.guild.channels.get('493288106699653123').send('**' + member.user.username + '**, собрал шмотки и покинул наш город!');
+    member.guild.channels.get('493288106699653123').send(':broken_heart: **' + member.user.username + '**, собрал шмотки и покинул наш город!');
 });
 
 bot.on("ready", async () => {
