@@ -92,7 +92,7 @@ bot.on('guildMemberAdd', member => {
           displayName: message.member.displayName,
           highestRole: message.member.highestRole.name,
           joinedAt: message.member.joinedAt,
-          messages: 1,
+          messages: 0,
           infractions: 0,
           retrocoinCash: 0,
           retrocoinBank: 0,
