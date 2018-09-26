@@ -21,15 +21,6 @@ var warns = require('./public/warnings.json');
 
 app.use(express.static('public'));
 
-bot.on('guildMemberAdd', member => {
-  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  welcomechannel.send(`${member} переехал в наш город!`);
-});
-
-bot.on('guildMemberRemove', member => {
-  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
-});
 
 // app.use("/", (req, res) => {
 //  res.sendFile(__dirname + "/public/index.html");
@@ -86,6 +77,16 @@ function idle_repeat(){
   // Months: 0-11 (Jan-Dec)
   // Day of Week: 0-6 (Sun-Sat)
 }
+
+bot.on('guildMemberAdd', member => {
+  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  welcomechannel.send(`${member} переехал в наш город!`);
+});
+
+bot.on('guildMemberRemove', member => {
+  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+});
 
 bot.on("ready", async () => {
   console.log(`[app.js] ${bot.user.username} онлайн`);
