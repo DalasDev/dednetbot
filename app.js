@@ -82,7 +82,7 @@ bot.on('guildMemberAdd', member => {
   let newuser = member
   var User = require('./schemas/user_model.js');
   var user_obj = User.findOne({
-		userID: newuser.member.id
+		userID: newuser.id
 	}, function (err, foundObj) {
 		if (err)
 			console.log("Error on database findOne: " + err);
