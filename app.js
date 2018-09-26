@@ -109,7 +109,7 @@ bot.on('guildMemberAdd', member => {
         myData.save()
         .then(item => {
           console.log('New user "' + message.member.displayName + '" added to database');
-        });
+        })
         .catch(err => {
           console.log("Error on database save: " + err);
         });
