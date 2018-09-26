@@ -21,6 +21,16 @@ var warns = require('./public/warnings.json');
 
 app.use(express.static('public'));
 
+bot.on('guildMemberAdd', member => {
+  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  welcomechannel.send(`${member} переехал в наш город!`);
+});
+
+bot.on('guildMemberRemove', member => {
+  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+});
+
 // app.use("/", (req, res) => {
 //  res.sendFile(__dirname + "/public/index.html");
 // });
@@ -159,15 +169,6 @@ bot.on("message", async message => {
       commandfile.run(bot, message);
     }
   }
-  bot.on('guildMemberAdd', member => {
-    let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-    welcomechannel.send(`${member} переехал в наш город!`);
-  });
-
-  bot.on('guildMemberRemove', member => {
-    let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-    welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
-  });
 
 });
 
