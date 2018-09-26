@@ -39,7 +39,7 @@ app.use(express.static('public'));
 //   res.send('/public/main/index.html');
 // });
 
-app.listen(process.env.PORT || 8080, () => 
+app.listen(process.env.PORT || 8080, () =>
   console.log("[app.js] Сайт запущен")
   );
 
@@ -116,7 +116,7 @@ bot.on("message", async message => {
     if(commandfile){
       commandfile.run(bot, message, args);
     }
-  } 
+  }
   else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
    && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
@@ -129,8 +129,8 @@ bot.on("message", async message => {
     }
   }
   else if (message.content.charAt(0) === "?" && message.content.charAt(1) === "s" && message.content.charAt(2) === "e"
-   && message.content.charAt(3) === "l" && message.content.charAt(4) === "l" && message.content.charAt(5) === "-" 
-   && message.content.charAt(6) === "i" && message.content.charAt(7) === "t" && message.content.charAt(8) === "e" 
+   && message.content.charAt(3) === "l" && message.content.charAt(4) === "l" && message.content.charAt(5) === "-"
+   && message.content.charAt(6) === "i" && message.content.charAt(7) === "t" && message.content.charAt(8) === "e"
    && message.content.charAt(9) === "m"){
     let messageArray = message.content.split(" ");
     let cmd = "!sellscan";
@@ -159,6 +159,16 @@ bot.on("message", async message => {
       commandfile.run(bot, message);
     }
   }
+  bot.on('guildMemberAdd', member => {
+    let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+    welcomechannel.send(`${member} переехал в наш город!`);
+  });
+
+  bot.on('guildMemberRemove', member => {
+    let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+    welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+  });
+
 });
 
 bot.login(process.env.BOT_TOKEN);

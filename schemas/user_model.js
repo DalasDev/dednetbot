@@ -30,6 +30,16 @@ var userSchema = new mongoose.Schema({
 	lastKill: Date,
 	drunk: Number,
 	lastDrunk: Date,
+	perkVipivoha: Boolean,
+	perkSpid: Boolean,
+	perkBattery: Boolean,
+	perkAktivist: Boolean,
+	perkAntikop: Boolean,
+	perkBundar: Boolean,
+	perkOligarx: Boolean,
+	perkBankir: Boolean,
+	perkMoneyLover: Boolean,
+
 });
 
 module.exports = mongoose.model('users', userSchema);

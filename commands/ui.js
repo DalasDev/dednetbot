@@ -30,6 +30,7 @@ module.exports.run = async (bot, message, args) => {
       if (!foundObj)
         console.log("Something stange happend");
       else {
+
         message.channel.send({embed: {
           color: 3447003,
           icon_url: message.guild.iconURL,
@@ -50,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
           },
           {
             name: "***Доступные перки :***",
-            value: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто"
+            value: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто"
           }
           ],
           timestamp: new Date(),
