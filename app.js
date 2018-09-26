@@ -120,10 +120,8 @@ bot.on('guildMemberAdd', member => {
 
 				}
 			}
-		}
+		});
 	});
-
-});
 
 bot.on('guildMemberAdd', member => {
     member.guild.channels.get('493288106699653123').send(':green_heart: **' + member.user.username + '**, переехал в наш город! :green_heart:');
