@@ -114,6 +114,8 @@ bot.on('guildMemberAdd', member => {
           console.log("Error on database save: " + err);
         });
       }
+    }
+  });
 });
 
 bot.on('guildMemberAdd', member => {
