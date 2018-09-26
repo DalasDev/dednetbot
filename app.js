@@ -83,9 +83,9 @@ bot.on('guildMemberAdd', member => {
   var user_obj = User.findOne({
     userID: message.member.id
   }, function (err, foundObj) {
-    if (err)
+    if (err){
       console.log("Error on database findOne: " + err);
-    else {
+    }else{
       if (foundObj === null){
         var myData = new User({
           userID: message.member.id,
@@ -109,7 +109,7 @@ bot.on('guildMemberAdd', member => {
         myData.save()
         .then(item => {
           console.log('New user "' + message.member.displayName + '" added to database');
-        })
+        });
         .catch(err => {
           console.log("Error on database save: " + err);
         });
