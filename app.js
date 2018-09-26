@@ -79,20 +79,20 @@ function idle_repeat(){
 }
 
 bot.on('guildMemberAdd', member => {
-  let user = member
+  let newuser = member
   var User = require('./schemas/user_model.js');
   var user_obj = User.findOne({
-		userID: message.member.id
+		userID: newuser.member.id
 	}, function (err, foundObj) {
 		if (err)
 			console.log("Error on database findOne: " + err);
 		else {
 			if (foundObj === null){
 				var myData = new User({
-					userID: user.id,
-					displayName: user.displayName,
-					highestRole: user.highestRole.name,
-					joinedAt: user.joinedAt,
+					userID: newuser.id,
+					displayName: newuser.displayName,
+					highestRole: newuser.highestRole.name,
+					joinedAt: newuser.joinedAt,
 					messages: 0,
 					infractions: 0,
 					retrocoinCash: 0,
@@ -109,7 +109,7 @@ bot.on('guildMemberAdd', member => {
 				});
 				myData.save()
 				.then(item => {
-					console.log('New user "' + user.displayName + '" added to database');
+					console.log('New user "' + newuser.displayName + '" added to database');
 				})
 				.catch(err => {
 					console.log("Error on database save: " + err);
