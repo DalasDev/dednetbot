@@ -78,16 +78,30 @@ function idle_repeat(){
   // Day of Week: 0-6 (Sun-Sat)
 }
 
+// bot.on('guildMemberAdd', member => {
+//   const guild = member.guild;
+//   //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+//   //welcomechannel.send(`${member} переехал в наш город!`);
+//   bot.channels.get(493288106699653123).send(`${member} переехал в наш город!`);
+// });
+
+// bot.on("guildMemberAdd", member => {
+//     let mem = member.guild
+//     mem.defaultChannel.sendMessage(member.user + " welcome to the server!"); });
+
+// bot.on('guildMemberRemove', member => {
+//   const guild = member.guild;
+//   //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+//   //welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+//   bot.channels.get(493288106699653123).send(`${member} собрал шмотки и покинул наш город!`);
+// });
+
 bot.on('guildMemberAdd', member => {
-  //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  //welcomechannel.send(`${member} переехал в наш город!`);
-  bot.channels.get(493288106699653123).send(`${member} переехал в наш город!`);
+    member.guild.channels.get('493288106699653123').send('**' + member.user.username + '**, has joined the server!');
 });
 
 bot.on('guildMemberRemove', member => {
-  //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  //welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
-  bot.channels.get(493288106699653123).send(`${member} собрал шмотки и покинул наш город!`);
+    member.guild.channels.get('493288106699653123').send('**' + member.user.username + '**, has left the server');
 });
 
 bot.on("ready", async () => {
