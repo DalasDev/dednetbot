@@ -79,13 +79,15 @@ function idle_repeat(){
 }
 
 bot.on('guildMemberAdd', member => {
-  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  welcomechannel.send(`${member} переехал в наш город!`);
+  //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  //welcomechannel.send(`${member} переехал в наш город!`);
+  bot.channels.get(493288106699653123).send(`${member} переехал в наш город!`);
 });
 
 bot.on('guildMemberRemove', member => {
-  let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-  welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+  //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
+  //welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
+  bot.channels.get(493288106699653123).send(`${member} собрал шмотки и покинул наш город!`);
 });
 
 bot.on("ready", async () => {
