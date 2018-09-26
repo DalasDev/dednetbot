@@ -79,7 +79,7 @@ function idle_repeat(){
 }
 
 bot.on('guildMemberAdd', member => {
-
+  var User = require('./../schemas/user_model.js');
   var user_obj = User.findOne({
 		userID: message.member.id
 	}, function (err, foundObj) {
