@@ -81,41 +81,48 @@ function idle_repeat(){
 bot.on('guildMemberAdd', member => {
 
   var user_obj = User.findOne({
-    userID: message.member.id
-  }, function (err, foundObj) {
-    if (err){
-      console.log("Error on database findOne: " + err);
-    }else{
-      if (foundObj === null){
-        var myData = new User({
-          userID: message.member.id,
-          displayName: message.member.displayName,
-          highestRole: message.member.highestRole.name,
-          joinedAt: message.member.joinedAt,
-          messages: 0,
-          infractions: 0,
-          retrocoinCash: 0,
-          retrocoinBank: 0,
-          retrocoinTotal: 0,
-          kissed: 0,
-          huged: 0,
-          fcked: 0,
-          hit: 0,
-          killed: 0,
-          drunk: 0,
-          status: "__не установлен__",
-          lastScan: Date.now()
-        });
-        myData.save()
-        .then(item => {
-          console.log('New user "' + message.member.displayName + '" added to database');
-        })
-        .catch(err => {
-          console.log("Error on database save: " + err);
-        });
-      }
-    }
-  });
+		userID: message.member.id
+	}, function (err, foundObj) {
+		if (err)
+			console.log("Error on database findOne: " + err);
+		else {
+			if (foundObj === null){
+				var myData = new User({
+					userID: message.member.id,
+					displayName: message.member.displayName,
+					highestRole: message.member.highestRole.name,
+					joinedAt: message.member.joinedAt,
+					messages: 0,
+					infractions: 0,
+					retrocoinCash: 0,
+					retrocoinBank: 0,
+					retrocoinTotal: 0,
+					kissed: 0,
+					huged: 0,
+					fcked: 0,
+					hit: 0,
+					killed: 0,
+					drunk: 0,
+					status: "__не установлен__",
+					lastScan: Date.now()
+				});
+				myData.save()
+				.then(item => {
+					console.log('New user "' + message.member.displayName + '" added to database');
+				})
+				.catch(err => {
+					console.log("Error on database save: " + err);
+				});
+			}
+			else {
+				if (!foundObj)
+					console.log("Something stange happend");
+
+				}
+			}
+		}
+	});
+
 });
 
 bot.on('guildMemberAdd', member => {
