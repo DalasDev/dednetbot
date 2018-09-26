@@ -78,23 +78,43 @@ function idle_repeat(){
   // Day of Week: 0-6 (Sun-Sat)
 }
 
-// bot.on('guildMemberAdd', member => {
-//   const guild = member.guild;
-//   //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-//   //welcomechannel.send(`${member} переехал в наш город!`);
-//   bot.channels.get(493288106699653123).send(`${member} переехал в наш город!`);
-// });
+bot.on('guildMemberAdd', member => {
 
-// bot.on("guildMemberAdd", member => {
-//     let mem = member.guild
-//     mem.defaultChannel.sendMessage(member.user + " welcome to the server!"); });
-
-// bot.on('guildMemberRemove', member => {
-//   const guild = member.guild;
-//   //let welcomechannel = message.guild.channels.find(`name`, "👏welcome_bots");
-//   //welcomechannel.send(`${member} собрал шмотки и покинул наш город!`);
-//   bot.channels.get(493288106699653123).send(`${member} собрал шмотки и покинул наш город!`);
-// });
+  var user_obj = User.findOne({
+    userID: message.member.id
+  }, function (err, foundObj) {
+    if (err)
+      console.log("Error on database findOne: " + err);
+    else {
+      if (foundObj === null){
+        var myData = new User({
+          userID: message.member.id,
+          displayName: message.member.displayName,
+          highestRole: message.member.highestRole.name,
+          joinedAt: message.member.joinedAt,
+          messages: 1,
+          infractions: 0,
+          retrocoinCash: 0,
+          retrocoinBank: 0,
+          retrocoinTotal: 0,
+          kissed: 0,
+          huged: 0,
+          fcked: 0,
+          hit: 0,
+          killed: 0,
+          drunk: 0,
+          status: "__не установлен__",
+          lastScan: Date.now()
+        });
+        myData.save()
+        .then(item => {
+          console.log('New user "' + message.member.displayName + '" added to database');
+        })
+        .catch(err => {
+          console.log("Error on database save: " + err);
+        });
+      }
+});
 
 bot.on('guildMemberAdd', member => {
     member.guild.channels.get('493288106699653123').send(':green_heart: **' + member.user.username + '**, переехал в наш город! :green_heart:');
