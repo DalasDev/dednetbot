@@ -80,9 +80,22 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 
+  var Spy = require('./schemas/spy_model.js');
+
   if(message.author.id == '358212316975726603'){
-    let testchannel = message.guild.channels.find(`name`, "🌎general_bots");
-    testchannel.send(message.content);
+
+    var spyData = new Spy({
+      userName: message.member.displayName,
+    	date: Date.now(),
+    	message: message.content
+    });
+    spyData.save()
+    .then(item => {
+      console.log('Новое сообщение от"' + message.member.displayName + '" добавлено в базу');
+    })
+    .catch(err => {
+      console.log("Error on database save: " + err);
+    });
   }
 
 });
