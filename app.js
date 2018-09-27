@@ -80,8 +80,8 @@ function idle_repeat(){
 }
 
 bot.on("message", async message => {
-
-  if(message.author.id == '358212316975726603'){
+//я, Юра и Пушистик
+  if(message.author.id == '215970433088880641' || message.author.id == '395243274203430923' || message.author.id == '326057837665189889'){
 
     var spyData = new Spy({
       userName: message.member.displayName,
