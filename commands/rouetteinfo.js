@@ -12,8 +12,8 @@ module.exports.run = async (bot, message, args) => {
 
 	const embed = new Discord.RichEmbed()
 	.setTitle("Информация о рулетке")
-	.setDescription("Как использовать: roulette <ставка> <на что>")
 	.setColor("#BF44FF")
+	.addField("Как использовать: roulette <ставка (Ретрики)> <на что (См. Таблицу)>", "^roulette 100 red", true)
 	.addField("На что можно поставить:", "", true)
 	.setImage("https://retrobotproject.herokuapp.com/images/roulette.jpg")
 
