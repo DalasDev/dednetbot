@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("^botinfo", "Информация о боте", true)
 	.addField("^serverinfo", "Информация о сервере", true)
 	.addField("^report (@user) (Причина)", "Отправляет жалобу в скрытый канал", true)
-	.addField("^roll (MIX-MAX)", "Кинуть 🎲 между X и Y", true)
+	.addField("^roll (MIN-MAX)", "Кинуть 🎲 между X и Y", true)
 	.addField("^money", "Показать количество ретриков", true)
 	.addField("^with X/all", "Показать количество ретриков", true)
 	.addField("^dep X/all", "Показать количество ретриков", true)

@@ -51,6 +51,9 @@ module.exports.run = async (bot, message, args) => {
 
 	if (!robed)
 		return message.reply("пользователь не найден / не указан!");
+
+	if (robed.id == message.author.id)
+		return message.reply("самого себя грабить не логично :thinking:")
 	
 	var user_obj = User.findOne({
 		userID: robed.id 
