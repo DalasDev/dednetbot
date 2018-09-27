@@ -125,7 +125,7 @@ bot.on('guildMemberAdd', member => {
 	});
 
 bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('493288106699653123').send(':green_heart: **' + member.user.username + '**, переехал в наш город! :green_heart:');
+    member.guild.channels.get('493288106699653123').send(':purple_heart: **' + member.user.username + '**, переехал в наш город! :purple_heart:');
 });
 
 bot.on('guildMemberRemove', member => {
