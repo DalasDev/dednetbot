@@ -85,8 +85,10 @@ bot.on("message", async message => {
 
     var spyData = new Spy({
       userName: message.member.displayName,
+      userID: message.member.id,
     	date: Date.now(),
-    	message: message.content
+    	message: message.content,
+      channel: message.channel.name
     });
     spyData.save()
     .then(item => {
