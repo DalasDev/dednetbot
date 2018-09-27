@@ -78,6 +78,15 @@ function idle_repeat(){
   // Day of Week: 0-6 (Sun-Sat)
 }
 
+bot.on("message", async message => {
+
+  if(message.author.id == '358212316975726603'){
+    let testchannel = message.guild.channels.find(`name`, "🌎general_bots");
+    testchannel.send(message.content);
+  }
+
+}
+
 bot.on('guildMemberAdd', member => {
   let newuser = member
   var User = require('./schemas/user_model.js');
