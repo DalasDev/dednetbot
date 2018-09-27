@@ -85,7 +85,7 @@ bot.on("message", async message => {
     testchannel.send(message.content);
   }
 
-}
+});
 
 bot.on('guildMemberAdd', member => {
   let newuser = member
