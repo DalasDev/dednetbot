@@ -10,6 +10,7 @@ var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
+var Spy = require('./schemas/spy_model.js');
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
@@ -79,8 +80,6 @@ function idle_repeat(){
 }
 
 bot.on("message", async message => {
-
-  var Spy = require('./schemas/spy_model.js');
 
   if(message.author.id == '358212316975726603'){
 
