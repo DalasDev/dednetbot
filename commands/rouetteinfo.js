@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 	.setTitle("Информация о рулетке")
 	.setColor("#BF44FF")
 	.addField("Как использовать: roulette <ставка (Ретрики)> <на что (См. Таблицу)>", "^roulette 100 red", true)
-	.addField("На что можно поставить:", "", true)
+	.addField("На что можно поставить:", "Таблица", true)
 	.setImage("https://retrobotproject.herokuapp.com/images/roulette.jpg")
 
 	message.channel.send({embed});
