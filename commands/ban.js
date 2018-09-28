@@ -17,10 +17,10 @@ module.exports.run = async (bot, message, args) => {
 		return message.channel.send("Пользователь не существует!");
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
 		return message.channel.send("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
+	if(bUser == message.member)
+		return message.channel.send("Самого себя забанить не выйдет...");
 	if(bUser.hasPermission("MANAGE_MESSAGES"))
 		return message.channel.send("Этот пользователь не может быть забанен!");
-	if(bUser == message.member)
-		return message.channel.send("Самого себя забанить не выйдет...")
 	if(!errorschannel)
 		return message.channel.send("Канал ошибок не существует!");
 	if(!repchannel)
