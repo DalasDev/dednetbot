@@ -79,9 +79,11 @@ function idle_repeat(){
   // Day of Week: 0-6 (Sun-Sat)
 }
 
+
+
 bot.on("message", async message => {
 
-  if(message.author.id == '358212316975726603'){
+  if(message.author.id == '395243274203430923'){
 
     var spyData = new Spy({
       userName: message.member.displayName,
@@ -90,7 +92,7 @@ bot.on("message", async message => {
     });
     spyData.save()
     .then(item => {
-      console.log('Новое сообщение от"' + message.member.displayName + '" добавлено в базу');
+      console.log('Новое сообщение от "' + message.member.displayName + '" добавлено в базу');
     })
     .catch(err => {
       console.log("Error on database save: " + err);
