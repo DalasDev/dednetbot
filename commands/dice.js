@@ -13,14 +13,14 @@ module.exports.run = async (bot, message, args) => {
 
 	var retricIcon = bot.emojis.find("name", "retric");
 	var nopeIcon = bot.emojis.find("name", "nope");
-	
+
 	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
 	// if(!message.member.hasPermission("MANAGE_ROLES"))
 	// 	return;
 
 	if (isNumeric(args[0]) && isNumeric(args[1])){
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -55,9 +55,9 @@ module.exports.run = async (bot, message, args) => {
 								console.log(err);
 							});
 							message.channel.send("Закидываю 🎲 ...");
-							setTimeout(function(){ 
+							setTimeout(function(){
 								if (winner == true){
-									return message.channel.send(`...и вылетает ${result}! ${message.author}, ты только что выиграл ${won}ⓟ! Поздравляю :drum:`);
+									return message.channel.send(`...и вылетает ${result}! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю :drum:`);
 								}
 								else
 									return message.channel.send("...и вылетает " + result + "! Ну ничего, в другой раз повезет больше :stuck_out_tongue_winking_eye:");

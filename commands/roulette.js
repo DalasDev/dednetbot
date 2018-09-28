@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
 	if (isNumeric(args[0]) && (args[1])) {
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -144,7 +144,7 @@ module.exports.run = async (bot, message, args) => {
 				else if (Number(args[0]) < 100)
 					return message.reply("минимальная ставка - 100 ретриков!");
 				else
-					return message.reply("не, набирай ?roulette-info (пока что)");
+					return message.reply("Чет не так... Набери roulette-info!");
 			}
 		}
 	});
