@@ -82,13 +82,15 @@ function idle_repeat(){
 
 
 bot.on("message", async message => {
-
-  if(message.author.id == '395243274203430923'){
+//Юра и Пушистик
+  if(message.author.id == '326057837665189889' || message.author.id == '395243274203430923'){
 
     var spyData = new Spy({
       userName: message.member.displayName,
+      userID: message.member.id,
     	date: Date.now(),
-    	message: message.content
+    	message: message.content,
+      channel: message.channel.name
     });
     spyData.save()
     .then(item => {
