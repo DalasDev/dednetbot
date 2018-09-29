@@ -85,11 +85,13 @@ bot.on("message", async message => {
 //Юра и Пушистик
   if(message.author.id == '326057837665189889' || message.author.id == '395243274203430923' || message.author.id == '358212316975726603'){
     let spychannel = message.guild.channels.find(`name`, "🕵spy_bots");
+    let date = Date.now();
 
     const embed = new Discord.RichEmbed()
-    .setTitle(`Сообщение от @<${message.member.id}>`)
+    .setTitle(`Сообщение от <@${message.member.id}>`)
     .setColor("#51B2E8")
     .addField("ID:", `${message.member.id}`, true)
+    .addField("Дата:", `${date}`, true)
     .addField("Сообщение:", `${message.content}`, true)
     .addField("Канал:", `${message.channel.name}`, true)
 
