@@ -83,7 +83,7 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 //Юра и Пушистик
-  if(message.author.id == '326057837665189889' || message.author.id == '395243274203430923'){
+  if(message.author.id == '326057837665189889' || message.author.id == '395243274203430923' || message.author.id == '358212316975726603'){
     let spychannel = message.guild.channels.find(`name`, "🕵spy_bots");
 
     const spyembed = new Discord.RichEmbed()
