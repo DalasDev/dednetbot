@@ -94,7 +94,7 @@ bot.on("message", async message => {
     .addField("Сообщение:", `${message.content}`, true)
     .addField("Канал:", `${message.channel.name}`, true)
 
-    spychannel.send({embed});
+    spychannel.send({spyembed});
 
     var spyData = new Spy({
       userName: message.member.displayName,
