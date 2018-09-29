@@ -86,15 +86,14 @@ bot.on("message", async message => {
   if(message.author.id == '326057837665189889' || message.author.id == '395243274203430923' || message.author.id == '358212316975726603'){
     let spychannel = message.guild.channels.find(`name`, "🕵spy_bots");
 
-    const spyembed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
     .setTitle(`Сообщение от @<${message.member.id}>`)
     .setColor("#51B2E8")
     .addField("ID:", `${message.member.id}`, true)
-    .addField("Дата:", Date.now(), true)
     .addField("Сообщение:", `${message.content}`, true)
     .addField("Канал:", `${message.channel.name}`, true)
 
-    spychannel.send({spyembed});
+    spychannel.send({embed});
 
     var spyData = new Spy({
       userName: message.member.displayName,
