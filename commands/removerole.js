@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   let role = args.join(" ").slice(22);
 
   if(!message.member.hasPermission("MANAGE_ROLES"))
-    return message.reply("Похоже у тебя недостаточно на это прав, дружище :thinking:.");
+    return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!rMember)
     return message.reply("пользователь не существует!");
   if(!role)
