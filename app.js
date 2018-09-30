@@ -156,18 +156,23 @@ bot.on('guildMemberRemove', member => {
     member.guild.channels.get('493288106699653123').send(':broken_heart: **' + member.user.username + '**, собрал шмотки и покинул наш город! :broken_heart:');
 });
 
+//Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
+  //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
+  //Установка игры
   bot.user.setPresence({
     game: {
       name: "за Retro Valley!",
       type: 3
     }
   });
-  bot.user.setStatus('invisible');
+  //Установка статуса
+  bot.user.setStatus('online');
   idle_repeat();
 });
 
+//Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
 
   if(message.author.bot){
