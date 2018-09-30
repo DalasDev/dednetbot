@@ -164,7 +164,7 @@ bot.on("ready", async () => {
       type: 3
     }
   });
-  bot.user.setStatus('idle');
+  bot.user.setStatus('dnd');
   idle_repeat();
 });
 
