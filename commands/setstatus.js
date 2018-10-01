@@ -13,9 +13,6 @@ module.exports.run = async (bot, message, args) => {
 
   let status = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-  if(!status)
-    return message.reply("ввведите статус (online/idle/invis/dnd)");
-
   if(status == "online" || status == "idle" || status == "invisible" || status == "invis" || status == "dnd"){
 
     if(status == "online"){
