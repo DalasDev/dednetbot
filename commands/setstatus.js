@@ -11,29 +11,28 @@ module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
 
-  let status = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if (!status)
+  let bstatus = args[0];
+  if(!bstatus)
     return message.reply("статус не указан!");
 
   //if(status == "online" || status == "idle" || status == "invisible" || status == "invis" || status == "dnd")
 
 
-  if(status == "online"){
-      bot.user.setStatus('online');
-  }
+  if(bstatus == 'online'){
+    bot.user.setStatus('online');
 
-  if(status == "idle"){
-      bot.user.setStatus('idle');
-  }
+  }else if(bstatus == 'idle'){
+    bot.user.setStatus('idle');
 
-  if(status == "invisible" || status == "invis"){
-      bot.user.setStatus('invisible');
-  }
+  }else if(bstatus == 'invisible' || bstatus == 'invis'){
+    bot.user.setStatus('invisible');
 
-  if(status == "dnd"){
-      bot.user.setStatus('dnd');
-  }
+  }else if(bstatus == 'dnd'){
+    bot.user.setStatus('dnd');
 
+  }else{
+    return message.reply("статус не указан!");
+  }
 
 }
 
