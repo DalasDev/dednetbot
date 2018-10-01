@@ -13,27 +13,26 @@ module.exports.run = async (bot, message, args) => {
 
   let status = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
-  if(status == "online" || status == "idle" || status == "invisible" || status == "invis" || status == "dnd"){
+  //if(status == "online" || status == "idle" || status == "invisible" || status == "invis" || status == "dnd")
+  
 
-    if(status == "online"){
-        bot.user.setStatus('online');
-    }
-
-    if(status == "idle"){
-        bot.user.setStatus('idle');
-    }
-
-    if(status == "invisible" || status == "invis"){
-        bot.user.setStatus('invisible');
-    }
-
-    if(status == "dnd"){
-        bot.user.setStatus('dnd');
-    }
-
-  }else{
-      message.reply("ввведите статус (online/idle/invis/dnd)");
+  if(status == "online"){
+      bot.user.setStatus('online');
   }
+
+  if(status == "idle"){
+      bot.user.setStatus('idle');
+  }
+
+  if(status == "invisible" || status == "invis"){
+      bot.user.setStatus('invisible');
+  }
+
+  if(status == "dnd"){
+      bot.user.setStatus('dnd');
+  }
+
+
 }
 
 module.exports.help = {
