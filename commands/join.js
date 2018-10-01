@@ -1,0 +1,21 @@
+const Discord = require("discord.js");
+
+module.exports.run = async (bot, message, args) => {
+
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+    return;
+  message.delete().catch(O_o=>{});
+
+  if (message.member.voiceChannel) {
+     message.member.voiceChannel.join()
+       .then(connection => { // Connection is an instance of VoiceConnection
+         message.reply('я вместе с вами!=)');
+       })
+       .catch(console.log);
+   } else {
+     message.reply('зайди в войс сперва');
+   }
+
+module.exports.help = {
+	name: "join"
+}

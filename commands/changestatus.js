@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
-  let status = message.content.split(" ").slice(22);
+  let status = message.content.split(" ");
   if (!status)
     return message.reply("укажите статус!");
 
