@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   let status = args.join(" ").slice(22);
-  if (!iUser)
+  if (!status)
     return message.reply("укажите статус!");
 
   var user_obj = User.findOne({
