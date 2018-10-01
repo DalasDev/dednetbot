@@ -7,14 +7,15 @@ module.exports.run = async (bot, message, args) => {
   message.delete().catch(O_o=>{});
 
   if (message.member.voiceChannel) {
-     message.member.voiceChannel.join()
-       .then(connection => {
-         message.reply('я вместе с вами!');
-       })
-       .catch(console.log);
-   } else {
-     message.reply('зайди в войс сперва');
-   }
+    message.member.voiceChannel.join()
+    .then(connection => {
+      message.reply('я вместе с вами!');
+    })
+    .catch(console.log);
+  } else {
+    message.reply('зайди в войс сперва');
+  }
+}
 
 module.exports.help = {
 	name: "join"
