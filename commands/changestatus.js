@@ -14,9 +14,9 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
-  let status = message.content.split(" ");
-  //if (!status)
-    //return message.reply("укажите статус!");
+  let status = message.content.split(" ").slice(22);
+  if (!status)
+    return message.reply("укажите статус!");
 
   var user_obj = User.findOne({
     userID: message.member.id
