@@ -35,6 +35,7 @@ module.exports.run = async (bot, message, args) => {
       }
     }
   });
+  message.reply(`Статус изменен на ${status}`);
 }
 
 module.exports.help = {
