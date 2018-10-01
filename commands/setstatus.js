@@ -11,7 +11,9 @@ module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
 
-  let status = args[0];
+  let status = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if (!status)
+    return message.reply("статус не указан!");
 
   //if(status == "online" || status == "idle" || status == "invisible" || status == "invis" || status == "dnd")
 
