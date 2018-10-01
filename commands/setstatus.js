@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
     bot.user.setStatus('dnd');
 
   }else{
-    return message.reply("статус не указан!");
+    return message.reply("не верный статус! (online/idle/invis/dnd)");
   }
 
 }
