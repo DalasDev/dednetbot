@@ -6,15 +6,12 @@ module.exports.run = async (bot, message, args) => {
     return;
   message.delete().catch(O_o=>{});
 
-  if (bot.user.voiceChannel) {
-    bot.user.voiceChannel.leave()
-    .then(connection => {
-      message.reply('до встречи!');
-    })
-    .catch(console.log);
-  } else {
-    message.reply('я не в войсе!');
-  }
+  voiceChannel.leave()
+  .then(connection => {
+    message.reply('до встречи!');
+  })
+  .catch(console.log);
+  
 }
 
 module.exports.help = {
