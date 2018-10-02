@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
     })
     .catch(console.log);
   } else {
-    message.reply('зайди в войс сперва');
+    message.reply('зайди в войс сперва!');
   }
 }
 
