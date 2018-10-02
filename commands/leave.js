@@ -6,8 +6,8 @@ module.exports.run = async (bot, message, args) => {
     return;
   message.delete().catch(O_o=>{});
 
-  if (bot.voiceChannel) {
-    bot.voiceChannel.leave()
+  if (bot.user.voiceChannel) {
+    bot.user.voiceChannel.leave()
     .then(connection => {
       message.reply('до встречи!');
     })
