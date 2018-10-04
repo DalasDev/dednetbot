@@ -40,15 +40,18 @@ module.exports.run = async (bot, message, args) => {
 
 				if(plase == "bank"){
           foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
           message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из банка!`);
 
         }else if(plase == "cash"){
           foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
+          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
           message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из кармана!`);
 
         }else if(plase == "all"){
           foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
           foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
           message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики!`);
 
         }else{
