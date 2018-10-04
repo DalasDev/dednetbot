@@ -24,12 +24,12 @@ module.exports.run = async (bot, message, args) => {
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
   let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!muser){
-    message.reply("пользователь не найден / не существует!");
+    return message.reply("пользователь не найден / не существует!");
   }
   let plase = args[1];
   let amountin = args[2];
   if(isNaN(amountin)){
-    message.reply("введите число!");
+    return message.reply("введите число!");
   }
   let amount = Number(amountin);
 
@@ -46,10 +46,10 @@ module.exports.run = async (bot, message, args) => {
 
 				if(plase == "bank"){
           foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
-          message.reply(`пользователю <@${muser.id}> добавлено ${amount} ${retric} в банк!`);
+          message.reply(`пользователю <@${muser.id}> добавлено ${amount} ${retricIcon} в банк!`);
         }else if(plase == "cash"){
           foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
-          message.reply(`пользователю <@${muser.id}> добавлено ${amount} ${retric} на руки!`);
+          message.reply(`пользователю <@${muser.id}> добавлено ${amount} ${retricIcon} на руки!`);
         }else{
           return message.reply(`параметры не верны (^addmoney <пользователь> <bank/cash> <количество>)!`);
         }
