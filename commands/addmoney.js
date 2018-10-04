@@ -46,12 +46,20 @@ module.exports.run = async (bot, message, args) => {
 
 				if(plase == "bank"){
           foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
-          message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+          if(amount<0){
+            message.reply(`пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`);
+          }else{
+            message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+          }
         }else if(plase == "cash"){
           foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
-          message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} на руки!`);
+          if(amount<0){
+            message.reply(`пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`);
+          }else{
+            message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} из банка!`);
+          }
         }else{
-          return message.reply(`параметры не верны (^addmoney <пользователь> <bank/cash> <количество>)!`);
+          return message.reply(`параметры не верны (^editmoney <пользователь> <bank/cash> <количество>)! Вы можете так же отнять деньги у пользователя написав перед числом "-"`);
         }
 
 				foundObj.save(function(err, updatedObj){
@@ -64,5 +72,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-	name: "addmoney"
+	name: "editmoney"
 }
