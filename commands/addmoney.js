@@ -59,7 +59,7 @@ module.exports.run = async (bot, message, args) => {
             message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} из банка!`);
           }
         }else{
-          return message.reply("```параметры не верны <пользователь> <bank/cash> <количество> Вы можете так же отнять деньги у пользователя написав перед числом минус.```");
+          return message.channel.send("```Параметры не верны! ^editmoney <user> <bank/cash> <amount>. Вы можете так же отнять деньги у пользователя написав перед числом минус.```");
         }
 
 				foundObj.save(function(err, updatedObj){
