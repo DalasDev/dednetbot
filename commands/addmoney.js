@@ -47,16 +47,16 @@ module.exports.run = async (bot, message, args) => {
 				if(plase == "bank"){
           foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
           if(amount<0){
-            message.reply(`пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`);
+            message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`);
           }else{
-            message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+            message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
           }
         }else if(plase == "cash"){
           foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
           if(amount<0){
-            message.reply(`пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`);
+            message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`);
           }else{
-            message.reply(`пользователю <@${muser.id}> добавлено ${amount}${retricIcon} из банка!`);
+            message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} из банка!`);
           }
         }else{
           return message.channel.send("```Параметры не верны! ^editmoney <user> <bank/cash> <amount>. Вы можете так же отнять деньги у пользователя написав перед числом минус.```");
