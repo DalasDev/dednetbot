@@ -36,8 +36,8 @@ function kiss(kissed, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
-	// if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
-	// 	return;
+	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+		return;
 
 	var kissed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 

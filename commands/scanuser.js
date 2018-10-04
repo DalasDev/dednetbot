@@ -18,13 +18,13 @@ module.exports.run = async (bot, message) => {
 	let r8 = message.guild.roles.find(`name`, "Утилизатор [8]");
 	let r9 = message.guild.roles.find(`name`, "Почтальон [9]");
 	let r10 = message.guild.roles.find(`name`, "Блудный музыкант [10]");
-	
+
 	let r11 = message.guild.roles.find(`name`, "Мойщик машин [11]");
 	let r12 = message.guild.roles.find(`name`, "Кассир на бензоколонке [12]");
 	let r13 = message.guild.roles.find(`name`, "Аптечный фармацевт [13]");
 	let r14 = message.guild.roles.find(`name`, "Развозчик пиццы [14]");
 	let r15 = message.guild.roles.find(`name`, "Портовый рабочий [15]");
-	
+
 	let r16 = message.guild.roles.find(`name`, "Таксист [16]");
 	let r17 = message.guild.roles.find(`name`, "Скаут [17]");
 	let r18 = message.guild.roles.find(`name`, "Студент Хогретроста [18]");

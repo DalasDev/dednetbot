@@ -12,9 +12,9 @@ function isNumeric(value) {
 function send_money(payed, toPay, message, bot){
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	
+
 	var user_obj = User.findOne({
-		userID: payed.id 
+		userID: payed.id
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -44,9 +44,9 @@ module.exports.run = async (bot, message, args) => {
 		return message.reply("пользователь не найден / не указан!");
 
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
-		
+
 		var user_obj = User.findOne({
-			userID: message.member.id 
+			userID: message.member.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
@@ -55,15 +55,15 @@ module.exports.run = async (bot, message, args) => {
 					console.log("User not found in database");
 					return;
 				}
-				else {	
+				else {
 					var actCash = foundObj.retrocoinCash;
 					var toPay = Number(args[1]);
 					var newCash = actCash - toPay;
 					if (newCash < 0)
 						return message.reply("у тебя нехватка нала для такой операции!");
-					
+
 					send_money(payed, toPay, message, bot);
-					
+
 					foundObj.retrocoinCash = newCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 

@@ -12,9 +12,9 @@ function isNumeric(value) {
 function rob(message, bot, toRob, robResult, robed){
 
 	var retricIcon = bot.emojis.find("name", "retric");
-	
+
 	var user_obj = User.findOne({
-		userID: message.member.id 
+		userID: message.member.id
 	}, function (err, foundObj) {
 		if (err){
 			console.log("Error on database findOne: " + err);
@@ -54,9 +54,9 @@ module.exports.run = async (bot, message, args) => {
 
 	if (robed.id == message.author.id)
 		return message.reply("самого себя грабить не логично :thinking:")
-	
+
 	var user_obj = User.findOne({
-		userID: robed.id 
+		userID: robed.id
 	}, function (err, foundObj) {
 		if (err)
 			console.log("Error on database findOne: " + err);
@@ -65,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
 				console.log("User not found in database");
 				return;
 			}
-			else {				
+			else {
 				var min = 1;
 				var max = 2;
 				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
@@ -77,7 +77,7 @@ module.exports.run = async (bot, message, args) => {
 				if (foundObj.retrocoinCash - toRob <= 0)
 					return message.reply("у человека туго с наличкой, его робнуть не получится!");
 				var user_obj = User.findOne({
-					userID: message.member.id 
+					userID: message.member.id
 				}, function (err, foundObj2) {
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
