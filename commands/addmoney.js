@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
   let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!muser){
-    return message.reply("пользователь не найден / не существует!");
+    return message.reply("пользователь не указан / не существует!");
   }
   let plase = args[1];
   let amountin = args[2];
