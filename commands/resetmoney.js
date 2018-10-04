@@ -17,7 +17,7 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return message.reply("похоже у тебя нехватка прав!");
 
 	var retricIcon = bot.emojis.find("name", "retric");
@@ -26,12 +26,6 @@ module.exports.run = async (bot, message, args) => {
   if(!muser)
     return message.reply("пользователь не указан / не существует!");
   let plase = args[1];
-  let amountin = args[2];
-  if(isNaN(amountin))
-    return message.reply("введите число!");
-  let amount = Number(amountin);
-  if(amount<0)
-    return message.reply("введите положительное число!");
 
 	var user_obj = User.findOne({
 		userID: muser.id
@@ -45,12 +39,17 @@ module.exports.run = async (bot, message, args) => {
 			else {
 
 				if(plase == "bank"){
-          foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
-          message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+          foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из банка!`);
 
         }else if(plase == "cash"){
-          foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
-          message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`);
+          foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
+          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из кармана!`);
+
+        }else if(plase == "all"){
+          foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
+          foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики!`);
 
         }else{
           return message.reply("параметры не верны!");
@@ -66,5 +65,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-	name: "addmoney"
+	name: "resetmoney"
 }

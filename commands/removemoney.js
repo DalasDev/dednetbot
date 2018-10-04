@@ -45,12 +45,12 @@ module.exports.run = async (bot, message, args) => {
 			else {
 
 				if(plase == "bank"){
-          foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
-          message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+          foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
+          message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`);
 
         }else if(plase == "cash"){
-          foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
-          message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`);
+          foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
+          message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`);
 
         }else{
           return message.reply("параметры не верны!");
@@ -66,5 +66,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-	name: "addmoney"
+	name: "removemoney"
 }
