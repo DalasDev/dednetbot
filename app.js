@@ -6,7 +6,6 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
-var servers = {};
 var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
@@ -175,7 +174,7 @@ bot.on("ready", async () => {
 
 //Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
-  
+
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
     return;
 
@@ -203,7 +202,7 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
-      commandfile.run(bot, message, args, servers);
+      commandfile.run(bot, message, args);
     }
   }
   else if (message.content.charAt(0) === "!" && message.content.charAt(1) === "w" && message.content.charAt(2) === "a"
@@ -214,7 +213,7 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
-      commandfile.run(bot, message, args, servers);
+      commandfile.run(bot, message, args);
     }
   }
   else if (message.content.charAt(0) === "?" && message.content.charAt(1) === "s" && message.content.charAt(2) === "e"
@@ -227,7 +226,7 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
-      commandfile.run(bot, message, args, servers);
+      commandfile.run(bot, message, args);
     }
   }
   else if (message.content.charAt(0) === "?" && message.content.charAt(1) === "s" && message.content.charAt(2) === "e"
@@ -238,7 +237,7 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
-      commandfile.run(bot, message, args, servers);
+      commandfile.run(bot, message, args);
     }
   }
   else {
