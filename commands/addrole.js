@@ -4,11 +4,6 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
-
-
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -22,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(!role)
     return message.reply("укажите роль!");
   if(!gRole)
-  
+
     var answers = [];
     answers.push(`неее...пусть меня мотопес лучше тестит`);
     answers.push(`а сали разрешение дал?`);

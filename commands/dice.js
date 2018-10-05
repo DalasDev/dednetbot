@@ -14,10 +14,6 @@ module.exports.run = async (bot, message, args) => {
 	var retricIcon = bot.emojis.find("name", "retric");
 	var nopeIcon = bot.emojis.find("name", "nope");
 
-	//лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-	// if(!message.member.hasPermission("MANAGE_ROLES"))
-	// 	return;
-
 	if (isNumeric(args[0]) && isNumeric(args[1])){
 		var user_obj = User.findOne({
 			userID: message.member.id

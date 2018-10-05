@@ -175,7 +175,7 @@ bot.on("ready", async () => {
 //Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
     return;
 
   if(message.author.bot){
