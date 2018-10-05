@@ -11,10 +11,11 @@ module.exports.run = async (bot, message, args) => {
   let cnchannel = message.guild.channels.find(`name`, "#👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "#📌правила");
   let kchannel = message.guild.channels.find(`name`, "#📵канализация");
+  let pnchannel = message.guild.channels.find(`name`, "#👋поиск_напарников");
 
-  message.channel.send(`${pnuser}, маты запрещены вне чата ${kchannel}! И прочти пожалуйста ${pchannel} :smiley:`)
+  message.channel.send(`${pnuser}, не спамь! И прочти пожалуйста ${pchannel} :smiley: `)
 }
 
 module.exports.help = {
-	name: "mat"
+	name: "pop"
 }
