@@ -9,9 +9,9 @@ module.exports.run = async (bot, message, args) => {
 
   let pnuser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-  message.channel.send(`<@${pnuser}>, продавать, отдавать или покупать что либо можно только в чате #👥черный_рынок! И прочти пожалуйста #📌правила =)`)
+  message.channel.send(`<@${pnuser}>, попрошайничество запрещено на нашем сервере! И прочти пожалуйста #📌правила =)`)
 }
 
 module.exports.help = {
-	name: "4r"
+	name: "pop"
 }
