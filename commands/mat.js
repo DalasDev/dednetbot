@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   let pchannel = message.guild.channels.find(`name`, "#📌правила");
   let kchannel = message.guild.channels.find(`name`, "#📵канализация");
 
-  message.channel.send(`${pnuser}, маты запрещены вне чата ${kchannel}! И прочти пожалуйста ${pchannel} :smiley:`)
+  message.channel.send(`${pnuser}, маты запрещены вне чата ${kchannel.id}! И прочти пожалуйста ${pchannel.id} :smiley:`)
 }
 
 module.exports.help = {

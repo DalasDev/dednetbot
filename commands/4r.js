@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   let cnchannel = message.guild.channels.find(`name`, "#👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "#📌правила");
 
-  message.channel.send(`${pnuser}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel}! И прочти пожалуйста ${pchannel} :smiley:`)
+  message.channel.send(`${pnuser}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel.id}! И прочти пожалуйста ${pchannel.id} :smiley:`)
 }
 
 module.exports.help = {
