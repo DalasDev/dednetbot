@@ -118,7 +118,7 @@ bot.on('guildMemberAdd', member => {
 					highestRole: newuser.highestRole.name,
 					joinedAt: newuser.joinedAt,
 					messages: 1,
-          mainmessages 1,
+          mainmessages: 1,
 					infractions: 0,
 					retrocoinCash: 0,
 					retrocoinBank: 0,
