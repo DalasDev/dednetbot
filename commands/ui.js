@@ -11,7 +11,7 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(args[0]){
+  if(!args[0]){
 
     var retricIcon = bot.emojis.find("name", "retric");
     var hmmIcon = bot.emojis.find("name", "hmm");
