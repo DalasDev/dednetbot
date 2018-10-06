@@ -11,9 +11,6 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
-    return;
-
   let iUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if (!iUser)
     return message.reply("пользователь не найден / не указан!");
@@ -40,6 +37,10 @@ module.exports.run = async (bot, message, args) => {
           {
             name: `***Личный статус*** :speech_left:`,
             value: `${foundObj.status}`
+          },
+          {
+            name: `***Количество сообщений*** :speech_left:`,
+            value: `${foundObj.mainmessages}`
           },
           {
             name: `***Личный баланс : *** ${numberWithCommas(foundObj.retrocoinTotal)} ${retricIcon}`,

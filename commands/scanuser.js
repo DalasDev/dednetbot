@@ -70,6 +70,7 @@ module.exports.run = async (bot, message) => {
 					highestRole: message.member.highestRole.name,
 					joinedAt: message.member.joinedAt,
 					messages: 1,
+					mainmessages: 1,
 					infractions: 0,
 					retrocoinCash: 0,
 					retrocoinBank: 0,
@@ -95,6 +96,7 @@ module.exports.run = async (bot, message) => {
 				if (!foundObj)
 					console.log("Something stange happend");
 				else {
+					foundObj.mainmessages++;
 					var dateTime = Date.now();
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
