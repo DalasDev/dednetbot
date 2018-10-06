@@ -37,10 +37,6 @@ module.exports.run = async (bot, message, args) => {
               value: `${foundObj.status}`
             },
             {
-              name: `***Кол-во сообщений за все время*** :speech_left:`,
-              value: `${foundObj.mainmessages}`
-            },
-            {
               name: `***Личный баланс : *** ${numberWithCommas(foundObj.retrocoinTotal)} ${retricIcon}`,
               value: `__**Нарушений**__ : ${foundObj.infractions}`
             },
@@ -97,10 +93,6 @@ module.exports.run = async (bot, message, args) => {
             {
               name: `***Личный статус*** :speech_left:`,
               value: `${foundObj.status}`
-            },
-            {
-              name: `***Кол-во сообщений за все время*** :speech_left:`,
-              value: `${foundObj.mainmessages}`
             },
             {
               name: `***Личный баланс : *** ${numberWithCommas(foundObj.retrocoinTotal)} ${retricIcon}`,

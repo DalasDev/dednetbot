@@ -70,7 +70,6 @@ module.exports.run = async (bot, message) => {
 					highestRole: message.member.highestRole.name,
 					joinedAt: message.member.joinedAt,
 					messages: 1,
-					mainmessages: 1,
 					infractions: 0,
 					retrocoinCash: 0,
 					retrocoinBank: 0,
