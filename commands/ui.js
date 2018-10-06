@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
               value: `${foundObj.status}`
             },
             {
-              name: `***Количество сообщений*** :speech_left:`,
+              name: `***Кол-во сообщений за все время*** :speech_left:`,
               value: `${foundObj.mainmessages}`
             },
             {
@@ -99,7 +99,7 @@ module.exports.run = async (bot, message, args) => {
               value: `${foundObj.status}`
             },
             {
-              name: `***Количество сообщений*** :speech_left:`,
+              name: `***Кол-во сообщений за все время*** :speech_left:`,
               value: `${foundObj.mainmessages}`
             },
             {
