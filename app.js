@@ -176,9 +176,6 @@ bot.on("ready", async () => {
 //Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
-    return;
-
   if(message.author.bot){
     if(message.member != null){
       if(message.member.roles.some(r=>["Mantaro"].includes(r.name))){
@@ -193,6 +190,9 @@ bot.on("message", async message => {
   }
 
   if(message.channel.type === "dm")
+    return;
+
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
     return;
 
   let prefix = botconfig.prefix;
