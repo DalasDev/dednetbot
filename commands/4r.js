@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   let pnuser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let cnchannel = message.guild.channels.find(`name`, "#👥черный_рынок");
-  let pchannel = message.guild.channels.find(`name`, "#📌правила");
+  let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
+  let pchannel = message.guild.channels.find(`name`, "📌правила");
 
   message.channel.send(`${pnuser}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel.name}! И прочти пожалуйста ${pchannel.name} :smiley:`)
 }
