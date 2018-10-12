@@ -8,12 +8,12 @@ module.exports.run = async (bot, message, args) => {
     return;
 
   let pnuser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let cnchannel = message.guild.channels.find(`name`, "#👥черный_рынок");
-  let pchannel = message.guild.channels.find(`name`, "#📌правила");
-  let kchannel = message.guild.channels.find(`name`, "#📵канализация");
-  let pnchannel = message.guild.channels.find(`name`, "#👋поиск_напарников");
+  let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
+  let pchannel = message.guild.channels.find(`name`, "📌правила");
+  let kchannel = message.guild.channels.find(`name`, "📵канализация");
+  let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
 
-  message.channel.send(`${pnuser}, не спамь! И прочти пожалуйста ${pchannel.id} :smiley: `)
+  message.channel.send(`${pnuser}, не спамь! И прочти пожалуйста ${pchannel} :smiley: `)
 }
 
 module.exports.help = {
