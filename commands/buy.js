@@ -17,15 +17,9 @@ module.exports.run = async (bot, message, args) => {
 	// User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
 	// 	console.log("USER : " + user);
 	// });
-	var test = await User.findOne({userID: message.member.id}, function(err, found_user){
-		console.log("User total money is: " + found_user.retrocoinTotal);
-		var test2 = found_user.retrocoinTotal;
-		console.log("test2 inside the func is : " + test2);
-	});
+	var user = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
-	console.log("test is : " + test);
-	console.log("test2 is : " + test2);
-	console.log("test.displayName is : " + test.displayName);
+	console.log("User is : " + user);
 }
 
 module.exports.help = {
