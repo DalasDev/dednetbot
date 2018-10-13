@@ -250,7 +250,7 @@ bot.on("message", async message => {
    && message.content.charAt(3) === "l" && message.content.charAt(4) === "l"){
     let messageArray = message.content.split(" ");
     let cmd = "!sellscan";
-    let var = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
