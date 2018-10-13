@@ -20,6 +20,7 @@ module.exports.run = async (bot, message, args) => {
 	var test = User.findOne({userID: message.member.id}, function(err, found_user){
 		console.log("User total money is: " + found_user.retrocoinTotal);
 		var test2 = found_user.retrocoinTotal;
+		console.log("test2 inside the func is : " + test2);
 	});
 
 	console.log("test is : " + test);
