@@ -47,8 +47,8 @@ module.exports.run = async (bot, message, args) => {
 	if (!payed)
 		return message.reply("пользователь не найден / не указан!");
 
-	console.log("payed: " + JSON.stringify(payed))
-	
+	console.log("payed: " + payed);
+
 	if (payed.bot === true)
 		return message.reply("боту твои деньги не нужны, он и так мажор")
 
