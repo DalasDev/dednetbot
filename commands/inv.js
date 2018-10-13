@@ -54,7 +54,7 @@ module.exports.run = async (bot, message, args) => {
 			text += `**${y=x+1}.** ${inventoryNames[x]} • **${numberWithCommas(inventoryCount[x++])}**\n`;
 
 		message.channel.send({embed: {
-			color: 3447003,
+			color: 65280,
 			title: `**${user_obj.displayName}** :zap: **инвентарь**`,
 			fields: [
 			{
