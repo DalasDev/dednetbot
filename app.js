@@ -190,7 +190,7 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => {
 
-  if(messsage.content == prefix + "play" || messsage.content == prefix + "p"){
+  if(message.content == prefix + "play" || message.content == prefix + "p"){
 
     if(!args[1])
       return message.reply("похоже вы забыли ввести ссылку на трек");
@@ -205,18 +205,18 @@ bot.on("message", async message => {
 
     server.queue.push(args[1]);
 
-    if(!messsage.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
       play(connection, message);
     });
   }
 
-  if(messsage.content == prefix + "skip" || messsage.content == prefix + "s"){
+  if(message.content == prefix + "skip" || message.content == prefix + "s"){
     var server = servers[message.guild.id];
 
     if(server.dispatcher) server.dispatcher.end();
   }
 
-  if(messsage.content == prefix + "disconnect" || messsage.content == prefix + "dis"){
+  if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
     var server = servers[message.guild.id];
 
     if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
