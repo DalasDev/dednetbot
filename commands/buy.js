@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
 	// 	console.log("USER : " + user);
 	// });
 	var test = User.findOne({userID: message.member.id}, function(err, found_user){
-		console.log("User ID is: " + found_user.id);
+		console.log("User total money is: " + found_user.retrocoinTotal);
 	});
 	console.log("test[0] is : " + test[0]);
 	return message.reply(`${test}`);
