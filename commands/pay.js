@@ -34,7 +34,7 @@ function send_money(payed, toPay, message, bot){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы перевели ${numberWithCommas(payed)} ${toPay}${retricIcon}!`);
+				return message.reply(`вы перевели ${payed} ${numberWithCommas(toPay)}${retricIcon}!`);
 			}
 		}
 	});
