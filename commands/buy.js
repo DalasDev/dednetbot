@@ -15,6 +15,8 @@ module.exports.run = async (bot, message, args) => {
 	message.delete().catch(O_o=>{});
 
 	var user = await User.findOne({userID: message.member.id}, function(err, found_user){});
+	if (typeof user === 'undefined' || user === null)
+		return message.reply("Пользеватель не найден в базе");
 	console.log(user.displayName + " пытается что-то купить");
 }
 
