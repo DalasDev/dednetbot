@@ -189,41 +189,6 @@ bot.on("ready", async () => {
   idle_repeat();
 });
 
-bot.on("message", async message => {
-
-  if(message.content == prefix + "play" || message.content == prefix + "p"){
-
-    if(!args[1])
-      return message.reply("похоже вы забыли ввести ссылку на трек");
-    if(!message.member.voiceChannel)
-      return message.reply("зайдите в голосовой канал сперва");
-
-    if(!servers[message.guild.id]) servers[message.guild.id] = {
-      queue: []
-    };
-
-    var server = servers[message.guild.id];
-
-    server.queue.push(args[1]);
-
-    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-      play(connection, message);
-    });
-  }
-
-  if(message.content == prefix + "skip" || message.content == prefix + "s"){
-    var server = servers[message.guild.id];
-
-    if(server.dispatcher) server.dispatcher.end();
-  }
-
-  if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
-    var server = servers[message.guild.id];
-
-    if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-  }
-
-});
 
 //Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
@@ -298,6 +263,42 @@ bot.on("message", async message => {
     if(commandfile){
       commandfile.run(bot, message);
     }
+  }
+
+});
+
+bot.on("message", async message => {
+
+  if(message.content == prefix + "play" || message.content == prefix + "p"){
+
+    if(!args[1])
+      return message.reply("похоже вы забыли ввести ссылку на трек");
+    if(!message.member.voiceChannel)
+      return message.reply("зайдите в голосовой канал сперва");
+
+    if(!servers[message.guild.id]) servers[message.guild.id] = {
+      queue: []
+    };
+
+    var server = servers[message.guild.id];
+
+    server.queue.push(args[1]);
+
+    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+      play(connection, message);
+    });
+  }
+
+  if(message.content == prefix + "skip" || message.content == prefix + "s"){
+    var server = servers[message.guild.id];
+
+    if(server.dispatcher) server.dispatcher.end();
+  }
+
+  if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
+    var server = servers[message.guild.id];
+
+    if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
   }
 
 });
