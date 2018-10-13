@@ -14,12 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
 	message.delete().catch(O_o=>{});
 
-	// User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
-	// 	console.log("USER : " + user);
-	// });
 	var user = await User.findOne({userID: message.member.id}, function(err, found_user){});
-
-	console.log("User is : " + user);
+	console.log(user.displayName + " пытается что-то купить");
 }
 
 module.exports.help = {
