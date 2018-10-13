@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
 	retrocoinCash: Number,
 	retrocoinBank: Number,
 	retrocoinTotal: Number,
-	inv: Array,
+	inv: Object,
 	lastDice: Date,
 	lastScan: Date,
 	lastWork: Date,
