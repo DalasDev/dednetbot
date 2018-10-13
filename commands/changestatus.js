@@ -11,18 +11,20 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-  message.channel.send(message.content);
-
   var n = message.content.search(",");
+  var hmmIcon = bot.emojis.find("name", "hmm");
 
   if (n != -1)
-    message.channel.send("Запятые в статус ставить нельзя");
+    return message.channel.send("Запятые в статус ставить нельзя!");
 
   if (!args[0])
     return message.reply("укажите статус!");
 
   let status = message.content.split(" ").shift().toString().replace(/,/g, " ");
   status = status.replace(/\s\s+/g, ' ');
+
+  if (status.length >= 20)
+    return message.reply(`слишком длинный статус, сорян ${hmmIcon}`)
 
   var user_obj = User.findOne({
     userID: message.member.id
