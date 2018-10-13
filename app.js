@@ -261,7 +261,7 @@ bot.on("message", async message => {
    && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
     let cmd = "!warn2";
-    let args = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
