@@ -10,8 +10,25 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function buyitem(user_obj, item_obj, message){
-	return message.reply("держи, вот тебе " + item_obj.itemName);
+function buyitem(user, item, message){
+
+	var newCash = user.retrocoinCash - item.itemPrice;
+	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){
+		if (err)
+			console.log("WTF there is an error: " + err);
+		else {
+			if (!user_obj)
+				console.log("User not found");
+			else {
+				found_user.retrocoinCash = newCash;
+				found_user.save(function(err, updatedObj){
+				if (err)
+					console.log(err);
+				});
+			}
+		}
+	});
+	return message.reply("держи, вот тебе " + item.itemName);
 }
 
 module.exports.run = async (bot, message, args) => {
