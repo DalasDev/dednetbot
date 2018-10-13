@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
 					var toPay = Number(args[1]);
 					var newCash = actCash - toPay;
 					if (newCash < 0)
-						return message.reply("у тебя нехватка нала для такой операции!");
+						return message.reply("у тебя нехватка наличных для такой операции!");
 
 					send_money(payed, toPay, message, bot);
 
