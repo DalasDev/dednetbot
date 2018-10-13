@@ -15,7 +15,6 @@ module.exports.run = async (bot, message, args) => {
 	//message.delete().catch(O_o=>{});
 
 	//ищю есть ли человек, который пытается что либо купить, у нас в базе
-
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
 	if (typeof user_obj === 'undefined' || user_obj === null)
@@ -34,9 +33,17 @@ module.exports.run = async (bot, message, args) => {
 	var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
 
 	if (typeof item_obj === 'undefined' || item_obj === null)
-		return message.reply("нет у нас такой херни в магазине");
+		return message.reply("укажите точное имя из магазина");
 
 	console.log(user_obj.displayName + " пытается купить " + item_obj.itemName);
+
+	//проверяю может ли юзер купить то, что задумал
+	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0){
+		console.log("и он может себе это позволить!");
+	}
+	else{
+		console.log("но у него не хватит на это ретриков");
+	}
 }
 
 module.exports.help = {
