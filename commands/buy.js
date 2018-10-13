@@ -54,7 +54,7 @@ module.exports.run = async (bot, message, args) => {
 	var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
 
 	if (typeof item_obj === 'undefined' || item_obj === null)
-		return message.reply("укажите точное имя из магазина");
+		return message.reply("укажите точное название из магазина");
 
 	console.log(user_obj.displayName + " пытается купить " + item_obj.itemName);
 

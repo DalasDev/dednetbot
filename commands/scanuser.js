@@ -107,17 +107,9 @@ module.exports.run = async (bot, message) => {
 						foundObj.retrocoinBank += coinrandom;
 						foundObj.retrocoinTotal = foundObj.retrocoinCash + foundObj.retrocoinBank;
 						foundObj.displayName = message.member.displayName;
+						foundObj.userID = message.member.id;
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
-						foundObj.inv = [{}];
-						//all the stats below to remove from scan later
-						// foundObj.status = "__не установлен__";
-						// foundObj.kissed = 0;
-						// foundObj.huged = 0;
-						// foundObj.fcked = 0;
-						// foundObj.hit = 0;
-						// foundObj.killed = 0;
-						// foundObj.drunk = 0;
 						foundObj.save(function(err, updatedObj){
 							if(err)
 								console.log(err);
