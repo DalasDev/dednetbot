@@ -107,7 +107,6 @@ module.exports.run = async (bot, message) => {
 						foundObj.retrocoinBank += coinrandom;
 						foundObj.retrocoinTotal = foundObj.retrocoinCash + foundObj.retrocoinBank;
 						foundObj.displayName = message.member.displayName;
-						foundObj.userID = message.member.id;
 						foundObj.highestRole = message.member.highestRole.name;
 						foundObj.lastScan = Date.now();
 						foundObj.save(function(err, updatedObj){
