@@ -10,6 +10,10 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
+function buyitem(user_obj, item_obj){
+	return message.reply("держи, вот тебе " + item_obj.itemName);
+}
+
 module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
@@ -39,10 +43,10 @@ module.exports.run = async (bot, message, args) => {
 
 	//проверяю может ли юзер купить то, что задумал
 	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0){
-		return message.reply("держи, вот тебе " + item_obj.itemName);
+		buyitem(user_obj, item_obj);
 	}
 	else{
-		return message.reply("у тебя не хватит на " + item_obj.itemName + " ретриков!");
+		return message.reply("у тебя не хватит на " + item_obj.itemName);
 	}
 }
 
