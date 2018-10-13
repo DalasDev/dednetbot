@@ -39,7 +39,7 @@ var userSchema = new mongoose.Schema({
 	perkOligarx: Boolean,
 	perkBankir: Boolean,
 	perkMoneyLover: Boolean,
-
+	lastChangeStatus: Date,
 });
 
 module.exports = mongoose.model('users', userSchema);

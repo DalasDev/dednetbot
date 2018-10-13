@@ -39,7 +39,19 @@ module.exports.run = async (bot, message, args) => {
       if (!foundObj)
         console.log("Something stange happend");
       else {
+
+        if (foundObj.lastChangeStatus){
+          
+          var dateTime = Date.now();
+          var timestamp = Math.floor(dateTime/1000);
+          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 3600;
+
+          if (timestampLimit > timestamp)
+            return message.reply(`ты недавно уже менял статус ${simpleIcon}`);
+        }
+
         foundObj.status = status;
+        foundObj.lastChangeStatus = Date.now();
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
