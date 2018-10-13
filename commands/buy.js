@@ -13,7 +13,7 @@ function isNumeric(value) {
 function buyitem(user, item, message){
 
 	var newCash = user.retrocoinCash - item.itemPrice;
-	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){
+	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
 			console.log("WTF there is an error: " + err);
 		else {
