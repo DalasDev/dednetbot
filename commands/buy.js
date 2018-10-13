@@ -21,7 +21,7 @@ function buyitem(user, item, message){
 				console.log("User not found");
 			else {
 				found_user.retrocoinCash = newCash;
-				found_user.inv
+//				found_user.inv
 				found_user.save(function(err, updatedObj){
 				if (err)
 					console.log(err);
