@@ -13,6 +13,7 @@ var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
 var Spy = require('./schemas/spy_model.js');
 var servers = {};
+var prefix = botconfig.prefix;
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
@@ -246,7 +247,6 @@ bot.on("message", async message => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
     return;
 
-  let prefix = botconfig.prefix;
   if (message.content.charAt(0) === prefix){
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
