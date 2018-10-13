@@ -42,11 +42,32 @@ module.exports.run = async (bot, message, args) => {
 			return message.reply("пользователь не найден в базе");
 
 		var inventory_magic = sort_inv(user_obj.inv);
-		var	inventory = inventory_magic[0];
-		var inventoryIndex = inventory_magic[1];
+		var	inventoryNames = inventory_magic[0];
+		var inventoryCount = inventory_magic[1];
 
-		return message.channel.send(`${inventory} ${inventoryIndex}`);
+		var maxX = inventoryNames.length;
+		var x = 0;
+		var y = 0;
+		var text = ``;
 
+		while(x < maxX)
+			text += `**${y=x+1}.** ${inventoryNames[x]} • **${numberWithCommas(inventoryCount[x++])}**\n`;
+
+		message.channel.send({embed: {
+			color: 3447003,
+			title: `**Retro Valley** :zap: **LEADERBOARD**`,
+			fields: [
+			{
+				name: "(все что ты успел у нас закупить)",
+				value: text
+			}
+			],
+			timestamp: new Date(),
+			footer: {
+				icon_url: message.author.avatarURL,
+				text: `© ${message.member.displayName}`
+			},
+		}});
 	} else {
 		console.log("WTF?!");
 		// var user_obj = User.findOne({
