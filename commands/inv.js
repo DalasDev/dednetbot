@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
 
 		message.channel.send({embed: {
 			color: 3447003,
-			title: `**Retro Valley** :zap: **LEADERBOARD**`,
+			title: `**${user_obj.displayName}** :zap: **инвентарь**`,
 			fields: [
 			{
 				name: "(все что ты успел у нас закупить)",
