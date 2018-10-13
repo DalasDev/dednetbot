@@ -24,8 +24,10 @@ function send_money(payed, toPay, message, bot){
 			console.log("Error on database findOne: " + err);
 		}
 		else {
-			if (!foundObj)
+			if (!foundObj){
 				console.log("Something stange happend");
+				return message.reply("пользователь не найден");
+			}
 			else {
 				let newCash = foundObj.retrocoinCash + toPay;
 				foundObj.retrocoinCash = newCash;
