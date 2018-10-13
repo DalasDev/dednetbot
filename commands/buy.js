@@ -20,10 +20,10 @@ function buyitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
-				console.log("debug: " + found_user.inv[0].itemName);
 				if (found_user.inv[0].itemName)
-					console.log("old account!");
-				var newinv = found_user.inv;
+					var newinv = [];
+				else
+					var newinv = found_user.inv;
 				newinv.push(item.itemName);
 				found_user.retrocoinCash = newCash;
 				found_user.inv = newinv;
