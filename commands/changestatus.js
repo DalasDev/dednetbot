@@ -20,12 +20,11 @@ module.exports.run = async (bot, message, args) => {
   if (!args[0])
     return message.reply("укажите статус!");
 
-  let status = message.content.split(" ").shift();
-  console.log("status1: " + status);
-  status = status.toString().replace(/,/g, " ");
-  console.log("status2: " + status);
+  var status = message.content.split(" ").toString();
+  var to_cut = status.indexOf(",");
+  status = status.slice(to_cut + 1);
+  status = status.replace(/,/g, " ");
   status = status.replace(/\s\s+/g, ' ');
-  console.log("status3: " + status);
 
   if (status.length >= 20)
     return message.reply(`слишком длинный статус, сорян ${hmmIcon}`)
