@@ -41,10 +41,10 @@ module.exports.run = async (bot, message, args) => {
       else {
 
         if (foundObj.lastChangeStatus){
-          
+
           var dateTime = Date.now();
           var timestamp = Math.floor(dateTime/1000);
-          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 3600;
+          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 300;
 
           if (timestampLimit > timestamp)
             return message.reply(`ты недавно уже менял статус ${simpleIcon}`);
