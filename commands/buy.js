@@ -39,10 +39,10 @@ module.exports.run = async (bot, message, args) => {
 
 	//проверяю может ли юзер купить то, что задумал
 	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0){
-		return message.channel.send(user_obj.displayName + " пытается купить " + item_obj.itemName);
+		return message.reply("держи, вот тебе " + item_obj.itemName);
 	}
 	else{
-		return message.reply("у тебя не хватит на " + item_obj.itemName + " ретриков...");
+		return message.reply("у тебя не хватит на " + item_obj.itemName + " ретриков!");
 	}
 }
 
