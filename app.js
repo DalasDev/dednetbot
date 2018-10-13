@@ -6,11 +6,13 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
+const YTDL = require("ytdl-core");
 var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
 var Spy = require('./schemas/spy_model.js');
+var servers = {};
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
@@ -60,6 +62,19 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   })
 })
+
+function play(connection, message) {
+  var server = servers[message.guild.id];
+
+  server.dispatcher = connection.playStream(YTDL(server.queue[0]. {filter: "audioonly"}));
+
+  server.queue.shift();
+
+  server.dispatcher.on("end", function() {
+    if(server.queue[0]) play(connection, message);
+    else connection.disconnect();
+  });
+}
 
 function idle_repeat(){
   console.log("[app.js] New CronJob started");
@@ -171,6 +186,42 @@ bot.on("ready", async () => {
   //Установка статуса
   bot.user.setStatus('online');
   idle_repeat();
+});
+
+bot.on("message", async message => {
+
+  if(messsage.content == prefix + "play" || messsage.content == prefix + "p"){
+
+    if(!args[1])
+      return message.reply("похоже вы забыли ввести ссылку на трек");
+    if(!message.member.voiceChannel)
+      return message.reply("зайдите в голосовой канал сперва");
+
+    if(!servers[message.guild.id]) servers[message.guild.id] = {
+      queue: []
+    };
+
+    var server = servers[message.guild.id];
+
+    server.queue.push(args[1]);
+
+    if(!messsage.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+      play(connection, message);
+    });
+  }
+
+  if(messsage.content == prefix + "skip" || messsage.content == prefix + "s"){
+    var server = servers[message.guild.id];
+
+    if(server.dispatcher) server.dispatcher.end();
+  }
+
+  if(messsage.content == prefix + "disconnect" || messsage.content == prefix + "dis"){
+    var server = servers[message.guild.id];
+
+    if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+  }
+
 });
 
 //Выполняеться когда кто-то пишет сообщение

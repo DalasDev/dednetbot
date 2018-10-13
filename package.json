@@ -14,8 +14,10 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.2.13",
     "ms": "^2.1.1",
+    "opusscript": "0.0.6",
     "request": "2.81.0",
-    "sass": "^1.13.2"
+    "sass": "^1.13.2",
+    "ytdl-core": "^0.26.1"
   },
   "devDependencies": {},
   "repository": {
