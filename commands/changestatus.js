@@ -13,9 +13,16 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(message.content);
 
-  let status = message.content.split(" ");
-  if (!status)
+  var n = message.content.search(",");
+
+  if (n != -1)
+    message.channel.send("Запятые в статус ставить нельзя");
+
+  if (!args[0])
     return message.reply("укажите статус!");
+
+  let status = message.content.split(" ").shift().toString().replace(/,/g, " ");
+  status = status.replace(/\s\s+/g, ' ');
 
   var user_obj = User.findOne({
     userID: message.member.id
