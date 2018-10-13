@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
 
           var dateTime = Date.now();
           var timestamp = Math.floor(dateTime/1000);
-          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 300;
+          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 5;
 
           if (timestampLimit > timestamp)
             return message.reply(`ты недавно уже менял статус ${simpleIcon}`);
@@ -56,11 +56,11 @@ module.exports.run = async (bot, message, args) => {
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-        })
+        });
+        return message.reply(`статус обновлен ${hohomenIcon}`);
       }
     }
   });
-  message.reply(`статус обновлен ${hohomenIcon}`);
 }
 
 module.exports.help = {
