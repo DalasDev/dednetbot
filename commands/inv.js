@@ -6,7 +6,23 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 var User = require('./../schemas/user_model.js');
 
 const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function sort_inv(inv) {
+	var a = [], b = [], prev;
+
+	inv.sort();
+	for ( var i = 0; i < inv.length; i++ ) {
+		if ( inv[i] !== prev ) {
+			a.push(inv[i]);
+			b.push(1);
+		} else {
+			b[b.length-1]++;
+		}
+		prev = inv[i];
+	}
+	return [a, b];
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -19,20 +35,18 @@ module.exports.run = async (bot, message, args) => {
 		return message.reply("в чужой карман заглянуть нельзя!");
 
 	if(!toScan){
-			
+
 		var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
 		if (typeof user_obj === 'undefined' || user_obj === null)
 			return message.reply("пользователь не найден в базе");
 
-		var avatar = message.member.user.avatarURL;
-		const embed = new Discord.RichEmbed()
-		.setTitle("Инвентарь " + message.member.displayName)
-		.setColor("#00FF00")
-		.addField("Найдено", `${user_obj.inv}`, true)
-		.setThumbnail(avatar)
+		var inventory_magic = sort_inv(user_obj.inv);
+		var	inventory = inventory_magic[0];
+		var inventoryIndex = inventory_magic[1];
 
-		message.channel.send({embed});
+		return message.channel.send(`${inventory} ${inventoryIndex}`);
+
 	} else {
 		console.log("WTF?!");
 		// var user_obj = User.findOne({
