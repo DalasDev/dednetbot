@@ -268,6 +268,7 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
+  let args = messageArray.slice(1);
 
   if(message.content == prefix + "play" || message.content == prefix + "p"){
 
