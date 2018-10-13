@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 	var test = User.findOne({userID: message.member.id}, function(err, found_user){
 		console.log("User ID is: " + found_user.id);
 	});
-	console.log("test.displayName is : " + test.displayName);
+	console.log("test[0] is : " + test[0]);
 	return message.reply(`${test}`);
 }
 
