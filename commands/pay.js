@@ -5,6 +5,10 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
@@ -30,7 +34,7 @@ function send_money(payed, toPay, message, bot){
 				if(err)
 					console.log(err);
 				});
-				return message.reply(`вы перевели ${payed} ${toPay}${retricIcon}!`);
+				return message.reply(`вы перевели ${numberWithCommas(payed)} ${toPay}${retricIcon}!`);
 			}
 		}
 	});
