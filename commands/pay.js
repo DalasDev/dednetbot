@@ -47,6 +47,9 @@ module.exports.run = async (bot, message, args) => {
 	if (!payed)
 		return message.reply("пользователь не найден / не указан!");
 
+	if (payed.bot)
+		return message.reply("боту твои деньги не нужны, он и так мажор")
+
 	if (isNumeric(args[1]) && !args[2] && Number(args[1]) >= 1) {
 
 		var user_obj = User.findOne({
