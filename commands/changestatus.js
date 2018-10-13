@@ -14,6 +14,7 @@ module.exports.run = async (bot, message, args) => {
   var n = message.content.search(",");
   var hmmIcon = bot.emojis.find("name", "hmm");
   var hohomenIcon = bot.emojis.find("name", "hohomen");
+  var simpleIcon = bot.emojis.find("name", "this_is_simple");
 
   if (n != -1)
     return message.channel.send("Запятые в статус ставить нельзя!");
