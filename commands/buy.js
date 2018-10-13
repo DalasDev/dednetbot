@@ -12,12 +12,31 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
-	message.delete().catch(O_o=>{});
+	//message.delete().catch(O_o=>{});
 
-	var user = await User.findOne({userID: message.member.id}, function(err, found_user){});
-	if (typeof user === 'undefined' || user === null)
-		return message.reply("Пользеватель не найден в базе");
-	console.log(user.displayName + " пытается что-то купить");
+	//ищю есть ли человек, который пытается что либо купить, у нас в базе
+
+	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
+
+	if (typeof user_obj === 'undefined' || user_obj === null)
+		return message.reply("пользователь не найден в базе");
+
+	console.log(user_obj.displayName + " пытается что-то купить");
+
+	//парсю что человек пытается купить
+	var item = message.content.split(" ").toString();
+	var to_cut = item.indexOf(",");
+	item = item.slice(to_cut + 1);
+	item = item.replace(/,/g, " ");
+	item = item.replace(/\s\s+/g, ' ');
+
+	//ищем этот итем у нас в базе, узнаем цену
+	var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
+
+	if (typeof item_obj === 'undefined' || item_obj === null)
+		return message.reply("нет у нас такой херни в магазине");
+
+	console.log(user_obj.displayName + " пытается купить " + item_obj.itemName);
 }
 
 module.exports.help = {
