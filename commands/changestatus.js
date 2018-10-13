@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
   status = status.replace(/,/g, " ");
   status = status.replace(/\s\s+/g, ' ');
 
-  if (status.length >= 20)
+  if (status.length >= 35)
     return message.reply(`слишком длинный статус, сорян ${hmmIcon}`)
 
   var user_obj = User.findOne({
@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
 
           var dateTime = Date.now();
           var timestamp = Math.floor(dateTime/1000);
-          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 5;
+          var timestampLimit = Math.floor(foundObj.lastChangeStatus/1000) + 900;
 
           if (timestampLimit > timestamp)
             return message.reply(`ты недавно уже менял статус ${simpleIcon}`);
