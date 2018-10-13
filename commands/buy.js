@@ -12,10 +12,14 @@ function isNumeric(value) {
 
 module.exports.run = async (bot, message, args) => {
 
-	User.findOneAndUpdate({userID: message.member.id}).lean().exec(function(err, user) {
-		console.log("USER : " + user);
+	// User.findOne({userID: message.member.id}).lean().exec(function(err, user) {
+	// 	console.log("USER : " + user);
+	// });
+	var test = User.findOne({userID: message.member.id}, function(err, found_user){
+		console.log("User ID is: " + found_user.id);
 	});
-	return message.reply(`${user}`);
+	console.log("test is : " + test);
+	return message.reply(`${test}`);
 }
 
 module.exports.help = {
