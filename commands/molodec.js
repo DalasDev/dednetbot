@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
    	}
    	else {
 		const embed = new Discord.RichEmbed()
-		.setTitle(`${user}`)
+		.setTitle(user)
 		.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
 		message.channel.send({embed});
 	}
