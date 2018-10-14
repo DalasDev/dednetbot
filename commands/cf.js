@@ -10,7 +10,7 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function buyitem(user, item, message){
+function playcf(user, toPlay, message){
 
 	var newCash = user.retrocoinCash - item.itemPrice;
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
@@ -20,14 +20,8 @@ function buyitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
-				//если у юзера инвентарь старого типа - делаю резет
-				if (typeof found_user.inv[0] === 'object')
-					var newinv = [];
-				else
-					var newinv = found_user.inv;
-				newinv.push(item.itemName);
-				found_user.retrocoinCash = newCash;
-				found_user.inv = newinv;
+				message.reply("играем!");
+				//запускаю игру, потом сохраняю и отвечаю в чат
 				found_user.save(function(err, updatedObj){
 				if (err)
 					console.log(err);
@@ -52,24 +46,23 @@ module.exports.run = async (bot, message, args) => {
 	if (user_obj.inv.includes("Курочка 🐔") == false)
 		return message.reply("у тебя нету 🐔");
 
-	// //парсим что человек пытается купить
-	// var item = message.content.split(" ").toString();
-	// var to_cut = item.indexOf(",");
-	// item = item.slice(to_cut + 1);
-	// item = item.replace(/,/g, " ");
-	// item = item.replace(/\s\s+/g, ' ');
+	//чекаем сделал ли типуля ставку и достаточно ли у него денег в базе
 
-	// //ищем этот итем у нас в базе, узнаем цену
-	// var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
+	if (args[0] && isNumeric(args[0]) == true){
 
-	// if (typeof item_obj === 'undefined' || item_obj === null)
-	// 	return message.reply("укажите точное название из магазина");
-
-	// //проверяем может ли юзер купить то, что задумал
-	// if (user_obj.retrocoinCash - item_obj.itemPrice >= 0)
-	// 	buyitem(user_obj, item_obj, message);
-	// else
-	// 	return message.reply("у тебя не хватит на " + item_obj.itemName);
+		let toPlay = Number(args[0]);
+		if (toPlay >= 100){
+			if ((user_obj.retrocoinCash - toPlay) >= 0){
+				playcf(user_obj, toPlay, message);
+			}
+			else{
+				return message.reply("у тебя не хватит на это ретриков!");
+			}
+		}
+		else{
+			return message.reply("минимальная стака - 100 ретриков!");
+		}
+	}
 }
 
 module.exports.help = {
