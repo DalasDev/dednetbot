@@ -20,10 +20,14 @@ function buyitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
-				if (typeof found_user.inv[0].itemName !== 'undefined')
+				if (typeof found_user.inv[0].itemName !== 'undefined'){
+					console.log("DB1");
 					var newinv = [];
-				else
+				}
+				else{
+					console.log("DB2");
 					var newinv = found_user.inv;
+				}
 				newinv.push(item.itemName);
 				found_user.retrocoinCash = newCash;
 				found_user.inv = newinv;
