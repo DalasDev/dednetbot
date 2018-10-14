@@ -63,6 +63,7 @@ module.exports.run = async (bot, message, args) => {
 			return message.reply("минимальная стака - 100 ретриков!");
 		}
 	}
+	return message.reply("нужно сделать ставку, от 100 ретриков и выше!")
 }
 
 module.exports.help = {
