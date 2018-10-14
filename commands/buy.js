@@ -20,6 +20,7 @@ function buyitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
+				console.log("DB" + typeof(found_user.inv[0]));
 				if (typeof found_user.inv[0].itemName !== 'undefined'){
 					console.log("DB1");
 					var newinv = [];
