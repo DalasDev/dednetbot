@@ -7,7 +7,15 @@ module.exports.run = async (bot, message, args) => {
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     	return;
 
+    message.delete().catch(O_o=>{});
+
+    let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+
+  	if(!user)
+    	return;
+
 	const embed = new Discord.RichEmbed()
+	.setTitle(`${user}`)
 	.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
 	message.channel.send({embed});
 }

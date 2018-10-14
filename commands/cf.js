@@ -10,6 +10,11 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
+function random(min, max) {
+	var result = Math.floor(Math.random() * (max - min + 1)) + min;
+	return (result);
+}
+
 function playcf(user, toPlay, message){
 
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
@@ -20,6 +25,7 @@ function playcf(user, toPlay, message){
 				console.log("User not found");
 			else {
 				message.reply("играем!");
+//				if (user_obj.)
 				//запускаю игру, потом сохраняю и отвечаю в чат
 				found_user.save(function(err, updatedObj){
 				if (err)
