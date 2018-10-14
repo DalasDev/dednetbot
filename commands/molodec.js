@@ -13,12 +13,14 @@ module.exports.run = async (bot, message, args) => {
 
   	if(!user){
 		const embed = new Discord.RichEmbed()
+		.setColor("#FF0000")
 		.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
 		message.channel.send({embed});
    	}
    	else {
 		const embed = new Discord.RichEmbed()
 		.addField("Эй", `${user}`, true)
+		.setColor("#FF0000")
 		.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
 		message.channel.send({embed});
 	}
