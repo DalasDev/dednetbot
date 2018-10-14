@@ -6,11 +6,15 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
+const YTDL = require("ytdl-core");
+const isUrl = require("is-url");
 var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
 var Spy = require('./schemas/spy_model.js');
+var servers = {};
+var prefix = botconfig.prefix;
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
@@ -60,6 +64,21 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   })
 })
+
+function play(connection, message) {
+  var server = servers[message.guild.id];
+
+  server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+
+  server.queue.shift();
+
+  server.dispatcher.on("end", function() {
+    if(server.queue[0])
+      play(connection, message);
+    else
+      connection.disconnect();
+  });
+}
 
 function idle_repeat(){
   console.log("[app.js] New CronJob started");
@@ -173,6 +192,7 @@ bot.on("ready", async () => {
   idle_repeat();
 });
 
+
 //Выполняеться когда кто-то пишет сообщение
 bot.on("message", async message => {
 
@@ -195,11 +215,10 @@ bot.on("message", async message => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
     return;
 
-  let prefix = botconfig.prefix;
   if (message.content.charAt(0) === prefix){
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
-    let args = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
@@ -210,7 +229,7 @@ bot.on("message", async message => {
    && message.content.charAt(3) === "r" && message.content.charAt(4) === "n"){
     let messageArray = message.content.split(" ");
     let cmd = "!warn2";
-    let args = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
@@ -223,7 +242,7 @@ bot.on("message", async message => {
    && message.content.charAt(9) === "m"){
     let messageArray = message.content.split(" ");
     let cmd = "!sellscan";
-    let args = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
@@ -234,7 +253,7 @@ bot.on("message", async message => {
    && message.content.charAt(3) === "l" && message.content.charAt(4) === "l"){
     let messageArray = message.content.split(" ");
     let cmd = "!sellscan";
-    let args = messageArray.slice(1);
+    var args = messageArray.slice(1);
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
     if(commandfile){
@@ -247,6 +266,52 @@ bot.on("message", async message => {
     if(commandfile){
       commandfile.run(bot, message);
     }
+  }
+
+});
+
+bot.on("message", async message => {
+
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
+    return;
+
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  var args = messageArray.slice(1);
+
+  if(message.content.charAt(0) === prefix && cmd == prefix+"play"){
+    let link = args[0];
+    if(!link)
+      return message.reply("похоже вы забыли ввести ссылку на трек");
+    if(isUrl(link) !== true)
+      return message.reply("введите ссылку а не что попало!");
+    if(!message.member.voiceChannel)
+      return message.reply("вы не в голосовом канале!");
+    if(!servers[message.guild.id]) servers[message.guild.id] = {
+      queue: []
+    };
+    var server = servers[message.guild.id];
+    server.queue.push(args[0]);
+    if(!message.guild.voiceConnection)
+      message.member.voiceChannel.join().then(function(connection) {
+      play(connection, message);
+    });
+  }
+
+  if(message.content == prefix + "skip" || message.content == prefix + "s"){
+
+    var server = servers[message.guild.id];
+
+    if(server.dispatcher)
+      server.dispatcher.end();
+  }
+
+  if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
+
+    var server = servers[message.guild.id];
+
+    if(message.guild.voiceConnection)
+      message.guild.voiceConnection.disconnect();
   }
 
 });
