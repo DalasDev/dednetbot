@@ -286,21 +286,26 @@ bot.on("message", async message => {
     };
     var server = servers[message.guild.id];
     server.queue.push(args[0]);
-    if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+    if(!message.guild.voiceConnection)
+      message.member.voiceChannel.join().then(function(connection) {
       play(connection, message);
     });
   }
 
   if(message.content == prefix + "skip" || message.content == prefix + "s"){
+    
     var server = servers[message.guild.id];
 
-    if(server.dispatcher) server.dispatcher.end();
+    if(server.dispatcher)
+      server.dispatcher.end();
   }
 
   if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
+  
     var server = servers[message.guild.id];
 
-    if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+    if(message.guild.voiceConnection)
+      message.guild.voiceConnection.disconnect();
   }
 
 });
