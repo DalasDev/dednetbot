@@ -42,32 +42,36 @@ module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
 
-	//ищем есть ли человек, который пытается что либо купить, у нас в базе
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
 	if (typeof user_obj === 'undefined' || user_obj === null)
 		return message.reply("пользователь не найден в базе");
 
-	//парсим что человек пытается купить
-	var item = message.content.split(" ").toString();
-	var to_cut = item.indexOf(",");
-	item = item.slice(to_cut + 1);
-	item = item.replace(/,/g, " ");
-	item = item.replace(/\s\s+/g, ' ');
+	//чекаем есть ли у него Курочка в инвентаре
 
-	//ищем этот итем у нас в базе, узнаем цену
-	var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
+	if (!user_obj.inv.includes("Курочка :chicken:"))
+		return message.reply(`у тебя нету \:chicken:`)
 
-	if (typeof item_obj === 'undefined' || item_obj === null)
-		return message.reply("укажите точное название из магазина");
+	// //парсим что человек пытается купить
+	// var item = message.content.split(" ").toString();
+	// var to_cut = item.indexOf(",");
+	// item = item.slice(to_cut + 1);
+	// item = item.replace(/,/g, " ");
+	// item = item.replace(/\s\s+/g, ' ');
 
-	//проверяем может ли юзер купить то, что задумал
-	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0)
-		buyitem(user_obj, item_obj, message);
-	else
-		return message.reply("у тебя не хватит на " + item_obj.itemName);
+	// //ищем этот итем у нас в базе, узнаем цену
+	// var item_obj = await Item.findOne({itemName: item}, function(err, found_item){});
+
+	// if (typeof item_obj === 'undefined' || item_obj === null)
+	// 	return message.reply("укажите точное название из магазина");
+
+	// //проверяем может ли юзер купить то, что задумал
+	// if (user_obj.retrocoinCash - item_obj.itemPrice >= 0)
+	// 	buyitem(user_obj, item_obj, message);
+	// else
+	// 	return message.reply("у тебя не хватит на " + item_obj.itemName);
 }
 
 module.exports.help = {
-	name: "buy"
+	name: "cf"
 }
