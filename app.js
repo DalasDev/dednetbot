@@ -273,9 +273,9 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let args = messageArray.slice(1);
 
-  console.log("DB1");
-
   if(message.content == prefix + "play" || message.content == prefix + "p"){
+    
+    console.log("DB1");
 
     console.log("args: " + args);
 
