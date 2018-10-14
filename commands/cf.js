@@ -12,7 +12,6 @@ function isNumeric(value) {
 
 function playcf(user, toPlay, message){
 
-	var newCash = user.retrocoinCash - item.itemPrice;
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
 			console.log("WTF there is an error: " + err);
