@@ -68,9 +68,15 @@ fs.readdir("./commands/", (err, files) => {
 function play(connection, message) {
   var server = servers[message.guild.id];
 
+  console.log("DB!: " + server);
+
   server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
 
+  console.log("DB2: " + server.queue);
+
   server.queue.shift();
+
+  console.log("DB3: " + server.queue);
 
   server.dispatcher.on("end", function() {
     if(server.queue[0])
@@ -279,7 +285,7 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   var args = messageArray.slice(1);
 
-  if(message.content.charAt(0) === prefix && cmd == prefix+"play"){
+  if((message.content.charAt(0) === prefix && cmd == prefix+"play") || (message.content.charAt(0) === prefix && cmd == prefix+"p")){
     let link = args[0];
     if(!link)
       return message.reply("похоже вы забыли ввести ссылку на трек");
@@ -292,6 +298,7 @@ bot.on("message", async message => {
     };
     var server = servers[message.guild.id];
     server.queue.push(args[0]);
+    console.log("DB1: " + server.queue);
     if(!message.guild.voiceConnection)
       message.member.voiceChannel.join().then(function(connection) {
       play(connection, message);
