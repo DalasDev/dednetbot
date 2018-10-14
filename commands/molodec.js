@@ -11,13 +11,17 @@ module.exports.run = async (bot, message, args) => {
 
     let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-  	if(!user)
-    	return;
-
-	const embed = new Discord.RichEmbed()
-	.setTitle(`${user}`)
-	.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
-	message.channel.send({embed});
+  	if(!user){
+		const embed = new Discord.RichEmbed()
+		.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
+		message.channel.send({embed});
+   	}
+   	else {
+		const embed = new Discord.RichEmbed()
+		.setTitle(`${user}`)
+		.setImage("https://retrobotproject.herokuapp.com/images/selffive.gif")
+		message.channel.send({embed});
+	}
 }
 
 module.exports.help = {
