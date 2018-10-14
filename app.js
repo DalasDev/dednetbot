@@ -68,15 +68,9 @@ fs.readdir("./commands/", (err, files) => {
 function play(connection, message) {
   var server = servers[message.guild.id];
 
-  console.log("DB!: " + server);
-
   server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
 
-  console.log("DB2: " + server.queue);
-
   server.queue.shift();
-
-  console.log("DB3: " + server.queue);
 
   server.dispatcher.on("end", function() {
     if(server.queue[0])
@@ -298,7 +292,7 @@ bot.on("message", async message => {
     };
     var server = servers[message.guild.id];
     server.queue.push(args[0]);
-    console.log("DB1: " + server.queue);
+    console.log("Queue is: " + server.queue);
     if(!message.guild.voiceConnection)
       message.member.voiceChannel.join().then(function(connection) {
       play(connection, message);
