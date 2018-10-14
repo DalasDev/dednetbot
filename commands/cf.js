@@ -49,8 +49,8 @@ module.exports.run = async (bot, message, args) => {
 
 	//чекаем есть ли у него Курочка в инвентаре
 
-	if (user_obj.inv.includes("Курочка :chicken:") == false)
-		return message.reply("у тебя нету :chicken:");
+	if (user_obj.inv.includes("Курочка 🐔") == false)
+		return message.reply("у тебя нету 🐔");
 
 	// //парсим что человек пытается купить
 	// var item = message.content.split(" ").toString();
