@@ -20,6 +20,7 @@ function buyitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
+				//если у юзера инвентарь старого типа - делаю резет
 				if (typeof found_user.inv[0] === 'object')
 					var newinv = [];
 				else
@@ -47,8 +48,6 @@ module.exports.run = async (bot, message, args) => {
 	if (typeof user_obj === 'undefined' || user_obj === null)
 		return message.reply("пользователь не найден в базе");
 
-	console.log(user_obj.displayName + " пытается что-то купить");
-
 	//парсю что человек пытается купить
 	var item = message.content.split(" ").toString();
 	var to_cut = item.indexOf(",");
@@ -62,15 +61,11 @@ module.exports.run = async (bot, message, args) => {
 	if (typeof item_obj === 'undefined' || item_obj === null)
 		return message.reply("укажите точное название из магазина");
 
-	console.log(user_obj.displayName + " пытается купить " + item_obj.itemName);
-
 	//проверяю может ли юзер купить то, что задумал
-	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0){
+	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0)
 		buyitem(user_obj, item_obj, message);
-	}
-	else{
+	else
 		return message.reply("у тебя не хватит на " + item_obj.itemName);
-	}
 }
 
 module.exports.help = {
