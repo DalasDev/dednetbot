@@ -270,14 +270,14 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
-  
+
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   var args = messageArray.slice(1);
 
   if(message.content.charAt(0) === prefix && cmd == prefix+"play"){
 
-    if(!args[1])
+    if(!args[0])
       return message.reply("похоже вы забыли ввести ссылку на трек");
     if(!message.member.voiceChannel)
       return message.reply("вы не в голосовом канале!");
