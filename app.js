@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const app = express();
 const ms = require("ms");
 const YTDL = require("ytdl-core");
+const isURL = require("is-url");
 var CronJob = require('cron').CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
@@ -271,6 +272,9 @@ bot.on("message", async message => {
 
 bot.on("message", async message => {
 
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+    return;
+
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   var args = messageArray.slice(1);
@@ -279,6 +283,8 @@ bot.on("message", async message => {
 
     if(!args[0])
       return message.reply("похоже вы забыли ввести ссылку на трек");
+    if(isUrl(args[0]) === 'false'))
+      return message.reply("введите ссылку а не что попало!");
     if(!message.member.voiceChannel)
       return message.reply("вы не в голосовом канале!");
     if(!servers[message.guild.id]) servers[message.guild.id] = {
@@ -293,7 +299,7 @@ bot.on("message", async message => {
   }
 
   if(message.content == prefix + "skip" || message.content == prefix + "s"){
-    
+
     var server = servers[message.guild.id];
 
     if(server.dispatcher)
@@ -301,7 +307,7 @@ bot.on("message", async message => {
   }
 
   if(message.content == prefix + "disconnect" || message.content == prefix + "dis"){
-  
+
     var server = servers[message.guild.id];
 
     if(message.guild.voiceConnection)
