@@ -270,11 +270,13 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
+  
   let messageArray = message.content.split(" ");
-  let args = messageArray.slice(1);
+  let cmd = messageArray[0];
+  var args = messageArray.slice(1);
 
-  if(message.content == prefix + "play" || message.content == prefix + "p"){
-    
+  if(message.content.charAt(0) === prefix && cmd == "play"){
+
     console.log("DB1");
 
     console.log("args: " + args);
