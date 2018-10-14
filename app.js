@@ -295,7 +295,7 @@ bot.on("message", async message => {
     };
     console.log("DB3");
     var server = servers[message.guild.id];
-    server.queue.push(args[1]);
+    server.queue.push(args[0]);
     console.log("DB4");
     if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
       console.log("DB5");
