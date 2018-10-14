@@ -283,7 +283,7 @@ bot.on("message", async message => {
     let link = args[0];
     if(!link)
       return message.reply("похоже вы забыли ввести ссылку на трек");
-    if(!isUrl(link) === 'true')
+    if(isUrl(link) !== true)
       return message.reply("введите ссылку а не что попало!");
     if(!message.member.voiceChannel)
       return message.reply("вы не в голосовом канале!");
