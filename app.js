@@ -275,6 +275,8 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   var args = messageArray.slice(1);
 
+  console.log("cmd is: " + cmd);
+
   if(message.content.charAt(0) === prefix && cmd == "play"){
 
     console.log("DB1");
