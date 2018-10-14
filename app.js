@@ -272,7 +272,7 @@ bot.on("message", async message => {
 
 bot.on("message", async message => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
+  if(message.member && !message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
 
   let messageArray = message.content.split(" ");
