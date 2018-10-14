@@ -65,7 +65,6 @@ fs.readdir("./commands/", (err, files) => {
 })
 
 function play(connection, message) {
-  console.log("DB6");
   var server = servers[message.guild.id];
 
   server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
@@ -73,7 +72,6 @@ function play(connection, message) {
   server.queue.shift();
 
   server.dispatcher.on("end", function() {
-    console.log("DB7");
     if(server.queue[0])
       play(connection, message);
     else
@@ -279,26 +277,16 @@ bot.on("message", async message => {
 
   if(message.content.charAt(0) === prefix && cmd == prefix+"play"){
 
-    console.log("DB1");
-
-    console.log("args: " + args);
-    console.log("args[0]: " + args[0]);    
-    console.log("args[1]: " + args[1]);
-
     if(!args[1])
       return message.reply("похоже вы забыли ввести ссылку на трек");
     if(!message.member.voiceChannel)
       return message.reply("вы не в голосовом канале!");
-    console.log("DB2");
     if(!servers[message.guild.id]) servers[message.guild.id] = {
       queue: []
     };
-    console.log("DB3");
     var server = servers[message.guild.id];
     server.queue.push(args[0]);
-    console.log("DB4");
     if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-      console.log("DB5");
       play(connection, message);
     });
   }
