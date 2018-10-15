@@ -6,7 +6,8 @@ module.exports.run = async (bot, message, args) => {
 
   var hmmIcon = bot.emojis.find("name", "hmm");
 
-  if(!message.member.roles.some(r=>["РетроТестер", "Тех. Администратор", "Губернатор", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
+  if(!message.member.roles.some(r=>["РетроТестер", "Тех. Администратор", "Губернатор", "⭐Полицейский⭐", "⭐Шерифский департамент⭐", "Городской супергерой ⚡"
+].includes(r.name)))
     return;
 
   let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
