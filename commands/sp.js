@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
 				});
 				myData.save()
 				.then(item => {
-					console.log('New infraction from "' + moder.username + '" added to database');
+					console.log('New infraction from "' + moder.displayName + '" added to database');
 				})
 				.catch(err => {
 					console.log("Error on database save: " + err);
