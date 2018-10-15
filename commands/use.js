@@ -19,6 +19,8 @@ function useitem(user, item, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
+				if (item.usable !== true)
+					return message.reply("эту вещь нельзя так использовать :thinking:");
 				message.reply("ты только что (почти) юзанул " + item.itemName);
 				var index = user.inv.indexOf(item.itemName);
 				newinv = user.inv;
