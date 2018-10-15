@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
 module.exports.run = async (bot, message, args) => {
 
