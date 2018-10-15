@@ -5,7 +5,7 @@ var reportSchema = new mongoose.Schema({
 	moder: String,
   moderID: String,
 	warnsAmount: Number,
-	infsractionsAmount: Number,
+	infractionsAmount: Number,
 });
 
 module.exports = mongoose.model('report', reportSchema);

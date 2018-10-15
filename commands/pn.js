@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
 		else {
 			if (foundObj === null){
 				var myData = new User({
-					moder: moder.username,
+					moder: moder.displayName,
 					moderID: moder.id,
           infractionsAmount: 1,
           warnsAmount: 0,
