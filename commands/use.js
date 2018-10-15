@@ -20,7 +20,9 @@ function useitem(user, item, message){
 				console.log("User not found");
 			else {
 				message.reply("ты только что (почти) юзанул " + item.itemName);
+				var index = user.inv.indexOf(item.itemName);
 				newinv = user.inv;
+				newinv.splice(index, 1);
 				found_user.inv = newinv;
 				found_user.save(function(err, updatedObj){
 				if (err)
