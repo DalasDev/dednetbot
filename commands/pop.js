@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(`${user}, не попрошайничай! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
   let moder = message.member;
-  var User = require('./../schemas/user_model.js');
+  var User = require('./../schemas/report_model.js');
   var user_obj = User.findOne({
 		userID: moder.id
 	}, function (err, foundObj) {

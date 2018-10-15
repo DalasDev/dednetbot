@@ -65,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
   });
 
   let moder = message.member;
-  var mUser = require('./../schemas/user_model.js');
+  var mUser = require('./../schemas/report_model.js');
   var user_obj = ,User.findOne({
   	userID: moder.id
   }, function (err, foundObj) {
