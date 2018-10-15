@@ -40,7 +40,8 @@ module.exports.run = async (bot, message, args) => {
 
 		if (typeof user_obj === 'undefined' || user_obj === null)
 			return message.reply("пользователь не найден в базе");
-
+		if (!user_obj.inv)
+			return message.reply("твой инвентарь пуст!");
 		var inventory_magic = sort_inv(user_obj.inv);
 		var	inventoryNames = inventory_magic[0];
 		var inventoryCount = inventory_magic[1];
@@ -49,6 +50,9 @@ module.exports.run = async (bot, message, args) => {
 		var x = 0;
 		var y = 0;
 		var text = ``;
+
+		if (maxX == 0)
+			return message.reply("твой инвентарь пуст!");
 
 		while(x < maxX)
 			text += `**${y=x+1}.** ${inventoryNames[x]} • **${numberWithCommas(inventoryCount[x++])}**\n`;

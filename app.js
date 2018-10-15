@@ -212,7 +212,7 @@ bot.on("message", async message => {
   if(message.channel.type === "dm")
     return;
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер", "⭐Полицейский⭐", "⭐Шерифский департамент⭐", "Городской супергерой ⚡"].includes(r.name)))
     return;
 
   if (message.content.charAt(0) === prefix){

@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 
-//help
-
 module.exports.run = async (bot, message, args) => {
 
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
