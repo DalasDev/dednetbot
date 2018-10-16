@@ -52,9 +52,9 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
         });
-			}
-		});
-  }
+  		}
+  	}
+  });
 }
 
 module.exports.help = {

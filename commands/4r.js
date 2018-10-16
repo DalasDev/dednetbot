@@ -53,8 +53,8 @@ module.exports.run = async (bot, message, args) => {
             console.log(err);
         });
 			}
-		});
-  }
+		}
+  });
 }
 
 module.exports.help = {
