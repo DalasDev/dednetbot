@@ -16,6 +16,8 @@ module.exports.run = async (bot, message, args) => {
   	return;
   let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "📌правила");
+  let kchannel = message.guild.channels.find(`name`, "📵канализация");
+  let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
 
   message.channel.send(`${user}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel}! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
@@ -47,9 +49,9 @@ module.exports.run = async (bot, message, args) => {
 
         foundObj.infractionsAmount = foundObj.infractionsAmount + 1;
         foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
-				}
+          if(err)
+            console.log(err);
+        });
 			}
 		});
 }
