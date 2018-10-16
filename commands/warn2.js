@@ -85,9 +85,10 @@ module.exports.run = async (bot, message, args) => {
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-        });
-  		}
-  	});
+          });
+    		}
+    	}
+    });
 
   //end of mongoose
 

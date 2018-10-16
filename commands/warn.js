@@ -96,7 +96,8 @@ module.exports.run = async (bot, message, args) => {
             console.log(err);
         });
   		}
-  	});
+  	}
+  });
 
   var user_obj = User.findOne({
     userID: wUser.id
