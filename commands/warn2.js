@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
   });
 
   let moder = message.member;
-  var User = require('./../schemas/report_model.js');
+  var mUser = require('./../schemas/report_model.js');
   var user_obj = User.findOne({
   	moderID: moder.id
   }, function (err, foundObj) {
@@ -72,7 +72,7 @@ module.exports.run = async (bot, message, args) => {
   			});
   			myData.save()
   			.then(item => {
-  				console.log('New infraction from "' + moder.displayName + '" added to database');
+  				console.log('New warn from "' + moder.displayName + '" added to database');
   			})
   			.catch(err => {
   				console.log("Error on database save: " + err);
@@ -86,7 +86,7 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
           else{
-            console.log('New infraction from "' + moder.displayName + '" added to database')
+            console.log('New warn from "' + moder.displayName + '" added to database')
           }
         });
     	}
