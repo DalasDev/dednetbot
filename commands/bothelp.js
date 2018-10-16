@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
 	let bicon = bot.user.avatarURL;
 	const embed = new Discord.RichEmbed()
-	.setTitle("Доступные на данный момент комманды")
+	.setTitle(":star:Доступные на данный момент команды:star:")
 	.setColor("#BF44FF")
 	.setThumbnail(bicon)
 	.addField("^addrole роль", "Добавляет роль, доступна админу", true)
@@ -25,6 +25,12 @@ module.exports.run = async (bot, message, args) => {
 	.addField("^warn user reason", "Варны, сами опробуете, накопительная система", true)
 	.addField("^unban", "Попробуйте сами угадать", true)
 	.addField("^clear X", "Удалить последние Х сообщений с чата (от 2 до 100)", true)
+	.addField("^pn", "Посылает игрока в <@432464077575421952>", true)
+	.addField("^4r", "Посылает игрока в <@491175462018744320>", true)
+	.addField("^mat", "Говорит пользователю, что мат запрещен", true)
+	.addField("^pop", "Говорит пользователю, что попрошайничество запрещено", true)
+	.addField("^sp", "Говорит пользователю, что спам запрещен", true)
+	.addField("^mk", "Говорит пользователю, что медиаконтент можно отправлять только раз в 2 часа", true)
 	.setFooter("Продолжение следует...", "")
 	.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
