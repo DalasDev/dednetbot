@@ -4,6 +4,11 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+	let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
+	let pchannel = message.guild.channels.find(`name`, "📌правила");
+	let kchannel = message.guild.channels.find(`name`, "📵канализация");
+	let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
+
 	message.delete().catch(O_o=>{});
 
 	let bicon = bot.user.avatarURL;
@@ -25,14 +30,13 @@ module.exports.run = async (bot, message, args) => {
 	.addField("^warn user reason", "Варны, сами опробуете, накопительная система", true)
 	.addField("^unban", "Попробуйте сами угадать", true)
 	.addField("^clear X", "Удалить последние Х сообщений с чата (от 2 до 100)", true)
-	.addField("^pn", "Посылает игрока в <@432464077575421952>", true)
-	.addField("^4r", "Посылает игрока в <@491175462018744320>", true)
+	.addField("^pn", `Посылает игрока в ${pnchannel}`, true)
+	.addField("^4r", `Посылает игрока в ${cnchannel}`, true)
 	.addField("^mat", "Говорит пользователю, что мат запрещен", true)
 	.addField("^pop", "Говорит пользователю, что попрошайничество запрещено", true)
 	.addField("^sp", "Говорит пользователю, что спам запрещен", true)
 	.addField("^mk", "Говорит пользователю, что медиаконтент можно отправлять только раз в 2 часа", true)
 	.setFooter("Продолжение следует...", "")
-	.setImage("https://retrobotproject.herokuapp.com/images/bender.gif")
 
 	message.channel.send({embed});
 }
