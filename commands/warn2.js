@@ -85,10 +85,13 @@ module.exports.run = async (bot, message, args) => {
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-          });
-    		}
+          else{
+            console.log('New infraction from "' + moder.displayName + '" added to database')
+          }
+        });
     	}
-    });
+    }
+  });
 
   //end of mongoose
 
