@@ -13,11 +13,13 @@ module.exports.run = async (bot, message, args) => {
 
   let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if (!user)
-  	return;
+    return;
   let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "📌правила");
+  let kchannel = message.guild.channels.find(`name`, "📵канализация");
+  let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
 
-  message.channel.send(`${user}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel}! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
+  message.channel.send(`${user}, медиаконтент в чаты можно кидать только раз в 2 часа! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
   let moder = message.member;
   var User = require('./../schemas/report_model.js');
@@ -53,5 +55,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-	name: "4r"
+	name: "mk"
 }

@@ -58,7 +58,7 @@ module.exports.run = async (bot, message, args) => {
   let moder = message.member;
   var User = require('./../schemas/report_model.js');
   var user_obj = User.findOne({
-  	userID: moder.id
+  	moderID: moder.id
   }, function (err, foundObj) {
   	if (err)
   		console.log("Error on database findOne: " + err);
