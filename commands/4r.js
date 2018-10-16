@@ -46,7 +46,9 @@ module.exports.run = async (bot, message, args) => {
 					return console.log("Something stange happend");
 
         foundObj.infractionsAmount = foundObj.infractionsAmount + 1;
-
+        foundObj.save(function(err, updatedObj){
+				if(err)
+					console.log(err);
 				}
 			}
 		});

@@ -82,6 +82,10 @@ module.exports.run = async (bot, message, args) => {
   				return console.log("Something stange happend");
 
         foundObj.warnsAmount = foundObj.warnsAmount + 1;
+        foundObj.save(function(err, updatedObj){
+        if(err)
+          console.log(err);
+
 
   			}
   		}
