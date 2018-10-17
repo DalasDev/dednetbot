@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
   let inembed = new Discord.RichEmbed()
   .setDescription(":sparkling_heart:Приглашение на сервер:sparkling_heart:")
   .setColor("#b600ff")
-  .addField("https://discord.gg/Ft58PYH", "", true)
+  .addField("https://discord.gg/Ft58PYH", "fire", true)
   .setFooter("Приглашай своих друганов)", "");
 
   message.channel.send(inembed);
