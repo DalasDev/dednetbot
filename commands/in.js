@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
 	.setDescription(":sparkling_heart:Приглашение на сервер:sparkling_heart:")
 	.setColor("#b600ff")
 	.setThumbnail(bicon)
-	.addField("https://discord.gg/Ft58PYH", "fire", true)
+	.addField("https://discord.gg/Ft58PYH", ":fire:", true)
 	.setFooter("Приглашай своих друганов)", "")
 
 	message.channel.send({inembed});

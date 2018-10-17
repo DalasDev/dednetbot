@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Канал Салливана", "https://www.youtube.com/channel/UCnK6AKESj7cxltJkAsEMsXA", true)
 	.addField("Группа в ВК", "https://vk.com/sallyshow", true)
 	.addField("Банда в Steam", "https://steamcommunity.com/groups/sallywan_club", true)
-	.setImage("https://cdn.discordapp.com/attachments/484779088687661057/502095696724361226/channels4_banner.jpg");
+	.setImage("https://cdn.discordapp.com/attachments/484779088687661057/502095696724361226/channels4_banner.jpg")
 
 	message.channel.send({linkembed});
 
