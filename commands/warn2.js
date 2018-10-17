@@ -5,8 +5,7 @@ const ms = require("ms");
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var warnUser = require('./../schemas/warn_model.js');
-
-//warn2 (Mee6 warns)
+var mUser = require('./../schemas/report_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
@@ -56,8 +55,7 @@ module.exports.run = async (bot, message, args) => {
   });
 
   let moder = message.member;
-  var mUser = require('./../schemas/report_model.js');
-  var user_obj = User.findOne({
+  var user_obj = mUser.findOne({
   	moderID: moder.id
   }, function (err, foundObj) {
   	if (err)
@@ -72,7 +70,7 @@ module.exports.run = async (bot, message, args) => {
   			});
   			myData.save()
   			.then(item => {
-  				console.log('1New warn from "' + moder.displayName + '" added to database');
+  				console.log('New warn from "' + moder.displayName + '" added to database');
   			})
   			.catch(err => {
   				console.log("Error on database save: " + err);
@@ -86,7 +84,7 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
           else{
-            console.log('2New warn from "' + moder.displayName + '" added to database')
+            console.log('New warn from "' + moder.displayName + '" added to database')
           }
         });
     	}

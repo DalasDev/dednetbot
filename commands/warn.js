@@ -81,7 +81,7 @@ module.exports.run = async (bot, message, args) => {
   			});
   			myData.save()
   			.then(item => {
-  				console.log('1New warn from "' + moder.displayName + '" added to database');
+  				console.log('New warn from "' + moder.displayName + '" added to database');
   			})
   			.catch(err => {
   				console.log("Error on database save: " + err);
@@ -95,7 +95,7 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
           else{
-            console.log('2New warn from "' + moder.displayName + '" added to database')
+            console.log('New warn from "' + moder.displayName + '" added to database')
           }
         });
     	}
