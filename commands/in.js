@@ -7,7 +7,6 @@ module.exports.run = async (bot, message, args) => {
 	let bicon = bot.user.avatarURL;
 
 	let inembed = new Discord.RichEmbed()
-
 	.setDescription(":sparkling_heart:Приглашение на сервер:sparkling_heart:")
 	.setColor("#b600ff")
 	.setThumbnail(bicon)
