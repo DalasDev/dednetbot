@@ -4,8 +4,6 @@ module.exports.run = async (bot, message, args) => {
 
 //  	message.delete().catch(O_o=>{});
 
-if(cmd === `${prefix}links`){
-
   let linkembed = new Discord.RichEmbed()
   .setDescription(":fire:Интересные ссылки:fire:")
   .setColor("#ff7700")
@@ -15,7 +13,7 @@ if(cmd === `${prefix}links`){
   .setImage("https://cdn.discordapp.com/attachments/484779088687661057/502095696724361226/channels4_banner.jpg");
 
   message.channel.send(linkembed);
- }
+
 }
 
 module.exports.help = {

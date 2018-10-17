@@ -4,8 +4,6 @@ module.exports.run = async (bot, message, args) => {
 
 //  	message.delete().catch(O_o=>{});
 
-if(cmd === `${prefix}in`){
-
   let inembed = new Discord.RichEmbed()
   .setDescription(":sparkling_heart:Приглашение на сервер:sparkling_heart:")
   .setColor("#b600ff")
@@ -14,7 +12,7 @@ if(cmd === `${prefix}in`){
   .addField("Приглашай своих друганов)");
 
   message.channel.send(inembed);
-  }
+
 }
 
 module.exports.help = {
