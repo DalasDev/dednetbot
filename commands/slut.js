@@ -47,14 +47,14 @@ module.exports.run = async (bot, message, args) => {
 				if (timestampLimit > timestamp)
 					return message.reply(`Твой дружок слишком устал... Отдохни еще немного, принимать заказы можно принимать, при удачном заказе раз в полтора часа, а при не удачном раз в пол часа ${simpleIcon}`);
 
-				let toPay = random(200, 600);
+				var toPay = random(200, 600);
 
 				if (resultOfCrime <= 40){
-					let newCash = foundObj.retrocoinCash + toPay;
+					 newCash = foundObj.retrocoinCash + toPay;
 				}
 				else{
 					toPlay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
-					let newCash = foundObj.retrocoinCash - toPlay;
+					var newCash = foundObj.retrocoinCash - toPlay;
 				}
 
 				foundObj.retrocoinCash = newCash;
@@ -84,13 +84,13 @@ module.exports.run = async (bot, message, args) => {
 
 
 				if (resultOfCrime <= 40){
-					let index = Math.floor((Math.random() * answers.length));
-					let answer = answers[index];
+					var index = Math.floor((Math.random() * answers.length));
+					var answer = answers[index];
 					foundObj.lastSlutResult = true;
 				}
 				else {
-					let index = Math.floor((Math.random() * answers2.length));
-					let answer = answers2[index];
+					var index = Math.floor((Math.random() * answers2.length));
+					var answer = answers2[index];
 					foundObj.lastSlutResult = false;
 				}
 
