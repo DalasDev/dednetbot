@@ -6,6 +6,8 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var warnUser = require('./../schemas/warn_model.js');
 var mUser = require('./../schemas/report_model.js');
+var User = require('./../schemas/user_model.js');
+
 
 module.exports.run = async (bot, message, args) => {
 
@@ -54,6 +56,7 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
+
   let moder = message.member;
   var user_obj = mUser.findOne({
   	moderID: moder.id
@@ -90,6 +93,21 @@ module.exports.run = async (bot, message, args) => {
     	}
     }
   });
+
+  var user_obj = User.findOne({
+    userID: wUser.id
+  }, async function (err, foundObj) {
+    if (err)
+      console.log("Error on database findOne: " + err);
+    else {
+      if (!foundObj)
+        console.log("Something stange happend");
+      else {
+        foundObj.infractions = foundObj.infractions + 1;
+        foundObj.save(function(err, updatedObj){
+          if(err)
+            console.log(err);
+        });
 
   //end of mongoose
 
