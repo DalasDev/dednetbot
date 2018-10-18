@@ -64,13 +64,13 @@ module.exports.run = async (bot, message, args) => {
 				foundObj.lastCrime = dateTime;
 
 				var answers = [];
-				answers.push(`заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${NumberWithCommas(toPay)} ${retricIcon}!`);
-				answers.push(`такими темпами, тебя все группировки в городе бояться будут. Так держать! ${NumberWithCommas(toPay)} ${retricIcon}!`);
+				answers.push(`заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers.push(`такими темпами, тебя все группировки в городе бояться будут. Так держать! ${numberWithCommas(toPay)} ${retricIcon}!`);
 
 				var answers2 =[];
-				answers2.push(`ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${NumberWithCommas(toPay)} ${retricIcon}!`);
-				answers2.push(`это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${NumberWithCommas(toPay)} ${retricIcon}!`);
-				answers2.push(`неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${NumberWithCommas(toPay)} ${retricIcon}!`);
+				answers2.push(`ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers2.push(`это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers2.push(`неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${numberWithCommas(toPay)} ${retricIcon}!`);
 
 				if (resultOfCrime <= 40){
 					var index = Math.floor((Math.random() * answers.length));
