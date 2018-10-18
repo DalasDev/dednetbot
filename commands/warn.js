@@ -88,6 +88,8 @@ module.exports.run = async (bot, message, args) => {
   			});
   		} else {
         var newWarnsAmount = foundObj.warnsAmount + 1;
+        console.log("newWarnsAmount: " + newWarnsAmount);
+        console.log("oldwarnsnumber: " + foundObj.warnsAmount);
         foundObj.warnsAmount = newWarnsAmount;
         foundObj.save(function(err, updatedObj){
           if(err)
