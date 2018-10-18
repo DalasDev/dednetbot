@@ -4,15 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 //	message.delete().catch(O_o=>{});
 
-	let bicon = bot.user.avatarURL;
-	const embed = new Discord.RichEmbed()
-	.setTitle(":sparkling_heart: Приглашение на сервер :sparkling_heart:")
-	.setColor("#B600FF")
-	.setThumbnail(bicon)
-	.addField("https://discord.gg/Ft58PYH", ":fire:", true)
-	.setFooter("Приглашай своих друганов)", "")
-
-	message.channel.send({embed});
+	message.channel.send("Приглашение на наш сервер:\nhttps://discord.gg/yfuCWAA\n\nРаскидывай всем своим друганам! :)");
 }
 
 
