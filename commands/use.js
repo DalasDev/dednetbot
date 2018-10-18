@@ -2,9 +2,22 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 var Item = require('./../schemas/shop_model.js');
+var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
+var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
+var boost5 = message.guild.roles.find(`name`, "Boost Pack +5% 💰");
+var kluch = message.guild.roles.find(`name`, "Ключ от 1-ого номера");
+var ubegishe111 = message.guild.roles.find(`name`, "Житель убежища "111"");
+var activist = message.guild.roles.find(`name`, "Активист 🔋 ");
+var club = message.guild.roles.find(`name`, "🍓Клубничный клуб🍓");
+var koren = message.guild.roles.find(`name`, "Коренной житель (lv.35)");
+var boost25 = message.guild.roles.find(`name`, "Boost Pack +25% 💰");
+var legend50 = message.guild.roles.find(`name`, "Легенда [50]");
+var boost5 = message.guild.roles.find(`name`, "Boost Pack +50% 💰");
+var boost5 = message.guild.roles.find(`name`, "Boost Pack +75% 💰");
 
 function isNumeric(value) {
 	return /^\d+$/.test(value);
@@ -21,9 +34,63 @@ function useitem(user, item, message){
 			else {
 				if (item.usable !== true)
 					return message.reply("эту вещь нельзя так использовать :thinking:");
-				message.reply("ты только что (почти) юзанул " + item.itemName);
+				if(item.itemName == "Чиммичанга 🥙")
+				  message.channel.send(`Ммммм... Как вкусно...`);
+				else if (item.itemName == "Синт Кола ☕")
+					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
+				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
+					message.member.addRole(azart.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Азартный игрок 🎲`);
+				}
+				else if (item.itemName == "Покупка роли: Шулер 🎱"){
+					message.member.addRole(shuler.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Шулер 🎱`);
+				}
+				else if (item.itemName == "Boost Pack +5% 💰"){
+					message.member.addRole(boost5.id);
+					message.channel.send(`<@${message.author.id}>, теперь у тебя буст к прибыли 5%`);
+				}
+				else if (item.itemName == "Ключ от номера 🔑"){
+					message.member.addRole(kluch.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) получил ключ от 1-ого номера`);
+				}
+				else if (item.itemName == "Пропуск в Убежище 111 💣"){
+					message.member.addRole(ubegishe111.id);
+					message.channel.send(`<@${message.author.id}>, теперь ты стал жителем убежища "111"`);
+				}
+				else if (item.itemName == "Покупка роли: **Активист** 🔋"){
+					message.member.addRole(activist.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль **Активист** 🔋`);
+				}
+				else if (item.itemName == "Ключ к Клубничному чату 🍓"){
+					message.member.addRole(club.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль 🍓Клубничный клуб🍓`);
+				}
+				else if (item.itemName == "Покупка роли: Коренной житель (lv.35)"){
+					message.member.addRole(koren.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Коренной житель (lv.35)`);
+				}
+				else if (item.itemName == "Boost Pack +25% 💰"){
+					message.member.addRole(boost25.id);
+					message.channel.send(`<@${message.author.id}>, теперь у тебя буст к прибыли 25%`);
+				}
+				else if (item.itemName == "Покупка роли: Легенда (lv.50)"){
+					message.member.addRole(legend50.id);
+					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Легенда (lv.50)`);
+				}
+				else if (item.itemName == "Boost Pack +50% 💰"){
+					message.member.addRole(boost50.id);
+					message.channel.send(`<@${message.author.id}>, теперь у тебя буст к прибыли 50%`);
+				}
+				else if (item.itemName == "Boost Pack +75% 💰"){
+					message.member.addRole(boost75.id);
+					message.channel.send(`<@${message.author.id}>, теперь у тебя буст к прибыли 75%`);
+				}
+				else {
+					message.reply("ты только что (почти) юзанул " + item.itemName);
+				}
 				var index = user.inv.indexOf(item.itemName);
-				newinv = user.inv;
+				var newinv = user.inv;
 				newinv.splice(index, 1);
 				found_user.inv = newinv;
 				found_user.save(function(err, updatedObj){
