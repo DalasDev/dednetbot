@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 
 var Warn = require('./../schemas/warn_model.js');
-var mUser = require('./../schemas/user_model.js');
+var User = require('./../schemas/user_model.js');
 var moderation = require('./../schemas/report_model.js');
 
 //tempmute @member Time
@@ -72,7 +72,7 @@ module.exports.run = async (bot, message, args) => {
   		console.log("Error on database findOne: " + err);
   	else {
   		if (foundObj === null){
-  			var myData = new User({
+  			var myData = new moderation({
   				moder: moder.username,
   				moderID: moder.id,
           infractionsAmount: 0,
