@@ -109,7 +109,7 @@ module.exports.run = async (bot, message, args) => {
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 					}
-					else if ((Number(args[0]) >= 100) && (Number(args[1]) >= 1 && Number(args[1]) <= 36){
+					else if (Number(args[0]) >= 100 && ((Number(args[1]) >= 1) && (Number(args[1]) <= 36))){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
 						if (actCash - toPlay >= 0){
