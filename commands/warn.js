@@ -87,10 +87,8 @@ module.exports.run = async (bot, message, args) => {
   				console.log("Error on database save: " + err);
   			});
   		} else {
-  			if (!foundObj)
-  				return console.log("Something stange happend");
-
-        foundObj.warnsAmount = foundObj.warnsAmount + 1;
+        var newWarnsAmount = foundObj.warnsAmount + 1;
+        foundObj.warnsAmount = newWarnsAmount;
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
