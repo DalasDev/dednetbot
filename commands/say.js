@@ -6,10 +6,8 @@ module.exports.run = async (bot, message, args) => {
   let mainchannel = message.guild.channels.find(`name`, "💬общение");
   const sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_MESSAGES"))
-    return;
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Стример"].includes(r.name)))
+
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Стример", "Тех. Стажер"].includes(r.name)))
     return;
 
   message.delete().catch();
