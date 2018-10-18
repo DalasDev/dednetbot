@@ -49,12 +49,12 @@ module.exports.run = async (bot, message, args) => {
 
 				var toPay = random(200, 600);
 
-				if (resultOfCrime <= 40){
-					 newCash = foundObj.retrocoinCash + toPay;
-				}
+				var newCash = 0;
+				if (resultOfCrime <= 40)
+					newCash = foundObj.retrocoinCash + toPay;
 				else{
 					toPlay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
-					var newCash = foundObj.retrocoinCash - toPlay;
+					newCash = foundObj.retrocoinCash - toPlay;
 				}
 
 				foundObj.retrocoinCash = newCash;
