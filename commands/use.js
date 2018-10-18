@@ -89,10 +89,12 @@ function useitem(user, item, message){
 				}
 				else {
 					message.reply("ты только что (почти) юзанул " + item.itemName);
+					var fakeuse = true;
 				}
 				var index = user.inv.indexOf(item.itemName);
 				var newinv = user.inv;
-				newinv.splice(index, 1);
+				if (!fakeuse)
+					newinv.splice(index, 1);
 				found_user.inv = newinv;
 				found_user.save(function(err, updatedObj){
 					if (err)
