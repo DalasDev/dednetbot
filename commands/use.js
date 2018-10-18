@@ -16,7 +16,7 @@ function useitem(user, item, message){
 	var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
 	var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
 	var boost5 = message.guild.roles.find(`name`, "Boost Pack +5% 💰");
-	var kluch = message.guild.roles.find(`name`, "Ключ от 1-ого номера");
+	var kluch = message.guild.roles.find(`name`, "Ключ от 1-го номера");
 	var ubegishe111 = message.guild.roles.find(`name`, 'Житель убежища "111"');
 	var activist = message.guild.roles.find(`name`, "Активист 🔋");
 	var club = message.guild.roles.find(`name`, "🍓Клубничный клуб🍓");
