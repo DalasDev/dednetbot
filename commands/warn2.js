@@ -110,6 +110,8 @@ module.exports.run = async (bot, message, args) => {
         });
       }
     }
+  }
+
 
   //end of mongoose
 
