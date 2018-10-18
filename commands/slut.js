@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 				console.log("Something stange happend");
 			else {
 
-				var resultOfCrime = random(1, 100);
+				var resultOfSlut = random(1, 100);
 
 				var dateTime = Date.now();
 				var timestamp = Math.floor(dateTime/1000);
@@ -50,7 +50,7 @@ module.exports.run = async (bot, message, args) => {
 				var toPay = random(200, 600);
 
 				var newCash = 0;
-				if (resultOfCrime <= 40)
+				if (resultOfSlut <= 40)
 					newCash = foundObj.retrocoinCash + toPay;
 				else{
 					toPay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
@@ -70,9 +70,9 @@ module.exports.run = async (bot, message, args) => {
 				answers.push(`твой рот хорошо поработал этой ночью, твой сутенер будет доволен и дал тебе за это ${toPay} ${retricIcon}!`);
 				answers.push(`ты пошел в клуб и по занимался сексом, тебе оставили ${toPay} ${retricIcon}!`);
 				answers.push(`ты вышел на трассу подзаработать, но ты избил шлюху и украл ${toPay} ${retricIcon}!`);
-        answers.push(`заняться ЭТИМ в туалете было немного стыдным, но главное что заплатили ${toPay} ${retricIcon}!`);
+				answers.push(`заняться ЭТИМ в туалете было немного стыдным, но главное что заплатили ${toPay} ${retricIcon}!`);
 
-		    var answers2 =[];
+				var answers2 =[];
 				answers2.push(`ты пошел в клуб и позанимался сексом, ты забеременял и пошел сделал аборт за ${toPay} ${retricIcon}`);
 				answers2.push(`ты вышел на трасу подзаработать, но у тебя спёрла шлюха ${toPay} ${retricIcon}`);
 				answers2.push(`ты хотел новых ощущений, но посещение проктолога стоит ${toPay} ${retricIcon}`);
@@ -83,7 +83,7 @@ module.exports.run = async (bot, message, args) => {
 				answers2.push(`ты думал тебе попалась мама Стифлера, а на самом деле Сьюзан Бойл! Еще и новую челюсть за ${toPay} ${retricIcon} купить пришлось...`);
 
 
-				if (resultOfCrime <= 40){
+				if (resultOfSlut <= 40){
 					var index = Math.floor((Math.random() * answers.length));
 					var answer = answers[index];
 					foundObj.lastSlutResult = true;
@@ -97,8 +97,8 @@ module.exports.run = async (bot, message, args) => {
 				message.reply(answer);
 
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 			}
 		}
