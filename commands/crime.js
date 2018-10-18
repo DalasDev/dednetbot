@@ -50,7 +50,7 @@ module.exports.run = async (bot, message, args) => {
 					var newCash = foundObj.retrocoinCash + toPay;
 				}
 				else{
-					toPay = Math.floor(foundObj.retrocoinCash / 100 * 30);
+					toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
 					var newCash = foundObj.retrocoinCash - toPay;
 				}
 
@@ -66,7 +66,7 @@ module.exports.run = async (bot, message, args) => {
 				answers2.push(`Ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${toPay} ${retricIcon}!`);
 				answers2.push(`Это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
 				answers2.push(`Неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
-				
+
 				if (resultOfCrime <= 40){
 					var index = Math.floor((Math.random() * answers.length));
 					var answer = answers[index];
