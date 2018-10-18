@@ -23,8 +23,8 @@ function useitem(user, item, message){
 	var koren = message.guild.roles.find(`name`, "Коренной житель (lv.35)");
 	var boost25 = message.guild.roles.find(`name`, "Boost Pack +25% 💰");
 	var legend50 = message.guild.roles.find(`name`, "Легенда [50]");
-	var boost5 = message.guild.roles.find(`name`, "Boost Pack +50% 💰");
-	var boost5 = message.guild.roles.find(`name`, "Boost Pack +75% 💰");
+	var boost50 = message.guild.roles.find(`name`, "Boost Pack +50% 💰");
+	var boost75 = message.guild.roles.find(`name`, "Boost Pack +75% 💰");
 
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
