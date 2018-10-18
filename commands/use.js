@@ -6,24 +6,25 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 var Item = require('./../schemas/shop_model.js');
-var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
-var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
-var boost5 = message.guild.roles.find(`name`, "Boost Pack +5% 💰");
-var kluch = message.guild.roles.find(`name`, "Ключ от 1-ого номера");
-var ubegishe111 = message.guild.roles.find(`name`, 'Житель убежища "111"');
-var activist = message.guild.roles.find(`name`, "Активист 🔋");
-var club = message.guild.roles.find(`name`, "🍓Клубничный клуб🍓");
-var koren = message.guild.roles.find(`name`, "Коренной житель (lv.35)");
-var boost25 = message.guild.roles.find(`name`, "Boost Pack +25% 💰");
-var legend50 = message.guild.roles.find(`name`, "Легенда [50]");
-var boost5 = message.guild.roles.find(`name`, "Boost Pack +50% 💰");
-var boost5 = message.guild.roles.find(`name`, "Boost Pack +75% 💰");
 
 function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
 function useitem(user, item, message){
+
+	var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
+	var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
+	var boost5 = message.guild.roles.find(`name`, "Boost Pack +5% 💰");
+	var kluch = message.guild.roles.find(`name`, "Ключ от 1-ого номера");
+	var ubegishe111 = message.guild.roles.find(`name`, 'Житель убежища "111"');
+	var activist = message.guild.roles.find(`name`, "Активист 🔋");
+	var club = message.guild.roles.find(`name`, "🍓Клубничный клуб🍓");
+	var koren = message.guild.roles.find(`name`, "Коренной житель (lv.35)");
+	var boost25 = message.guild.roles.find(`name`, "Boost Pack +25% 💰");
+	var legend50 = message.guild.roles.find(`name`, "Легенда [50]");
+	var boost5 = message.guild.roles.find(`name`, "Boost Pack +50% 💰");
+	var boost5 = message.guild.roles.find(`name`, "Boost Pack +75% 💰");
 
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
@@ -35,7 +36,7 @@ function useitem(user, item, message){
 				if (item.usable !== true)
 					return message.reply("эту вещь нельзя так использовать :thinking:");
 				if(item.itemName == "Чиммичанга 🥙")
-				  message.channel.send(`Ммммм... Как вкусно...`);
+					message.channel.send(`Ммммм... Как вкусно...`);
 				else if (item.itemName == "Синт Кола ☕")
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
 				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
@@ -94,8 +95,8 @@ function useitem(user, item, message){
 				newinv.splice(index, 1);
 				found_user.inv = newinv;
 				found_user.save(function(err, updatedObj){
-				if (err)
-					console.log(err);
+					if (err)
+						console.log(err);
 				});
 			}
 		}
