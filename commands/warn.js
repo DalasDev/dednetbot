@@ -72,9 +72,7 @@ module.exports.run = async (bot, message, args) => {
   	if (err)
   		console.log("Error on database findOne: " + err);
   	else {
-      console.log("DB1");
   		if (foundObj === null){
-        console.log("DB2");
   			var myData = new User({
   				moder: moder.username,
   				moderID: moder.id,
@@ -89,13 +87,9 @@ module.exports.run = async (bot, message, args) => {
   				console.log("Error on database save: " + err);
   			});
   		} else {
-        console.log("DB3");
         if (!foundObj)
           return console.log("Something stange happend");
-        console.log("DB4");
         var newWarnsAmount = foundObj.warnsAmount + 1;
-        console.log("newWarnsAmount: " + newWarnsAmount);
-        console.log("oldwarnsnumber: " + foundObj.warnsAmount);
         foundObj.warnsAmount = newWarnsAmount;
         foundObj.save(function(err, updatedObj){
           if(err)
