@@ -59,13 +59,13 @@ module.exports.run = async (bot, message, args) => {
 				foundObj.lastCrime = dateTime;
 
 				var answers = [];
-				answers.push(`Заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${toPay} ${retricIcon}!`);
-				answers.push(`Такими темпами, тебя все группировки в городе бояться будут. Так держать! ${toPay} ${retricIcon}!`);
+				answers.push(`заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${toPay} ${retricIcon}!`);
+				answers.push(`такими темпами, тебя все группировки в городе бояться будут. Так держать! ${toPay} ${retricIcon}!`);
 
 				var answers2 =[];
-				answers2.push(`Ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${toPay} ${retricIcon}!`);
-				answers2.push(`Это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
-				answers2.push(`Неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
+				answers2.push(`ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${toPay} ${retricIcon}!`);
+				answers2.push(`это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
+				answers2.push(`неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
 
 				if (resultOfCrime <= 40){
 					var index = Math.floor((Math.random() * answers.length));
