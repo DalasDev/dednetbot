@@ -109,17 +109,16 @@ module.exports.run = async (bot, message, args) => {
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
 					}
-					else if ((Number(args[0]) >= 100 && args[1] == "1-12") || (Number(args[0]) >= 100 && args[1] == "13-24") || (Number(args[0]) >= 100 && args[1] == "25-36")){
+					else if ((Number(args[0]) >= 100) && (Number(args[1]) >= 1 && Number(args[1]) <= 36){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
-						var winner = "";
 						if (actCash - toPlay >= 0){
 							var newCash = actCash - toPlay;
 							var min = 1;
 							var max = 36;
 							var r = Math.floor(Math.random() * (max - min + 1)) + min;
-							if (((args[1] == "1-12") && (r >= 1 && r <= 12)) || ((args[1] == "13-24") && (r >= 13 && r <= 24)) || ((args[1] == "25-36") && (r >= 25 && r <= 36))){
-								var won = toPlay * 3;
+							if (r == Number(args[1])){
+								var won = toPlay * 36;
 								newCash = actCash + won;
 							}
 							foundObj.retrocoinCash = newCash;
@@ -154,7 +153,7 @@ else if (!args[0])
 else if (!args[1])
 	return message.reply("укажи ставку и твой прогноз!");
 else
-	return message.reply("что-то явно пошло не так =)")
+	return message.reply("что-то явно пошло не так =)");
 }
 
 module.exports.help = {
