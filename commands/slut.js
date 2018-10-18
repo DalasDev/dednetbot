@@ -39,13 +39,13 @@ module.exports.run = async (bot, message, args) => {
 				var dateTime = Date.now();
 				var timestamp = Math.floor(dateTime/1000);
 				if (foundObj.lastSlutResult == true)
-					var timestampLimit = Math.floor(foundObj.lastSlut/1000) + 5400;
+					var timestampLimit = Math.floor(foundObj.lastSlut/1000) + 54; //5400
 				else
-					var timestampLimit = Math.floor(foundObj.lastSlut/1000) + 1800;
+					var timestampLimit = Math.floor(foundObj.lastSlut/1000) + 18; //1800
 
 
 				if (timestampLimit > timestamp)
-					return message.reply(`Твой дружок слишком устал... Отдохни еще немного, принимать заказы можно принимать, при удачном заказе раз в полтора часа, а при не удачном раз в пол часа ${simpleIcon}`);
+					return message.reply(`твой дружок слишком устал... Отдохни еще немного, восстановись ${simpleIcon}`);
 
 				var toPay = random(200, 600);
 
