@@ -36,13 +36,13 @@ module.exports.run = async (bot, message, args) => {
 				var dateTime = Date.now();
 				var timestamp = Math.floor(dateTime/1000);
 				if (foundObj.lastCrimeResult == true)
-					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 18000;
+					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 18;//18000
 				else
-					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 5400;
+					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 54;//5400
 
 
 				if (timestampLimit > timestamp)
-					return message.reply(`Ты слишком устал... Отдохни еще немного, грабить можно, при удачной попытке раз в 5 часов, а при не удачной раз в полтора часа ${simpleIcon}`);
+					return message.reply(`ты слишком устал... Отдохни еще немного, грабить можно, при удачной попытке раз в 5 часов, а при не удачной раз в полтора часа ${simpleIcon}`);
 
 				var toPay = random(2000, 7000);
 
