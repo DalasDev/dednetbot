@@ -64,74 +64,74 @@ module.exports.run = async (bot, message, args) => {
 
   //чекаем есть ли у человека в инветаре этот предмет или есть ли эта роль
 	if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
-	 if (user_obj.inv.includes(item) == true)
-		return message.reply(`у тебя уже есть ${item}`);
+	 if (user_obj.inv.includes(item.itemName) == true)
+		return message.reply(`у тебя уже есть ${item.itemName}`);
 	 if(message.member.roles.some(r=>["Азартный игрок 🎲"].includes(r.name)))
      return message.reply(`ты уже Азартный игрок!`);
 	};
 	if (item.itemName == "Покупка роли: Шулер 🎱"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Шулер 🎱"].includes(r.name)))
 		 return message.reply(`ты уже Шулер!`);
 	};
   if (item.itemName == "Boost Pack +5% 💰"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Boost Pack +5% 💰"].includes(r.name)))
  		 return message.reply(`у тебя уже есть этот Boost Pack!`);
 	};
 	if (item.itemName == "Ключ от номера 🔑"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Ключ от 1-го номера"].includes(r.name)))
   		 return message.reply(`у тебя уже есть эта ключ!`);
 	};
 	if (item.itemName == "Пропуск в Убежище 111 💣"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>['Житель убежища "111"'].includes(r.name)))
    		 return message.reply(`ты уже являешься Жителем убежища "111"!`);
 	};
 	if (item.itemName == "Покупка роли: **Активист** 🔋"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Активист 🔋"].includes(r.name)))
     		 return message.reply(`ты уже **Активист**!`);
 	};
 	if (item.itemName == "Ключ к Клубничному чату 🍓"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["🍓Клубничный клуб🍓"].includes(r.name)))
      return message.reply(`у тебя уже есть доступ к Клубничному клубу! ${kaef}`);
 	};
 	if (item.itemName == "Покупка роли: **Коренной житель (lv.35)**"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Коренной житель (lv.35)"].includes(r.name)))
      return message.reply(`ты уже стал Коренным жителем!`);
 	};
 	if (item.itemName == "Boost Pack +25% 💰"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Boost Pack +25% 💰"].includes(r.name)))
 			return message.reply(`у тебя уже есть этот Boost Pack!`);
 	};
 	if (item.itemName == "Покупка роли: **Легенда (lv.50)**"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Легенда (lv.50)"].includes(r.name)))
 		 return message.reply(`ты уже стал Легендой!`);
 	};
 	if (item.itemName == "Boost Pack +50% 💰"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Boost Pack +50% 💰"].includes(r.name)))
  		 return message.reply(`у тебя уже есть этот Boost Pack!`);
 	};
 	if (item.itemName == "Boost Pack +75% 💰"){
-		if (user_obj.inv.includes(item) == true)
-		 return message.reply(`у тебя уже есть ${item}`);
+		if (user_obj.inv.includes(item.itemName) == true)
+		 return message.reply(`у тебя уже есть ${item.itemName}`);
 		if(message.member.roles.some(r=>["Boost Pack +75% 💰"].includes(r.name)))
   	 return message.reply(`у тебя уже есть этот Boost Pack!`);
   };
