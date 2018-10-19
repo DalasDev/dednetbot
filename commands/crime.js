@@ -15,9 +15,8 @@ function random(min, max) {
 	return (result);
 }
 
-function random(min, max) {
-	var result = Math.floor(Math.random() * (max - min + 1)) + min;
-	return (result);
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 module.exports.run = async (bot, message, args) => {
