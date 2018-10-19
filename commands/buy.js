@@ -41,6 +41,8 @@ function buyitem(user, item, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
+	var kaef = bot.emojis.find("name", "fallout_kaef");
+
 	//message.delete().catch(O_o=>{});
 
 	//ищем есть ли человек, который пытается что либо купить, у нас в базе
