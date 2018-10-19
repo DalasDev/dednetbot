@@ -17,15 +17,15 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name)))
-    return message.reply("похоже у тебя нехватка прав!");
+	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name)))
+		return message.reply("похоже у тебя нехватка прав!");
 
 	var retricIcon = bot.emojis.find("name", "retric");
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
-  let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!muser)
-    return message.reply("пользователь не указан / не существует!");
-  let plase = args[1];
+	let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+	if(!muser)
+		return message.reply("пользователь не указан / не существует!");
+	let target = args[1];
 
 	var user_obj = User.findOne({
 		userID: muser.id
@@ -38,29 +38,29 @@ module.exports.run = async (bot, message, args) => {
 				console.log("Something stange happend");
 			else {
 
-				if(plase == "bank"){
-          foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
-          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из банка!`);
-
-        }else if(plase == "cash"){
-          foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
-          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из кармана!`);
-
-        }else if(plase == "all"){
-          foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
-          foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
-          foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-          message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики!`);
-
-        }else{
-          return message.reply("параметры не верны!");
-        }
+				if(target == "bank"){
+					foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+					message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из банка!`);
+				}
+				else if(target == "cash"){
+					foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
+					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+					message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из кармана!`);
+				}
+				else if(target == "all"){
+					foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
+					foundObj.retrocoinBank = foundObj.retrocoinBank - foundObj.retrocoinBank;
+					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+					message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики!`);
+				}
+				else{
+					return message.reply("параметры не верны!");
+				}
 
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 			}
 		}
