@@ -103,7 +103,7 @@ module.exports.run = async (bot, message, args) => {
 		if (user_obj.inv.includes(item) == true)
 		 return message.reply(`у тебя уже есть ${item}`);
 		if(message.member.roles.some(r=>["🍓Клубничный клуб🍓"].includes(r.name)))
-     return message.reply(`у тебя уже есть доступ к Клубничному клубу! ${:kaef:}`);
+     return message.reply(`у тебя уже есть доступ к Клубничному клубу! ${kaef}`);
 	};
 	if (item.itemName == "Покупка роли: **Коренной житель (lv.35)**"){
 		if (user_obj.inv.includes(item) == true)
