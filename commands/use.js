@@ -67,7 +67,7 @@ function useitem(user, item, message){
 					message.member.addRole(club.id);
 					message.channel.send(`<@${message.author.id}>, ты получил(а) роль 🍓Клубничный клуб🍓`);
 				}
-				else if (item.itemName == "Покупка роли: Коренной житель (lv.35)"){
+				else if (item.itemName == "Покупка роли: **Коренной житель (lv.35)**"){
 					message.member.addRole(koren.id);
 					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Коренной житель (lv.35)`);
 				}
@@ -75,7 +75,7 @@ function useitem(user, item, message){
 					message.member.addRole(boost25.id);
 					message.channel.send(`<@${message.author.id}>, теперь у тебя буст к прибыли 25%`);
 				}
-				else if (item.itemName == "Покупка роли: Легенда (lv.50)"){
+				else if (item.itemName == "Покупка роли: **Легенда (lv.50)**"){
 					message.member.addRole(legend50.id);
 					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Легенда (lv.50)`);
 				}
