@@ -110,7 +110,7 @@ module.exports.run = async (bot, message, args) => {
 	if (item_obj.itemName == "Покупка роли: **Коренной житель (lv.35)**"){
 		if (user_obj.inv.includes(item_obj.itemName) == true)
 		 return message.reply(`у тебя уже есть ${item_obj.itemName}`);
-		if(message.member.roles.some(r=>["Коренной житель (lv.35)"].includes(r.name)))
+		if(message.member.roles.some(r=>["Коренной житель [lv.35]"].includes(r.name)))
      return message.reply(`ты уже стал Коренным жителем!`);
 	};
 	if (item_obj.itemName == "Boost Pack +25% 💰"){
@@ -122,7 +122,7 @@ module.exports.run = async (bot, message, args) => {
 	if (item_obj.itemName == "Покупка роли: **Легенда (lv.50)**"){
 		if (user_obj.inv.includes(item_obj.itemName) == true)
 		 return message.reply(`у тебя уже есть ${item_obj.itemName}`);
-		if(message.member.roles.some(r=>["Легенда (lv.50)"].includes(r.name)))
+		if(message.member.roles.some(r=>["Легенда [lv.50]"].includes(r.name)))
 		 return message.reply(`ты уже стал Легендой!`);
 	};
 	if (item_obj.itemName == "Boost Pack +50% 💰"){
