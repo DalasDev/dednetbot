@@ -10,7 +10,7 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function buyitem(user, item, message){
+function buyitem(user, item, message, bot){
 
   var kaef = bot.emojis.find("name", "fallout_kaef");
 	var newCash = user.retrocoinCash - item.itemPrice;
@@ -137,7 +137,7 @@ module.exports.run = async (bot, message, args) => {
   };
 	//проверяем может ли юзер купить то, что задумал
 	if (user_obj.retrocoinCash - item_obj.itemPrice >= 0)
-		buyitem(user_obj, item_obj, message);
+		buyitem(user_obj, item_obj, message, bot);
 	else
 		return message.reply("у тебя не хватает на " + item_obj.itemName);
 }
