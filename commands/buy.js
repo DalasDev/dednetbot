@@ -85,7 +85,7 @@ module.exports.run = async (bot, message, args) => {
 		if (user_obj.inv.includes(item_obj.itemName) == true)
 		 return message.reply(`у тебя уже есть ${item_obj.itemName}`);
 		if(message.member.roles.some(r=>["Ключ от 1-го номера"].includes(r.name)))
-  		 return message.reply(`у тебя уже есть эта ключ!`);
+  		 return message.reply(`у тебя уже есть этот ключ!`);
 	};
 	if (item_obj.itemName == "Пропуск в Убежище 111 💣"){
 		if (user_obj.inv.includes(item_obj.itemName) == true)
