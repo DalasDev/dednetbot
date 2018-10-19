@@ -18,13 +18,13 @@ module.exports.run = async (bot, message, args) => {
   if((!message.member.hasPermission("MANAGE_ROLES")) || (!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name))))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!rMember)
-    return message.reply("пользователь не существует!");;
+    return message.reply("пользователь не существует!");
   if(!role)
     return message.reply("не могу найти роль!");
   if(!errorschannel)
     return message.channel.send("Канал ошибок не существует!");
   if(!repchannel)
-    errorschannel.send("Канал репортов не существует!");
+    return errorschannel.send("Канал репортов не существует!");
   if(!repchannel)
     return message.channel.send("Канал репортов не существует!");
   if(!rMember.roles.has(role.id))
