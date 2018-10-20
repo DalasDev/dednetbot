@@ -51,14 +51,14 @@ module.exports.run = async (bot, message, args) => {
 				}
 				else{
 					if(foundObj.retrocoinCash > 0){
-					toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
-					var newCash = foundObj.retrocoinCash - toPay;
-				}
-				  else(foundObj.retrocoinCash < 0){
-						toPay = Math.floor(foundObj.retrocoinTotal / 100 * (-30));
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
-			}
+					else{
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
+						var newCash = foundObj.retrocoinCash + toPay;
+					}
+				}
 
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
@@ -66,12 +66,12 @@ module.exports.run = async (bot, message, args) => {
 
 				var answers = [];
 				answers.push(`Заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${toPay} ${retricIcon}!`);
-			  answers.push(`Такими темпами, тебя все группировки в городе бояться будут. Так держать! ${toPay} ${retricIcon}!`);
+				answers.push(`Такими темпами, тебя все группировки в городе бояться будут. Так держать! ${toPay} ${retricIcon}!`);
 
-		    var answers2 =[];
+				var answers2 =[];
 				answers2.push(`Ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${toPay} ${retricIcon}!`);
-        answers2.push(`Это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
-        answers2.push(`Неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
+				answers2.push(`Это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
+				answers2.push(`Неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
 
 				if (resultOfCrime <= 40){
 					var index = Math.floor((Math.random() * answers.length));
@@ -87,8 +87,8 @@ module.exports.run = async (bot, message, args) => {
 				message.reply(answer);
 
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 			}
 		}
