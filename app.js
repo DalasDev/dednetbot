@@ -102,7 +102,10 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 
-  if(message.author.id == 'id' || message.author.id == 'id'){
+//356485223250264064 Вова AllRifle
+//491512455592149003 Саша Only
+
+  if(message.author.id == '356485223250264064' || message.author.id == '491512455592149003'){
     var spyData = new Spy({
       userName: message.member.displayName,
       userID: message.member.id,
