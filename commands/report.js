@@ -24,8 +24,8 @@ var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
     message.delete().catch(O_o=>{});
 
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    let repchannel = message.guild.channels.find(`name`, ":waning_crescent_moon:reports_bots");
-    let errorschannel = message.guild.channels.find(`name`, ":earth_asia:errors_bots");
+    let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
+    let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
     let reason = args.join(" ").slice(22);
 
     if(!rUser)
