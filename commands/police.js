@@ -42,6 +42,7 @@ module.exports.run = async (bot, message, args) => {
 					.setColor("#0000FF")
 					.addField(`Выдал(а) варнов`, `${foundObj.warnsAmount}`, true)
 					.addField(`Выдал(а) предупреждений`, `${foundObj.infractionsAmount}`, true)
+					.addField(`Выдал(а) мутов`, `${foundObj.muteAmount}`, true)
 					.setThumbnail(avatar)
 
 					message.channel.send({embed});
