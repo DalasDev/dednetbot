@@ -21,12 +21,12 @@ module.exports.run = async (bot, message, args) => {
 
 	if(toScan){
 		var user_obj = User.findOne({
-			moderID: message.member.id
+			moderID: toScan.id
 		}, function (err, foundObj) {
 			if (err)
 				console.log("Error on database findOne: " + err);
 			else {
-				if (!UserObj){
+				if (!foundObj){
 					console.log("User not found in database");
 					return;
 				}
@@ -35,18 +35,11 @@ module.exports.run = async (bot, message, args) => {
 					const embed = new Discord.RichEmbed()
 					.setTitle(`<@${toScan.id}>`)
 					.setColor("#0000FF")
-					.addField(`Выдал ${warnsAmount} варнов`)
-					.addField(`Выдал ${infractionsAmount} предупреждений`)
+					.addField(`Выдал варнов`, `${foundObj.warnsAmount}`, true)
+					.addField(`Выдал предупреждений`, `${foundObj.infractionsAmount}`, true)
 					.setThumbnail(avatar)
 
 					message.channel.send({embed});
-
-					var user_obj = User.findOne({
-						moderID: toScan.id
-					}, function (err, UserObj) {
-						if (err)
-							console.log("Error on database findOne: " + err);
-					});
 				}
 			}
 		});
