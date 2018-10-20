@@ -1,5 +1,14 @@
 const Discord = require("discord.js");
+const fs = require("fs");
 const ms = require("ms");
+var mongoose = require("mongoose");
+
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+
+var Warn = require('./../schemas/warn_model.js');
+var User = require('./../schemas/user_model.js');
+var moderation = require('./../schemas/report_model.js');
+
 
 //voicemute @member Time
 
@@ -50,6 +59,45 @@ module.exports.run = async (bot, message, args) => {
       tovmute.setMute(false);
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
   }, ms(vmutetime));
+
+  let moder = message.member;
+  var User = require('./../schemas/report_model.js');
+  var user_obj = User.findOne({
+    moderID: moder.id
+  }, function (err, foundObj) {
+    if (err)
+      console.log("Error on database findOne: " + err);
+    else {
+      if (foundObj === null){
+        var myData = new User({
+          moder: moder.displayName,
+          moderID: moder.id,
+          infractionsAmount: 0,
+          warnsAmount: 0,
+          muteAmount: 1,
+        });
+        myData.save()
+        .then(item => {
+          console.log('New infraction from "' + moder.displayName + '" added to database');
+        })
+        .catch(err => {
+          console.log("Error on database save: " + err);
+        });
+      } else {
+        if (!foundObj)
+          return console.log("Something stange happend");
+
+        foundObj.muteAmount = foundObj.muteAmount + 1;
+        foundObj.save(function(err, updatedObj){
+          if(err)
+            console.log(err);
+          else{
+            console.log('New infraction from "' + moder.displayName + '" added to database')
+          }
+        });
+      }
+    }
+  });
 }
 
 module.exports.help = {
