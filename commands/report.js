@@ -37,13 +37,15 @@ var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
     if(!repchannel)
         return message.channel.send("Канал репортов не существует!");
 
+    console.log("R: " + R);
+
     let embed = new Discord.RichEmbed()
     .setTitle("ЖАЛОБА")
     .setColor("#F76806")
     .addField("Жалоба на:", `${rUser}`, true)
     .addField("Жалобу подал:", `${message.author}`, true)
     .addField("Канал:", message.channel, true)
-    .addField(`Время создания жалобы:`, `${R}` true)
+    .addField(`Время создания жалобы:`, R, true)
     .addField("Жалоба:", reason, true)
 
     message.channel.send(`${message.author}`+", жалоба отправлена!");
