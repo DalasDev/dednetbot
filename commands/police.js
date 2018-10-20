@@ -19,6 +19,11 @@ module.exports.run = async (bot, message, args) => {
 	if(toScan && toScan.roles.some(r=>["Бездушные"].includes(r.name)))
 		return;
 
+	if (!toScan)
+		return message.reply("укажи кого-то!");
+
+	message.delete().catch(O_o=>{});
+
 	if(toScan){
 		var user_obj = User.findOne({
 			moderID: toScan.id
