@@ -24,17 +24,42 @@ function playcf(user, toPlay, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
-				message.reply("играем!");
-//				if (user_obj.)
-				//запускаю игру, потом сохраняю и отвечаю в чат
+
+				var chickenPower = 50;
+				
+				if (user.chickenPower && user.chickenPower != 0)
+					chickenPower = user.chickenPower;
+
+				var cfResult = (1, 100);
+
+				if (cfResult <= chickenPower){
+
+					chickenPower += 5;
+					
+					found_user.chickenPower = chickenPower;
+					found_user.retrocoinCash += toPlay;
+					message.reply("Курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь: " + chickenPower);
+				}
+				else{
+
+					found_user.retrocoinCash -= toPlay;
+					found_user.chickenPower = 0;
+
+					var index = user.inv.indexOf("Курочка 🐔");
+					var newinv = user.inv;
+					newinv.splice(index, 1);
+					
+					found_user.inv = newinv;
+					
+					message.reply("RIP курочка, RIP наличка...");
+				}
 				found_user.save(function(err, updatedObj){
-				if (err)
-					console.log(err);
+					if (err)
+						console.log(err);
 				});
 			}
 		}
 	});
-	return message.reply("держи, вот тебе " + item.itemName);
 }
 
 module.exports.run = async (bot, message, args) => {
