@@ -80,6 +80,10 @@ function play(connection, message) {
   });
 }
 
+function salary(){
+  console.log("make payements")
+}
+
 function idle_repeat(){
   console.log("[app.js] New CronJob started");
 
@@ -89,6 +93,10 @@ function idle_repeat(){
     let i = (cronindex == 1) ? " minute" : " minutes";
     console.log("[app.js] CronJob: Bot is online for " + cronindex + i);
     cronindex++;
+  }, null, true, 'Europe/Paris');
+
+    new CronJob('0 * * * * *', function() {
+      salary();
   }, null, true, 'Europe/Paris');
   // Seconds: 0-59
   // Minutes: 0-59
