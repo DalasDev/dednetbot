@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
 			else {
 				if (!foundObj){
 					console.log("User not found in database");
-					return;
+					return message.reply('этот пользователь еще не модерировал на сервере');
 				}
 				else {
 					var avatar = toScan.user.avatarURL;
