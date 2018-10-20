@@ -11,7 +11,7 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-	if(!message.member.roles.some(r=>["Тех. Администратор", "Тех. Стажёр"].includes(r.name)))
+	if(!message.member.roles.some(r=>["Тех. Администратор", "Тех. Стажер"].includes(r.name)))
 		return;
 
 	let toScan = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var avatar = toScan.user.avatarURL;
 					const embed = new Discord.RichEmbed()
-					.setTitle(`<@${toScan.id}>`)
+					.setTitle(`${toScan}`)
 					.setColor("#0000FF")
 					.addField(`Выдал варнов`, `${foundObj.warnsAmount}`, true)
 					.addField(`Выдал предупреждений`, `${foundObj.infractionsAmount}`, true)
