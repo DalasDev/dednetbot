@@ -30,7 +30,7 @@ function playcf(user, toPlay, message){
 				if (user.chickenPower && user.chickenPower != 0)
 					chickenPower = user.chickenPower;
 
-				var cfResult = (1, 100);
+				var cfResult = random(1, 100);
 
 				if (cfResult <= chickenPower){
 
@@ -60,7 +60,6 @@ function playcf(user, toPlay, message){
 			}
 		}
 	});
-	return;
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -84,7 +83,7 @@ module.exports.run = async (bot, message, args) => {
 		let toPlay = Number(args[0]);
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
-				playcf(user_obj, toPlay, message);
+				return playcf(user_obj, toPlay, message);
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");
