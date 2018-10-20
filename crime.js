@@ -6,13 +6,17 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 var User = require('./../schemas/user_model.js');
 
 
-// function isNumeric(value) {
-// 	return /^\d+$/.test(value);
-// }
+function isNumeric(value) {
+	return /^\d+$/.test(value);
+}
 
 function random(min, max) {
 	var result = Math.floor(Math.random() * (max - min + 1)) + min;
 	return (result);
+}
+
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -36,13 +40,13 @@ module.exports.run = async (bot, message, args) => {
 				var dateTime = Date.now();
 				var timestamp = Math.floor(dateTime/1000);
 				if (foundObj.lastCrimeResult == true)
-					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 18000;
+					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 18;//18000
 				else
-					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 5400;
+					var timestampLimit = Math.floor(foundObj.lastCrime/1000) + 54;//5400
 
 
 				if (timestampLimit > timestamp)
-					return message.reply(`Ты слишком устал... Отдохни еще немного, грабить можно, при удачной попытке раз в 5 часов, а при не удачной раз в полтора часа ${simpleIcon}`);
+					return message.reply(`ты слишком устал... Отдохни еще немного, грабить можно, при удачной попытке раз в 5 часов, а при не удачной раз в полтора часа ${simpleIcon}`);
 
 				var toPay = random(2000, 7000);
 
@@ -50,28 +54,22 @@ module.exports.run = async (bot, message, args) => {
 					var newCash = foundObj.retrocoinCash + toPay;
 				}
 				else{
-					if(foundObj.retrocoinCash > 0){
 					toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
 					var newCash = foundObj.retrocoinCash - toPay;
 				}
-				  else(foundObj.retrocoinCash < 0){
-						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
-						var newCash = foundObj.retrocoinCash + toPay;
-					}
-			}
 
 				foundObj.retrocoinCash = newCash;
 				foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 				foundObj.lastCrime = dateTime;
 
 				var answers = [];
-				answers.push(`Заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${toPay} ${retricIcon}!`);
-			  answers.push(`Такими темпами, тебя все группировки в городе бояться будут. Так держать! ${toPay} ${retricIcon}!`);
+				answers.push(`заглянув в бар утром, ты нашел кошелек, который ноунейм забыл по пьяни, и в нём оказалось ${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers.push(`такими темпами, тебя все группировки в городе бояться будут. Так держать! ${numberWithCommas(toPay)} ${retricIcon}!`);
 
-		    var answers2 =[];
-				answers2.push(`Ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${toPay} ${retricIcon}!`);
-        answers2.push(`Это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
-        answers2.push(`Неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
+				var answers2 =[];
+				answers2.push(`ты ведь мог выйти в плюс, если бы вновь проверил свой план. Ты заложил:${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers2.push(`это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${numberWithCommas(toPay)} ${retricIcon}!`);
+				answers2.push(`неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${numberWithCommas(toPay)} ${retricIcon}!`);
 
 				if (resultOfCrime <= 40){
 					var index = Math.floor((Math.random() * answers.length));
@@ -87,8 +85,8 @@ module.exports.run = async (bot, message, args) => {
 				message.reply(answer);
 
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 			}
 		}

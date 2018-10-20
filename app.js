@@ -13,6 +13,7 @@ var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
 var Spy = require('./schemas/spy_model.js');
+var User = require('./../schemas/user_model.js');
 var servers = {};
 var prefix = botconfig.prefix;
 
