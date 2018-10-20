@@ -40,8 +40,8 @@ module.exports.run = async (bot, message, args) => {
 					const embed = new Discord.RichEmbed()
 					.setTitle(`${toScan.displayName}`)
 					.setColor("#0000FF")
-					.addField(`Выдал варнов`, `${foundObj.warnsAmount}`, true)
-					.addField(`Выдал предупреждений`, `${foundObj.infractionsAmount}`, true)
+					.addField(`Выдал(а) варнов`, `${foundObj.warnsAmount}`, true)
+					.addField(`Выдал(а) предупреждений`, `${foundObj.infractionsAmount}`, true)
 					.setThumbnail(avatar)
 
 					message.channel.send({embed});
