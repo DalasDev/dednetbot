@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
 				else {
 					var avatar = toScan.user.avatarURL;
 					const embed = new Discord.RichEmbed()
-					.setTitle(`${toScan}`)
+					.setTitle(`${toScan.displayName}`)
 					.setColor("#0000FF")
 					.addField(`Выдал варнов`, `${foundObj.warnsAmount}`, true)
 					.addField(`Выдал предупреждений`, `${foundObj.infractionsAmount}`, true)
