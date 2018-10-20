@@ -32,6 +32,8 @@ function playcf(user, toPlay, message){
 
 				var cfResult = random(1, 100);
 
+				console.log("CFResult: " + cfResult + ", chickenPower: " + chickenPower);
+
 				if (cfResult <= chickenPower){
 
 					chickenPower += 5;
