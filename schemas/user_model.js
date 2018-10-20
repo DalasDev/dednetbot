@@ -5,6 +5,7 @@ var userSchema = new mongoose.Schema({
 	userID: String,
 	displayName: String,
 	highestRole: String,
+	roles: Array,
 	status: String,
 	joinedAt: Date,
 	messages: Number,
