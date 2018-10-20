@@ -4,15 +4,15 @@ module.exports.run = async (bot, message, args) => {
 
   var D = new Date ('Sat, 21 Oct 2018 00:47:53 +0000');
 
-var ye = 'FullYear',
-var mo = 'UTCMonth',
-var da = 'UTCDate',
-var ho = 'UTCHours',
-var mi = 'UTCMinutes',
-var se = 'UTCSeconds',
-var rm = 'января февраля марта апреля мая июня июля августа сентября октября ноября декабря'.split (' '),
-var az = function (x) {return (x < 10 ? '0' : '') + x},
-var vl = function (x) {return D ['get' + x] ()}
+var ye = 'FullYear';
+var mo = 'UTCMonth';
+var da = 'UTCDate';
+var ho = 'UTCHours';
+var mi = 'UTCMinutes';
+var se = 'UTCSeconds';
+var rm = 'января февраля марта апреля мая июня июля августа сентября октября ноября декабря'.split(' ');
+var az = function (x) {return (x < 10 ? '0' : '') + x};
+var vl = function (x) {return D ['get' + x] ()};
 
 // нужный формат - "11 августа 2012 г., 08:02:53"
 
@@ -55,4 +55,3 @@ var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
 module.exports.help = {
     name: "report"
 }
-(изменено)
