@@ -16,7 +16,7 @@ function random(min, max) {
 }
 
 const NumberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -58,14 +58,13 @@ module.exports.run = async (bot, message, args) => {
 				}
 				else{
 					if(foundObj.retrocoinCash > 0){
-					toPay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
-					var newCash = foundObj.retrocoinCash - toPay;
-				}
-				  else{
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
+						var newCash = foundObj.retrocoinCash - toPay;
+					}
+					else{
 						toPay = Math.floor(foundObj.retrocoinTotal / 100 * (-15));
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
-			}
 				}
 
 				foundObj.retrocoinCash = newCash;
@@ -81,9 +80,9 @@ module.exports.run = async (bot, message, args) => {
 				answers.push(`твой рот хорошо поработал этой ночью, твой сутенер будет доволен и дал тебе за это ${NumberWithCommas(toPay)} ${retricIcon}!`);
 				answers.push(`ты пошел в клуб и по занимался сексом, тебе оставили ${NumberWithCommas(toPay)} ${retricIcon}!`);
 				answers.push(`ты вышел на трассу подзаработать, но ты избил шлюху и украл ${NumberWithCommas(toPay)} ${retricIcon}!`);
-        answers.push(`заняться ЭТИМ в туалете было немного стыдным, но главное что заплатили ${NumberWithCommas(toPay)} ${retricIcon}!`);
+				answers.push(`заняться ЭТИМ в туалете было немного стыдным, но главное что заплатили ${NumberWithCommas(toPay)} ${retricIcon}!`);
 
-		    var answers2 =[];
+				var answers2 =[];
 				answers2.push(`ты пошел в клуб и позанимался сексом, ты забеременял и пошел сделал аборт за ${NumberWithCommas(toPay)} ${retricIcon}`);
 				answers2.push(`ты вышел на трасу подзаработать, но у тебя спёрла шлюха ${NumberWithCommas(toPay)} ${retricIcon}`);
 				answers2.push(`ты хотел новых ощущений, но посещение проктолога стоит ${NumberWithCommas(toPay)} ${retricIcon}`);
@@ -108,8 +107,8 @@ module.exports.run = async (bot, message, args) => {
 				message.reply(answer);
 
 				foundObj.save(function(err, updatedObj){
-				if(err)
-					console.log(err);
+					if(err)
+						console.log(err);
 				});
 			}
 		}
