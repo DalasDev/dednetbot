@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var reportSchema = new mongoose.Schema({
 	moder: String,
-  moderID: String,
+	moderID: String,
 	warnsAmount: Number,
 	infractionsAmount: Number,
 	muteAmount: Number,

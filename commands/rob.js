@@ -69,9 +69,15 @@ module.exports.run = async (bot, message, args) => {
 				var min = 1;
 				var max = 2;
 				var robResult = (Math.floor(Math.random() * (max - min + 1)) + min) == 1 ? true : false;
+
+				if(robed.roles.some(r=>["⭐Полицейский⭐", "⭐Шерифский департамент⭐", "Городской супергерой ⚡"].includes(r.name))){
+					console.log(message.member.displayName + ' попытался грабануть ' + robed.displayName);
+					robResult = false;
+				}
+
 				min = 35;
-  				max = 45;
-  				var random = Math.floor(Math.random() * (max - min + 1)) + min;
+				max = 45;
+				var random = Math.floor(Math.random() * (max - min + 1)) + min;
 				var toRob = foundObj.retrocoinCash / 100 * random;
 				toRob = Math.round(toRob);
 				if (foundObj.retrocoinCash - toRob <= 0)
