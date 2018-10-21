@@ -35,6 +35,7 @@ module.exports.run = async (bot, message, args) => {
 					moderID: moder.id,
           infractionsAmount: 1,
           warnsAmount: 0,
+          muteAmount: 0,
 				});
 				myData.save()
 				.then(item => {
