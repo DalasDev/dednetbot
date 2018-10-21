@@ -24,49 +24,18 @@ function playcf(user, toPlay, message){
 			if (!user_obj)
 				console.log("User not found");
 			else {
-
-				var chickenPower = 50;
+				message.reply("играем!");
 				
-				if (user.chickenPower && user.chickenPower != 0)
-					chickenPower = user.chickenPower;
-
-				var cfResult = random(1, 100);
-
-				console.log("CFResult: " + cfResult + ", chickenPower: " + chickenPower);
-
-				if (cfResult <= chickenPower){
-
-					if (chickenPower < 60)
-						chickenPower += 2;
-					else if (chickenPower < 100)
-						chickenPower += 1;
-					else if (chickenPower = 100)
-						chickenPower = 100;
-
-					found_user.chickenPower = chickenPower;
-					found_user.retrocoinCash += toPlay;
-					message.reply("курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь " + chickenPower);
-				}
-				else{
-
-					found_user.retrocoinCash -= toPlay;
-					found_user.chickenPower = 0;
-
-					var index = user.inv.indexOf("Курочка 🐔");
-					var newinv = user.inv;
-					newinv.splice(index, 1);
-					
-					found_user.inv = newinv;
-					
-					message.reply("Курочка проиграла :skull:");
-				}
+//				if (user_obj.)
+				//запускаю игру, потом сохраняю и отвечаю в чат
 				found_user.save(function(err, updatedObj){
-					if (err)
-						console.log(err);
+				if (err)
+					console.log(err);
 				});
 			}
 		}
 	});
+	return message.reply("держи, вот тебе " + item.itemName);
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -90,7 +59,7 @@ module.exports.run = async (bot, message, args) => {
 		let toPlay = Number(args[0]);
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
-				return playcf(user_obj, toPlay, message);
+				playcf(user_obj, toPlay, message);
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");

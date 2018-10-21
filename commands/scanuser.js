@@ -108,6 +108,8 @@ module.exports.run = async (bot, message) => {
 					if (timestampLimit < timestamp) {
 
 						//var userRoles = message.member.roles.array(getRoles);
+						console.log("Роли")
+						console.log("Roles: " + message.member.roles.array(role => console.log(role.name)))
 
 						var min = 1;
 						var max = 15;
