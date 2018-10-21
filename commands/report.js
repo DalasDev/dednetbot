@@ -2,22 +2,35 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-var D = new Date();
+// var D = new Date();
 
-var ye = 'FullYear';
-var mo = 'UTCMonth';
-var da = 'UTCDate';
-var ho = 'UTCHours';
-var mi = 'UTCMinutes';
-var se = 'UTCSeconds';
-var rm = 'января февраля марта апреля мая июня июля августа сентября октября ноября декабря'.split(' ');
-var az = function (x) {return (x < 10 ? '0' : '') + x};
-var vl = function (x) {return D ['get' + x] ()};
+// var ye = 'FullYear';
+// var mo = 'UTCMonth';
+// var da = 'UTCDate';
+// var ho = 'UTCHours';
+// var mi = 'UTCMinutes';
+// var se = 'UTCSeconds';
+// var rm = 'января февраля марта апреля мая июня июля августа сентября октября ноября декабря'.split(' ');
+// var az = function (x) {return (x < 10 ? '0' : '') + x};
+// var vl = function (x) {return D ['get' + x] ()};
 
-// нужный формат - "11 августа 2012 г., 08:02:53"
+// var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
+//   + az (vl (ho)) + ':' + az (vl (mi)) + ':' + az (vl (se));
 
-var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
-  + az (vl (ho)) + ':' + az (vl (mi)) + ':' + az (vl (se));
+function formatDate(date) {
+  var monthNames = [
+    "января", "февраля", "марта",
+    "апреля", "мая", "июня", "июля",
+    "августа", "сентября", "октября",
+    "ноября", "декабря"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
 
     //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
 
@@ -47,7 +60,7 @@ var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
     .addField("Жалоба на:", `${rUser}`, true)
     .addField("Жалобу подал:", `${message.author}`, true)
     .addField("Канал:", message.channel, true)
-    .addField(`Время создания жалобы:`, R, true)
+    .addField(`Время создания жалобы:`, formatDate(new Date()), true)
     .addField("Жалоба:", reason, true)
 
     message.channel.send(`${message.author}`+", жалоба отправлена!");
