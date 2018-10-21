@@ -36,6 +36,8 @@ var R = vl (da)  + ' ' + rm [vl (mo)] + ' ' +     vl (ye) + ' г., '
         errorschannel.send("Канал репортов не существует!");
     if(!repchannel)
         return message.channel.send("Канал репортов не существует!");
+    if(!reason)
+        return message.channel.send("Укажите причину!");
 
     console.log("R: " + R);
 
