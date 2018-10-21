@@ -48,9 +48,9 @@ function playcf(user, toPlay, message){
 					found_user.retrocoinCash += toPlay;
 
 					message.channel.send({embed: {
-						color: 8303936,
+						color: 1613918,
 						title: `**Курочка выиграла и стала сильнее!**`,
-						subtitle: "Боевая мощь твоей курочки повышена: " + chickenPower,
+						description: "Боевая мощь твоей курочки повышена: " + chickenPower,
 						timestamp: new Date(),
 						footer: {
 							icon_url: message.author.avatarURL,
@@ -71,7 +71,7 @@ function playcf(user, toPlay, message){
 					found_user.inv = newinv;
 
 					message.channel.send({embed: {
-						color: 253162,
+						color: 14504004,
 						title: `**Твоя курочка погибла!**`,
 						timestamp: new Date(),
 						footer: {
