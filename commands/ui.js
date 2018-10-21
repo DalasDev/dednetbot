@@ -25,7 +25,9 @@ module.exports.run = async (bot, message, args) => {
         if (!foundObj)
           console.log("Something stange happend");
         else {
-
+          var stats = `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`;
+          if (foundObj.chickenPower && foundObj.chickenPower >= 50)
+            stats = stats.concat(`\nМощь курочки : ${foundObj.chickenPower}`);
           message.channel.send({embed: {
             color: 3447003,
             icon_url: message.guild.iconURL,
@@ -42,7 +44,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Взаимодействия :***",
-              value: `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`
+              value: stats
             },
             {
               name: "***Доступные перки :***",
@@ -59,10 +61,6 @@ module.exports.run = async (bot, message, args) => {
             }
           }
         });
-          // foundObj.save(function(err, updatedObj){
-          //   if(err)
-          //     console.log(err);
-          // });
         }
       }
     });
@@ -84,6 +82,10 @@ module.exports.run = async (bot, message, args) => {
           console.log("Something stange happend");
         else {
 
+          var stats = `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`;
+          if (foundObj.chickenPower && foundObj.chickenPower >= 50)
+            stats = stats.concat(`\nМощь курочки : ${foundObj.chickenPower}`);
+
           message.channel.send({embed: {
             color: 3447003,
             icon_url: message.guild.iconURL,
@@ -100,7 +102,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Взаимодействия :***",
-              value: `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`
+              value: stats
             },
             {
               name: "***Доступные перки :***",
