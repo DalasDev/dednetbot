@@ -48,7 +48,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Доступные перки :***",
-              value: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто"
+              value: ":red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто"
             }
             ],
             timestamp: new Date(),
@@ -106,7 +106,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Доступные перки :***",
-              value: ":red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто\n:red_circle: закрыто"
+              value: ":red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто"
             }
             ],
             timestamp: new Date(),
