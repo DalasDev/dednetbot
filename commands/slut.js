@@ -21,7 +21,7 @@ const NumberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
-	if(!message.member.roles.some(r=>["🍓Клубничный клуб🍓", "РетроТестер", "Тех. Администратор", "Губернатор"].includes(r.name)))
+	if(!message.member.roles.some(r=>["🍓Клубничный клуб🍓", "🚨РетроТестер🚨", "Тех. Администратор", "Губернатор"].includes(r.name)))
 		return;
 
 	var retricIcon = bot.emojis.find("name", "retric");
