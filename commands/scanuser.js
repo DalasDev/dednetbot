@@ -100,10 +100,12 @@ module.exports.run = async (bot, message) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
-						console.log("message.member.roles: " + message.member.roles.array(role=>{
-							role.name;
-						}));
-						message.member.roles.array(role=> console.log("Role: " + role.name));
+						
+						message.member.roles.array(role=>{
+							console.log('test for ' + role.name);
+							console.log(role);
+						});
+
 						var min = 1;
 						var max = 15;
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
