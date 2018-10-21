@@ -43,11 +43,11 @@ module.exports.run = async (bot, message, args) => {
               value: `__**Нарушений**__ : ${foundObj.infractions}`
             },
             {
-              name: "***Взаимодействия :***",
+              name: "\n***Взаимодействия :***",
               value: stats
             },
             {
-              name: "***Доступные перки :***",
+              name: "\n***Доступные перки :***",
               value: ":red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто"
             }
             ],
@@ -101,11 +101,11 @@ module.exports.run = async (bot, message, args) => {
               value: `__**Нарушений**__ : ${foundObj.infractions}`
             },
             {
-              name: "***Взаимодействия :***",
+              name: "\n***Взаимодействия :***",
               value: stats
             },
             {
-              name: "***Доступные перки :***",
+              name: "\n***Доступные перки :***",
               value: ":red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\t:red_circle: закрыто"
             }
             ],

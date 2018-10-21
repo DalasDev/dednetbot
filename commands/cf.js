@@ -36,7 +36,7 @@ function playcf(user, toPlay, message){
 
 				if (cfResult <= chickenPower){
 
-					if (chickenPower < 70)
+					if (chickenPower < 60)
 						chickenPower += 2;
 					else if (chickenPower < 100)
 						chickenPower += 1;
@@ -45,7 +45,7 @@ function playcf(user, toPlay, message){
 
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
-					message.reply("курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь: " + chickenPower);
+					message.reply("курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь " + chickenPower);
 				}
 				else{
 
