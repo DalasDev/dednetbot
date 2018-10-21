@@ -36,11 +36,11 @@ function playcf(user, toPlay, message){
 
 				if (cfResult <= chickenPower){
 
-					chickenPower += 5;
+					chickenPower += 1;
 
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
-					message.reply("Курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь: " + chickenPower);
+					message.reply("курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь: " + chickenPower);
 				}
 				else{
 
