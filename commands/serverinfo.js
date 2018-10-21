@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
 	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
 	var creationDate = message.guild.createdAt;
-	var todayDate = new Date.now();
+	var todayDate = new Date();
 
 	var diffDays = Math.round(Math.abs((creationDate.getTime() - todayDate.getTime())/(oneDay)));
 
