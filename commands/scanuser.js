@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 var User = require('./../schemas/user_model.js');
 
 function getRoles(role, index) {
+	console.log("Role: " + role.name);
     var rolename = role.name;
     return rolename;
 }
@@ -106,7 +107,7 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 
-						var userRoles = message.member.roles.array(getRoles);
+						//var userRoles = message.member.roles.array(getRoles);
 
 						var min = 1;
 						var max = 15;
@@ -116,7 +117,7 @@ module.exports.run = async (bot, message) => {
 						foundObj.retrocoinTotal = foundObj.retrocoinCash + foundObj.retrocoinBank;
 						foundObj.displayName = message.member.displayName;
 						foundObj.highestRole = message.member.highestRole.name;
-						foundObj.roles = userRoles;
+						//foundObj.roles = userRoles;
 						foundObj.lastScan = Date.now();
 						foundObj.save(function(err, updatedObj){
 							if(err)
