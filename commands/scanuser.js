@@ -100,13 +100,11 @@ module.exports.run = async (bot, message) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
-						
-						console.log("message.member.roles: " + message.member.roles.array(role=>{
-							role.name;
-						}));
 
+						console.log("DB1");
 						var userRoles = [];
 						var searchUserRoles = message.member.roles.array(role=>{
+							console.log("DB2");
 							userRoles.push(role.name);
 						})
 
