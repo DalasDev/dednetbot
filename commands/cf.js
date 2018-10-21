@@ -72,7 +72,7 @@ function playcf(user, toPlay, message){
 
 					message.channel.send({embed: {
 						color: 0646813,
-						title: `**Твоя курочка погибла** ${ripIcon}`,
+						title: `**Твоя курочка погибла!**`,
 						timestamp: new Date(),
 						footer: {
 							icon_url: message.author.avatarURL,
@@ -92,7 +92,6 @@ function playcf(user, toPlay, message){
 module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
-	var ripIcon = bot.emojis.find("name", "pepe_hands");
 
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
