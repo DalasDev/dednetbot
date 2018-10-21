@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
         else {
           var stats = `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`;
           if (foundObj.chickenPower && foundObj.chickenPower >= 50)
-            stats = stats.concat(`\n\n🐔 : ${foundObj.chickenPower}%\n`);
+            stats = stats.concat(`\n🐔 : ${foundObj.chickenPower}%`);
           message.channel.send({embed: {
             color: 3447003,
             icon_url: message.guild.iconURL,
@@ -48,7 +48,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Доступные перки :***",
-              value: ":red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто"
+              value: ":red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто"
             }
             ],
             timestamp: new Date(),
@@ -84,7 +84,7 @@ module.exports.run = async (bot, message, args) => {
 
           var stats = `Половых актов : ${foundObj.fcked}\nПоцелован(а) : ${foundObj.kissed}\nОбнят(а) : ${foundObj.huged}\nПобит(а) : ${foundObj.hit}\nУбит(а) : ${foundObj.killed}\nЗапой : ${foundObj.drunk}`;
           if (foundObj.chickenPower && foundObj.chickenPower >= 50)
-            stats = stats.concat(`\n\n🐔 : ${foundObj.chickenPower}%\n`);
+            stats = stats.concat(`\n🐔 : ${foundObj.chickenPower}%`);
 
           message.channel.send({embed: {
             color: 3447003,
@@ -106,7 +106,7 @@ module.exports.run = async (bot, message, args) => {
             },
             {
               name: "***Доступные перки :***",
-              value: ":red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто\n:red_circle: закрыто\t:red_circle: закрыто"
+              value: ":red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто\n:red_circle: закрыто\t\t\t:red_circle: закрыто"
             }
             ],
             timestamp: new Date(),
