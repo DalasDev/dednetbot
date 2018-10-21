@@ -17,6 +17,8 @@ function random(min, max) {
 
 function playcf(user, toPlay, message){
 
+		var ripIcon = bot.emojis.find("name", "pepe_hands");
+
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
 			console.log("WTF there is an error: " + err);
@@ -26,7 +28,7 @@ function playcf(user, toPlay, message){
 			else {
 
 				var chickenPower = 50;
-				
+
 				if (user.chickenPower && user.chickenPower != 0)
 					chickenPower = user.chickenPower;
 
@@ -45,7 +47,18 @@ function playcf(user, toPlay, message){
 
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
-					message.reply("курочка выиграла и стала сильнее! Боевая мощь твоей курочки теперь " + chickenPower);
+
+					message.channel.send({embed: {
+						color: "#1BA364",
+						title: `**Курочка выиграла и стала сильнее!**`,
+						subtitle: "Боевая мощь твоей курочки повышена: " + chickenPower,
+						timestamp: new Date(),
+						footer: {
+							icon_url: message.author.avatarURL,
+							text: `© ${message.member.displayName}`
+						},
+					}});
+
 				}
 				else{
 
@@ -55,10 +68,18 @@ function playcf(user, toPlay, message){
 					var index = user.inv.indexOf("Курочка 🐔");
 					var newinv = user.inv;
 					newinv.splice(index, 1);
-					
+
 					found_user.inv = newinv;
-					
-					message.reply("Курочка проиграла :skull:");
+
+					message.channel.send({embed: {
+						color: "#DD4F47",
+						title: `**Твоя курочка погибла** ${ripIcon}`,
+						timestamp: new Date(),
+						footer: {
+							icon_url: message.author.avatarURL,
+							text: `© ${message.member.displayName}`
+						},
+					}});
 				}
 				found_user.save(function(err, updatedObj){
 					if (err)
