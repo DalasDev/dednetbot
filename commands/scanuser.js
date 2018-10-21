@@ -5,6 +5,11 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
 var User = require('./../schemas/user_model.js');
 
+function getRoles(role, index) {
+    var rolename = role.name;
+    return rolename;
+}
+
 module.exports.run = async (bot, message) => {
 
 	let r1 = message.guild.roles.find(`name`, "Приезжий [1]");
@@ -57,8 +62,6 @@ module.exports.run = async (bot, message) => {
 
 	let r50 = message.guild.roles.find(`name`, "Легенда [50]");
 
-	message.member.roles.array(r => console.log(r.name));
-
 	var user_obj = User.findOne({
 		userID: message.member.id
 	}, function (err, foundObj) {
@@ -103,8 +106,7 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 
-						var userRoles = [];
-						var searchUserRoles = message.member.roles.array(role => console.log(role.name));
+						var userRoles = message.member.roles.array(getRoles);
 
 						var min = 1;
 						var max = 15;
