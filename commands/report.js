@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-var D = new Date.now();
+var D = Date.now();
 
 var ye = 'FullYear';
 var mo = 'UTCMonth';
