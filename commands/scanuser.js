@@ -101,10 +101,9 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 						
-						message.member.roles.array(role=>{
-							console.log('test for ' + role.name);
-							console.log(role);
-						});
+						console.log("message.member.roles: " + message.member.roles.array(role=>{
+							role.name;
+						}));
 
 						var min = 1;
 						var max = 15;
