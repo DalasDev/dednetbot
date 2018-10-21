@@ -35,12 +35,8 @@ function playcf(user, toPlay, message){
 				console.log("CFResult: " + cfResult + ", chickenPower: " + chickenPower);
 
 				if (cfResult <= chickenPower){
-					
-					if (chickenPower < 60)
-						chickenPower += 5;
-					else if (chickenPower < 70)
-						chickenPower += 3;
-					else if (chickenPower < 90)
+
+					if (chickenPower < 70)
 						chickenPower += 2;
 					else if (chickenPower < 100)
 						chickenPower += 1;
