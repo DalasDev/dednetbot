@@ -35,8 +35,16 @@ function playcf(user, toPlay, message){
 				console.log("CFResult: " + cfResult + ", chickenPower: " + chickenPower);
 
 				if (cfResult <= chickenPower){
-
-					chickenPower += 1;
+					if (chickenPower < 60)
+						chickenPower += 5;
+					else if (chickenPower < 70)
+						chickenPower += 3;
+					else if (chickenPower < 90)
+						chickenPower += 2;
+					else if (chickenPower < 100)
+						chickenPower += 1;
+					else if (chickenPower = 100)
+						chickenPower = 100;
 
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
