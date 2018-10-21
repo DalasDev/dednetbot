@@ -52,8 +52,6 @@ function formatDate(date) {
     if(!reason)
         return message.channel.send("Укажите причину!");
 
-    console.log("R: " + R);
-
     let embed = new Discord.RichEmbed()
     .setTitle("ЖАЛОБА")
     .setColor("#F76806")
