@@ -58,7 +58,7 @@ function playcf(user, toPlay, message){
 					
 					found_user.inv = newinv;
 					
-					message.reply("RIP курочка, RIP наличка...");
+					message.reply("Курочка проиграла :rip:");
 				}
 				found_user.save(function(err, updatedObj){
 					if (err)
