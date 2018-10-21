@@ -103,10 +103,7 @@ module.exports.run = async (bot, message) => {
 
 						console.log("DB1");
 						var userRoles = [];
-						var searchUserRoles = message.member.roles.array(role=>{
-							console.log("DB2");
-							userRoles.push(role.name);
-						})
+						var searchUserRoles = message.member.roles.array(role=>userRoles.push(role.name));
 
 						var min = 1;
 						var max = 15;
