@@ -57,6 +57,8 @@ module.exports.run = async (bot, message) => {
 
 	let r50 = message.guild.roles.find(`name`, "Легенда [50]");
 
+	message.member.roles.array(r => console.log(r.name));
+
 	var user_obj = User.findOne({
 		userID: message.member.id
 	}, function (err, foundObj) {
@@ -101,10 +103,8 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 
-						const newColl = message.member.roles.clone();
-
 						var userRoles = [];
-						var searchUserRoles = newColl.array(role=>userRoles.push(role.name));
+						var searchUserRoles = message.member.roles.array(role => console.log(role.name));
 
 						var min = 1;
 						var max = 15;
