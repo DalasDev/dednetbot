@@ -36,7 +36,7 @@ function kill(killed, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
-	 if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+	 if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
 	 	return;
 
 	var killed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);

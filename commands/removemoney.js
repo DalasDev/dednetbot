@@ -17,7 +17,7 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
     return message.reply("похоже у тебя нехватка прав!");
 
 	var retricIcon = bot.emojis.find("name", "retric");

@@ -39,6 +39,7 @@ module.exports.run = async (bot, message, args) => {
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let muterole = message.guild.roles.find(`name`, "Наручники (Мут чата)");
   let mutetime = args[1];
+  let mreason = args.join(" ").slice(22);
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
   let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 
@@ -62,7 +63,17 @@ module.exports.run = async (bot, message, args) => {
   await(tomute.addRole(muterole.id));
 
   message.channel.send(`Понял, принял! <@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
-  repchannel.send(`<@${tomute.id}> был замучен на ${ms(ms(mutetime))}`);
+
+  const embed = new Discord.RichEmbed()
+  .setTitle(":star: Отчет о муте :star:")
+  .setColor("#fc6400")
+  .addField("Жертва", `<@${tomute.id}>`, true)
+  .addField("Мут выдан в", message.channel, true)
+  .addField("Мут выдал", message.member, true)
+  .addField(`Время выдачи мута:`, formatDate(new Date()), true)
+  .addField("Причина:", mreason, true);
+
+  repchannel.send({embed});
 
   setTimeout(function(){
     if(tomute.roles.has(muterole.id)){

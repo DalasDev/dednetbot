@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
   var retricIcon = bot.emojis.find("name", "retric");
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "РетроТестер"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
     return;
 
   var topusers = User.find().sort({infractions: -1}).limit(10).lean().exec(function(err, doc) {
