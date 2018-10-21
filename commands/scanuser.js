@@ -105,6 +105,11 @@ module.exports.run = async (bot, message) => {
 							role.name;
 						}));
 
+						var userRoles = [];
+						var searchUserRoles = message.member.roles.array(role=>{
+							userRoles.push(role.name);
+						})
+
 						var min = 1;
 						var max = 15;
 						var coinrandom = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -113,7 +118,7 @@ module.exports.run = async (bot, message) => {
 						foundObj.retrocoinTotal = foundObj.retrocoinCash + foundObj.retrocoinBank;
 						foundObj.displayName = message.member.displayName;
 						foundObj.highestRole = message.member.highestRole.name;
-				//		foundObj.roles = message.member.roles.array();
+						foundObj.roles = userRoles;
 						foundObj.lastScan = Date.now();
 						foundObj.save(function(err, updatedObj){
 							if(err)
