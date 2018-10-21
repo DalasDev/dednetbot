@@ -28,8 +28,12 @@ function formatDate(date) {
   var day = date.getDate();
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var time = hour + ":" + minute + ":" + second;
 
-  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+  return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
 }
 
     //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
