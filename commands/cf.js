@@ -71,7 +71,7 @@ function playcf(user, toPlay, message){
 					found_user.inv = newinv;
 
 					message.channel.send({embed: {
-						color: 06810027,
+						color: 253162,
 						title: `**Твоя курочка погибла!**`,
 						timestamp: new Date(),
 						footer: {
