@@ -17,7 +17,7 @@ function random(min, max) {
 
 function playcf(user, toPlay, message){
 
-		var ripIcon = bot.emojis.find("name", "pepe_hands");
+	var ripIcon = bot.emojis.find("name", "pepe_hands");
 
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
@@ -93,6 +93,7 @@ function playcf(user, toPlay, message){
 module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
+	var ripIcon = bot.emojis.find("name", "pepe_hands");
 
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
