@@ -8,6 +8,24 @@ var warnUser = require('./../schemas/warn_model.js');
 var mUser = require('./../schemas/report_model.js');
 var User = require('./../schemas/user_model.js');
 
+function formatDate(date) {
+  var monthNames = [
+    "января", "февраля", "марта",
+    "апреля", "мая", "июня", "июля",
+    "августа", "сентября", "октября",
+    "ноября", "декабря"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var time = hour + ":" + minute + ":" + second;
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
+}
 
 module.exports.run = async (bot, message, args) => {
 
@@ -27,6 +45,7 @@ module.exports.run = async (bot, message, args) => {
   .addField("Нарушитель", `<@${wUser.id}>`, true)
   .addField("Предупреждение выдано в", message.channel, true)
   .addField("Предупреждение выдал", message.member, true)
+  .addField(`Время выдачи варна:`, formatDate(new Date()), true)
   .addField("Причина", reason, true);
 
   if(warnchannel){

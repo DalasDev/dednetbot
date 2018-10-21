@@ -9,6 +9,24 @@ var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');
 var moderation = require('./../schemas/report_model.js');
 
+function formatDate(date) {
+  var monthNames = [
+    "января", "февраля", "марта",
+    "апреля", "мая", "июня", "июля",
+    "августа", "сентября", "октября",
+    "ноября", "декабря"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var time = hour + ":" + minute + ":" + second;
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
+}
 
 //tempmute @member Time
 
