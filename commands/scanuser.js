@@ -101,8 +101,10 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 
+						const newColl = message.member.roles.clone();
+
 						var userRoles = [];
-						var searchUserRoles = message.member.roles.array(role=>userRoles.push(role.name));
+						var searchUserRoles = newColl.array(role=>userRoles.push(role.name));
 
 						var min = 1;
 						var max = 15;
