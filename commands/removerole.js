@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("пользователь не существует!");
   if(!role)
     return message.reply("укажите роль!");
-  let gRole = message.guild.roles.find('name', role);
+  let gRole = message.guild.roles.find(`name`, role);
   if(!gRole)
     return message.reply("указанная вами роль не существует!");
   if(!errorschannel)
