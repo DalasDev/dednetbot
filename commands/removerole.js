@@ -4,10 +4,6 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
-  if(!message.member.hasPermission("MANAGE_ROLES"))
-    return;
-
   message.delete().catch(O_o=>{});
 
   let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
@@ -20,19 +16,22 @@ module.exports.run = async (bot, message, args) => {
   if(!rMember)
     return message.reply("пользователь не существует!");
   if(!role)
-    return message.reply("не могу найти роль!");
+    return message.reply("укажите роль!");
+  let gRole = message.guild.roles.find('name', role);
+  if(!gRole)
+    return message.reply("указанная вами роль не существует!");
   if(!errorschannel)
     return message.channel.send("Канал ошибок не существует!");
   if(!repchannel)
     return errorschannel.send("Канал репортов не существует!");
   if(!repchannel)
     return message.channel.send("Канал репортов не существует!");
-  if(!rMember.roles.has(role.id))
-    return message.reply(`У <@${rMember.id}> нет роли ${role.name}!`);
-  await(rMember.removeRole(role.id));
+  if(!rMember.roles.has(gRole.id))
+    return message.channel.send(`У <@${rMember.id}> нет роли ${gRole.name}!`);
+  await(rMember.removeRole(gRole.id));
 
-  message.channel.send(`<@${rMember.id}> потерял роль ${role.name}! :ok_hand:`);
-  repchannel.send(`<@${rMember.id}> потерял роль ${role.name}! :ok_hand:`);
+  message.channel.send(`<@${rMember.id}> потерял роль ${gRole.name}! :ok_hand:`);
+  repchannel.send(`<@${rMember.id}> потерял роль ${gRole.name}! :ok_hand:`);
 }
 
 module.exports.help = {

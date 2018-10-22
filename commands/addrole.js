@@ -8,32 +8,16 @@ module.exports.run = async (bot, message, args) => {
 	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let role = args.join(" ").slice(22);
-  let gRole = message.guild.roles.find(`name`, role);
 
-  if(!message.member.hasPermission("MANAGE_ROLES"))
+  if((!message.member.hasPermission("MANAGE_ROLES")) || (!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name))))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
   if(!rMember)
     return message.reply("пользователь не существует!");
   if(!role)
     return message.reply("укажите роль!");
+  let gRole = message.guild.roles.find(`name`, role);
   if(!gRole)
-
-    var answers = [];
-    answers.push(`неее...пусть меня мотопес лучше тестит`);
-    answers.push(`а сали разрешение дал?`);
-    answers.push(`видно не судьба`);
-    answers.push(`неее...не хочу чтоб ты меня тестил`);
-    answers.push(`ты моего родного JS не знаешь! Куда тебе в тестеры`);
-    answers.push(`а ты секреты держать умеешь?`);
-    answers.push(`говорю же, не судьба!`);
-    answers.push(`сотый раз говорю не судьба!`);
-    answers.push(`а ты жаваскрипт знаешь?`);
-    answers.push(`навалом тестеров уже...куда тебе`);
-    let index = Math.floor((Math.random() * answers.length));
-    let answer = answers[index];
-
-    message.reply(answer);
-
+    return message.reply("указанная вами роль не существует!");
   if(!errorschannel)
 		return message.channel.send("Канал ошибок не существует!");
 	if(!repchannel)
