@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   if (!user)
   	return;
   if(user == message.member)
-    return message.reply("эйй... Не нужно себя вырнить!")
+    return message.reply("эйй... Не нужно себя варнить!")
   if(user.hasPermission("MANAGE_MESSAGES"))
     return message.reply("не, этого дядьку заварнить не получится!");
 
