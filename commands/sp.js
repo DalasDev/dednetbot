@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(user == message.member)
     return message.reply("эйй... Не нужно себя варнить!")
   if(user.hasPermission("MANAGE_MESSAGES"))
-    return message.reply("не, этого дядьку заварнить не получится!");
+    return message.reply("нее... Такого человека не заварнишь!");
 
   let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "📌правила");
