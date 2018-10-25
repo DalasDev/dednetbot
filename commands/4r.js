@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var User = require('./../schemas/user_model.js');
 var Moderation = require('./../schemas/report_model.js');
-var Infaction = require('./../schemas/infractions_model.js');
+var Infraction = require('./../schemas/infractions_model.js');
 
 
 function formatDate(date) {
