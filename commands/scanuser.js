@@ -13,7 +13,7 @@ function getRoles(role, index) {
 
 module.exports.run = async (bot, message) => {
 
-	console.log("Roles: " + message.member.roles.array(role => console.log(role.name)));
+//	console.log("Roles: " + message.member.roles.array(role => console.log(role.name)));
 
 	let r1 = message.guild.roles.find(`name`, "Приезжий [1]");
 	let r2 = message.guild.roles.find(`name`, "Безработный [2]");
