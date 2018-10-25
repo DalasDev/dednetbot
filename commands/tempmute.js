@@ -82,7 +82,7 @@ module.exports.run = async (bot, message, args) => {
   var iData = new Tempmute({
     userID: tomute.id,
     userNickname: tomute.displayName,
-    tmutedFor: reason,
+    tmutedFor: mreason,
     moderatorID: message.member.id,
     moderatorNickname: message.member.displayName,
     when: Date.now(),

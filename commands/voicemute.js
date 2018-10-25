@@ -85,7 +85,7 @@ module.exports.run = async (bot, message, args) => {
   var iData = new Voicemute({
     userID: tovmute.id,
     userNickname: tovmute.displayName,
-    vmutedFor: reason,
+    vmutedFor: vmreason,
     moderatorID: message.member.id,
     moderatorNickname: message.member.displayName,
     when: Date.now(),
