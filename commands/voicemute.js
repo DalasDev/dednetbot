@@ -95,22 +95,18 @@ module.exports.run = async (bot, message, args) => {
 
   iData.save()
   .then(item => {
-    console.log('1New infraction from "' + moder.displayName + '" added to database');
   })
   .catch(err => {
     console.log("Error: " + err);
   });
 
-  console.log("DB");
   var user_obj = Report.findOne({
     moderID: moder.id
   }, function (err, foundObj) {
-    console.log("DB1");
     if (err)
       console.log("Error on database findOne: " + err);
     else {
       if (foundObj === null){
-        console.log("DB2");
         var myData = new Report({
           moder: moder.displayName,
           moderID: moder.id,
@@ -128,14 +124,10 @@ module.exports.run = async (bot, message, args) => {
       } else {
         if (!foundObj)
           return console.log("Something stange happend");
-        console.log("DB3");
         foundObj.voicemuteAmount = foundObj.voicemuteAmount + 1;
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-          else{
-            console.log('New voice mute from "' + moder.displayName + '" added to database')
-          }
         });
       }
     }
