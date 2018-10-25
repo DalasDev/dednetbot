@@ -95,7 +95,6 @@ module.exports.run = async (bot, message, args) => {
 
   iData.save()
   .then(item => {
-    console.log('1New infraction from "' + moder.displayName + '" added to database');
   })
   .catch(err => {
     console.log("Error: " + err);
@@ -118,7 +117,6 @@ module.exports.run = async (bot, message, args) => {
         });
         myData.save()
         .then(item => {
-          console.log('New infraction from "' + moder.displayName + '" added to database');
         })
         .catch(err => {
           console.log("Error on database save: " + err);
@@ -132,7 +130,7 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
           else{
-            console.log('New infraction from "' + moder.displayName + '" added to database')
+            console.log('New voice mute from "' + moder.displayName + '" added to database')
           }
         });
       }

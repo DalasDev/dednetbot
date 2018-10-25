@@ -68,7 +68,6 @@ module.exports.run = async (bot, message, args) => {
 
   iData.save()
   .then(item => {
-    console.log('1New infraction from "' + moder.displayName + '" added to database');
   })
   .catch(err => {
     console.log("Error: " + err);

@@ -97,10 +97,10 @@ module.exports.run = async (bot, message, args) => {
           infractionsAmount: 0,
           warnsAmount: 1,
           muteAmount: 0,
+          voicemuteAmount: 0,
   			});
   			myData.save()
   			.then(item => {
-  				console.log('New warn from "' + moder.displayName + '" added to database');
   			})
   			.catch(err => {
   				console.log("Error on database save: " + err);
