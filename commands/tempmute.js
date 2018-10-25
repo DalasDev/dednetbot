@@ -97,7 +97,6 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
-  let moder = message.member;
   var user_obj = Moderation.findOne({
     moderID: moder.id
   }, function (err, foundObj) {
