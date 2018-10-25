@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(`${user}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel}! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
-  var myData = new Infraction({
+  var iData = new Infraction({
     infractionType: "4r",
     infractedID: user.id,
     userNickname: user.displayName,
@@ -66,7 +66,7 @@ module.exports.run = async (bot, message, args) => {
     channelName: message.channel.name,
   });
 
-  myData.save()
+  iData.save()
   .then(item => {
     console.log('1New infraction from "' + moder.displayName + '" added to database');
   })
