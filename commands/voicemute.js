@@ -7,7 +7,8 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');
-var moderation = require('./../schemas/report_model.js');
+var Moderation = require('./../schemas/report_model.js');
+var Infraction = require('./../schemas/infractions_model.js');
 
 function formatDate(date) {
   var monthNames = [
@@ -31,6 +32,8 @@ function formatDate(date) {
 //voicemute @member Time
 
 module.exports.run = async (bot, message, args) => {
+
+  var moder = message.member;
 
   var wutIcon = bot.emojis.find("name", "wut");
 
@@ -79,16 +82,33 @@ module.exports.run = async (bot, message, args) => {
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
   }, ms(vmutetime));
 
-  let moder = message.member;
-  var User = require('./../schemas/report_model.js');
-  var user_obj = User.findOne({
+  var iData = new Infraction({
+    infractionType: "4r",
+    infractedID: user.id,
+    userNickname: user.displayName,
+    infractedBy: message.member.id,
+    infracterNickname: message.member.displayName,
+    when: Date.now(),
+    channelID: message.channel.id,
+    channelName: message.channel.name,
+  });
+
+  iData.save()
+  .then(item => {
+    console.log('1New infraction from "' + moder.displayName + '" added to database');
+  })
+  .catch(err => {
+    console.log("Error: " + err);
+  });
+
+  var user_obj = Moderation.findOne({
     moderID: moder.id
   }, function (err, foundObj) {
     if (err)
       console.log("Error on database findOne: " + err);
     else {
       if (foundObj === null){
-        var myData = new User({
+        var myData = new Moderation({
           moder: moder.displayName,
           moderID: moder.id,
           infractionsAmount: 0,

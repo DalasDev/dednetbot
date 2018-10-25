@@ -105,7 +105,7 @@ module.exports.run = async (bot, message, args) => {
           if(err)
             console.log(err);
           else{
-            console.log('2New infraction from "' + moder.displayName + '" added to database')
+            console.log('New infraction from "' + moder.displayName + '" added to database')
           }
         });
 			}
