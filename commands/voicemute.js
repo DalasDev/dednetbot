@@ -125,7 +125,7 @@ module.exports.run = async (bot, message, args) => {
         if (!foundObj)
           return console.log("Something stange happend");
 
-        foundObj.muteAmount = foundObj.muteAmount + 1;
+        foundObj.voicemuteAmount = foundObj.voicemuteAmount + 1;
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
