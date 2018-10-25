@@ -53,9 +53,7 @@ module.exports.run = async (bot, message, args) => {
   } else {
     console.log("No warnchannel defined");
   }
-
-  //mongoose add
-
+  
   var myData = new Warn({
     userID: wUser.id,
     userNickname: wUser.displayName,
@@ -128,10 +126,6 @@ module.exports.run = async (bot, message, args) => {
       }
     }
   });
-
-
-  //end of mongoose
-
 }
 
 module.exports.help = {
