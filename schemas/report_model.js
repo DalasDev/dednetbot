@@ -7,6 +7,7 @@ var reportSchema = new mongoose.Schema({
 	warnsAmount: Number,
 	infractionsAmount: Number,
 	muteAmount: Number,
+	voicemuteAmount: Number,
 });
 
 module.exports = mongoose.model('report', reportSchema);
