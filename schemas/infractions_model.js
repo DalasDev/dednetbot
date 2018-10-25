@@ -12,4 +12,4 @@ var warnSchema = new mongoose.Schema({
 	channelName: String,
 });
 
-module.exports = mongoose.model('warns', warnSchema);
+module.exports = mongoose.model('infraction', warnSchema);
