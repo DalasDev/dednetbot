@@ -43,6 +43,7 @@ module.exports.run = async (bot, message, args) => {
 					.addField(`Выдал(а) варнов`, `${foundObj.warnsAmount}`, true)
 					.addField(`Выдал(а) предупреждений`, `${foundObj.infractionsAmount}`, true)
 					.addField(`Выдал(а) мутов`, `${foundObj.muteAmount}`, true)
+					.addField(`Выдал(а) войс мутов`, `${foundObj.voicemuteAmount}`, true)
 					.setThumbnail(avatar)
 
 					message.channel.send({embed});
