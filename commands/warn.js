@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');
-var moderation = require('./../schemas/report_model.js');
+var Report = require('./../schemas/report_model.js');
 
 //tempmute @member Time
 
@@ -68,8 +68,8 @@ module.exports.run = async (bot, message, args) => {
     userID: wUser.id,
     userNickname: wUser.displayName,
     warnedFor: reason,
-    warnedBy: message.member.id,
-    warnerNickname: message.member.displayName,
+    moderatorID: message.member.id,
+    moderatorNickname: message.member.displayName,
     when: Date.now(),
     channelID: message.channel.id,
     channelName: message.channel.name,
@@ -84,14 +84,14 @@ module.exports.run = async (bot, message, args) => {
   });
 
   let moder = message.member;
-  var user_obj = moderation.findOne({
+  var user_obj = Report.findOne({
   	moderID: moder.id
   }, function (err, foundObj) {
   	if (err)
   		console.log("Error on database findOne: " + err);
   	else {
   		if (foundObj === null){
-  			var myData = new moderation({
+  			var myData = new Report({
   				moder: moder.username,
   				moderID: moder.id,
           infractionsAmount: 0,

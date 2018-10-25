@@ -4,8 +4,8 @@ const ms = require("ms");
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
-var warnUser = require('./../schemas/warn_model.js');
-var mUser = require('./../schemas/report_model.js');
+var Warn = require('./../schemas/warn_model.js');
+var Report = require('./../schemas/report_model.js');
 var User = require('./../schemas/user_model.js');
 
 function formatDate(date) {
@@ -56,12 +56,12 @@ module.exports.run = async (bot, message, args) => {
 
   //mongoose add
 
-  var myData = new warnUser({
+  var myData = new Warn({
     userID: wUser.id,
     userNickname: wUser.displayName,
     warnedFor: reason,
-    warnedBy: message.member.id,
-    warnerNickname: message.member.displayName,
+    moderatorID: message.member.id,
+    moderatorNickname: message.member.displayName,
     when: Date.now(),
     channelID: message.channel.id,
     channelName: message.channel.name,
@@ -77,7 +77,7 @@ module.exports.run = async (bot, message, args) => {
 
 
   let moder = message.member;
-  var user_obj = mUser.findOne({
+  var user_obj = Report.findOne({
   	moderID: moder.id
   }, function (err, foundObj) {
   	if (err)

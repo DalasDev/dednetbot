@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var warnSchema = new mongoose.Schema({
-	tmutedID: String,
+var tempmuteSchema = new mongoose.Schema({
+	userID: String,
 	userNickname: String,
 	tmutedFor: String,
-	tmutedBy: String,
-	tmuterNickname: String,
+	moderatorID: String,
+	moderatorNickname: String,
 	when: Date,
 	channelID: String,
 	channelName: String,
 });
 
-module.exports = mongoose.model('tempmute', warnSchema);
+module.exports = mongoose.model('tempmute', tempmuteSchema);
