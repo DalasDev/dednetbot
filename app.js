@@ -177,10 +177,10 @@ bot.on("message", async message => {
 
   var badWords = ["бля", "сука", "хуй", "пизд", "пидо", "педо", "Бля", "Сука", "Хуй", "Пизд", "Пидо", "Педо"];
 
-  if( badWords.some(word => message.content.includes(word)) ) {
-    message.reply("не матерись!");
-    return message.delete();
-  }
+  // if( badWords.some(word => message.content.includes(word)) ) {
+  //   message.reply("не матерись!");
+  //   return message.delete();
+  // }
 
 });
 
