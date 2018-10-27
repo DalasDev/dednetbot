@@ -178,7 +178,7 @@ bot.on("message", async message => {
   var badWords = ["бля", "сука", "хуй", "пизд"];
 
   if( badWords.some(word => message.content.includes(word)) ) {
-    message.reply("Oh!!!");
+    message.reply("не матерись!");
     return message.delete();
   }
 
