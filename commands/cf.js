@@ -129,10 +129,10 @@ module.exports.run = async (bot, message, args) => {
 						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
 						name: 'chicken.gif'
 					}]
-				}).then(msg => msg.delete(3000));
+				}).then(msg => msg.delete(4000));
 				setTimeout(function(){
 					playcf(user_obj, toPlay, message)
-				}, 4000);
+				}, 5000);
 				return;
 			}
 			else{

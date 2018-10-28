@@ -78,7 +78,7 @@ module.exports.run = async (bot, message, args) => {
 									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
 									name: 'roulette.gif'
 								}]
-							}).then(msg => msg.delete(3000));
+							}).then(msg => msg.delete(4000));
 
 							setTimeout(function(){
 								if (winner == x){
@@ -95,7 +95,7 @@ module.exports.run = async (bot, message, args) => {
 											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
 											name: 'roulette_loss.gif'
 										}]
-									}).then(msg => msg.delete(3000));
+									}).then(msg => msg.delete(4000));
 								}
 							}, 4000);
 						}
@@ -127,7 +127,7 @@ module.exports.run = async (bot, message, args) => {
 									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
 									name: 'roulette.gif'
 								}]
-							}).then(msg => msg.delete(3000));
+							}).then(msg => msg.delete(4000));
 							setTimeout(function(){
 								if (won){
 									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
@@ -139,7 +139,7 @@ module.exports.run = async (bot, message, args) => {
 											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
 											name: 'roulette_loss.gif'
 										}]
-									}).then(msg => msg.delete(3000));
+									}).then(msg => msg.delete(4000));
 								}
 							}, 4000);
 						}
@@ -170,7 +170,7 @@ module.exports.run = async (bot, message, args) => {
 									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
 									name: 'roulette.gif'
 								}]
-							}).then(msg => msg.delete(3000));
+							}).then(msg => msg.delete(4000));
 							setTimeout(function(){
 								if (won){
 									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
@@ -182,7 +182,7 @@ module.exports.run = async (bot, message, args) => {
 											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
 											name: 'roulette_loss.gif'
 										}]
-									}).then(msg => msg.delete(3000));
+									}).then(msg => msg.delete(4000));
 								}
 							}, 4000);
 						}
