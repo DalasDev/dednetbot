@@ -19,6 +19,11 @@ module.exports.run = async (bot, message, args) => {
 	var nopeIcon = bot.emojis.find("name", "nope");
 	var bravoIcon = bot.emojis.find("name", "bravo");
 	var pepeIcon = bot.emojis.find("name", "pepe_hmm");
+	var casino_channel = message.guild.channels.find(`name`, "🎰казино_экономика");
+
+	if(message.channel.name != "🎰казино_экономика"){
+    	return message.reply(`в рулетку можно играть только в ${casino_channel}`);
+    }
 
 	if (isNumeric(args[0]) && (args[1])) {
 		var user_obj = User.findOne({
