@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
 
-    message.delete().catch(O_o=>{});
+  message.delete().catch(O_o=>{});
 
   if(!args)
     return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
@@ -55,7 +55,8 @@ module.exports.run = async (bot, message, args) => {
   });
   return message.channel.bulkDelete(args[0]).then(() => {
     message.reply(`"${itm}" добавлено в магазин`).then(msg => msg.delete(10000));
-  }
+  });
+
 }
 
 module.exports.help = {
