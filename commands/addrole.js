@@ -11,6 +11,9 @@ module.exports.run = async (bot, message, args) => {
 
   if((!message.member.hasPermission("MANAGE_ROLES")) || (!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name))))
     return message.reply("похоже у тебя недостаточно на это прав, дружище :thinking:.");
+
+    message.delete().catch(O_o=>{});
+
   if(!rMember)
     return message.reply("пользователь не существует!");
   if(!role)
@@ -28,7 +31,9 @@ module.exports.run = async (bot, message, args) => {
     return message.reply("у него уже есть эта роль!");
   await(rMember.addRole(gRole.id));
 
-  message.channel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`);
+  return message.channel.bulkDelete(args[0]).then(() => {
+    message.channel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`).then(msg => msg.delete(10000));
+  }
   repchannel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`);
 
 }

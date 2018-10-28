@@ -9,6 +9,8 @@ module.exports.run = async (bot, message, args) => {
 	let errorschannel = message.guild.channels.find(`name`, "🌏errors_bots");
 	let bReason = args.join(" ").slice(22);
 
+  message.delete().catch(O_o=>{});
+
 	if(!bUser)
 		return message.channel.send("Пользователь не существует!");
 	if(!message.member.hasPermission("BAN_MEMBERS", "ADMINISTRATOR"))
@@ -35,7 +37,9 @@ module.exports.run = async (bot, message, args) => {
 
 	message.guild.member(bUser).ban(bReason);
 
-	message.channel.send(bUser+" был забанен за "+ bReason);
+  return message.channel.bulkDelete(args[0]).then(() => {
+	 message.channel.send(bUser+" был забанен за "+ bReason).then(msg => msg.delete(10000));
+ }
 	repchannel.send({embed});
 }
 

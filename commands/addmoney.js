@@ -20,6 +20,8 @@ module.exports.run = async (bot, message, args) => {
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name)))
 		return message.reply("похоже у тебя нехватка прав!");
 
+		message.delete().catch(O_o=>{});
+
 	var retricIcon = bot.emojis.find("name", "retric");
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
 	let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -47,12 +49,16 @@ module.exports.run = async (bot, message, args) => {
 				if(plase == "bank"){
 					foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`);
+					return message.channel.bulkDelete(args[0]).then(() => {
+					 message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`).then(msg => msg.delete(10000));
+				 }
 
 				}else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`);
+					return message.channel.bulkDelete(args[0]).then(() => {
+					 message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`);
+				 }
 
 				}else{
 					return message.reply("параметры не верны!");

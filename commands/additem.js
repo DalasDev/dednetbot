@@ -11,6 +11,9 @@ module.exports.run = async (bot, message, args) => {
   //   return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
+
+    message.delete().catch(O_o=>{});
+
   if(!args)
     return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
   var itm = "";
@@ -50,7 +53,9 @@ module.exports.run = async (bot, message, args) => {
   .catch(err => {
     console.log("Error on database save: " + err);
   });
-  return message.reply(`"${itm}" добавлено в магазин`);
+  return message.channel.bulkDelete(args[0]).then(() => {
+    message.reply(`"${itm}" добавлено в магазин`).then(msg => msg.delete(10000));
+  }
 }
 
 module.exports.help = {
