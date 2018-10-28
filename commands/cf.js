@@ -43,6 +43,7 @@ function playcf(user, toPlay, message){
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
 
+
 					message.channel.send({embed: {
 						color: 1613918,
 						title: `**Курочка выиграла и стала сильнее!**`,
@@ -131,9 +132,8 @@ module.exports.run = async (bot, message, args) => {
 						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
 						name: 'chicken.gif'
 					}]
-				}).then(msg => msg.delete(4000));
-				return setTimeout(playcf(user_obj, toPlay, message), 4000);
-				//return playcf(user_obj, toPlay, message);
+				}).then(msg => msg.delete(4000)).then(playcf(user_obj, toPlay, message));
+				return;
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");
