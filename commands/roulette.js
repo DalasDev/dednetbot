@@ -141,7 +141,7 @@ module.exports.run = async (bot, message, args) => {
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 1000);
+							}, 5000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
