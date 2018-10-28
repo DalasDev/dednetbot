@@ -11,6 +11,8 @@ const numberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete(3000);
+
   if(!args[0]){
 
     var retricIcon = bot.emojis.find("name", "retric");
@@ -60,7 +62,7 @@ module.exports.run = async (bot, message, args) => {
               url: `${message.member.user.avatarURL}`
             }
           }
-        });
+        }).then(msg => msg.delete(10000));
         }
       }
     });
@@ -118,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
               url: `${iUser.user.avatarURL}`
             }
           }
-        });
+        }).then(msg => msg.delete(10000));
         }
       }
     });
