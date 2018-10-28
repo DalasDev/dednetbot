@@ -132,8 +132,8 @@ module.exports.run = async (bot, message, args) => {
 						name: 'chicken.gif'
 					}]
 				}).then(msg => msg.delete(4000));
-				setTimeout(function(){}, 4000);
-				return playcf(user_obj, toPlay, message);
+				return setTimeout(playcf(user_obj, toPlay, message), 4000);
+				//return playcf(user_obj, toPlay, message);
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");
