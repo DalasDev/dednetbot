@@ -17,8 +17,6 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-	message.delete().catch(O_o=>{});
-	
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
 		return message.reply("похоже у тебя нехватка прав!");
 
@@ -49,16 +47,16 @@ module.exports.run = async (bot, message, args) => {
 				if(plase == "bank"){
 					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.bulkDelete(args[0]).then(() => {
-						message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`);
+					message.delete(3000)
+					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
 					});
 
 				}else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.bulkDelete(args[0]).then(() => {
-						message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`);
-					});
+					message.delete(3000);
+					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`).then(msg => msg.delete(10000));
+					};
 
 				}else{
 					return message.reply("параметры не верны!");

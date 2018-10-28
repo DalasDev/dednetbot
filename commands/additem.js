@@ -53,9 +53,8 @@ module.exports.run = async (bot, message, args) => {
   .catch(err => {
     console.log("Error on database save: " + err);
   });
-  return message.channel.bulkDelete(args[0]).then(() => {
-    message.reply(`"${itm}" добавлено в магазин`).then(msg => msg.delete(10000));
-  });
+  message.delete(3000);
+  return message.reply(`"${itm}" добавлено в магазин`).then(msg => msg.delete(10000));
 
 }
 
