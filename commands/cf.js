@@ -132,7 +132,7 @@ module.exports.run = async (bot, message, args) => {
 				}).then(msg => msg.delete(3000));
 				setTimeout(function(){
 					playcf(user_obj, toPlay, message)
-				}, 3000);
+				}, 4000);
 				return;
 			}
 			else{
