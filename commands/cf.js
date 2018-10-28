@@ -91,6 +91,13 @@ module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
 
+	var casino_channel = message.guild.channels.find(`name`, "🎰казино_экономика");
+
+	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "🌎general_bots"){
+		message.delete(3000);
+    	return message.reply(`в курочку можно играть только в ${casino_channel}`).then(msg => msg.delete(10000));
+    }
+
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
 	if (typeof user_obj === 'undefined' || user_obj === null)
