@@ -116,7 +116,7 @@ module.exports.run = async (bot, message, args) => {
 		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15;
 
 		if (timestampLimit > timestamp)
-			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:` + " debug: " + timestampLimit + " > " + timestamp);
+			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:`);
 	}
 
 	//чекаем сделал ли типуля ставку и достаточно ли у него денег в базе
@@ -131,7 +131,8 @@ module.exports.run = async (bot, message, args) => {
 						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
 						name: 'chicken.gif'
 					}]
-				}).then(msg => msg.delete(3000)).then(playcf(user_obj, toPlay, message));
+				}).then(msg => msg.delete(5000));
+				return playcf(user_obj, toPlay, message);
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");
