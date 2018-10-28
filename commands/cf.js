@@ -120,6 +120,9 @@ module.exports.run = async (bot, message, args) => {
 		let toPlay = Number(args[0]);
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
+				message.channel.send({
+					files: ['https://retrobotproject.herokuapp.com/images/chicken.gif?size=300']
+				}).then(msg => msg.delete(3000));
 				playcf(user_obj, toPlay, message);
 			}
 			else{
