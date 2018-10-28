@@ -84,7 +84,6 @@ function playcf(user, toPlay, message){
 			}
 		}
 	});
-	return message.reply("держи, вот тебе " + item.itemName);
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -128,9 +127,11 @@ module.exports.run = async (bot, message, args) => {
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
 				message.channel.send({
-					files: ['https://retrobotproject.herokuapp.com/images/chicken.gif?size=300']
-				}).then(msg => msg.delete(3000));
-				playcf(user_obj, toPlay, message);
+					files: [{
+						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
+						name: 'chicken.gif'
+					}]
+				}).then(msg => msg.delete(3000)).then(playcf(user_obj, toPlay, message));
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");
