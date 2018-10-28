@@ -131,7 +131,8 @@ module.exports.run = async (bot, message, args) => {
 						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
 						name: 'chicken.gif'
 					}]
-				}).then(msg => msg.delete(5000));
+				}).then(msg => msg.delete(3000));
+				setTimeout({}, 3000);
 				return playcf(user_obj, toPlay, message);
 			}
 			else{
