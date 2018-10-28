@@ -17,6 +17,7 @@ function random(min, max) {
 
 function playcf(user, toPlay, message){
 
+	console.log('db3');
 
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
@@ -77,6 +78,7 @@ function playcf(user, toPlay, message){
 						},
 					}});
 				}
+				console.log('db4');
 				found_user.lastCF = Date.now();
 				found_user.save(function(err, updatedObj){
 				if (err)
@@ -127,13 +129,16 @@ module.exports.run = async (bot, message, args) => {
 		let toPlay = Number(args[0]);
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
+				console.log('db1');
 				message.channel.send({
 					files: [{
 						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
 						name: 'chicken.gif'
 					}]
 				}).then(msg => msg.delete(4000));
+				console.log('db2');
 				setTimeout(playcf(user_obj, toPlay, message), 5000);
+				console.log('db5');
 				return;
 			}
 			else{
