@@ -135,7 +135,9 @@ module.exports.run = async (bot, message, args) => {
 					}]
 				}).then(msg => msg.delete(4000));
 				console.log('db2');
-				setTimeout(playcf(user_obj, toPlay, message), 5000);
+				setTimeout(function(){
+					playcf(user_obj, toPlay, message)
+				}, 5000);
 				console.log('db5');
 				return;
 			}
