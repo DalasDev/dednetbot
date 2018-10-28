@@ -50,17 +50,17 @@ module.exports.run = async (bot, message, args) => {
 					foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					return message.channel.bulkDelete(args[0]).then(() => {
-					 message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`).then(msg => msg.delete(10000));
-				 }
-
-				}else if(plase == "cash"){
+					 message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`)
+					}).then(msg => msg.delete(10000));
+				}
+				else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					return message.channel.bulkDelete(args[0]).then(() => {
-					 message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`);
-				 }
-
-				}else{
+						message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в карман!`)
+					}).then(msg => msg.delete(10000));
+				}
+				else{
 					return message.reply("параметры не верны!");
 				}
 

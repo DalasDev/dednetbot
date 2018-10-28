@@ -45,14 +45,14 @@ module.exports.run = async (bot, message, args) => {
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.bulkDelete(args[0]).then(() => {
 						message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из банка!`).then(msg => msg.delete(10000));
-					}
+					});
 				}
 				else if(target == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.bulkDelete(args[0]).then(() => {
 						message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики из кармана!`).then(msg => msg.delete(10000));
-					}
+					});
 				}
 				else if(target == "all"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - foundObj.retrocoinCash;
@@ -60,7 +60,7 @@ module.exports.run = async (bot, message, args) => {
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.bulkDelete(args[0]).then(() => {
 						message.channel.send(`У пользователя <@${muser.id}> были отняты все ретрики!`).then(msg => msg.delete(10000));
-					}
+					});
 				}
 				else{
 					return message.reply("параметры не верны!");

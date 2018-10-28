@@ -32,9 +32,8 @@ module.exports.run = async (bot, message, args) => {
   await(rMember.addRole(gRole.id));
 
   return message.channel.bulkDelete(args[0]).then(() => {
-    message.channel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`).then(msg => msg.delete(10000));
-  }
-  repchannel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`);
+    message.channel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`)}).then(msg => msg.delete(10000));
+//  repchannel.send(`<@${rMember.id}> получил роль ${gRole.name}! :ok_hand:`);
 
 }
 

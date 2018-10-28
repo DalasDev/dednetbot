@@ -37,9 +37,9 @@ module.exports.run = async (bot, message, args) => {
 
 	message.guild.member(bUser).ban(bReason);
 
-  return message.channel.bulkDelete(args[0]).then(() => {
-	 message.channel.send(bUser+" был забанен за "+ bReason).then(msg => msg.delete(10000));
- }
+	message.channel.bulkDelete(args[0]).then(() => {
+		message.channel.send(bUser+" был забанен за "+ bReason)
+	}).then(msg => msg.delete(10000));
 	repchannel.send({embed});
 }
 
