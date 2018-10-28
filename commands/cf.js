@@ -116,7 +116,7 @@ module.exports.run = async (bot, message, args) => {
 		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15000;
 
 		if (timestampLimit > timestamp)
-			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:`);
+			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:` + " debug: " + timestampLimit + " > " + "timestamp");
 	}
 
 	//чекаем сделал ли типуля ставку и достаточно ли у него денег в базе
