@@ -49,13 +49,13 @@ module.exports.run = async (bot, message, args) => {
 				if(plase == "bank"){
 					foundObj.retrocoinBank = foundObj.retrocoinBank + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.delete(1000);
+					message.delete(3000);
 					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`).then(msg => msg.delete(10000));
 				}
 				else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.delete(1000);
+					message.delete(3000);
 					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`).then(msg => msg.delete(10000));
 				}
 				else{
