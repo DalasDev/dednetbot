@@ -74,7 +74,7 @@ module.exports.run = async (bot, message, args) => {
 							setTimeout(function(){
 								if (winner == x){
 									won = won * 2;
-									return message.reply(`вылетело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r} ${args[1]}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
 								else
 									return message.reply(`увы, но вылетело ${r} ${winner}! Видимо ${args[1]} - не твое ${pepeIcon}`);
@@ -106,7 +106,7 @@ module.exports.run = async (bot, message, args) => {
 							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){
 								if (won){
-									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
@@ -137,7 +137,7 @@ module.exports.run = async (bot, message, args) => {
 							message.channel.send("Новая игра в рулетку началась...");
 							setTimeout(function(){
 								if (won){
-									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
 								else
 									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
