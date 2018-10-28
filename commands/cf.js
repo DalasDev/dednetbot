@@ -113,7 +113,7 @@ module.exports.run = async (bot, message, args) => {
 	
 		var dateTime = Date.now();
 		var timestamp = Math.floor(dateTime/1000);
-		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15000;
+		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15;
 
 		if (timestampLimit > timestamp)
 			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:` + " debug: " + timestampLimit + " > " + timestamp);
