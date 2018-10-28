@@ -22,6 +22,7 @@ var userSchema = new mongoose.Schema({
 	lastCrimeResult: Boolean,
 	lastRoulette: Date,
 	lastRob: Date,
+	lastCF: Date,
 	chickenPower: Number,
 	kissed: Number,
 	lastKiss: Date,

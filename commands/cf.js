@@ -46,7 +46,7 @@ function playcf(user, toPlay, message){
 					message.channel.send({embed: {
 						color: 1613918,
 						title: `**Курочка выиграла и стала сильнее!**`,
-						description: "Боевая мощь твоей курочки повышена: " + chickenPower,
+						description: "Боевая мощь курочки (шанс выиграть) повышена: " + chickenPower +"%",
 						timestamp: new Date(),
 						footer: {
 							icon_url: message.author.avatarURL,
@@ -76,6 +76,7 @@ function playcf(user, toPlay, message){
 						},
 					}});
 				}
+				found_user.lastCF = Date.now();
 				found_user.save(function(err, updatedObj){
 				if (err)
 					console.log(err);
@@ -99,6 +100,18 @@ module.exports.run = async (bot, message, args) => {
 
 	if (user_obj.inv.includes("Курочка 🐔") == false)
 		return message.reply("у тебя нету 🐔");
+
+	//чекаем играл ли человек недавно в курочку
+	
+	if (user_obj.lastCF){
+	
+		var dateTime = Date.now();
+		var timestamp = Math.floor(dateTime/1000);
+		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15000;
+
+		if (timestampLimit > timestamp)
+			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:`);
+	}
 
 	//чекаем сделал ли типуля ставку и достаточно ли у него денег в базе
 
