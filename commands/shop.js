@@ -14,8 +14,15 @@ module.exports.run = async (bot, message, args) => {
 
   // var retricIcon = bot.emojis.find("name", "retric");
 
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
-    return;
+  // if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
+  //   return;
+
+  var shop_channel = message.guild.channels.find(`name`, "💸основное_экономика");
+
+  if (message.channel.name != "💸основное_экономика" && message.channel.name != "🌎general_bots" && message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха"){
+    message.delete(3000);
+    return message.reply(`магазин можно использовать только в ${shop_channel}`).then(msg => msg.delete(10000));
+  }
 
   if (!args[0] || args[0] == '1'){
     var items = Item.find().sort({itemPrice: 1}).limit(15).lean().exec(function(err, doc) {
