@@ -58,12 +58,12 @@ module.exports.run = async (bot, message, args) => {
 				}
 				else{
 					if(foundObj.retrocoinCash > 0){
-						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
+						toPay = Math.floor(foundObj.retrocoinCash / 100 * 15);
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
 					else{
-						toPay = Math.floor(foundObj.retrocoinTotal / 100 * (-15));
-						var newCash = foundObj.retrocoinCash - toPay;
+						toPay = Math.floor(foundObj.retrocoinCash / 100 * (-15));
+						var newCash = foundObj.retrocoinCash + toPay;
 					}
 				}
 
