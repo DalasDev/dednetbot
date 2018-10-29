@@ -44,21 +44,20 @@ module.exports.run = async (bot, message, args) => {
 		else {
 			if (!foundObj)
 				console.log("Something stange happend");
-			else {
 
 				if(plase == "bank"){
 					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
-				};
+				}
 
-				}else if(plase == "cash"){
+				else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`).then(msg => msg.delete(10000));
-					};
+					}
 
-				}else{
+				else{
 					return message.reply("параметры не верны!");
 				}
 
