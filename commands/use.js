@@ -36,7 +36,7 @@ function drunk(message, bot){
 	});
 }
 
-function useitem(user, item, message){
+function useitem(user, item, message, bot){
 
 	var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
 	var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
