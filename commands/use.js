@@ -13,8 +13,6 @@ function isNumeric(value) {
 
 function drunk(message, bot){
 
-	var retricIcon = bot.emojis.find("name", "retric");
-
 	var user_obj = User.findOne({
 		userID: message.member.id
 	}, function (err, foundObj) {
