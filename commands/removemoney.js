@@ -17,6 +17,8 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete(3000);
+
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
 		return message.reply("похоже у тебя нехватка прав!");
 
@@ -24,14 +26,14 @@ module.exports.run = async (bot, message, args) => {
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
 	let muser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!muser)
-		return message.reply("пользователь не указан / не существует!");
+		return message.reply("пользователь не указан / не существует!").then(msg => msg.delete(10000));
 	let plase = args[1];
 	let amountin = args[2];
 	if(isNaN(amountin))
-		return message.reply("введите число!");
+		return message.reply("введите число!").then(msg => msg.delete(10000));
 	let amount = Number(amountin);
 	if(amount<0)
-		return message.reply("введите положительное число!");
+		return message.reply("введите положительное число!").then(msg => msg.delete(10000));
 
 	var user_obj = User.findOne({
 		userID: muser.id
@@ -47,14 +49,12 @@ module.exports.run = async (bot, message, args) => {
 				if(plase == "bank"){
 					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.delete(3000)
 					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
 					});
 
 				}else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.delete(3000);
 					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`).then(msg => msg.delete(10000));
 					};
 
