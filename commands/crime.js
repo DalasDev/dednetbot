@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
 
 
 				if (timestampLimit > timestamp)
-					return message.reply(`ты слишком устал... Отдохни еще немного, грабить можно, при удачной попытке раз в 5 часов, а при не удачной раз в полтора часа ${simpleIcon}`);
+					return message.reply(`ты слишком устал... Отдохни еще немного, грабежи и налеты - дело утомительное ${simpleIcon}`);
 
 				var toPay = random(4000, 7000);
 
