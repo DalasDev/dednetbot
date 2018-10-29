@@ -39,6 +39,33 @@ function useitem(user, item, message){
 					message.channel.send(`Ммммм... Как вкусно...`);
 				else if (item.itemName == "Синт Кола ☕")
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
+				else if (item.itemName == "Алкоголь 🍾"){
+					message.channel.send(`<@${message.author.id}>, буль буль буль`);
+					function drunk(message, bot){
+
+						var retricIcon = bot.emojis.find("name", "retric");
+
+						var user_obj = User.findOne({
+							userID: message.member.id
+						}, function (err, foundObj) {
+							if (err){
+								console.log("Error on database findOne: " + err);
+							}
+							else {
+								if (!foundObj)
+									console.log("Something stange happend");
+								else {
+									foundObj.drunk = foundObj.drunk + 1;
+									foundObj.save(function(err, updatedObj){
+									if(err)
+										console.log(err);
+									});
+									return message.channel.send(`${drunked} :left_facing_fist:`).then(msg => msg.delete(10000));
+								}
+							}
+						});
+					}
+				}
 				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
 					message.member.addRole(azart.id);
 					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Азартный игрок 🎲`);

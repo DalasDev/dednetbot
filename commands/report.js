@@ -46,15 +46,15 @@ function formatDate(date) {
     let reason = args.join(" ").slice(22);
 
     if(!rUser)
-        return message.channel.send("Пользователь не существует!");
+        return message.channel.send("Пользователь не существует!").then(msg => msg.delete(10000));
     if(!errorschannel)
-        return message.channel.send("Канал ошибок не существует!");
+        return message.channel.send("Канал ошибок не существует!").then(msg => msg.delete(10000));
     if(!repchannel)
-        errorschannel.send("Канал репортов не существует!");
+        errorschannel.send("Канал репортов не существует!").then(msg => msg.delete(10000));
     if(!repchannel)
-        return message.channel.send("Канал репортов не существует!");
+        return message.channel.send("Канал репортов не существует!").then(msg => msg.delete(10000));
     if(!reason)
-        return message.channel.send("Укажите причину!");
+        return message.channel.send("Укажите причину!").then(msg => msg.delete(10000));
 
     let embed = new Discord.RichEmbed()
     .setTitle("ЖАЛОБА")
@@ -65,7 +65,7 @@ function formatDate(date) {
     .addField(`Время создания жалобы:`, formatDate(new Date()), true)
     .addField("Жалоба:", reason, true)
 
-    message.channel.send(`${message.author}`+", жалоба отправлена!");
+    message.channel.send(`${message.author}`+", жалоба отправлена!").then(msg => msg.delete(10000));
 
     message.delete().catch(O_o=>{});
     repchannel.send({embed});
