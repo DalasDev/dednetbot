@@ -11,7 +11,7 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function drunk(message, bot){
+function drunk(message){
 
 	var user_obj = User.findOne({
 		userID: message.member.id
@@ -64,7 +64,7 @@ function useitem(user, item, message, bot){
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
 				else if (item.itemName == "Алкоголь 🍾"){
 					message.channel.send(`<@${message.author.id}>, буль буль буль`);
-					drunk(message, bot);
+					drunk(message);
 				}
 				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
 					message.member.addRole(azart.id);
