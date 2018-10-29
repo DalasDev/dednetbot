@@ -17,7 +17,7 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
-  message.delete(3000);
+	message.delete(3000);
 
 	if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
 		return message.reply("похоже у тебя нехватка прав!");
@@ -45,31 +45,30 @@ module.exports.run = async (bot, message, args) => {
 			if (!foundObj)
 				console.log("Something stange happend");
 
-				if(plase == "bank"){
-					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
-					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
-				}
-
-				else if(plase == "cash"){
-					foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
-					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`).then(msg => msg.delete(10000));
-					}
-
-				else{
-					return message.reply("параметры не верны!");
-				}
-
-				foundObj.save(function(err, updatedObj){
-					if(err)
-						console.log(err);
-				});
+			if(plase == "bank"){
+				foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
+				foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+				message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
 			}
-		})
-	});
-				}
 
-				module.exports.help = {
-					name: "removemoney"
-				}
+			else if(plase == "cash"){
+				foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
+				foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+				message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из кармана!`).then(msg => msg.delete(10000));
+			}
+
+			else{
+				return message.reply("параметры не верны!");
+			}
+
+			foundObj.save(function(err, updatedObj){
+				if(err)
+					console.log(err);
+			});
+		}
+	});
+}
+
+module.exports.help = {
+	name: "removemoney"
+}
