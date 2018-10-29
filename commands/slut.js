@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
 				if (timestampLimit > timestamp)
 					return message.reply(`твой дружок слишком устал... Отдохни еще немного, принимать заказы можно принимать, при удачном заказе раз в полтора часа, а при не удачном раз в пол часа ${simpleIcon}`);
 
-				var toPay = random(800, 2000);
+				var toPay = random(700, 1500);
 
 				if (resultOfCrime <= 40){
 					var newCash = foundObj.retrocoinCash + toPay;
