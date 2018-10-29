@@ -50,7 +50,7 @@ module.exports.run = async (bot, message, args) => {
 					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
 					message.channel.send(`Пользователю <@${muser.id}> отнято ${amount}${retricIcon} из банка!`).then(msg => msg.delete(10000));
-					});
+				};
 
 				}else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash - amount;
