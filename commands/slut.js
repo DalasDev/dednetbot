@@ -51,18 +51,18 @@ module.exports.run = async (bot, message, args) => {
 				if (timestampLimit > timestamp)
 					return message.reply(`твой дружок слишком устал... Отдохни еще немного, принимать заказы можно принимать, при удачном заказе раз в полтора часа, а при не удачном раз в пол часа ${simpleIcon}`);
 
-				var toPay = random(200, 600);
+				var toPay = random(800, 2000);
 
 				if (resultOfCrime <= 40){
 					var newCash = foundObj.retrocoinCash + toPay;
 				}
 				else{
 					if(foundObj.retrocoinCash > 0){
-						toPay = Math.floor(foundObj.retrocoinCash / 100 * 15);
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 15);
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
 					else{
-						toPay = Math.floor(foundObj.retrocoinCash / 100 * (-15));
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * (-15));
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
 				}
