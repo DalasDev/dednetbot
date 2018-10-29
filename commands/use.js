@@ -66,7 +66,7 @@ function useitem(user, item, message){
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
 				else if (item.itemName == "Алкоголь 🍾"){
 					message.channel.send(`<@${message.author.id}>, буль буль буль`);
-					kiss(kissed, message, bot);
+					drunk(message, bot);
 				}
 				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
 					message.member.addRole(azart.id);
