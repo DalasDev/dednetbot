@@ -40,14 +40,6 @@ module.exports.run = async (bot, message, args) => {
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "Тех. Стажер"].includes(r.name)))
     return;
 
-  let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if (!user)
-    return;
-  if(user == message.member)
-    return message.reply("эйй... Не нужно себя варнить!")
-  if(user.hasPermission("MANAGE_MESSAGES"))
-    return message.reply("нее... Такого человека не заварнишь!");
-
   let cnchannel = message.guild.channels.find(`name`, "👥черный_рынок");
   let pchannel = message.guild.channels.find(`name`, "📌правила");
   let kchannel = message.guild.channels.find(`name`, "📵канализация");
@@ -55,60 +47,6 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send(`Привет... Как дела? ${hmmIcon}`);
 
-  var iData = new Infraction({
-    infractionType: "sp",
-    infractedID: user.id,
-    userNickname: user.displayName,
-    infractedBy: message.member.id,
-    infracterNickname: message.member.displayName,
-    when: Date.now(),
-    channelID: message.channel.id,
-    channelName: message.channel.name,
-  });
-
-  iData.save()
-  .then(item => {
-  })
-  .catch(err => {
-    console.log("Error: " + err);
-  });
-
-  var user_obj = Moderation.findOne({
-		moderID: moder.id
-	}, function (err, foundObj) {
-		if (err)
-			console.log("Error on database findOne: " + err);
-		else {
-			if (foundObj === null){
-				var myData = new Moderation({
-					moder: moder.displayName,
-					moderID: moder.id,
-          infractionsAmount: 1,
-          warnsAmount: 0,
-          muteAmount: 0,
-          voicemuteAmount: 0,
-				});
-				myData.save()
-				.then(item => {
-				})
-				.catch(err => {
-					console.log("Error on database save: " + err);
-				});
-			} else {
-				if (!foundObj)
-					return console.log("Something stange happend");
-
-        foundObj.infractionsAmount = foundObj.infractionsAmount + 1;
-        foundObj.save(function(err, updatedObj){
-          if(err)
-            console.log(err);
-          else{
-            console.log('New infraction from "' + moder.displayName + '" added to database')
-          }
-        });
-			}
-		}
-  });
 }
 
 module.exports.help = {
