@@ -30,7 +30,7 @@ function drunk(message, bot){
 				if(err)
 					console.log(err);
 				});
-				return message.channel.send(`${drunked} :left_facing_fist:`).then(msg => msg.delete(10000));
+				return message.channel.send(`<@${message.member.id}> :left_facing_fist:`).then(msg => msg.delete(10000));
 			}
 		}
 	});
