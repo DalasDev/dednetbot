@@ -28,7 +28,7 @@ function drunk(message){
 				if(err)
 					console.log(err);
 				});
-				return message.channel.send(`<@${message.member.id}> :left_facing_fist:`).then(msg => msg.delete(10000));
+				return message.channel.send(`<@${message.member.id}> ушёл в запой 🍾`).then(msg => msg.delete(10000));
 			}
 		}
 	});
@@ -62,7 +62,7 @@ function useitem(user, item, message, bot){
 					message.channel.send(`Ммммм... Как вкусно...`);
 				else if (item.itemName == "Синт Кола ☕")
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
-				else if (item.itemName == "Алкоголь 🍾"){
+				else if (item.itemName == "Дон Периньон 🍾"){
 					message.channel.send(`<@${message.author.id}>, буль буль буль`);
 					drunk(message);
 				}
