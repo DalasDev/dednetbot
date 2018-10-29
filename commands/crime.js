@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
 						var newCash = foundObj.retrocoinCash - toPay;
 					}
 					else{
-						toPay = Math.floor(foundObj.retrocoinTotal / 100 * 30);
+						toPay = Math.floor(foundObj.retrocoinTotal / 100 * (-30));
 						var newCash = foundObj.retrocoinCash + toPay;
 					}
 				}
