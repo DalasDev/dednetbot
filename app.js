@@ -193,7 +193,7 @@ bot.on("message", async message => {
 
   if(message.channel == cazino || message.channel == main){
     if(message.member.roles.some(r=>["Игрок: Экономика 💰", "Губернатор"].includes(r.name)))
-      return console.log("Have role");
+      return;
     await(eMember.addRole(eRole.id));
     console.log("Added role");
   }
