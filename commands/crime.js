@@ -73,7 +73,7 @@ module.exports.run = async (bot, message, args) => {
 				answers2.push(`это был самый дерьмовый налет на киоск с шаурмой в твоей жизни... Тебя оштрафовали на: ${toPay} ${retricIcon}!`);
 				answers2.push(`неудачное преступление! Вы были пойманы, пытаясь ограбить старушку и получили штраф в размере ${toPay} ${retricIcon}!`);
 
-				if (resultOfCrime <= 40){
+				if (resultOfCrime <= 30){
 					var index = Math.floor((Math.random() * answers.length));
 					var answer = answers[index];
 					foundObj.lastCrimeResult = true;
