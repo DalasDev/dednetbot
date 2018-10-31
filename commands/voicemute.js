@@ -7,8 +7,10 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');
-var Moderation = require('./../schemas/report_model.js');
+var Report = require('./../schemas/report_model.js');
 var Infraction = require('./../schemas/infractions_model.js');
+var Warn = require('./../schemas/warn_model.js');
+var Voicemute = require('./../schemas/voicemute_model.js');
 
 function formatDate(date) {
   var monthNames = [
@@ -28,8 +30,6 @@ function formatDate(date) {
 
   return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
 }
-
-//voicemute @member Time
 
 module.exports.run = async (bot, message, args) => {
 
@@ -82,12 +82,12 @@ module.exports.run = async (bot, message, args) => {
       repchannel.send(`<@${tovmute.id}> снова может говорить!`);
   }, ms(vmutetime));
 
-  var iData = new Infraction({
-    infractionType: "4r",
-    infractedID: user.id,
-    userNickname: user.displayName,
-    infractedBy: message.member.id,
-    infracterNickname: message.member.displayName,
+  var iData = new Voicemute({
+    userID: tovmute.id,
+    userNickname: tovmute.displayName,
+    vmutedFor: vmreason,
+    moderatorID: message.member.id,
+    moderatorNickname: message.member.displayName,
     when: Date.now(),
     channelID: message.channel.id,
     channelName: message.channel.name,
@@ -100,14 +100,14 @@ module.exports.run = async (bot, message, args) => {
     console.log("Error: " + err);
   });
 
-  var user_obj = Moderation.findOne({
+  var user_obj = Report.findOne({
     moderID: moder.id
   }, function (err, foundObj) {
     if (err)
       console.log("Error on database findOne: " + err);
     else {
       if (foundObj === null){
-        var myData = new Moderation({
+        var myData = new Report({
           moder: moder.displayName,
           moderID: moder.id,
           infractionsAmount: 0,
@@ -124,14 +124,10 @@ module.exports.run = async (bot, message, args) => {
       } else {
         if (!foundObj)
           return console.log("Something stange happend");
-
         foundObj.voicemuteAmount = foundObj.voicemuteAmount + 1;
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-          else{
-            console.log('New voice mute from "' + moder.displayName + '" added to database')
-          }
         });
       }
     }

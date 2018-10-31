@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var warnSchema = new mongoose.Schema({
-	vmutedID: String,
+var voicemuteSchema = new mongoose.Schema({
+	userID: String,
 	userNickname: String,
 	vmutedFor: String,
-	vmutedBy: String,
-	vmuterNickname: String,
+	moderatorID: String,
+	moderatorNickname: String,
 	when: Date,
 	channelID: String,
 	channelName: String,
 });
 
-module.exports = mongoose.model('voicemute', warnSchema);
+module.exports = mongoose.model('voicemute', voicemuteSchema);

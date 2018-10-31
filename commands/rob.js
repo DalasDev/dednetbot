@@ -47,6 +47,17 @@ function rob(message, bot, toRob, robResult, robed){
 
 module.exports.run = async (bot, message, args) => {
 
+	var casino_channel = message.guild.channels.find(`name`, "🎰казино_экономика");
+	var shop_channel = message.guild.channels.find(`name`, "💸основное_экономика");
+
+	//🕵секретный_чат / 🍲комната_отдыха
+
+	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "💸основное_экономика" 
+	&& message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха" && message.channel.name != "🌎general_bots"){
+		message.delete(3000);
+    	return message.reply(`робать можно только в ${casino_channel} и ${shop_channel}`).then(msg => msg.delete(10000));
+    }
+
 	var robed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
 	if (!robed)

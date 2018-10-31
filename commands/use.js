@@ -11,7 +11,30 @@ function isNumeric(value) {
 	return /^\d+$/.test(value);
 }
 
-function useitem(user, item, message){
+function drunk(message){
+
+	var user_obj = User.findOne({
+		userID: message.member.id
+	}, function (err, foundObj) {
+		if (err){
+			console.log("Error on database findOne: " + err);
+		}
+		else {
+			if (!foundObj)
+				console.log("Something stange happend");
+			else {
+				foundObj.drunk = foundObj.drunk + 1;
+				foundObj.save(function(err, updatedObj){
+				if(err)
+					console.log(err);
+				});
+				return message.channel.send(`<@${message.member.id}> ушёл в запой 🍾`).then(msg => msg.delete(10000));
+			}
+		}
+	});
+}
+
+function useitem(user, item, message, bot){
 
 	var azart = message.guild.roles.find(`name`, "Азартный игрок 🎲");
 	var shuler = message.guild.roles.find(`name`, "Шулер 🎱");
@@ -39,6 +62,10 @@ function useitem(user, item, message){
 					message.channel.send(`Ммммм... Как вкусно...`);
 				else if (item.itemName == "Синт Кола ☕")
 					message.channel.send(`Ай... Горячо... Но всё-равно вкусно)`)
+				else if (item.itemName == "Дон Периньон 🍾"){
+					message.channel.send(`<@${message.author.id}>, буль буль буль`);
+					drunk(message);
+				}
 				else if (item.itemName == "Покупка роли: Азартный игрок 🎲"){
 					message.member.addRole(azart.id);
 					message.channel.send(`<@${message.author.id}>, ты получил(а) роль Азартный игрок 🎲`);
@@ -106,6 +133,13 @@ function useitem(user, item, message){
 }
 
 module.exports.run = async (bot, message, args) => {
+
+	var shop_channel = message.guild.channels.find(`name`, "💸основное_экономика");
+
+	if (message.channel.name != "💸основное_экономика" && message.channel.name != "🌎general_bots" && message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха"){
+		message.delete(3000);
+		return message.reply(`использовать вещи можно только в ${shop_channel}`).then(msg => msg.delete(10000));
+	}
 
 	//message.delete().catch(O_o=>{});
 

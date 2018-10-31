@@ -13,7 +13,7 @@ function getRoles(role, index) {
 
 module.exports.run = async (bot, message) => {
 
-	console.log("Roles: " + message.member.roles.array(role => console.log(role.name)));
+//	console.log("Roles: " + message.member.roles.array(role => console.log(role.name)));
 
 	let r1 = message.guild.roles.find(`name`, "Приезжий [1]");
 	let r2 = message.guild.roles.find(`name`, "Безработный [2]");
@@ -109,9 +109,9 @@ module.exports.run = async (bot, message) => {
 					var timestampLimit = Math.floor(foundObj.lastScan/1000) + 60;
 					if (timestampLimit < timestamp) {
 
-						//var userRoles = message.member.roles.array(getRoles);
-						console.log("Роли")
-						console.log("Roles: " + message.member.roles.array(role => console.log(role.name)))
+						// var userRoles = message.member.roles.array(getRoles);
+						// console.log("Роли")
+						// console.log("Roles: " + message.member.roles.array(role => console.log(role.name)))
 
 						var min = 1;
 						var max = 15;

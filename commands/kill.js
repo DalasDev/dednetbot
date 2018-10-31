@@ -28,7 +28,7 @@ function kill(killed, message, bot){
 				if(err)
 					console.log(err);
 				});
-				return message.channel.send(`${killIcon} ${killed}`);
+				return message.channel.send(`${killIcon} ${killed}`).then(msg => msg.delete(10000));
 			}
 		}
 	});
@@ -36,16 +36,18 @@ function kill(killed, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
+   message.delete(3000);
+
 	 if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
 	 	return;
 
 	var killed = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
 	if (!killed)
-		return message.reply("пользователь не найден / не указан!");
+		return message.reply("пользователь не найден / не указан!").then(msg => msg.delete(10000));
 
 	if (message.member == killed)
-		return message.reply("ах ты суицидник! Сам себя ты не убьешь!");
+		return message.reply("ах ты суицидник! Сам себя ты не убьешь!").then(msg => msg.delete(10000));
 
 	if (!args[1]) {
 		var user_obj = User.findOne({
@@ -63,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastKill/1000) + 900;
 					if (timestampLimit > timestamp)
-						return message.reply("нельзя так часто убивать!");
+						return message.reply("нельзя так часто убивать!").then(msg => msg.delete(10000));
 
 					kill(killed, message, bot);
 
@@ -78,7 +80,7 @@ module.exports.run = async (bot, message, args) => {
 		});
 	}
 	else
-		return message.reply("чеееее :thinking:");
+		return message.reply("чеееее :thinking:").then(msg => msg.delete(10000));
 }
 
 module.exports.help = {

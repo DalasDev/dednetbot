@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
   message.channel.send(`${user}, не попрошайничай! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
   var iData = new Infraction({
-    infractionType: "4r",
+    infractionType: "pop",
     infractedID: user.id,
     userNickname: user.displayName,
     infractedBy: message.member.id,

@@ -17,7 +17,6 @@ function random(min, max) {
 
 function playcf(user, toPlay, message){
 
-
 	var user_obj = User.findOne({userID: message.member.id}, function(err, found_user){
 		if (err)
 			console.log("WTF there is an error: " + err);
@@ -33,8 +32,6 @@ function playcf(user, toPlay, message){
 
 				var cfResult = random(1, 100);
 
-				console.log("CFResult: " + cfResult + ", chickenPower: " + chickenPower);
-
 				if (cfResult <= chickenPower){
 
 					if (chickenPower < 75)
@@ -43,10 +40,11 @@ function playcf(user, toPlay, message){
 					found_user.chickenPower = chickenPower;
 					found_user.retrocoinCash += toPlay;
 
+
 					message.channel.send({embed: {
 						color: 1613918,
 						title: `**Курочка выиграла и стала сильнее!**`,
-						description: "Боевая мощь твоей курочки повышена: " + chickenPower,
+						description: "Боевая мощь курочки (шанс выиграть) повышена: " + chickenPower +"%",
 						timestamp: new Date(),
 						footer: {
 							icon_url: message.author.avatarURL,
@@ -76,6 +74,7 @@ function playcf(user, toPlay, message){
 						},
 					}});
 				}
+				found_user.lastCF = Date.now();
 				found_user.save(function(err, updatedObj){
 				if (err)
 					console.log(err);
@@ -83,12 +82,18 @@ function playcf(user, toPlay, message){
 			}
 		}
 	});
-	return message.reply("держи, вот тебе " + item.itemName);
 }
 
 module.exports.run = async (bot, message, args) => {
 
 	//message.delete().catch(O_o=>{});
+
+	var casino_channel = message.guild.channels.find(`name`, "🎰казино_экономика");
+
+	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "🌎general_bots"){
+		message.delete(3000);
+    	return message.reply(`в курочку можно играть только в ${casino_channel}`).then(msg => msg.delete(10000));
+    }
 
 	var user_obj = await User.findOne({userID: message.member.id}, function(err, found_user){});
 
@@ -100,6 +105,18 @@ module.exports.run = async (bot, message, args) => {
 	if (user_obj.inv.includes("Курочка 🐔") == false)
 		return message.reply("у тебя нету 🐔");
 
+	//чекаем играл ли человек недавно в курочку
+	
+	if (user_obj.lastCF){
+	
+		var dateTime = Date.now();
+		var timestamp = Math.floor(dateTime/1000);
+		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15;
+
+		if (timestampLimit > timestamp)
+			return message.reply(`твоя курочка только-только подралась! Дай ей чуть передохнуть :thinking:`);
+	}
+
 	//чекаем сделал ли типуля ставку и достаточно ли у него денег в базе
 
 	if (args[0] && isNumeric(args[0]) == true){
@@ -107,7 +124,16 @@ module.exports.run = async (bot, message, args) => {
 		let toPlay = Number(args[0]);
 		if (toPlay >= 100){
 			if ((user_obj.retrocoinCash - toPlay) >= 0){
-				playcf(user_obj, toPlay, message);
+				message.channel.send({
+					files: [{
+						attachment: 'https://retrobotproject.herokuapp.com/images/chicken.gif',
+						name: 'chicken.gif'
+					}]
+				}).then(msg => msg.delete(4000));
+				setTimeout(function(){
+					playcf(user_obj, toPlay, message)
+				}, 5000);
+				return;
 			}
 			else{
 				return message.reply("у тебя не хватит на это ретриков!");

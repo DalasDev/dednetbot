@@ -28,7 +28,7 @@ function hug(huged, message, bot){
 				if(err)
 					console.log(err);
 				});
-				return message.channel.send(`${huged} :hugging:`);
+				return message.channel.send(`${huged} :hugging:`).then(msg => msg.delete(10000));
 			}
 		}
 	});
@@ -36,13 +36,15 @@ function hug(huged, message, bot){
 
 module.exports.run = async (bot, message, args) => {
 
+	message.delete(3000);
+
 	var huged = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 
 	if (!huged)
-		return message.reply("пользователь не найден / не указан!");
+		return message.reply("пользователь не найден / не указан!").then(msg => msg.delete(10000));
 
 	if (message.member == huged)
-		return message.reply("ты не такой гибкий чтоб обнять самого себя!");
+		return message.reply("ты не такой гибкий чтоб обнять самого себя!").then(msg => msg.delete(10000));
 
 	if (!args[1]) {
 		var user_obj = User.findOne({
@@ -60,7 +62,7 @@ module.exports.run = async (bot, message, args) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj.lastHug/1000) + 900;
 					if (timestampLimit > timestamp)
-						return message.reply("нельзя так часто обниматься!");
+						return message.reply("нельзя так часто обниматься!").then(msg => msg.delete(10000));
 
 					hug(huged, message, bot);
 
@@ -75,7 +77,7 @@ module.exports.run = async (bot, message, args) => {
 		});
 	}
 	else
-		return message.reply("чеееее :thinking:");
+		return message.reply("чеееее :thinking:").then(msg => msg.delete(10000));
 }
 
 module.exports.help = {

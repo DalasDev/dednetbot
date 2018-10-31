@@ -6,13 +6,17 @@ var Item = require('./../schemas/shop_model.js');
 
 module.exports.run = async (bot, message, args) => {
 
+  message.delete(3000);
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   // if(!message.member.hasPermission("MANAGE_ROLES"))
   //   return;
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return;
+
+  message.delete().catch(O_o=>{});
+
   if(!args)
-    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
+    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`).then(msg => msg.delete(10000));
   var itm = "";
   var prc = 0;
   var ifU = "-";
@@ -34,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
     ifD = (args[4] == '+') ? true : false;
   }
   if(!args[4])
-    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`);
+    return message.reply(`"название" цена испозуемое(+/-) продаваемое(+/-) удаляемое(+/-)`).then(msg => msg.delete(10000));
   var newItem = new Item({
     itemName: itm,
     itemPrice: prc,
@@ -50,7 +54,8 @@ module.exports.run = async (bot, message, args) => {
   .catch(err => {
     console.log("Error on database save: " + err);
   });
-  return message.reply(`"${itm}" добавлено в магазин`);
+  return message.reply(`"${itm}" добавлено в магазин`).then(msg => msg.delete(10000));
+
 }
 
 module.exports.help = {

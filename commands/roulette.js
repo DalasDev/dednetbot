@@ -19,6 +19,13 @@ module.exports.run = async (bot, message, args) => {
 	var nopeIcon = bot.emojis.find("name", "nope");
 	var bravoIcon = bot.emojis.find("name", "bravo");
 	var pepeIcon = bot.emojis.find("name", "pepe_hmm");
+	var casino_channel = message.guild.channels.find(`name`, "🎰казино_экономика");
+
+	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "🌎general_bots" 
+	&& message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха"){
+		message.delete(3000);
+    	return message.reply(`в рулетку можно играть только в ${casino_channel}`).then(msg => msg.delete(10000));
+    }
 
 	if (isNumeric(args[0]) && (args[1])) {
 		var user_obj = User.findOne({
@@ -35,6 +42,7 @@ module.exports.run = async (bot, message, args) => {
 					var timestampLimit = Math.floor(foundObj.lastRoulette/1000) + 60;
 					if (timestampLimit > timestamp)
 						return message.reply("эээ, крути-верти, но не чаще, чем раз в минуту...");
+
 					if ((Number(args[0]) >= 100 && args[1] == "красное") || (Number(args[0]) >= 100 && args[1] == "черное")){
 						var actCash = foundObj.retrocoinCash;
 						var toPlay = Number(args[0]);
@@ -64,15 +72,32 @@ module.exports.run = async (bot, message, args) => {
 								if(err)
 									console.log(err);
 							});
-							message.channel.send("Новая игра в рулетку началась...");
+
+							message.channel.send({
+								files: [{
+									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
+									name: 'roulette.gif'
+								}]
+							}).then(msg => msg.delete(4000));
+
 							setTimeout(function(){
 								if (winner == x){
 									won = won * 2;
-									return message.reply(`вылетело ${r} ${args[1]}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r} ${args[1]}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
-								else
-									return message.reply(`увы, но вылетело ${r} ${winner}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 5000);
+								else{
+									if (winner == "red")
+										message.reply(`увы, но вылетело ${r} красное! Видимо ${args[1]} - не твое ${pepeIcon}`);
+									else
+										message.reply(`увы, но вылетело ${r} черное! Видимо ${args[1]} - не твое ${pepeIcon}`);
+									return message.channel.send({
+										files: [{
+											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
+											name: 'roulette_loss.gif'
+										}]
+									}).then(msg => msg.delete(4000));
+								}
+							}, 4000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
@@ -97,14 +122,26 @@ module.exports.run = async (bot, message, args) => {
 								if(err)
 									console.log(err);
 							});
-							message.channel.send("Новая игра в рулетку началась...");
+							message.channel.send({
+								files: [{
+									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
+									name: 'roulette.gif'
+								}]
+							}).then(msg => msg.delete(4000));
 							setTimeout(function(){
 								if (won){
-									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
-								else
-									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 1000);
+								else{
+									message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+									return message.channel.send({
+										files: [{
+											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
+											name: 'roulette_loss.gif'
+										}]
+									}).then(msg => msg.delete(4000));
+								}
+							}, 4000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");
@@ -128,14 +165,26 @@ module.exports.run = async (bot, message, args) => {
 								if(err)
 									console.log(err);
 							});
-							message.channel.send("Новая игра в рулетку началась...");
+							message.channel.send({
+								files: [{
+									attachment: 'https://retrobotproject.herokuapp.com/images/roulette.gif',
+									name: 'roulette.gif'
+								}]
+							}).then(msg => msg.delete(4000));
 							setTimeout(function(){
 								if (won){
-									return message.reply(`вылетело ${r}!!! ${message.author}, ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
+									return message.reply(`вылетело ${r}!!! Ты только что выиграл ${won}${retricIcon}! Поздравляю ${bravoIcon}`);
 								}
-								else
-									return message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
-							}, 1000);
+								else{
+									message.reply(`увы, но вылетело ${r}! Видимо ${args[1]} - не твое ${pepeIcon}`);
+									return message.channel.send({
+										files: [{
+											attachment: 'https://retrobotproject.herokuapp.com/images/roulette_loss.gif',
+											name: 'roulette_loss.gif'
+										}]
+									}).then(msg => msg.delete(4000));
+								}
+							}, 4000);
 						}
 						else
 							return message.reply("видимо у тебя не достаточно ретриков на руках :dark_sunglasses:");

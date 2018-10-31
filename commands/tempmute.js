@@ -7,8 +7,11 @@ mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@
 
 var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');
-var Moderation = require('./../schemas/report_model.js');
+var Report = require('./../schemas/report_model.js');
 var Infraction = require('./../schemas/infractions_model.js');
+var Warn = require('./../schemas/warn_model.js');
+var Tempmute = require('./../schemas/tempmute_model.js');
+
 
 function formatDate(date) {
   var monthNames = [
@@ -28,8 +31,6 @@ function formatDate(date) {
 
   return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
 }
-
-//tempmute @member Time
 
 module.exports.run = async (bot, message, args) => {
 
@@ -78,12 +79,12 @@ module.exports.run = async (bot, message, args) => {
     }
   }, ms(mutetime));
 
-  var iData = new Infraction({
-    infractionType: "4r",
-    infractedID: user.id,
-    userNickname: user.displayName,
-    infractedBy: message.member.id,
-    infracterNickname: message.member.displayName,
+  var iData = new Tempmute({
+    userID: tomute.id,
+    userNickname: tomute.displayName,
+    tmutedFor: mreason,
+    moderatorID: message.member.id,
+    moderatorNickname: message.member.displayName,
     when: Date.now(),
     channelID: message.channel.id,
     channelName: message.channel.name,
@@ -91,20 +92,19 @@ module.exports.run = async (bot, message, args) => {
 
   iData.save()
   .then(item => {
-    console.log('1New infraction from "' + moder.displayName + '" added to database');
   })
   .catch(err => {
     console.log("Error: " + err);
   });
 
-  var user_obj = Moderation.findOne({
+  var user_obj = Report.findOne({
     moderID: moder.id
   }, function (err, foundObj) {
     if (err)
       console.log("Error on database findOne: " + err);
     else {
       if (foundObj === null){
-        var myData = new Moderation({
+        var myData = new Report({
 					moder: moder.displayName,
 					moderID: moder.id,
           infractionsAmount: 0,
@@ -114,7 +114,6 @@ module.exports.run = async (bot, message, args) => {
         });
         myData.save()
         .then(item => {
-          console.log('New infraction from "' + moder.displayName + '" added to database');
         })
         .catch(err => {
           console.log("Error on database save: " + err);
@@ -127,9 +126,6 @@ module.exports.run = async (bot, message, args) => {
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-          else{
-            console.log('New infraction from "' + moder.displayName + '" added to database')
-          }
         });
       }
     }

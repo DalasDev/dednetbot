@@ -53,10 +53,10 @@ module.exports.run = async (bot, message, args) => {
   let kchannel = message.guild.channels.find(`name`, "📵канализация");
   let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
 
-  message.channel.send(`${user}, медиаконтент в чаты можно кидать только раз в 2 часа! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
+  message.channel.send(`${user}, не дублируй сообщения, пожалуйста, лучше прочти ${pchannel} ${hmmIcon}`);
 
   var iData = new Infraction({
-    infractionType: "mk",
+    infractionType: "sp",
     infractedID: user.id,
     userNickname: user.displayName,
     infractedBy: message.member.id,
@@ -112,5 +112,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "mk"
+  name: "dub"
 }
