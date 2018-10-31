@@ -133,6 +133,23 @@ bot.on("message", async message => {
 
 });
 
+bot.on("message", async message => {
+
+//356485223250264064 Вова AllRifle
+//491512455592149003 Саша Only
+
+  let cazino = message.guild.channels.find(`name`, "🎰казино_экономика");
+  let main = message.guild.channels.find(`name`, "💸основное_экономика");
+  let eRole = message.guild.roles.find(`name`, "Игрок: Экономика 💰");
+
+  if(message.channel == cazino || message.channel == main){
+    if(!message.member.roles.some(r=>["Игрок: Экономика 💰", "Губернатор"].includes(r.name)))
+      return;
+    await(rMember.addRole(eRole.id));
+  }
+
+});
+
 bot.on('guildMemberAdd', member => {
   let newuser = member
   var User = require('./schemas/user_model.js');
