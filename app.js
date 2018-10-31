@@ -144,8 +144,9 @@ bot.on("message", async message => {
 
   if(message.channel == cazino || message.channel == main){
     if(!message.member.roles.some(r=>["Игрок: Экономика 💰", "Губернатор"].includes(r.name)))
-      return;
+      return console.log("Have role");
     await(rMember.addRole(eRole.id));
+    console.log("Added role");
   }
 
 });
