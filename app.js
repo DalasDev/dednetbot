@@ -189,11 +189,12 @@ bot.on("message", async message => {
   let cazino = message.guild.channels.find(`name`, "🎰казино_экономика");
   let main = message.guild.channels.find(`name`, "💸основное_экономика");
   let eRole = message.guild.roles.find(`name`, "Игрок: Экономика 💰");
+  let eMember = message.member;
 
   if(message.channel == cazino || message.channel == main){
     if(!message.member.roles.some(r=>["Игрок: Экономика 💰", "Губернатор"].includes(r.name)))
       return console.log("Have role");
-    await(rMember.addRole(eRole.id));
+    await(eMember.addRole(eRole.id));
     console.log("Added role");
   }
 
