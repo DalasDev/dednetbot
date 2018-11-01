@@ -52,7 +52,7 @@ module.exports.run = async (bot, message, args) => {
 
 	//🕵секретный_чат / 🍲комната_отдыха
 
-	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "💸основное_экономика" 
+	if (message.channel.name != "🎰казино_экономика" && message.channel.name != "💸основное_экономика"
 	&& message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха" && message.channel.name != "🌎general_bots"){
 		message.delete(3000);
     	return message.reply(`робать можно только в ${casino_channel} и ${shop_channel}`).then(msg => msg.delete(10000));
@@ -100,7 +100,7 @@ module.exports.run = async (bot, message, args) => {
 					var timestamp = Math.floor(dateTime/1000);
 					var timestampLimit = Math.floor(foundObj2.lastRob/1000) + (60*15);
 					if (timestampLimit > timestamp)
-						return message.reply("эээ, грабь, но не чаще, чем раз 15 минут...");
+						return message.reply("эээ, грабь, но не чаще, чем раз в 15 минут...");
 					else {
 						if (robResult == true){
 							foundObj.retrocoinCash = foundObj.retrocoinCash - toRob;
