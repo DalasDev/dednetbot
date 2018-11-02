@@ -35,7 +35,7 @@ function findroleowners(role){
       console.log(err);
     else{      
       var maxY = userstab.length;
-      console.log("Number of users with " + role +" role: " + maxY);
+      console.log("Number of users to scan: " + maxY);
       var y = 0;
       while(y < maxY){
         if(userstab[y].roles.includes(role.roleID)){
@@ -60,8 +60,7 @@ module.exports.run = async (bot) => {
       var x = 0;
       console.log("Found " + maxX + " roles in database!");
       while(x < maxX){
-        console.log("X is :" + x);
-        console.log("Searching for users with " +rolestab[x]+ " role...");
+        console.log("Searching for users with " +rolestab[x].roleName+ " role...");
         findroleowners(rolestab[x]);
         x++;
       }
