@@ -56,7 +56,9 @@ module.exports.run = async (bot) => {
     else{      
       var maxX = rolestab.length;
       var x = 0;
+      console.log("Found " + maxX + " roles in database!");
       while(x < maxX){
+        console.log("X is :" + x);
         console.log("Searching for users with " +rolestab[x]+ " role...");
         findroleowners(rolestab[x]);
         x++;
