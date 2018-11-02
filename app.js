@@ -146,7 +146,6 @@ bot.on("message", async message => {
     if(message.member.roles.some(r=>["Игрок: Экономика 💰", "Губернатор"].includes(r.name)))
       return;
     await(eMember.addRole(eRole.id));
-    console.log("Added role");
   }
 
 });
@@ -210,6 +209,20 @@ bot.on('guildMemberAdd', member => {
 bot.on("ready", async () => {
   //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
+  //Установка игры
+  var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  var creationDate = new Date('2017-01-12T11:59:44');
+  var todayDate = new Date();
+
+  var diffDays = Math.round(Math.abs((creationDate.getTime() - todayDate.getTime())/(oneDay)));
+
+  var statusname = "за сервером " + diffDays + " дней";
+  bot.user.setPresence({
+    game: {
+      name: statusname,
+      type: 3
+    }
+  });
   //Установка статуса
   bot.user.setStatus('online');
   idle_repeat();
