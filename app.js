@@ -81,10 +81,6 @@ function play(connection, message) {
   });
 }
 
-function salary(){
-  console.log("make payements");
-}
-
 function idle_repeat(){
   console.log("[app.js] New CronJob started");
 
@@ -96,18 +92,28 @@ function idle_repeat(){
     cronindex++;
   }, null, true, 'Europe/Paris');
 
-  new CronJob('0 0 0 * * *', function() {
-    salary();
+  let commandfile = bot.commands.get("salariespayement");
+  new CronJob('* 59 * * * *', function() {
+    commandfile.run(bot);
   }, null, true, 'Europe/Paris');
-  // Seconds: 0-59
-  // Minutes: 0-59
-  // Hours: 0-23
-  // Day of Month: 1-31
-  // Months: 0-11 (Jan-Dec)
-  // Day of Week: 0-6 (Sun-Sat)
+
+  new CronJob('* * 0 * * *', function() {
+    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var creationDate = new Date('2017-10-04T21:09:09');
+    var todayDate = new Date();
+
+    var diffDays = Math.round(Math.abs((creationDate.getTime() - todayDate.getTime())/(oneDay)));
+
+    var statusname = "за сервером " + diffDays + " дней";
+    bot.user.setPresence({
+      game: {
+        name: statusname,
+        type: 3
+      }
+    });
+  }, null, true, 'Europe/Paris');
+
 }
-
-
 
 bot.on("message", async message => {
 
@@ -127,64 +133,9 @@ bot.on("message", async message => {
       console.log("Error on database save: " + err);
     });
   }
-
-  //мат фильтр
-
-/*
-
-обработка букв для нахождения замен (в процессе)
-
-(
-  'а' => ['а', 'a', '@'],
-  'б' => ['б', '6', 'b'],
-  'в' => ['в', 'b', 'v'],
-  'г' => ['г', 'r', 'g'],
-  'д' => ['д', 'd', 'g'],
-  'е' => ['е', 'e'],
-  'ё' => ['ё', 'е', 'e'],
-  'ж' => ['ж', 'zh', '*'],
-  'з' => ['з', '3', 'z'],
-  'и' => ['и', 'u', 'i'],
-  'й' => ['й', 'u', 'y', 'i'],
-  'к' => ['к', 'k', 'i{', '|{'],
-  'л' => ['л', 'l', 'ji'],
-  'м' => ['м', 'm'],
-  'н' => ['н', 'h', 'n'],
-  'о' => ['о', 'o', '0'],
-  'п' => ['п', 'n', 'p'],
-  'р' => ['р', 'r', 'p'],
-  'с' => ['с', 'c', 's'],
-  'т' => ['т', 'm', 't'],
-  'у' => ['у', 'y', 'u'],
-  'ф' => ['ф', 'f'],
-  'х' => ['х', 'x', 'h', 'к', 'k', '}{'],
-  'ц' => ['ц', 'c', 'u,'],
-  'ч' => ['ч', 'ch'],
-  'ш' => ['ш', 'sh'],
-  'щ' => ['щ', 'sch'],
-  'ь' => ['ь', 'b'],
-  'ы' => ['ы', 'bi'],
-  'ъ' => ['ъ'],
-  'э' => ['э', 'е', 'e'],
-  'ю' => ['ю', 'io'],
-  'я' => ['я', 'ya'],
-)
-
-*/
-
-  var badWords = ["бля", "сука", "хуй", "пизд", "пидо", "педо", "Бля", "Сука", "Хуй", "Пизд", "Пидо", "Педо"];
-
-  // if( badWords.some(word => message.content.includes(word)) ) {
-  //   message.reply("не матерись!");
-  //   return message.delete();
-  // }
-
 });
 
 bot.on("message", async message => {
-
-//356485223250264064 Вова AllRifle
-//491512455592149003 Саша Only
 
   let cazino = message.guild.channels.find(`name`, "🎰казино_экономика");
   let main = message.guild.channels.find(`name`, "💸основное_экономика");
@@ -290,9 +241,6 @@ bot.on("message", async message => {
 
   if(message.channel.type === "dm")
     return;
-
-  // if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨", "⭐Полицейский⭐", "⭐Шерифский департамент⭐", "Городской супергерой ⚡"].includes(r.name)))
-  //   return;
 
   if (message.content.charAt(0) === prefix){
     let messageArray = message.content.split(" ");
