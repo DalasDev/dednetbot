@@ -38,8 +38,10 @@ function findroleowners(role){
       console.log("Number of users with " + role +" role: " + maxY);
       var y = 0;
       while(y < maxY){
-        if(userstab[y].roles.includes(role.roleID))
+        if(userstab[y].roles.includes(role.roleID)){
+          console.log("Found a user with this role! It's " + userstab[y].displayName);
           paysomeone(userstab[y], role);
+        }
         y++;
       }
     }
@@ -54,8 +56,8 @@ module.exports.run = async (bot) => {
     else{      
       var maxX = rolestab.length;
       var x = 0;
-      var text = ``;
       while(x < maxX){
+        console.log("Searching for users with " +rolestab[x]+ " role...");
         findroleowners(rolestab[x]);
         x++;
       }
