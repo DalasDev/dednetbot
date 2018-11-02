@@ -39,7 +39,7 @@ function findroleowners(role){
       var y = 0;
       while(y < maxY){
         if(userstab[y].roles.includes(role.roleID)){
-          console.log("Found a user with this role! It's " + userstab[y].displayName);
+          console.log("Found a user with " + role.roleName + " role! It's " + userstab[y].displayName);
           paysomeone(userstab[y], role);
         }
         y++;
@@ -58,9 +58,7 @@ module.exports.run = async (bot) => {
     else{      
       var maxX = rolestab.length;
       var x = 0;
-      console.log("Found " + maxX + " roles in database!");
       while(x < maxX){
-        console.log("Searching for users with " +rolestab[x].roleName+ " role...");
         findroleowners(rolestab[x]);
         x++;
       }
