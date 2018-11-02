@@ -73,30 +73,25 @@ module.exports.run = async (bot, message, args) => {
           roleID: aRole.id,
           roleName: role,
           salary: salary
-        })
-        .then(item => {
-          console.log('New salary "' + role + '" added to database');
         });
-        newItem.save()
+        myData.save()
         .then(item => {
-          console.log('New role "'+role+'" was added to Roles collection!');
+          console.log('New item "'+itm+'" added to database');
         })
         .catch(err => {
           console.log("Error on database save: " + err);
         });
       }
-
       else {
-        if (!foundObj)
-          console.log("Something stange happend");
-        else {
-          foundObj.roleID = aRole.id;
-          foundObj.roleName = role;
-          salary: salary
+        foundObj.roleID = aRole.id;
+        foundObj.roleName = role;
+        foundObj.salary = salary;
+        if(err)
+          console.log(err);
+        foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
-
-        }
+        });
       }
     };
 
