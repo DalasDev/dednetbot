@@ -69,7 +69,7 @@ module.exports.run = async (bot, message, args) => {
       console.log("We don`t have this role in the database" + err);
     else {
       if (foundObj === null){
-        var myData = new Salary({
+        var myData = new role_salary({
           roleID: aRole.id,
           roleName: role,
           salary: salary
