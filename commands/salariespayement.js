@@ -29,14 +29,14 @@ function paysomeone(user_obj, role_obj){
 
 function findroleowners(role){
 
-  var users = User.find().lean().exec(function(err, userstab) {
+  var users = User.find({roles:{$exists:true}}).lean().exec(function(err, userstab) {
 
     if(err)
       console.log(err);
     else{      
       var maxY = userstab.length;
+      console.log("Number of users with " + role +" role: " + maxY);
       var y = 0;
-      var text = ``;
       while(y < maxY){
         if(userstab[y].roles.includes(role.roleID))
           paysomeone(userstab[y], role);
