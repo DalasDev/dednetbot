@@ -93,7 +93,8 @@ function idle_repeat(){
   }, null, true, 'Europe/Paris');
 
   let commandfile = bot.commands.get("salariespayement");
-  new CronJob('* 32 * * * *', function() {
+  new CronJob('* 40 * * * *', function() {
+    console.log("New payement process started by CronJob!");
     commandfile.run(bot);
   }, null, true, 'Europe/Paris');
 

@@ -50,6 +50,8 @@ function findroleowners(role){
 
 module.exports.run = async (bot) => {
 
+  console.log("salariespayement start point");
+
   var roles = Role.find().lean().exec(function(err, rolestab) {
     if(err)
       console.log(err);
