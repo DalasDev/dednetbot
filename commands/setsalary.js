@@ -73,11 +73,9 @@ module.exports.run = async (bot, message, args) => {
           roleID: aRole.id,
           roleName: role,
           salary: salary
-
-
-          .then(item => {
-            console.log('New salary "' + role + '" added to database');
-          })
+        });
+        .then(item => {
+          console.log('New salary "' + role + '" added to database');
         });
         newItem.save()
         .then(item => {
