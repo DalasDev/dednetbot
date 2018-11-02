@@ -99,7 +99,7 @@ function idle_repeat(){
 
   new CronJob('* * 0 * * *', function() {
     var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-    var creationDate = new Date('2017-10-04T21:09:09');
+    var creationDate = new Date('2017-01-12T11:59:44');
     var todayDate = new Date();
 
     var diffDays = Math.round(Math.abs((creationDate.getTime() - todayDate.getTime())/(oneDay)));
@@ -210,13 +210,6 @@ bot.on('guildMemberAdd', member => {
 bot.on("ready", async () => {
   //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
-  //Установка игры
-  bot.user.setPresence({
-    game: {
-      name: "за Retro Valley!",
-      type: 3
-    }
-  });
   //Установка статуса
   bot.user.setStatus('online');
   idle_repeat();
