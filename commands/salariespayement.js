@@ -18,6 +18,7 @@ function paysomeone(user_obj, role_obj){
         console.log("Something stange happend");
       else {
         foundObj.retrocoinBank += role_obj.salary;
+        foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
         foundObj.save(function(err, updatedObj){
           if(err)
             console.log(err);
