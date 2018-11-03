@@ -17,7 +17,7 @@ var User = require('./schemas/user_model.js');
 var servers = {};
 var prefix = botconfig.prefix;
 
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
 var User = require('./../schemas/user_model.js');
 var Item = require('./../schemas/shop_model.js');
 
@@ -106,9 +106,9 @@ module.exports.run = async (bot, message, args) => {
 		return message.reply("у тебя нету 🐔");
 
 	//чекаем играл ли человек недавно в курочку
-	
+
 	if (user_obj.lastCF){
-	
+
 		var dateTime = Date.now();
 		var timestamp = Math.floor(dateTime/1000);
 		var timestampLimit = Math.floor(user_obj.lastCF/1000) + 15;

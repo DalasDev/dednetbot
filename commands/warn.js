@@ -3,7 +3,7 @@ const fs = require("fs");
 const ms = require("ms");
 var mongoose = require("mongoose");
 
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
 
 var Warn = require('./../schemas/warn_model.js');
 var User = require('./../schemas/user_model.js');

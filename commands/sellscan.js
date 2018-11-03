@@ -3,7 +3,7 @@ const fs = require("fs");
 const ms = require("ms");
 
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
 
 module.exports.run = async (bot, message, args) => {
 

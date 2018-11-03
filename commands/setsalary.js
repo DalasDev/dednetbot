@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;mongoose.connect("mongodb://root:retrobot2018@ds239071.mlab.com:39071/retrobotdb");
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
 var role_salary = require('./../schemas/role_model.js');
 
 module.exports.run = async (bot, message, args) => {
