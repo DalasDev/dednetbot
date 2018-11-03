@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
 				else if(plase == "cash"){
 					foundObj.retrocoinCash = foundObj.retrocoinCash + amount;
 					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
-					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} в банк!`).then(msg => msg.delete(10000));
+					message.channel.send(`Пользователю <@${muser.id}> добавлено ${amount}${retricIcon} на наличку!`).then(msg => msg.delete(10000));
 				}
 				else{
 					return message.reply("параметры не верны!").then(msg => msg.delete(10000));
