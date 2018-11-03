@@ -40,7 +40,7 @@ function findroleowners(role){
       var y = 0;
       while(y < maxY){
         if(userstab[y].roles.includes(role.roleID)){
-          console.log("Found a user with " + role.roleName + " role! It's " + userstab[y].displayName);
+          console.log(userstab[y].displayName + " только что получил " + role.salary + " за роль: " + role.roleName);
           paysomeone(userstab[y], role);
         }
         y++;
