@@ -17,6 +17,16 @@ function random(min, max) {
 
 module.exports.run = async (bot, message, args) => {
 
+	var shop_channel = message.guild.channels.find(`name`, "💸основное_экономика");
+
+	//🕵секретный_чат / 🍲комната_отдыха
+
+	if (message.channel.name != "💸основное_экономика" && message.channel.name != "🕵секретный_чат" && message.channel.name != "🍲комната_отдыха" && message.channel.name != "🌎general_bots"){
+		message.delete(3000);
+			return message.reply(`работать можно только в ${shop_channel}`).then(msg => msg.delete(10000));
+		}
+
+
 	var retricIcon = bot.emojis.find("name", "retric");
 	var simpleIcon = bot.emojis.find("name", "this_is_simple");
 
