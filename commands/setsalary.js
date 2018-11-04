@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   // if(!message.member.hasPermission("MANAGE_ROLES"))
   //   return;
-  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "🚨РетроТестер🚨"].includes(r.name)))
+  if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return message.reply("похоже у тебя нехватка прав!").then(msg => msg.delete(10000));
 
   message.delete().catch(O_o=>{});
