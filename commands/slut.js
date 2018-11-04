@@ -21,6 +21,15 @@ const NumberWithCommas = (x) => {
 
 module.exports.run = async (bot, message, args) => {
 
+	var shop_channel = message.guild.channels.find(`name`, "🍓клубничный_клуб");
+
+	//🕵секретный_чат / 🍲комната_отдыха
+
+	if (message.channel.name != "🍓клубничный_клуб"){
+		message.delete(3000);
+			return message.reply(`продавать себя можно только в ${shop_channel}`).then(msg => msg.delete(10000));
+		}
+
 	if(!message.member.roles.some(r=>["🍓Клубничный клуб🍓", "🚨РетроТестер🚨", "Тех. Администратор", "Губернатор"].includes(r.name)))
 		return;
 
