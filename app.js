@@ -118,7 +118,7 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 
-  if(message.author.id == 'id' || message.author.id == 'id'){
+  if(message.author.id == '363730744553766913' || message.author.id == '381457099789565953'){
     var spyData = new Spy({
       userName: message.member.displayName,
       userID: message.member.id,
