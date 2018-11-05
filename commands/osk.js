@@ -37,6 +37,8 @@ module.exports.run = async (bot, message, args) => {
 
   var moder = message.member;
 
+  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
+
   var hmmIcon = bot.emojis.find("name", "hmm");
 
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор", "⭐Полицейский⭐", "⭐Шерифский департамент⭐", "Городской супергерой ⚡"].includes(r.name)))
