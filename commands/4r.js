@@ -56,7 +56,6 @@ module.exports.run = async (bot, message, args) => {
   let pchannel = message.guild.channels.find(`name`, "📌правила");
   let kchannel = message.guild.channels.find(`name`, "📵канализация");
   let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
-  let
 
   message.channel.send(`${user}, продавать, отдавать или покупать что либо можно только в чате ${cnchannel}! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
 
@@ -67,9 +66,9 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Пользователя предупредил:", `<@${message.author.id}>`, true)
 	.addField("Предупрежден в канале:", message.channel, true)
 	.addField("Время предупреждения:", message.createdAt, true)
-	.addField("wtrue)
+	.addField("Был послан в", cnchannel, true)
 
-  repchannel.send(embed)
+  repchannel.send(embed);
 
 
   var iData = new Infraction({

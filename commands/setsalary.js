@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
   message.delete(3000);
   //лимит который нужно прописать во все комманды что бы никто другой пока что не использовал
   // if(!message.member.hasPermission("MANAGE_ROLES"))
-  //   return;
+  //Блааааааа.... Я тупой пиздец... Сорян))
   if(!message.member.roles.some(r=>["Тех. Администратор", "Губернатор"].includes(r.name)))
     return message.reply("похоже у тебя нехватка прав!").then(msg => msg.delete(10000));
 
@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
     return message.reply(`роль / зарплата`).then(msg => msg.delete(10000));
   var role = "";
   var salary = 0;
-  
+
   if(message.cleanContent.indexOf('"') > -1){
     role = message.cleanContent.split('"', 2).pop();
     role = message.cleanContent.split('"', 2).pop();
