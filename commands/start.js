@@ -13,20 +13,29 @@ module.exports.run = async (bot, message, args) => {
 
 	if (!message.member.roles.some(r=>["Тех. Администратор", "Ивент"].includes(r.name)))
 			return;
+			
+	let amount = 5000;
 
-  var user_obj = User.findOne({
-    userID: message.member.id
-  }, function (err, foundObj) {
-		var newCash = foundObj.retrocoinCash - 5000;
-		foundObj.retrocoinCash = newCash;
-		foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
-		foundObj.save(function(err, updatedObj){
-			if(err)
-				console.log(err);
-		});
-
-		message.reply("молодец, добро пожаловать")
-});
+	var user_obj = User.findOne({
+		userID: message.member.id
+	}, function (err, foundObj) {
+		if (err){
+			console.log("Error on database findOne: " + err);
+		}
+		else {
+			if (!foundObj)
+				console.log("Something stange happend");
+			else {
+					foundObj.retrocoinBank = foundObj.retrocoinBank - amount;
+					foundObj.retrocoinTotal = foundObj.retrocoinBank + foundObj.retrocoinCash;
+					message.channel.send(`молодец! Ты учавствуешь!`);
+				foundObj.save(function(err, updatedObj){
+					if(err)
+						console.log(err);
+				});
+			}
+		}
+	});
 
 module.exports.help = {
 	name: "start"
