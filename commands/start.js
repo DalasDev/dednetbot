@@ -22,3 +22,8 @@ foundObj.retrocoinCash = newCash;
 foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 }
 message.reply(молодец)
+}
+
+module.exports.help = {
+	name: "start"
+}
