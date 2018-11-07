@@ -21,6 +21,10 @@ var newCash = foundObj.retrocoinCash - 5000;
 foundObj.retrocoinCash = newCash;
 foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
 })
+foundObj.save(function(err, updatedObj){
+	if(err)
+		console.log(err);
+	}
 message.reply(молодец, добро пожаловать)
 }
 
