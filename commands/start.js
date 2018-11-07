@@ -17,10 +17,15 @@ module.exports.run = async (bot, message, args) => {
   var user_obj = User.findOne({
     userID: message.member.id
   }, function (err, foundObj) {
-		foundObj.retrocoinBank = foundObj.retrocoinBank - 5000;
-		foundObj.retrocoinTotal = foundObj.retrocoinBank +  foundObj.retrocoinCash;
-})
-		message.reply("молодец!");
+		var newCash = foundObj.retrocoinCash - 5000;
+		foundObj.retrocoinCash = newCash;
+		foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
+		foundObj.save(function(err, updatedObj){
+			if(err)
+				console.log(err);
+		});
+
+		message.reply("молодец, добро пожаловать")
 }
 
 module.exports.help = {
