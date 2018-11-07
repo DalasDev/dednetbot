@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
 		});
 
 		message.reply("молодец, добро пожаловать")
-}
+})
 
 module.exports.help = {
 	name: "start"
