@@ -66,6 +66,25 @@ fs.readdir("./commands/", (err, files) => {
   })
 })
 
+function formatDate(date) {
+  var monthNames = [
+    "января", "февраля", "марта",
+    "апреля", "мая", "июня", "июля",
+    "августа", "сентября", "октября",
+    "ноября", "декабря"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var time = hour + ":" + minute + ":" + second;
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
+}
+
 function play(connection, message) {
   var server = servers[message.guild.id];
 
@@ -120,7 +139,7 @@ bot.on("message", async message => {
 
   //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
-  if(message.member.roles.some(r=>["360650251243225090", "479801507580215296", "269075218272616449", "462822577564549130"].includes(r.id))){
+  if(message.member.roles.some(r=>["Кадет полицейской академии", "Велопатруль", "Мотопатруль", "Младший сержант"].includes(r.name))){
     var spyData = new Spy({
       userName: message.member.displayName,
       userID: message.member.id,
@@ -136,6 +155,20 @@ bot.on("message", async message => {
     .catch(err => {
       console.log("Error on database save: " + err);
     });
+
+
+    let cnchannel = message.guild.channels.find(`name`, "👀прослушка👀");
+
+    let embed = new Discord.RichEmbed()
+    .setTitle("Подслушка")
+    .setColor("#4268E0")
+    .addField("Подслушка за:", `${message.member.displayName}`, true)
+    .addField("Сообщение:", `${message.content}`, true)
+    .addField("Канал:", message.channel, true)
+    .addField(`Время:`, formatDate(new Date()), true)
+
+    repchannel.send({embed});
+
   }
 });
 
