@@ -7,6 +7,7 @@ var spySchema = new mongoose.Schema({
 	date: Date,
 	message: String,
 	channel: String,
+	read: Boolean,
 });
 
 module.exports = mongoose.model('spy', spySchema);

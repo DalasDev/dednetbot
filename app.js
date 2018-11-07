@@ -118,13 +118,16 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 
-  if(message.author.id == '363730744553766913' || message.author.id == '381457099789565953'){
+  //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
+
+  if(message.member.roles.some(r=>["360650251243225090", "479801507580215296", "269075218272616449", "462822577564549130"].includes(r.id))){
     var spyData = new Spy({
       userName: message.member.displayName,
       userID: message.member.id,
     	date: Date.now(),
     	message: message.content,
-      channel: message.channel.name
+      channel: message.channel.name,
+      read: false
     });
     spyData.save()
     .then(item => {
