@@ -20,8 +20,8 @@ module.exports.run = async (bot, message, args) => {
 var newCash = foundObj.retrocoinCash - 5000;
 foundObj.retrocoinCash = newCash;
 foundObj.retrocoinTotal = foundObj.retrocoinBank + newCash;
-});
 foundObj.save(function(err, updatedObj)
+});
 
 message.reply("молодец, добро пожаловать")
 }
