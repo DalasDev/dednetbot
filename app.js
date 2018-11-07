@@ -157,7 +157,7 @@ bot.on("message", async message => {
     });
 
 
-    let cnchannel = message.guild.channels.find(`name`, "👀прослушка👀");
+    let spychannel = message.guild.channels.find(`name`, "👀прослушка👀");
 
     let embed = new Discord.RichEmbed()
     .setTitle("Подслушка")
@@ -167,7 +167,7 @@ bot.on("message", async message => {
     .addField("Канал:", message.channel, true)
     .addField(`Время:`, formatDate(new Date()), true)
 
-    repchannel.send({embed});
+    spychannel.send({embed});
 
   }
 });
