@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
 
 	//🕵секретный_чат / 🍲комната_отдыха
 
-	if (!message.member.roles.some(r=>["Тех. Администратор", "Ивент"].includes(r.name)));
+	if (!message.member.roles.some(r=>["Тех. Администратор", "Ивент"].includes(r.name)))
 			return;
 
   var user_obj = User.findOne({
