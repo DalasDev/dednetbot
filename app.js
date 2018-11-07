@@ -113,6 +113,7 @@ function idle_repeat(){
 
   let commandfile = bot.commands.get("salariespayement");
   new CronJob('0 0 0 * * *', function() {
+    //запускается каждый раз когда на часах 0 секунд 0 минут и 0 часов, тоесть в полночь... Понял, сорян... Ща сделаю...
     console.log("New payement process started by CronJob!");
     commandfile.run(bot);
   }, null, true, 'Europe/Paris');
