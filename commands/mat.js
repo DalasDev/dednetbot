@@ -33,11 +33,7 @@ module.exports.run = async (bot, message, args) => {
 
   message.delete().catch(O_o=>{});
 
-  const bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-
   var moder = message.member;
-
-  let repchannel = message.guild.channels.find(`name`, "🌘reports_bots");
 
   var hmmIcon = bot.emojis.find("name", "hmm");
 
@@ -58,17 +54,6 @@ module.exports.run = async (bot, message, args) => {
   let pnchannel = message.guild.channels.find(`name`, "👋поиск_напарников");
 
   message.channel.send(`${user}, не матерись! И прочти пожалуйста ${pchannel} ${hmmIcon}`);
-
-  let embed = new Discord.RichEmbed()
-	.setTitle(":zap: ОТЧЕТ О ПРЕДУПРЕЖДЕНИИ :zap:")
-	.setColor("#DD5044")
-	.addField("Предупреждённый:", `${bUser}`, true)
-	.addField("Пользователя предупредил:", `<@${message.author.id}>`, true)
-	.addField("Предупрежден в канале:", message.channel, true)
-	.addField("Время предупреждения:", message.createdAt, true)
-	.addField("Был предупреждён за", "Мат", true)
-
-  repchannel.send(embed);
 
   var iData = new Infraction({
     infractionType: "mat",

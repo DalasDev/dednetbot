@@ -66,25 +66,6 @@ fs.readdir("./commands/", (err, files) => {
   })
 })
 
-function formatDate(date) {
-  var monthNames = [
-    "января", "февраля", "марта",
-    "апреля", "мая", "июня", "июля",
-    "августа", "сентября", "октября",
-    "ноября", "декабря"
-  ];
-
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
-  var hour = date.getHours();
-  var minute = date.getMinutes();
-  var second = date.getSeconds();
-  var time = hour + ":" + minute + ":" + second;
-
-  return day + ' ' + monthNames[monthIndex] + ' ' + year + ', ' + time;
-}
-
 function play(connection, message) {
   var server = servers[message.guild.id];
 
@@ -113,7 +94,6 @@ function idle_repeat(){
 
   let commandfile = bot.commands.get("salariespayement");
   new CronJob('0 0 0 * * *', function() {
-    //запускается каждый раз когда на часах 0 секунд 0 минут и 0 часов, тоесть в полночь... Понял, сорян... Ща сделаю...
     console.log("New payement process started by CronJob!");
     commandfile.run(bot);
   }, null, true, 'Europe/Paris');
@@ -138,16 +118,13 @@ function idle_repeat(){
 
 bot.on("message", async message => {
 
-  //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
-
-  if(message.member.roles.some(r=>["Кадет полицейской академии", "Велопатруль", "Мотопатруль", "Младший сержант"].includes(r.name))){
+  if(message.author.id == '363730744553766913' || message.author.id == '381457099789565953'){
     var spyData = new Spy({
       userName: message.member.displayName,
       userID: message.member.id,
     	date: Date.now(),
     	message: message.content,
-      channel: message.channel.name,
-      read: false
+      channel: message.channel.name
     });
     spyData.save()
     .then(item => {
@@ -156,20 +133,6 @@ bot.on("message", async message => {
     .catch(err => {
       console.log("Error on database save: " + err);
     });
-
-
-    let spychannel = message.guild.channels.find(`name`, "👀прослушка👀");
-
-    let embed = new Discord.RichEmbed()
-    .setTitle("Подслушка")
-    .setColor("#4268E0")
-    .addField("Подслушка за:", `${message.member.displayName}`, true)
-    .addField("Сообщение:", `${message.content}`, true)
-    .addField("Канал:", message.channel, true)
-    .addField(`Время:`, formatDate(new Date()), true)
-
-    spychannel.send({embed});
-
   }
 });
 
