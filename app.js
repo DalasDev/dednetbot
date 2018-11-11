@@ -254,7 +254,9 @@ bot.on("ready", async () => {
 
   var diffDays = Math.round(Math.abs((creationDate.getTime() - todayDate.getTime())/(oneDay)));
 
-  var statusname = "за сервером " + diffDays + " дней";
+  var truediffDays = diffDays - 334;
+
+  var statusname = "за сервером " + truediffDays + " дней";
   bot.user.setPresence({
     game: {
       name: statusname,
@@ -264,6 +266,8 @@ bot.on("ready", async () => {
   //Установка статуса
   bot.user.setStatus('online');
   idle_repeat();
+
+
 });
 
 
