@@ -107,6 +107,7 @@ bot.on('guildMemberAdd', member => {
 	.setTitle("Тестовый Embed")
 	.setColor("#DD5044")
 	.addField("Тест", `Тест2`, true)
+    .setFooter('Удачи!', member.user.avatarURL)
 
     channel.send({embed});
 
