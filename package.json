@@ -1,7 +1,7 @@
 {
-  "name": "RetroBot",
-  "description": "Retro Valley server bot",
-  "version": "1.0.1",
+  "name": "dednetbot",
+  "description": "DedNet server bot",
+  "version": "1.0",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -23,13 +23,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diskets/DalasBot.git"
+    "url": "git+https://github.com/diskets/dednetbot.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/diskets/DalasBot/issues"
+    "url": "https://github.com/diskets/dednetbot/issues"
   },
-  "homepage": "https://github.com/diskets/DalasBot#readme"
+  "homepage": "https://github.com/diskets/dednetbot#readme"
 }

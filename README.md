@@ -1,3 +1,3 @@
-# RetroValleyBot
+# DedNetBot
 
-Our Discord bot project for RetroValley server
+Our Discord bot project for DedNet server
