@@ -101,11 +101,25 @@ function idle_repeat(){
   //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
 bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('633756175615262730').send(':purple_heart: **' + member.user.username + '**, зашел на сервер! :purple_heart:');
+    let channel = member.guild.channels.get('633756175615262730');
+
+    let hiEmbed = new Discord.RichEmbed()
+    .setDescription(':city_sunset: **' + member.user.username + "**, зашел на сервер!")
+    .setColor("#4CAF50")
+    .setFooter('Поприветствуем!', member.user.avatarURL);
+
+    channel.send(hiEmbed);
 });
 
 bot.on('guildMemberRemove', member => {
-    member.guild.channels.get('633756175615262730').send(':broken_heart: **' + member.user.username + '**, покинул нас! :broken_heart:');
+    let channel = member.guild.channels.get('633756175615262730');
+
+    let biEmbed = new Discord.RichEmbed()
+    .setDescription(':city_dusk: **' + member.user.username + "**, покинул нас!")
+    .setColor("#f44336")
+    .setFooter('Удачи!', member.user.avatarURL);
+
+    channel.send(biEmbed);
 });
 
 //Выполняеться когда бот готов к работе
