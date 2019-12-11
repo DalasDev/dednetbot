@@ -101,26 +101,38 @@ function idle_repeat(){
   //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.get('633756175615262730');
+    let channel = member.guild.channels.get('633756171110711306');
 
-    let hiEmbed = new Discord.RichEmbed()
-        .setTitle(':city_sunset: **' + member.user.username + "**, зашел на сервер!")
-        .setColor("#4CAF50")
-        .setFooter('Поприветствуем!', member.user.avatarURL);
+    const exampleEmbed = new Discord.RichEmbed()
+    	.setColor('#0099ff')
+    	.setTitle('Some title')
+    	.setURL('https://discord.js.org/')
+    	.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+    	.setDescription('Some description here')
+    	.setThumbnail('https://i.imgur.com/wSTFkRM.png')
+    	.addField('Regular field title', 'Some value here')
+    	.addBlankField()
+    	.addField('Inline field title', 'Some value here', true)
+    	.addField('Inline field title', 'Some value here', true)
+    	.addField('Inline field title', 'Some value here', true)
+    	.setImage('https://i.imgur.com/wSTFkRM.png')
+    	.setTimestamp()
+    	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
-    channel.send({hiEmbed});
+    channel.send({exampleEmbed});
+
 });
 
-bot.on('guildMemberRemove', member => {
-    let channel = member.guild.channels.get('633756175615262730');
-
-    let biEmbed = new Discord.RichEmbed()
-        .setTitle(':city_dusk: **' + member.user.username + "**, покинул нас!")
-        .setColor("#f44336")
-        .setFooter('Удачи!', member.user.avatarURL);
-
-    channel.send({biEmbed});
-});
+// bot.on('guildMemberRemove', member => {
+//     let channel = member.guild.channels.get('633756171110711306');
+//
+//     let biEmbed = new Discord.RichEmbed()
+//         .setTitle(':city_dusk: **' + member.user.username + "**, покинул нас!")
+//         .setColor("#f44336")
+//         .setFooter('Удачи!', member.user.avatarURL);
+//
+//     channel.send({biEmbed});
+// });
 
 //Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
