@@ -108,7 +108,7 @@ bot.on('guildMemberAdd', member => {
         .setColor("#4CAF50")
         .setFooter('Поприветствуем!', member.user.avatarURL);
 
-    channel.send(hiEmbed);
+    channel.send({hiEmbed});
 });
 
 bot.on('guildMemberRemove', member => {
@@ -117,9 +117,9 @@ bot.on('guildMemberRemove', member => {
     let biEmbed = new Discord.RichEmbed()
         .setDescription(':city_dusk: **' + member.user.username + "**, покинул нас!")
         .setColor("#f44336")
-        .setFooter('Удачи!', "https://i.imgur.com/wSTFkRM.png");
+        .setFooter('Удачи!', member.user.avatarURL);
 
-    channel.send(biEmbed);
+    channel.send({biEmbed});
 });
 
 //Выполняеться когда бот готов к работе
