@@ -107,7 +107,7 @@ bot.on('guildMemberAdd', member => {
     	.setColor("#4CAF50")
         .setAuthor(member.user.username + ", зашел на сервер!", member.user.avatarURL)
         .setTimestamp()
-        .setDescription("Поприветствуем!")
+        .setDescription("Приветствуем, желаем всего самого хорошего и приятной игры на сервере!")
 
     channel.send({embed});
 });
@@ -119,7 +119,7 @@ bot.on('guildMemberRemove', member => {
     	.setColor("#f44336")
         .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
         .setTimestamp()
-        .setDescription("Удачи!")
+        .setDescription("Удачи, надеемся что Вы к нам еще вернетесь!")
 
     channel.send({embed});
 });
