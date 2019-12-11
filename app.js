@@ -104,24 +104,24 @@ bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.get('633756171110711306');
 
     let embed = new Discord.RichEmbed()
-    	.setTitle(":city_sunset: **" + member.user.username + "**, покинул нас!")
+    	.setTitle(":city_sunset: **" + member.user.username + "**, зашел на сервер!")
     	.setColor("#4CAF50")
-        .setFooter('Удачи!', member.user.avatarURL)
+        .setFooter('Поприветствуем!', member.user.avatarURL)
 
     channel.send({embed});
 
 });
 
-// bot.on('guildMemberRemove', member => {
-//     let channel = member.guild.channels.get('633756171110711306');
-//
-//     let biEmbed = new Discord.RichEmbed()
-//         .setTitle(':city_dusk: **' + member.user.username + "**, покинул нас!")
-//         .setColor("#f44336")
-//         .setFooter('Удачи!', member.user.avatarURL);
-//
-//     channel.send({biEmbed});
-// });
+bot.on('guildMemberRemove', member => {
+    let channel = member.guild.channels.get('633756171110711306');
+
+    let embed = new Discord.RichEmbed()
+    	.setTitle(":city_dusk: **" + member.user.username + "**, покинул нас!")
+    	.setColor("#f44336")
+        .setFooter('Удачи!', member.user.avatarURL)
+
+    channel.send({embed});
+});
 
 //Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
