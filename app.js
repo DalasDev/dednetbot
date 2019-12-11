@@ -101,11 +101,11 @@ function idle_repeat(){
   //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
 bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('493288106699653123').send(':purple_heart: **' + member.user.username + '**, зашел на сервер! :purple_heart:');
+    member.guild.channels.get('633756175615262730').send(':purple_heart: **' + member.user.username + '**, зашел на сервер! :purple_heart:');
 });
 
 bot.on('guildMemberRemove', member => {
-    member.guild.channels.get('493288106699653123').send(':broken_heart: **' + member.user.username + '**, покинул нас! :broken_heart:');
+    member.guild.channels.get('633756175615262730').send(':broken_heart: **' + member.user.username + '**, покинул нас! :broken_heart:');
 });
 
 //Выполняеться когда бот готов к работе
