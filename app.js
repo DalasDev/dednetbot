@@ -108,18 +108,19 @@ bot.on('guildMemberAdd', member => {
     .setColor("#4CAF50")
     .setFooter('Поприветствуем!', member.user.avatarURL);
 
-    channel.send(hiEmbed);
+    // channel.send(hiEmbed);
+    channel.send("Test");
 });
 
 bot.on('guildMemberRemove', member => {
     let channel = member.guild.channels.get('633756175615262730');
 
-    let biEmbed = new Discord.RichEmbed()
-    .setDescription(':city_dusk: **' + member.user.username + "**, покинул нас!")
-    .setColor("#f44336")
-    .setFooter('Удачи!', member.user.avatarURL);
+    // let biEmbed = new Discord.RichEmbed()
+    // .setDescription(':city_dusk: **' + member.user.username + "**, покинул нас!")
+    // .setColor("#f44336")
+    // .setFooter('Удачи!', member.user.avatarURL);
 
-    channel.send(biEmbed);
+    channel.send("Test");
 });
 
 //Выполняеться когда бот готов к работе
