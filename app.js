@@ -104,20 +104,21 @@ bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.get('633756171110711306');
 
     let embed = new Discord.RichEmbed()
-    	.setTitle(":city_sunset: **" + member.user.username + "**, зашел на сервер!")
     	.setColor("#4CAF50")
+        .setAuthor(":city_sunset: **" + member.user.username + "**, зашел на сервер!", member.user.avatarURL)
+        .setTimestamp()
         .setFooter('Поприветствуем!', member.user.avatarURL)
 
     channel.send({embed});
-
 });
 
 bot.on('guildMemberRemove', member => {
     let channel = member.guild.channels.get('633756171110711306');
 
     let embed = new Discord.RichEmbed()
-    	.setTitle(":city_dusk: **" + member.user.username + "**, покинул нас!")
     	.setColor("#f44336")
+        .setAuthor(":city_dusk: **" + member.user.username + "**, покинул нас!", member.user.avatarURL)
+        .setTimestamp()
         .setFooter('Удачи!', member.user.avatarURL)
 
     channel.send({embed});
