@@ -104,10 +104,9 @@ bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.get('633756171110711306');
 
     let embed = new Discord.RichEmbed()
-	.setTitle("Тестовый Embed")
-	.setColor("#DD5044")
-	.addField("Тест", `Тест2`, true)
-    .setFooter('Удачи!', member.user.avatarURL)
+    	.setTitle(":city_sunset: **" + member.user.username + "**, покинул нас!")
+    	.setColor("#4CAF50")
+        .setFooter('Удачи!', member.user.avatarURL)
 
     channel.send({embed});
 
