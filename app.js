@@ -119,7 +119,7 @@ bot.on('guildMemberRemove', member => {
     	.setColor("#f44336")
         .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
         .setTimestamp()
-        .setDescription("Удачи, надеемся что Вы к нам еще вернетесь!")
+        .setDescription("Удачи, надеемся что Вы к нам еще вернетесь :heart:")
 
     channel.send({embed});
 });
