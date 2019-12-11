@@ -103,23 +103,12 @@ function idle_repeat(){
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.get('633756171110711306');
 
-    const exampleEmbed = new Discord.RichEmbed()
-    	.setColor('#0099ff')
-    	.setTitle('Some title')
-    	.setURL('https://discord.js.org/')
-    	.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-    	.setDescription('Some description here')
-    	.setThumbnail('https://i.imgur.com/wSTFkRM.png')
-    	.addField('Regular field title', 'Some value here')
-    	.addBlankField()
-    	.addField('Inline field title', 'Some value here', true)
-    	.addField('Inline field title', 'Some value here', true)
-    	.addField('Inline field title', 'Some value here', true)
-    	.setImage('https://i.imgur.com/wSTFkRM.png')
-    	.setTimestamp()
-    	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+    let embed = new Discord.RichEmbed()
+	.setTitle("Тестовый Embed")
+	.setColor("#DD5044")
+	.addField("Тест", `Тест2`, true)
 
-    channel.send({exampleEmbed});
+    channel.send({embed});
 
 });
 
