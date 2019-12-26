@@ -119,7 +119,7 @@ function idle_repeat(){
   //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.get('633756171110711306');
+    let channel = member.guild.channels.get('633756175615262730');
 
     let embed = new Discord.RichEmbed()
     	.setColor("#4CAF50")
@@ -131,7 +131,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('guildMemberRemove', member => {
-    let channel = member.guild.channels.get('633756171110711306');
+    let channel = member.guild.channels.get('633756175615262730');
 
     let embed = new Discord.RichEmbed()
     	.setColor("#f44336")
