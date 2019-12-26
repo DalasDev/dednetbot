@@ -2,12 +2,30 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+const express = require('express');
+const exphbs = require('express-handlebars');
+const app = express();
 const ms = require("ms");
+const YTDL = require("ytdl-core");
 const isUrl = require("is-url");
 var CronJob = require('cron').CronJob;
+var router = express.Router();
+var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
+var Spy = require('./schemas/spy_model.js');
+var User = require('./schemas/user_model.js');
 var servers = {};
 var prefix = botconfig.prefix;
+
+mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+app.set('view engine', 'handlebars');
+
+var warns = require('./public/warnings.json');
+
+app.use(express.static('public'));
 
 // app.use("/", (req, res) => {
 //  res.sendFile(__dirname + "/public/index.html");
