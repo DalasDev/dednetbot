@@ -91,12 +91,12 @@ function idle_repeat(){
     cronindex++;
   }, null, true, 'Europe/Paris');
 
-  let commandfile = bot.commands.get("salariespayement");
-  new CronJob('0 0 0 * * *', function() {
-    //запускается каждый раз когда на часах 0 секунд 0 минут и 0 часов, тоесть в полночь... Понял, сорян... Ща сделаю...
-    console.log("New payement process started by CronJob!");
-    commandfile.run(bot);
-  }, null, true, 'Europe/Paris');
+  // let commandfile = bot.commands.get("salariespayement");
+  // new CronJob('0 0 0 * * *', function() {
+  //   //запускается каждый раз когда на часах 0 секунд 0 минут и 0 часов, тоесть в полночь... Понял, сорян... Ща сделаю...
+  //   console.log("New payement process started by CronJob!");
+  //   commandfile.run(bot);
+  // }, null, true, 'Europe/Paris');
 
   new CronJob('* * 0 * * *', function() {
     var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
