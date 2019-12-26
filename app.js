@@ -23,7 +23,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
-var warns = require('./public/warnings.json');
+var warns = require('./warnings.json');
 
 app.use(express.static('public'));
 
