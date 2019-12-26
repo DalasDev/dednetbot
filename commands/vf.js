@@ -9,10 +9,10 @@ module.exports.run = async (bot, message, args) => {
 
   var server = args[1];
   var nickname = args.join(" ").slice(22);
-  if(!server)
-    return message.reply("Команда введена неверно! Пример: !vf [Имя] [Сервер]");
-  if(!nickname)
-    return message.reply("Команда введена неверно! Пример: !vf [Имя] [Сервер]");
+  // if(!server)
+  //   return message.reply("Команда введена неверно! Пример: !vf [Имя] [Сервер]");
+  // if(!nickname)
+  //   return message.reply("Команда введена неверно! Пример: !vf [Имя] [Сервер]");
 
     message.channel.send(server+" "+nickname);
 
