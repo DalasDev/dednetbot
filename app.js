@@ -1,65 +1,24 @@
-const botconfig = require("./botconfig.json");
-const Discord = require("discord.js");
-const fs = require("fs");
-const bot = new Discord.Client({disableEveryone: true});
-const express = require('express');
-const exphbs = require('express-handlebars');
-const app = express();
 const ms = require("ms");
-const YTDL = require("ytdl-core");
-const isUrl = require("is-url");
 var CronJob = require('cron').CronJob;
-var router = express.Router();
-var mongoose = require("mongoose");
-bot.commands = new Discord.Collection();
-var Spy = require('./schemas/spy_model.js');
-var User = require('./schemas/user_model.js');
-var servers = {};
-var prefix = botconfig.prefix;
+const {CronJob} = require('cron');
+const {prefix} = require('./botconfig.json');
+const {Core,Mongo} = require('discore.js');
 
-mongoose.Promise = global.Promise;mongoose.connect(process.env.MONGO_URL);
-
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-
-app.set('view engine', 'handlebars');
-
-var warns = require('./warnings.json');
-
-app.use(express.static('public'));
-
-// app.use("/", (req, res) => {
-//  res.sendFile(__dirname + "/public/index.html");
-// });
-
-// GET роут
-// app.get('/', function (req, res) {
-//   app.use('/', indexpage);
-// });
-
-// app.get('/warnings', function (req, res) {
-//   app.use('/warnings', warns);
-// });
-
-// POST роут
-// app.post('/', function (req, res) {
-//   res.send('/public/main/index.html');
-// });
-
-fs.readdir("./commands/", (err, files) => {
-  if (err)
-    console.log(err);
-  let jsfile = files.filter(f => f.split(".").pop() === "js");
-  if (jsfile.length <= 0) {
-    console.log("[app.js] Команды не найдены");
-    return;
-  }
-
-  jsfile.forEach((f, i) => {
-    let props = require(`./commands/${f}`);
-    console.log(`[app.js] Комманда ${f} загружена`);
-    bot.commands.set(props.help.name, props);
+const db = new Mongo(process.env.MONGO_URL)
+  .addModel('users', {
+    id: {type: Mongo.Types.String, default: undefined},
+    username: {type: Mongo.Types.String, default: undefined}
   })
-})
+
+new Core({
+  token: process.env.BOT_TOKEN,
+  prefix: "!",
+  spaceAfterPrefix: true,
+  mentionPrefix: false,
+  splitArgs: / +/g,
+  disableEveryone: true,
+  db
+});
 
 function formatDate(date) {
   var monthNames = [
@@ -115,32 +74,6 @@ function idle_repeat(){
   }, null, true, 'Europe/Paris');
 
 }
-
-  //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
-
-bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.get('633756175615262730');
-
-    let embed = new Discord.RichEmbed()
-    	.setColor("#4CAF50")
-        .setAuthor(member.user.username + ", зашел на сервер!", member.user.avatarURL)
-        .setTimestamp()
-        .setDescription("Приветствуем, желаем всего самого хорошего и приятной игры на сервере!")
-
-    channel.send({embed});
-});
-
-bot.on('guildMemberRemove', member => {
-    let channel = member.guild.channels.get('633756175615262730');
-
-    let embed = new Discord.RichEmbed()
-    	.setColor("#f44336")
-        .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
-        .setTimestamp()
-        .setDescription("Удачи, надеемся что Вы к нам еще вернетесь :heart:")
-
-    channel.send({embed});
-});
 
 //Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
