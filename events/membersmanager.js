@@ -8,9 +8,9 @@ const memberAdd = class extends Event {
   run(member) {
       if(this.client.db.users.collection.find(d => d.id === member.user.id)){
           let channel = member.guild.channels.get('633756175615262730');
-      
+
           let embed = new Embed()
-              .setColor("#4CAF50")
+              .setColor("#EABD35")
               .setAuthor(member.user.username + ", зашел на сервер!", member.user.avatarURL)
               .setTimestamp()
               .setDescription(member.user.username + " вернулся на сервер! С возвращением!")
