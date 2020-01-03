@@ -30,16 +30,16 @@ module.exports = class extends Command {
 
 
       if(bstatus == 'online'){
-        bot.user.setStatus('online');
+        this.client.user.setStatus('online');
 
       }else if(bstatus == 'idle'){
-        bot.user.setStatus('idle');
+        this.client.user.setStatus('idle');
 
       }else if(bstatus == 'invisible' || bstatus == 'invis'){
-        bot.user.setStatus('invisible');
+        this.client.user.setStatus('invisible');
 
       }else if(bstatus == 'dnd'){
-        bot.user.setStatus('dnd');
+        this.client.user.setStatus('dnd');
 
       }else{
         return message.reply("не верный статус! (online/idle/invis/dnd)");
