@@ -8,7 +8,7 @@ const memberAdd = class extends Event {
   run(member) {
     const col = this.client.db.getCollection('users');
 
-    message.guild.fetchInvites().then(invites => {
+    member.guild.fetchInvites().then(invites => {
       // Поиск использованного инвайта
       const userinvites = col.data.map(i => ({ code: i.invitelink, uses: i.invitecount }));
       const uicodes = userinvites.map(i => i.code);
