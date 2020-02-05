@@ -10,7 +10,7 @@ const memberAdd = class extends Event {
 
     message.guild.fetchInvites().then(invites => {
       // Поиск использованного инвайта
-      const userinvites = col.data.map(i => { code: i.invitelink, uses: i.invitecount });
+      const userinvites = col.data.map(i => ({ code: i.invitelink, uses: i.invitecount }));
       const uicodes = userinvites.map(i => i.code);
       invites = invites.filter(i => uicodes.includes(i.code));
       const invite = invites.find(i => i.uses > userinvites.find(ui => ui.code === i.code).uses);

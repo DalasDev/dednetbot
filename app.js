@@ -25,6 +25,7 @@ new Core({
     argsSeparator: / +/g,
   },
   disableEveryone: true,
+  mobile: true,
   db
 });
 
