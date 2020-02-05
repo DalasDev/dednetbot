@@ -17,7 +17,8 @@ module.exports = class extends Command {
 
   run(message, args) {
     const dbcol = this.client.db.getCollection('users');
-    const invites = dbcol.filter(i => message.guild.members.map(m => m.id).includes(i.id));
+    const invites = dbcol.data.filter(i => message.guild.members.map(m => m.id).includes(i.id));
+    console.log(invites);
     const inviters = invites
       .filter(i => typeof i.invitelink === 'string')
       .map(i => {
