@@ -6,7 +6,7 @@ const memberAdd = class extends Event {
   }
 
   run(member) {
-      if(this.client.db.users.collection.find(d => d.id === member.user.id)){
+      if(this.client.db.getCollection('users').findOne(d => d.id === member.user.id)){
           let channel = member.guild.channels.get('633756175615262730');
 
           let embed = new Embed()
@@ -28,7 +28,7 @@ const memberAdd = class extends Event {
 
           channel.send({embed});
 
-          this.client.db.users.upsertOne({id: member.user.id}, {username: member.user.username});
+          this.client.db.getCollection('users').upsertOne({id: member.user.id}, {username: member.user.username});
       }
   }
 };

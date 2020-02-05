@@ -6,15 +6,24 @@ const {Core,Mongo} = require('discore.js');
 const db = new Mongo(process.env.MONGO_URL)
   .addModel('users', {
     id: {type: Mongo.Types.String, default: undefined},
-    username: {type: Mongo.Types.String, default: undefined}
-  })
+    username: {type: Mongo.Types.String, default: undefined},
+    invitelink: {type: Mongo.Types.String, default: undefined},
+    invitecount: {type: Mongo.Types.Number, default: 0},
+    invitedbyid: {type: Mongo.Types.String, default: undefined},
+  });
+
+  // npm i zargovv/discore.js -S
 
 new Core({
   token: process.env.BOT_TOKEN,
   prefix: "!",
-  spaceAfterPrefix: true,
-  mentionPrefix: false,
-  splitArgs: / +/g,
+  prefixOptions: {
+    spaceSeparator: true,
+    mention: true,
+  },
+  commandOptions: {
+    argsSeparator: / +/g,
+  },
   disableEveryone: true,
   db
 });
