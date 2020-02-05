@@ -18,7 +18,6 @@ module.exports = class extends Command {
   run(message, args) {
     const dbcol = this.client.db.getCollection('users');
     const invites = dbcol.data.filter(i => message.guild.members.map(m => m.id).includes(i.id));
-    console.log(invites);
     const inviters = invites
       .filter(i => typeof i.invitelink === 'string')
       .map(i => {
@@ -27,7 +26,9 @@ module.exports = class extends Command {
         return m;
       })
       .filter(m => m.invitecount > 0);
-    console.log(inviters.map(m => ({ id: m.id, uses: m.invitecount })));
+
+    const sorted = inviters.sort((b, a) => a.invitecount - b.invitecount);
+    message.channel.send(sorted.map(m => m.displayName + ' инвайтов: ' + m.invitecount));
   }
 
   disabledRun(message, args) {
