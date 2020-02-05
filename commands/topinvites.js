@@ -25,7 +25,7 @@ module.exports = class extends Command {
         m.invitecount = invites.filter(inv => inv.invitedbyid === i.id).size;
         return m;
       })
-      .filter(m => invitecount > 0);
+      .filter(m => m.invitecount > 0);
     console.log(inviters.map(m => ({ id: m.id, uses: m.invitecount })));
   }
 
