@@ -15,7 +15,7 @@ const ready = class extends Event {
         invitedbyid: undefined,
     })), (err, res) => {
       if (err) return console.error(err);
-      console.log('1');
+      console.log('Юзеры добавлены');
     });
 
     //Консоль лог что бот онлайн
