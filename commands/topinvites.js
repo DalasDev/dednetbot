@@ -32,8 +32,8 @@ module.exports = class extends Command {
     const embed = new Embed()
       .setAuthor(message.guild.name, message.guild.iconURL)
       .setColor(0x03a9f4)
-      .setDescription(sorted.slice(10).map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`).join('\n'))
-      .setFooter(`Ваша позиция в топе: ${authorindex + 1}. Кол-во инвайтов: ${sorted[authorindex].invitecount}`);
+      .setDescription(sorted.slice(0, 10).map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`).join('\n'))
+      .setFooter(`Ваша позиция в топе: ${authorindex + 1}. Кол-во инвайтов: ${sorted[authorindex] ? sorted[authorindex].invitecount : sorted.length}`);
     message.channel.send(embed);
   }
 
