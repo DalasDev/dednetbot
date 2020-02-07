@@ -1,4 +1,4 @@
-const {Command} = require('discore.js');
+const {Command, Embed} = require('discore.js');
 
 module.exports = class extends Command {
   get options() {
@@ -28,7 +28,13 @@ module.exports = class extends Command {
       .filter(m => m.invitecount > 0);
 
     const sorted = inviters.sort((b, a) => a.invitecount - b.invitecount);
-    message.channel.send(sorted.map(m => m.displayName + ' инвайтов: ' + m.invitecount));
+    const authorindex = sorted.findIndex(m => m.id === message.author.id)
+    const embed = new Embed()
+      .setAuthor(message.guild.name, message.guild.iconURL)
+      .setColor(0x03a9f4)
+      .setDescription(sorted.slice(10).map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`).join('\n'))
+      .setFooter(`Ваша позиция в топе: ${authorindex + 1}. Кол-во инвайтов: ${sorted[authorindex].invitecount}`);
+    message.channel.send(embed);
   }
 
   disabledRun(message, args) {

@@ -7,6 +7,17 @@ const ready = class extends Event {
   }
 
   run() {
+    // this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
+    //     id: m.id,
+    //     username: m.displayName,
+    //     invitelink: undefined,
+    //     invitecount: 0,
+    //     invitedbyid: undefined,
+    // })), (err, res) => {
+    //   if (err) return console.error(err);
+    //   console.log('1');
+    // });
+
     //Консоль лог что бот онлайн
     console.log(`[app.js] ${this.client.user.username} онлайн`);
     //Установка игр
