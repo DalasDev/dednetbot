@@ -53,11 +53,11 @@ const actions = class extends Event {
         const userinvite = invites.get(userinfo.invitelink);
         if (typeof userinfo.invitelink !== 'string' && !userinvite) {
           console.log(
-            `Ссылка пользователя ${userinfo.id} была удалена. Старая ссылка: discord.gg/${userinfo.invitelink}`
+            `Ссылка пользователя ${userinfo.id} была удалена. Старая ссылка: https://discord.gg/${userinfo.invitelink}`
           );
         }
         if (typeof userinfo.invitelink === 'string' && userinvite) {
-          const msgTemplate = `У вас уже имеется ссылка: discord.gg/${userinfo.invitelink}`;
+          const msgTemplate = `У вас уже имеется ссылка: https://discord.gg/${userinfo.invitelink}`;
           return user.send(msgTemplate).catch(() => channel.send(msgTemplate));
         }
         channel
@@ -68,7 +68,7 @@ const actions = class extends Event {
             unique: true,
           })
           .then(invite => {
-            const msgTemplate = `Ваша ссылка: discord.gg/${invite.code}`;
+            const msgTemplate = `Ваша ссылка: https://discord.gg/${invite.code}`;
             this.client.db
               .getCollection('users')
               .upsertOne({ id: user.id }, { invitelink: invite.code });
