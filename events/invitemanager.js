@@ -39,7 +39,7 @@ const actions = class extends Event {
     if (!['657711692461113385', '657630604971737144'].includes(emojiId)) return;
     const user = this.client.users.get(packet.d.user_id);
     const channel = this.client.channels.get(packet.d.channel_id);
-    if (emojiId === '657711692461113385') {
+    if (emojiId === '657630604971737144') {
       const userinfo = this.client.db
         .getCollection('users')
         .getOne({ id: user.id });
@@ -70,7 +70,7 @@ const actions = class extends Event {
           });
       });
     }
-    if (emojiId === '657630604971737144') {
+    if (emojiId === '657711692461113385') {
       const dbcol = this.client.db.getCollection('users');
       const invites = dbcol.data.filter(i =>
         channel.guild.members.map(m => m.id).includes(i.id)
