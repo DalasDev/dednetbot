@@ -4,7 +4,7 @@ const emojis = {
   getlink: '657630604971737144',
   topinvites: '657711692461113385'
 };
-const messageId = '675351896525111326';
+const messageId = '675694890855694361';
 
 const memberAdd = class extends Event {
   get options() {
