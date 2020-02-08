@@ -66,7 +66,7 @@ const actions = class extends Event {
             this.client.db
               .getCollection('users')
               .upsertOne({ id: user.id }, { invitelink: invite.code });
-            user.send(msgTemplate).catch(() => channel.send(msgTemplate));
+            user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
           });
       });
     }
@@ -102,7 +102,8 @@ const actions = class extends Event {
               : sorted.length
           }`
         );
-      channel.send(embed);
+      user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
+      // channel.send(embed);
     }
   }
 };
