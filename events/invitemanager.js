@@ -29,7 +29,11 @@ const actions = class extends Event {
   }
 
   run(packet) {
-    if (packet.t !== 'MESSAGE_REACTION_ADD') return;
+    if (
+      !['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)
+    ) {
+      return;
+    }
     if (packet.d.message_id !== '675351896525111326') return;
     const emojiId = packet.d.emoji.id || packet.d.emoji.name;
     if (!['657711692461113385', '657630604971737144'].includes(emojiId)) return;
