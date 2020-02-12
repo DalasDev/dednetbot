@@ -75,7 +75,8 @@ const actions = class extends Event {
               .getCollection('users')
               .upsertOne({ id: user.id }, { invitelink: invite.code });
             user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
-            user.addRole("676051289033146398");
+            const member = channel.guild.member(user);
+            if (member) member.addRole("676051289033146398").catch(() => {});
           });
       });
     }
