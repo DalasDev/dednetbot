@@ -102,14 +102,13 @@ const actions = class extends Event {
             .join('\n')
         )
         .setFooter(
-          `Ваша позиция в топе: ${authorindex + 1}. Кол-во инвайтов: ${
-            sorted[authorindex]
-              ? sorted[authorindex].invitecount
-              : sorted.length
+          `Ваша позиция в топе: ${
+            authorindex < 0 ? sorted.length : authorindex + 1
+          }. Кол-во инвайтов: ${
+            sorted[authorindex] ? sorted[authorindex].invitecount : 0
           }`
         );
       user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
-      // channel.send(embed);
     }
   }
 };
