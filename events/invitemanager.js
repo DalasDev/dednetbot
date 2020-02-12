@@ -13,7 +13,10 @@ const memberAdd = class extends Event {
 
   run(member) {
     const col = this.client.db.getCollection('users');
-
+    if(this.client.db.getCollection('users').findOne(d => d.id === member.user.id)){
+        console.log("Инвайт не засчитан так как человек есть в дб");
+        return;
+    }
     member.guild.fetchInvites().then(invites => {
       // Поиск использованного инвайта
       const userinvites = col.data.map(i => ({ code: i.invitelink, uses: i.invitecount || 0 }));
@@ -73,6 +76,7 @@ const actions = class extends Event {
               .getCollection('users')
               .upsertOne({ id: user.id }, { invitelink: invite.code });
             user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
+            user.addRole("676051289033146398");
           });
       });
     }
