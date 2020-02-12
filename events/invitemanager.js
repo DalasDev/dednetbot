@@ -13,7 +13,7 @@ const memberAdd = class extends Event {
 
   run(member) {
     const col = this.client.db.getCollection('users');
-    if(this.client.db.getCollection('users').findOne(d => d.id === member.user.id)){
+    if(this.client.db.getCollection('users').findOne(d => d.id === member.id)){
         return console.log("Инвайт не засчитан так как человек есть в дб");
     }
     member.guild.fetchInvites().then(invites => {
