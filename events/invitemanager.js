@@ -48,6 +48,8 @@ const actions = class extends Event {
     const user = this.client.users.get(packet.d.user_id);
     const channel = this.client.channels.get(packet.d.channel_id);
     if (emojiId === emojis.getlink) {
+      const member = channel.guild.member(user);
+      if (member) member.addRole("676051289033146398").catch(() => {});
       const userinfo = this.client.db
         .getCollection('users')
         .getOne({ id: user.id });
@@ -61,8 +63,6 @@ const actions = class extends Event {
         if (typeof userinfo.invitelink === 'string' && userinvite) {
           const msgTemplate = `У вас уже имеется ссылка: https://discord.gg/${userinfo.invitelink}`;
           return user.send(msgTemplate).catch(() => channel.send(msgTemplate));
-          const member = channel.guild.member(user);
-          if (member) member.addRole("676051289033146398").catch(() => {});
         }
         channel
           .createInvite({
@@ -77,8 +77,6 @@ const actions = class extends Event {
               .getCollection('users')
               .upsertOne({ id: user.id }, { invitelink: invite.code });
             user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
-            const member = channel.guild.member(user);
-            if (member) member.addRole("676051289033146398").catch(() => {});
           });
       });
     }
