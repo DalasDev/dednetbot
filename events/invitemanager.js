@@ -62,7 +62,7 @@ const actions = class extends Event {
         }
         if (typeof userinfo.invitelink === 'string' && userinvite) {
           const msgTemplate = `У вас уже имеется ссылка: https://discord.gg/${userinfo.invitelink}`;
-          return user.send(msgTemplate).catch(() => channel.send(msgTemplate));
+          return user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
         }
         channel
           .createInvite({
