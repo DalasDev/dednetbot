@@ -14,7 +14,7 @@ const memberAdd = class extends Event {
   run(member) {
     try {
       const col = this.client.db.getCollection('users');
-      if (col.findOne({ id: member.id }){
+      if (col.findOne({ id: member.id })){
         console.log(`Инвайт не засчитан т.к. участник есть в бд: ${member.id}`);
         return;
       }
