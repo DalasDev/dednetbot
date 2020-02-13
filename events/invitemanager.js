@@ -14,10 +14,10 @@ const memberAdd = class extends Event {
   run(member) {
     try {
       const col = this.client.db.getCollection('users');
-      if (col.findOne({ id: member.id })){
-        console.log(`Инвайт не засчитан т.к. участник есть в бд: ${member.id}`);
-        return;
-      }
+      // if (col.findOne({ id: member.id })){
+      //   console.log(`Инвайт не засчитан т.к. участник есть в бд: ${member.id}`);
+      //   return;
+      // }
       member.guild.fetchInvites().then(invites => {
         // Поиск использованного инвайта
         const userinvites = col.data.map(i => ({ code: i.invitelink, uses: i.invitecount || 0 }));
