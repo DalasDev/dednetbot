@@ -21,8 +21,8 @@ const ready = class extends Event {
   }
 
   run() {
-    if (this.client.db.connection.readyState === 1) r(this.client);
-    else this.client.db.connection.on('connected', () => r(this.client));
+    // if (this.client.db.connection.readyState === 1) r(this.client);
+    // else this.client.db.connection.on('connected', () => r(this.client));
     // this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
     //     id: m.id,
     //     username: m.displayName,
