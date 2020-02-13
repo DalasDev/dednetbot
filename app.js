@@ -10,6 +10,7 @@ const db = new Mongo(process.env.MONGO_URL)
     invitelink: {type: Mongo.Types.String, default: undefined},
     invitecount: {type: Mongo.Types.Number, default: 0},
     invitedbyid: {type: Mongo.Types.String, default: undefined},
+    toadd: {type: Mongo.Types.Number, default: 0},
   });
 
   // npm i zargovv/discore.js -S

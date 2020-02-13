@@ -30,7 +30,7 @@ const memberAdd = class extends Event {
         col.updateOne({ id: inviterinfo.id }, { invitecount: invite.uses });
         col.upsertOne({ id: member.id }, { invitedbyid: inviterinfo.id });
       });
-    } catch(e) { }
+  } catch(e) {console.log('invitemanager.33', e)}
   }
 };
 
@@ -96,7 +96,8 @@ const actions = class extends Event {
           .filter(i => typeof i.invitelink === 'string')
           .map(i => {
             const m = channel.guild.member(i.id);
-            m.invitecount = invites.filter(inv => inv.invitedbyid === i.id).size;
+            let toadd = i.toadd ? i.toadd : 0;
+            m.invitecount = invites.filter(inv => inv.invitedbyid === i.id).size + toadd;
             return m;
           })
           .filter(m => m.invitecount > 0);
@@ -121,7 +122,7 @@ const actions = class extends Event {
           );
         user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
       }
-    } catch (e) {}
+  } catch (e) {console.log('invitemanager.125', e)}
   }
 };
 
