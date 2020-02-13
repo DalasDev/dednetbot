@@ -115,7 +115,7 @@ const actions = class extends Event {
           )
           .setFooter(
             `Ваша позиция в топе: ${
-              authorindex < 0 ? sorted.length : authorindex + 1
+              (authorindex < 0 ? sorted.length : authorindex) + 1
             }. Кол-во инвайтов: ${
               sorted[authorindex] ? sorted[authorindex].invitecount : 0
             }`
