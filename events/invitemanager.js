@@ -112,37 +112,37 @@ const actions = class extends Event {
               .slice(0, 50)
               .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('1 Mess');
+        ).catch(() => console.log('1 Mess'));
         user.send(
             sorted
               .slice(50, 100)
               .map((m, i) => `**${i + 51}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('2 Mess');
+        ).catch(() => console.log('2 Mess'));
         user.send(
             sorted
               .slice(100, 150)
               .map((m, i) => `**${i + 101}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('3 Mess');
+        ).catch(() => console.log('3 Mess'));
         user.send(
             sorted
               .slice(150, 200)
               .map((m, i) => `**${i + 151}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('4 Mess');
+        ).catch(() => console.log('4 Mess'));
         user.send(
             sorted
               .slice(200, 250)
               .map((m, i) => `**${i + 201}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('5 Mess');
+        ).catch(() => console.log('5 Mess'));
         user.send(
             sorted
               .slice(250, 300)
               .map((m, i) => `**${i + 251}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
-        ).catch(() => console.log('6 Mess');
+        ).catch(() => console.log('6 Mess'));
         // const embed = new Embed()
         //   .setAuthor(channel.guild.name, channel.guild.iconURL)
         //   .setColor(0x03a9f4)
