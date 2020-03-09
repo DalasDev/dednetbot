@@ -109,7 +109,7 @@ const actions = class extends Event {
           .setColor(0x03a9f4)
           .setDescription(
             sorted
-              .slice(0, 10)
+              .slice(0, 300)
               .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
               .join('\n')
           )
