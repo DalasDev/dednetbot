@@ -105,11 +105,12 @@ const actions = class extends Event {
         const sorted = inviters.sort((b, a) => a.invitecount - b.invitecount);
         const authorindex = sorted.findIndex(m => m.id === user.id);
         const embed = new Embed()
+
           .setAuthor(channel.guild.name, channel.guild.iconURL)
           .setColor(0x03a9f4)
           .setDescription(
             sorted
-              .slice(0, 300)
+              .slice(0, 10)
               .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
               .join('\n')
           )
