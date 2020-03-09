@@ -104,24 +104,29 @@ const actions = class extends Event {
 
         const sorted = inviters.sort((b, a) => a.invitecount - b.invitecount);
         const authorindex = sorted.findIndex(m => m.id === user.id);
-        const embed = new Embed()
-
-          .setAuthor(channel.guild.name, channel.guild.iconURL)
-          .setColor(0x03a9f4)
-          .setDescription(
+        user.send(
             sorted
-              .slice(0, 10)
+              .slice(0, 300)
               .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
               .join('\n')
-          )
-          .setFooter(
-            `Ваша позиция в топе: ${
-              (authorindex < 0 ? sorted.length : authorindex) + 1
-            }. Кол-во инвайтов: ${
-              sorted[authorindex] ? sorted[authorindex].invitecount : 0
-            }`
-          );
-        user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
+        );
+        // const embed = new Embed()
+        //   .setAuthor(channel.guild.name, channel.guild.iconURL)
+        //   .setColor(0x03a9f4)
+        //   .setDescription(
+        //     sorted
+        //       .slice(0, 10)
+        //       .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
+        //       .join('\n')
+        //   )
+        //   .setFooter(
+        //     `Ваша позиция в топе: ${
+        //       (authorindex < 0 ? sorted.length : authorindex) + 1
+        //     }. Кол-во инвайтов: ${
+        //       sorted[authorindex] ? sorted[authorindex].invitecount : 0
+        //     }`
+        //   );
+        // user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
       }
   } catch (e) {console.log('invitemanager.125', e)}
   }
