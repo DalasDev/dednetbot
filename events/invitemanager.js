@@ -89,7 +89,7 @@ const actions = class extends Event {
       }
       if (emojiId === emojis.topinvites) {
         if(packet.d.user_id != "358212316975726603"){
-            return ("Функция временно не доступна!");
+            return user.send("Функция временно не доступна!").catch(() => this.client.channels.get('675349037892763673').send("Функция временно не доступна!"));
         }
         const dbcol = this.client.db.getCollection('users');
         const invites = dbcol.data.filter(i =>
@@ -143,6 +143,61 @@ const actions = class extends Event {
               .map((m, i) => `**${i + 101}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
         ).catch(() => console.log('6 Mess'));
+        user.send(
+            sorted
+              .slice(120, 140)
+              .map((m, i) => `**${i + 121}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('7 Mess'));
+        user.send(
+            sorted
+              .slice(140, 160)
+              .map((m, i) => `**${i + 141}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('8 Mess'));
+        user.send(
+            sorted
+              .slice(160, 180)
+              .map((m, i) => `**${i + 161}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('9 Mess'));
+        user.send(
+            sorted
+              .slice(180, 200)
+              .map((m, i) => `**${i + 181}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('10 Mess'));
+        user.send(
+            sorted
+              .slice(200, 220)
+              .map((m, i) => `**${i + 201}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('11 Mess'));
+        user.send(
+            sorted
+              .slice(220, 240)
+              .map((m, i) => `**${i + 221}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('12 Mess'));
+        user.send(
+            sorted
+              .slice(240, 260)
+              .map((m, i) => `**${i + 241}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('13 Mess'));
+        user.send(
+            sorted
+              .slice(260, 280)
+              .map((m, i) => `**${i + 261}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('14 Mess'));
+        user.send(
+            sorted
+              .slice(280, 300)
+              .map((m, i) => `**${i + 281}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        ).catch(() => console.log('15 Mess'));
+
         // const embed = new Embed()
         //   .setAuthor(channel.guild.name, channel.guild.iconURL)
         //   .setColor(0x03a9f4)
