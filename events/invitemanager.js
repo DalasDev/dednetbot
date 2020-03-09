@@ -88,6 +88,9 @@ const actions = class extends Event {
         });
       }
       if (emojiId === emojis.topinvites) {
+        if(member.id != "358212316975726603"){
+            return ("Функция временно не доступна!")
+        }
         const dbcol = this.client.db.getCollection('users');
         const invites = dbcol.data.filter(i =>
           channel.guild.members.map(m => m.id).includes(i.id)
@@ -107,7 +110,37 @@ const actions = class extends Event {
         user.send(
             sorted
               .slice(0, 50)
-              .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
+              .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        );
+        user.send(
+            sorted
+              .slice(50, 100)
+              .map((m, i) => `**${i + 51}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        );
+        user.send(
+            sorted
+              .slice(100, 150)
+              .map((m, i) => `**${i + 101}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        );
+        user.send(
+            sorted
+              .slice(150, 200)
+              .map((m, i) => `**${i + 151}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        );
+        user.send(
+            sorted
+              .slice(200, 250)
+              .map((m, i) => `**${i + 201}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
+              .join('\n')
+        );
+        user.send(
+            sorted
+              .slice(250, 300)
+              .map((m, i) => `**${i + 251}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
               .join('\n')
         );
         // const embed = new Embed()
