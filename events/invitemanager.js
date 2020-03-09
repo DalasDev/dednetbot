@@ -106,7 +106,7 @@ const actions = class extends Event {
         const authorindex = sorted.findIndex(m => m.id === user.id);
         user.send(
             sorted
-              .slice(0, 300)
+              .slice(0, 100)
               .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
               .join('\n')
         );
