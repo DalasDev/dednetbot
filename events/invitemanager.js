@@ -88,8 +88,8 @@ const actions = class extends Event {
         });
       }
       if (emojiId === emojis.topinvites) {
-        if(member.id != "358212316975726603"){
-            return ("Функция временно не доступна!")
+        if(packet.d.user_id != "358212316975726603"){
+            return ("Функция временно не доступна!");
         }
         const dbcol = this.client.db.getCollection('users');
         const invites = dbcol.data.filter(i =>
