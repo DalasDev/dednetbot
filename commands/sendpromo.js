@@ -21,7 +21,7 @@ module.exports = class extends Command {
     let id = args[0];
     let promo = args[1];
     message.delete().catch(O_o=>{});
-    this.client.users.get(id).send("Привет! Вот твой персональный промокод:" + promo + " \n Этот код вы можете ввести при регистрации, а так же в самой игре \n M - Настройки - Промокод");
+    this.client.users.get(id).send("Привет! Вот твой персональный промокод:" + promo + " \n Благодаря нему вы получите деньги на старте игры, а так же VIP статус. \n Этот код вы можете ввести при регистрации, а так же в самой игре \n M - Настройки - Промокод");
   }
 
   disabledRun(message, args) {
