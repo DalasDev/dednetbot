@@ -41,6 +41,7 @@ const ready = class extends Event {
 
     //Консоль лог что бот онлайн
     console.log(`[app.js] ${this.client.user.username} онлайн`);
+    const channel = this.client.channels.get("633756167600078849");
     const user = this.client.users.get("523018741764718615");
     channel.guild.member(user).addRole("676051289033146398");
     //Установка игр
