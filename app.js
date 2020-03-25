@@ -26,7 +26,6 @@ new Core({
   db
 });
 
-//
 // function formatDate(date) {
 //   var monthNames = [
 //     "января", "февраля", "марта",

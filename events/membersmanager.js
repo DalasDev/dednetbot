@@ -5,8 +5,10 @@ const memberAdd = class extends Event {
     return {name: 'guildMemberAdd'};
   }
 
-  run(member) {
-      if(this.client.db.getCollection('users').findOne(d => d.id === member.user.id)){
+  async run(member) {
+    const users = this.client.db.getCollection('users');
+    const user = await users.findOne({ id: member.id });
+      if (user) {
           // let channel = member.guild.channels.get('633756175615262730');
           //
           // let embed = new Embed()
@@ -17,7 +19,7 @@ const memberAdd = class extends Event {
           //     // .setDescription("Приветствуем, желаем всего самого хорошего и приятной игры на сервере!")
           //
           // channel.send({embed});
-      }else{
+      } else {
           // let channel = member.guild.channels.get('633756175615262730');
           //
           // let embed = new Embed()
@@ -27,18 +29,17 @@ const memberAdd = class extends Event {
           //     .setDescription("Приветствуем, желаем всего самого хорошего и приятной игры на сервере!")
           //
           // channel.send({embed});
-          const collection = this.client.db.getCollection('users');
-          const data = collection.getData();
+          const data = await users.getData();
           const serverid = data.array().sort((b, a) => +a.serverid - +b.serverid)[0].serverid;
           const id = (Number(serverid) || 0) + 1;
 
-          this.client.db.getCollection('users').upsertOne({id: member.user.id}, {username: member.user.username}, {serverid: id});
+          users.upsertOne({id: member.id}, {username: member.user.username, serverid: String(id)});
           member.setNickname(`Anonim #${id}`);
-
       }
   }
 };
-
+// Открывай
+//Там еще appjd 
 const memberRemove = class extends Event {
   get options() {
     return {name: 'guildMemberRemove'};
