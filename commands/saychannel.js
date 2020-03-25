@@ -36,4 +36,5 @@ module.exports = class extends Command {
   init() {
     console.log(`Команда ${this.name} загружена!`);
   }
+ }
 };
