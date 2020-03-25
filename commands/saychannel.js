@@ -16,7 +16,7 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    if(!['358212316975726603'].includes(message.member.id));
+    if(!['358212316975726603'].includes(message.member.id))
       return;
     const id = args.shift();
     const content = args.join(' ');
