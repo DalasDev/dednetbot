@@ -28,12 +28,12 @@ const memberAdd = class extends Event {
           //
           // channel.send({embed});
           const collection = this.client.db.getCollection('users');
-          const data = await collection.getData();
+          const data = collection.getData();
           const serverid = data.array().sort((b, a) => +a.serverid - +b.serverid)[0].serverid;
           const id = (Number(serverid) || 0) + 1;
 
           this.client.db.getCollection('users').upsertOne({id: member.user.id}, {username: member.user.username}, {serverid: id});
-          member.user.setNickname(`Anonim #${id}`);
+          member.setNickname(`Anonim #${id}`);
 
       }
   }
