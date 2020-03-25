@@ -1,8 +1,8 @@
 const {Event} = require('discore.js');
 const {CronJob} = require('cron');
 //
-// function r(client) {
-//   const { db } = client;
+function r(client) {
+  const { db } = client;
 //   const col = db.getCollection('users');
 //   col.fetch().then(docs => {
 //     docs = docs.filter(e => e.invitecount > 0);
