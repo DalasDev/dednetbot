@@ -1,4 +1,4 @@
-const {Event, Embed} = require('discore.js');
+const {Event, Embed, Mongo} = require('discore.js');
 
 const memberAdd = class extends Event {
   get options() {
@@ -27,8 +27,14 @@ const memberAdd = class extends Event {
           //     .setDescription("Приветствуем, желаем всего самого хорошего и приятной игры на сервере!")
           //
           // channel.send({embed});
+          const collection = this.client.db.getCollection('users');
+          const data = await collection.getData();
+          const serverid = data.array().sort((b, a) => +a.serverid - +b.serverid)[0].serverid;
+          const id = (Number(serverid) || 0) + 1;
 
-          this.client.db.getCollection('users').upsertOne({id: member.user.id}, {username: member.user.username}, );
+          this.client.db.getCollection('users').upsertOne({id: member.user.id}, {username: member.user.username}, {serverid: id});
+          member.user.setNickname(`Anonim #${id}`);
+
       }
   }
 };
