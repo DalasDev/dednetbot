@@ -10,7 +10,7 @@
     "bootstrap": "^4.1.3",
     "cron": "^1.7.2",
     "discord.js": "^11.1.0",
-    "discore.js": "github:zargovv/discore.js",
+    "discore.js": "^1.0.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "is-url": "^1.2.4",
