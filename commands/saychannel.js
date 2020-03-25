@@ -21,7 +21,7 @@ module.exports = class extends Command {
     const id = args.shift();
     const content = args.join(' ');
     message.delete().catch(O_o=>{});
-    const channel = this.client.channels.get(id);
+    const channel = this.client.channels.cache.get(id);
     channel.send(content);
 
 
