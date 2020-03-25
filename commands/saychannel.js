@@ -4,7 +4,7 @@ module.exports = class extends Command {
   get options() {
     return {
       enabled: true,
-      name: 'sendpromo',
+      name: 'saychannel',
       id: undefined,
       cooldown: 0,
       aliases: [],
@@ -16,13 +16,14 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    if(!message.member.roles.some(r=>["Discord NPC Developer", "Technical Admin"].includes(r.name)))
+    if(!message.member.roles.some(r=>["358212316975726603"].includes(r.id)))
       return;
-    let id = args[0];
-    let promo = args[1];
+    const id = args.shift();
+    const content = args.join(' ');
     message.delete().catch(O_o=>{});
-    this.client.users.get(id).send("Привет! Вот твой персональный промокод: " + "**" + promo + "**" + " \n Благодаря нему вы получите деньги на старте игры, а так же VIP статус. \n Этот код вы можете ввести при регистрации, а так же в самой игре \n M - Настройки - Промокод");
-  }
+    const channel = this.client.channels.get(id);
+    channel.send(content);
+
 
   disabledRun(message, args) {
     message.channel.send('Команда выключена.');
