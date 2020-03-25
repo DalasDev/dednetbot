@@ -24,6 +24,7 @@ module.exports = class extends Command {
     const channel = this.client.channels.cache.get(id);
     channel.send(content);
 
+  }
 
   disabledRun(message, args) {
     message.channel.send('Команда выключена.');
@@ -36,5 +37,4 @@ module.exports = class extends Command {
   init() {
     console.log(`Команда ${this.name} загружена!`);
   }
- }
 };
