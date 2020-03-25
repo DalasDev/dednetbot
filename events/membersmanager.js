@@ -35,11 +35,13 @@ const memberAdd = class extends Event {
 
           users.upsertOne({id: member.id}, {username: member.user.username, serverid: String(id)});
           member.setNickname(`Anonim #${id}`);
+          member.user.addRole("692329306831061092");
+
       }
   }
 };
 // Открывай
-//Там еще appjd 
+//Там еще appjd
 const memberRemove = class extends Event {
   get options() {
     return {name: 'guildMemberRemove'};
