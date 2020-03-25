@@ -16,7 +16,7 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    if(!message.member.roles.some(r=>["358212316975726603"].includes(r.id)))
+    if(!message.member.id.some(r=>["358212316975726603"].includes(r.id)))
       return;
     const id = args.shift();
     const content = args.join(' ');
