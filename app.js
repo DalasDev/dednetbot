@@ -7,10 +7,7 @@ const db = new Mongo(process.env.MONGO_URL)
   .addModel('users', {
     id: {type: Mongo.Types.String, default: undefined},
     username: {type: Mongo.Types.String, default: undefined},
-    invitelink: {type: Mongo.Types.String, default: undefined},
-    invitecount: {type: Mongo.Types.Number, default: 0},
-    invitedbyid: {type: Mongo.Types.String, default: undefined},
-    toadd: {type: Mongo.Types.Number, default: 0},
+    serverid: {type: Mongo.Types.String, default: undefined},
   });
 
   // npm i zargovv/discore.js -S

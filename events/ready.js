@@ -21,19 +21,19 @@ const ready = class extends Event {
   }
 
   run() {
-    // if (this.clsient.db.connection.readyState === 1) r(this.client);
-    // else this.client.db.connection.on('connected', () => r(this.client));
-    // ---------------------------------------------------------------------
-    // this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
-    //     id: m.id,
-    //     username: m.displayName,
-    //     invitelink: undefined,
-    //     invitecount: 0,
-    //     invitedbyid: undefined,
-    // })), (err, res) => {
-    //   if (err) return console.error(err);
-    //   console.log('Юзеры добавлены');
-    // });
+    if (this.clsient.db.connection.readyState === 1) r(this.client);
+    else this.client.db.connection.on('connected', () => r(this.client));
+    ---------------------------------------------------------------------
+    this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
+        id: m.id,
+        username: m.displayName,
+        invitelink: undefined,
+        invitecount: 0,
+        invitedbyid: undefined,
+    })), (err, res) => {
+      if (err) return console.error(err);
+      console.log('Юзеры добавлены');
+    });
 
 
 
@@ -46,7 +46,7 @@ const ready = class extends Event {
     // const user = this.client.users.get("523018741764718615");
     // channel.guild.member(user).addRole("676051289033146398");
     //Установка игр
-    var statusname = "за сервером DedNet";
+    var statusname = "за DEEPWEB";
     this.client.user.setPresence({
       game: {
         name: statusname,
