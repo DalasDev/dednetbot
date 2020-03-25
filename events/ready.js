@@ -45,7 +45,7 @@ const ready = class extends Event {
     //Установка игр
     var statusname = "за DEEPWEB";
     this.client.user.setPresence({
-      game: {
+      activity: {
         name: statusname,
         type: 3
       }
