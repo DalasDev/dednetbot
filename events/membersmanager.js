@@ -40,8 +40,6 @@ const memberAdd = class extends Event {
       }
   }
 };
-// Открывай
-//Там еще appjd
 const memberRemove = class extends Event {
   get options() {
     return {name: 'guildMemberRemove'};
