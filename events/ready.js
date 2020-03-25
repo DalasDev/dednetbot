@@ -1,8 +1,8 @@
 const {Event} = require('discore.js');
 const {CronJob} = require('cron');
 //
-function r(client) {
-  const { db } = client;
+// function r(client) {
+//   const { db } = client;
 //   const col = db.getCollection('users');
 //   col.fetch().then(docs => {
 //     docs = docs.filter(e => e.invitecount > 0);
@@ -21,8 +21,8 @@ const ready = class extends Event {
   }
 
   run() {
-    if (this.clsient.db.connection.readyState === 1) r(this.client);
-    else this.client.db.connection.on('connected', () => r(this.client));
+    // if (this.clsient.db.connection.readyState === 1) r(this.client);
+    // else this.client.db.connection.on('connected', () => r(this.client));
     // ---------------------------------------------------------------------
     this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
         id: m.id,
