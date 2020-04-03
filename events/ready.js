@@ -43,7 +43,7 @@ const ready = class extends Event {
     // const user = this.client.users.get("523018741764718615");
     // channel.guild.member(user).addRole("676051289033146398");
     //Установка игр
-    var statusname = "за DEEPWEB";
+    var statusname = "за BENNYS";
     this.client.user.setPresence({
       activity: {
         name: statusname,
