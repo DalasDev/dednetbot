@@ -4,7 +4,7 @@ module.exports = class extends Command {
   get options() {
     return {
       enabled: true,
-      name: 'saychannel',
+      name: 'sc',
       id: undefined,
       cooldown: 0,
       aliases: [],
@@ -16,8 +16,8 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    // if(!message.member.roles.some(r=>["Owner", "Administrator"].includes(r.name)))
-    //   return;
+        if(!message.member.roles.some(r=>["Owner", "Administrator"].includes(r.name)))
+          return;
     const id = args.shift();
     const content = args.join(' ');
     message.delete().catch(O_o=>{});
