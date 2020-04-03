@@ -16,9 +16,9 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    if(!['358212316975726603', '523018741764718615'].includes(message.member.id))
+    if(!message.member.roles.some(r=>["Owner", "Administrator"].includes(r.name)))
         return;
-    const id = args.shift();
+    const id = args.shift();ы
     const content = args.join(' ');
     message.delete().catch(O_o=>{});
     const channel = this.client.channels.cache.get(id);
