@@ -49,20 +49,20 @@ app.use(express.static("public"));
 
 const invites = {};
 
-client.on("ready", async () => {
-  client.guilds.cache.forEach((g) => {
+bot.on("ready", async () => {
+  bot.guilds.cache.forEach((g) => {
     g.fetchInvites().then((guildInvites) => {
       invites[g.id] = guildInvites;
     });
   });
 });
 
-client.on("guildMemberAdd", async (member) => {
+bot.on("guildMemberAdd", async (member) => {
   member.guild.fetchInvites().then(async (guildInvites) => {
     const ei = invites[member.guild.id];
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find((i) => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.cache.get(invite.inviter.id);
+    const inviter = bot.users.cache.get(invite.inviter.id);
 
     const user =
       (await Member.findOne({ id: member.id })) ||
