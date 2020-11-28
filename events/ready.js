@@ -1,19 +1,19 @@
 const {Event} = require('discore.js');
 const {CronJob} = require('cron');
 //
-// function r(client) {
-//   const { db } = client;
-//   const col = db.getCollection('users');
-//   col.fetch().then(docs => {
-//     docs = docs.filter(e => e.invitecount > 0);
-//     docs.forEach(doc => {
-//       const s = docs.filter(inv => inv.invitedbyid === doc.id).size;
-//       try {
-//         col.updateOne({ id: doc.id }, { toadd: doc.invitecount - s });
-//       } catch (e) {}
-//     });
-//   });
-// }
+function r(client) {
+  const { db } = client;
+  const col = db.getCollection('users');
+  col.fetch().then(docs => {
+    docs = docs.filter(e => e.invitecount > 0);
+    docs.forEach(doc => {
+      const s = docs.filter(inv => inv.invitedbyid === doc.id).size;
+      try {
+        col.updateOne({ id: doc.id }, { toadd: doc.invitecount - s });
+      } catch (e) {}
+    });
+  });
+}
 
 const ready = class extends Event {
   get options() {
