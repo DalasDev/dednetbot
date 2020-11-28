@@ -7,10 +7,10 @@ module.exports.run = async (bot, message, args) => {
 
   let x = 0;
   message.guild.members.cache
-    .filter((x) => x.roles.cache.has("705855637854355487"))
+    .filter((x) => x.roles.cache.has("649071264077578270"))
     .forEach((m) => {
       setTimeout(() => {
-        m.send("ЭТА РЕКЛАМА ТЕПЕРЬ И В ЛС!!\n ВУХУУУ, МИНУС 3").catch((e) =>
+        m.send("Это тестовое сообщение").catch((e) =>
           console.log(e)
         );
       }, x);
