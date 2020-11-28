@@ -1,8 +1,8 @@
 const {Event, Embed} = require('discore.js');
 
 const emojis = {
-  getlink: '782176808862220289',
-  topinvites: '782176910313521182'
+  getlink: '🔗',
+  topinvites: '🔝'
 };
 const messageId = '782164620898336778';
 
