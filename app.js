@@ -110,6 +110,5 @@ bot.on("ready", async () => {
   });
   //Установка статуса
   bot.user.setStatus("online");
-  idle_repeat();
 });
 bot.login(process.env.BOT_TOKEN);
