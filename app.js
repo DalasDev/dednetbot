@@ -188,7 +188,7 @@ bot.on("message", async (message) => {
 });
 
 bot.on("guildMemberRemove", (member) => {
-  message.guild.channels.cache
+  member.guild.channels.cache
     .get("782192035775774770")
     .send(`${member.tag} ливнул с сервера`);
 });
