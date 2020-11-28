@@ -12,6 +12,11 @@ var CronJob = require("cron").CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
+mongoose.connect(
+  "mongodb://DedNetAdmin:R3trobot@alamodb-shard-00-00.p7te8.mongodb.net:27017,alamodb-shard-00-01.p7te8.mongodb.net:27017,alamodb-shard-00-02.p7te8.mongodb.net:27017/AlamoDB?ssl=true&replicaSet=atlas-w5664i-shard-0&authSource=admin&retryWrites=true&w=majority",
+  { useNewUrlParser: true }
+);
+
 var Spy = require("./schemas/spy_model.js");
 var User = require("./schemas/user_model.js");
 const Member = require("./schemas/member");
@@ -19,7 +24,6 @@ var servers = {};
 var prefix = botconfig.prefix;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URL);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 
@@ -49,37 +53,35 @@ app.use(express.static("public"));
 
 const invites = {};
 
-bot.on("ready", async () => {
-  bot.guilds.cache.forEach((g) => {
-    g.fetchInvites().then((guildInvites) => {
-      invites[g.id] = guildInvites;
-    });
-  });
-});
-
 bot.on("guildMemberAdd", async (member) => {
   member.guild.fetchInvites().then(async (guildInvites) => {
     const ei = invites[member.guild.id];
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find((i) => ei.get(i.code).uses < i.uses);
     const inviter = bot.users.cache.get(invite.inviter.id);
+    const inv = member.guild.members.cache.get(inviter.id);
 
     const user =
       (await Member.findOne({ id: member.id })) ||
       new Member({ id: member.id, displayName: member.displayName });
-    if (user.inviter) return;
-    user.inviter = inviter.id;
     const mem =
       (await Member.findOne({ id: inviter.id })) ||
-      new Member({ id: inviter.id, displayName: inviter.displayName });
+      new Member({ id: inviter.id, displayName: inv.displayName });
+
     mem.invites++;
-    mem.save().catch((e) => {});
-    user.save().catch((e) => {});
+
     member.guild.channels.cache
       .get("782192035775774770")
       .send(
-        `${member.user.tag} зашел по ссылке ${invite.code}, которая принадлежит ${inviter.tag}. Было испольовано ${invite.uses} раз.`
+        `${member.user.tag} зашел по ссылке ${invite.code}, которая принадлежит ${inviter.tag}. Было испольовано ${mem.invites} раз.`
       );
+
+    if (user.inviter) return;
+
+    user.inviter = inviter.id;
+    mem.members.push(member.id);
+    mem.save().catch((e) => {});
+    user.save().catch((e) => {});
   });
 });
 
@@ -174,6 +176,21 @@ function idle_repeat() {
   );
 }
 
+bot.on("message", async (message) => {
+  if (message.channel.type === "dm") return;
+
+  if (message.content.charAt(0) === prefix) {
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    var args = messageArray.slice(1);
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+
+    if (commandfile) {
+      commandfile.run(bot, message, args);
+    }
+  }
+});
+
 //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
 // bot.on("guildMemberAdd", (member) => {
@@ -193,20 +210,16 @@ function idle_repeat() {
 //   channel.send({ embed });
 // });
 
-bot.on("guildMemberRemove", (member) => {
-  let channel = member.guild.channels.get("633756175615262730");
-
-  let embed = new Discord.RichEmbed()
-    .setColor("#f44336")
-    .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
-    .setTimestamp()
-    .setDescription("Удачи, надеемся что Вы к нам еще вернетесь :heart:");
-
-  channel.send({ embed });
-});
-
 //Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
+  setTimeout(() => {
+    bot.guilds.cache.forEach((g) => {
+      g.fetchInvites().then((guildInvites) => {
+        invites[g.id] = guildInvites;
+      });
+    });
+  }, 1000);
+
   //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
   //Установка игр
@@ -221,4 +234,4 @@ bot.on("ready", async () => {
   bot.user.setStatus("online");
   idle_repeat();
 });
-bot.login(process.env.BOT_TOKEN);
+bot.login("Njc0MjA2OTgyMjk0NDcwNjcx.XjlOLg.sNnT7dqfB1C0otcZx4vcj1HgyaY");
