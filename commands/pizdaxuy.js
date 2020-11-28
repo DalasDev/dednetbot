@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
   let x = 0;
   message.guild.members.cache
-    .filter((x) => x.roles.cache.has("649071264077578270"))
+    .filter((x) => x.roles.cache.has("705855637854355487"))
     .forEach((m) => {
       setTimeout(() => {
         m.send({
