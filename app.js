@@ -190,7 +190,7 @@ bot.on("message", async (message) => {
 bot.on("guildMemberRemove", (member) => {
   member.guild.channels.cache
     .get("782192035775774770")
-    .send(`${member.tag} ливнул с сервера`);
+    .send(`${member.user.tag} ливнул с сервера`);
 });
 //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
 
