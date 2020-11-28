@@ -2,9 +2,6 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.cache.some(r=>["Fredbot"].includes(r.name)))
-    return;
-
   let x = 0;
   message.guild.members.cache
     .filter((x) => x.roles.cache.has("649071264077578270"))
@@ -19,5 +16,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "pizda"
+  name: "pizdaxuy"
 }
