@@ -58,6 +58,7 @@ bot.on("guildMemberAdd", async (member) => {
     const inviter = bot.users.cache.get(invite.inviter.id);
     const inv = member.guild.members.cache.get(inviter.id);
 
+    if (inviter.id == "247022049476870144") return;
     const user =
       (await Member.findOne({ id: member.id })) ||
       new Member({ id: member.id, displayName: member.displayName });
