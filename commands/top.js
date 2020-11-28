@@ -1,15 +1,22 @@
 const Member = require("../schemas/member");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
   const mem = await Member.findOne({ id: message.member.id });
   const top = await Member.find().sort({ invites: -1 }).limit(10);
 
-  let num = await Member.find({ $gte: mem.invites }).countDocuments();
+  let num = await Member.find({
+    invites: { $gte: mem.invites },
+  }).countDocuments();
   if (mem) {
-    const less = await Member.find({ $lte: mem.invites })
+    var less = await Member.find({
+      invites: { $lte: mem.invites - 1 },
+    })
       .sort({ invites: -1 })
       .limit(2);
-    var gr = await Member.find({ $gte: mem.invites })
+    var gr = await Member.find({
+      invites: { $gte: mem.invites + 1 },
+    })
       .sort({ invites: 1 })
       .limit(2);
     gr = gr.reverse();
@@ -23,17 +30,23 @@ module.exports.run = async (bot, message, args) => {
 
   embed.addField(
     "Топ 10",
-    top.map((x) => `${y++}. ${x.displayName} - ${x.invites} приглашений\n`)
+    top.map(
+      (x) => `**${y++}.** \`\`${x.displayName}\`\` - ${x.invites} приглашений`
+    )
   );
 
-  let text = mem
-    ? your.map((x) => `${y++}. ${x.displayName} - ${x.invites} приглашений\n`)
-    : "Тебя нет в датабазе";
-
+  let first = gr || [];
+  let second = less || [];
   if (mem) {
-    var your = [...gr, mem, ...less];
-    y = num - 2;
+    var your = [...first, mem, ...second];
+    y = num - first.length;
   }
+
+  let text = mem
+    ? your.map(
+        (x) => `**${y++}.** \`\`${x.displayName}\`\` - ${x.invites} приглашений`
+      )
+    : "Тебя нет в датабазе";
 
   embed.addField("Твоя позиция", text);
 

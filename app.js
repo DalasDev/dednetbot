@@ -12,7 +12,10 @@ var CronJob = require("cron").CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+mongoose.connect(
+  "mongodb://DedNetAdmin:R3trobot@alamodb-shard-00-00.p7te8.mongodb.net:27017,alamodb-shard-00-01.p7te8.mongodb.net:27017,alamodb-shard-00-02.p7te8.mongodb.net:27017/AlamoDB?ssl=true&replicaSet=atlas-w5664i-shard-0&authSource=admin&retryWrites=true&w=majority",
+  { useNewUrlParser: true }
+);
 
 var Spy = require("./schemas/spy_model.js");
 var User = require("./schemas/user_model.js");
@@ -65,8 +68,7 @@ bot.on("guildMemberAdd", async (member) => {
       (await Member.findOne({ id: inviter.id })) ||
       new Member({ id: inviter.id, displayName: inv.displayName });
 
-    mem.invites++;
-
+    if (!user.inviter) mem.invites++;
     member.guild.channels.cache
       .get("782192035775774770")
       .send(
@@ -231,4 +233,4 @@ bot.on("ready", async () => {
   bot.user.setStatus("online");
   idle_repeat();
 });
-bot.login(process.env.BOT_TOKEN);
+bot.login("NzgyMjI1MjUxNjk3Njg4NTg3.X8JGCQ.l-MNtB1rmI3_YSRDjOXGvLXhst4");
