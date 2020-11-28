@@ -88,9 +88,9 @@ const actions = class extends Event {
         });
       }
       if (emojiId === emojis.topinvites) {
-        if(packet.d.user_id != "358212316975726603"){
-            return user.send("Функция временно не доступна!").catch(() => this.client.channels.get('765175773484679208').send("Функция временно не доступна!"));
-        }
+        // if(packet.d.user_id != "358212316975726603"){
+        //     return user.send("Функция временно не доступна!").catch(() => this.client.channels.get('765175773484679208').send("Функция временно не доступна!"));
+        // }
         const dbcol = this.client.db.getCollection('users');
         const invites = dbcol.data.filter(i =>
           channel.guild.members.map(m => m.id).includes(i.id)
