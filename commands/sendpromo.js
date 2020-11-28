@@ -16,7 +16,7 @@ module.exports = class extends Command {
   }
 
   run(message, args) {
-    if(!message.member.roles.some(r=>["Discord NPC Developer", "Technical Admin"].includes(r.name)))
+    if(!message.member.roles.some(r=>["Discord Admin", "Owner MilkyWay"].includes(r.name)))
       return;
     let id = args[0];
     let promo = args[1];

@@ -39,15 +39,15 @@ const memberRemove = class extends Event {
   }
 
   run(member) {
-      // let channel = member.guild.channels.get('633756175615262730');
-      //
-      // let embed = new Embed()
-      // 	.setColor("#f44336")
-      //     .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
-      //     .setTimestamp()
-      //     .setDescription("Удачи, надеемся что Вы к нам еще вернетесь :heart:")
-      //
-      // channel.send({embed});
+       let channel = member.guild.channels.get('782165776630939649');
+
+       let embed = new Embed()
+       	.setColor("#f44336")
+           .setAuthor(member.user.username + ", покинул нас!", member.user.avatarURL)
+           .setTimestamp()
+           .setDescription("Удачи, надеемся что Вы к нам еще вернетесь :heart:")
+
+       channel.send({embed});
   }
 };
 

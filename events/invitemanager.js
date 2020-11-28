@@ -1,10 +1,10 @@
 const {Event, Embed} = require('discore.js');
 
 const emojis = {
-  getlink: '657630604971737144',
-  topinvites: '657711692461113385'
+  getlink: '782164620898336778',
+  topinvites: '782164620898336778'
 };
-const messageId = '675694890855694361';
+const messageId = '782164620898336778';
 
 const memberAdd = class extends Event {
   get options() {
@@ -65,7 +65,7 @@ const actions = class extends Event {
           if (typeof userinfo.invitelink === 'string') {
             if (userinvite) {
               const msgTemplate = `У вас уже имеется ссылка: https://discord.gg/${userinfo.invitelink}`;
-              return user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
+              return user.send(msgTemplate).catch(() => this.client.channels.get('765175773484679208').send(`${user} ${msgTemplate}`));
             }
             console.log(
               `Ссылка пользователя ${userinfo.id} была удалена. Старая ссылка: https://discord.gg/${userinfo.invitelink}`
@@ -83,13 +83,13 @@ const actions = class extends Event {
               this.client.db
                 .getCollection('users')
                 .upsertOne({ id: user.id }, { invitelink: invite.code });
-              user.send(msgTemplate).catch(() => this.client.channels.get('675349037892763673').send(`${user} ${msgTemplate}`));
+              user.send(msgTemplate).catch(() => this.client.channels.get('765175773484679208').send(`${user} ${msgTemplate}`));
             });
         });
       }
       if (emojiId === emojis.topinvites) {
         if(packet.d.user_id != "358212316975726603"){
-            return user.send("Функция временно не доступна!").catch(() => this.client.channels.get('675349037892763673').send("Функция временно не доступна!"));
+            return user.send("Функция временно не доступна!").catch(() => this.client.channels.get('765175773484679208').send("Функция временно не доступна!"));
         }
         const dbcol = this.client.db.getCollection('users');
         const invites = dbcol.data.filter(i =>
@@ -107,114 +107,24 @@ const actions = class extends Event {
 
         const sorted = inviters.sort((b, a) => a.invitecount - b.invitecount);
         const authorindex = sorted.findIndex(m => m.id === user.id);
-        user.send(
-            sorted
-              .slice(0, 20)
-              .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('1 Mess'));
-        user.send(
-            sorted
-              .slice(20, 40)
-              .map((m, i) => `**${i + 21}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('2 Mess'));
-        user.send(
-            sorted
-              .slice(40, 60)
-              .map((m, i) => `**${i + 41}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('3 Mess'));
-        user.send(
-            sorted
-              .slice(60, 80)
-              .map((m, i) => `**${i + 61}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('4 Mess'));
-        user.send(
-            sorted
-              .slice(80, 100)
-              .map((m, i) => `**${i + 81}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('5 Mess'));
-        user.send(
-            sorted
-              .slice(100, 120)
-              .map((m, i) => `**${i + 101}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('6 Mess'));
-        user.send(
-            sorted
-              .slice(120, 140)
-              .map((m, i) => `**${i + 121}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('7 Mess'));
-        user.send(
-            sorted
-              .slice(140, 160)
-              .map((m, i) => `**${i + 141}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('8 Mess'));
-        user.send(
-            sorted
-              .slice(160, 180)
-              .map((m, i) => `**${i + 161}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('9 Mess'));
-        user.send(
-            sorted
-              .slice(180, 200)
-              .map((m, i) => `**${i + 181}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('10 Mess'));
-        user.send(
-            sorted
-              .slice(200, 220)
-              .map((m, i) => `**${i + 201}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('11 Mess'));
-        user.send(
-            sorted
-              .slice(220, 240)
-              .map((m, i) => `**${i + 221}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('12 Mess'));
-        user.send(
-            sorted
-              .slice(240, 260)
-              .map((m, i) => `**${i + 241}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('13 Mess'));
-        user.send(
-            sorted
-              .slice(260, 280)
-              .map((m, i) => `**${i + 261}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('14 Mess'));
-        user.send(
-            sorted
-              .slice(280, 300)
-              .map((m, i) => `**${i + 281}.** ${m.user.tag} - ${m.user.id} - ${m.invitecount}`)
-              .join('\n')
-        ).catch(() => console.log('15 Mess'));
 
-        // const embed = new Embed()
-        //   .setAuthor(channel.guild.name, channel.guild.iconURL)
-        //   .setColor(0x03a9f4)
-        //   .setDescription(
-        //     sorted
-        //       .slice(0, 10)
-        //       .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
-        //       .join('\n')
-        //   )
-        //   .setFooter(
-        //     `Ваша позиция в топе: ${
-        //       (authorindex < 0 ? sorted.length : authorindex) + 1
-        //     }. Кол-во инвайтов: ${
-        //       sorted[authorindex] ? sorted[authorindex].invitecount : 0
-        //     }`
-        //   );
-        // user.send(embed).catch(() => this.client.channels.get('675349037892763673').send(`${user}`, embed));
+        const embed = new Embed()
+          .setAuthor(channel.guild.name, channel.guild.iconURL)
+          .setColor(0x03a9f4)
+          .setDescription(
+            sorted
+              .slice(0, 10)
+              .map((m, i) => `**${i + 1}.** ${m.user.tag} - ${m.invitecount}`)
+              .join('\n')
+          )
+          .setFooter(
+            `Ваша позиция в топе: ${
+              (authorindex < 0 ? sorted.length : authorindex) + 1
+            }. Кол-во инвайтов: ${
+              sorted[authorindex] ? sorted[authorindex].invitecount : 0
+            }`
+          );
+        user.send(embed).catch(() => this.client.channels.get('765175773484679208').send(`${user}`, embed));
       }
   } catch (e) {console.log('invitemanager.125', e)}
   }

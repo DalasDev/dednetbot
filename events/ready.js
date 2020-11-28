@@ -24,7 +24,7 @@ const ready = class extends Event {
     if (this.clsient.db.connection.readyState === 1) r(this.client);
     else this.client.db.connection.on('connected', () => r(this.client));
     ---------------------------------------------------------------------
-    this.client.db.connection.collection('users').insertMany(this.client.guilds.get('633421720572919838').members.map(m => ({
+    this.client.db.connection.collection('users').insertMany(this.client.guilds.get('448843167932874753').members.map(m => ({
         id: m.id,
         username: m.displayName,
         invitelink: undefined,
@@ -46,7 +46,7 @@ const ready = class extends Event {
     // const user = this.client.users.get("523018741764718615");
     // channel.guild.member(user).addRole("676051289033146398");
     //Установка игр
-    var statusname = "за DEEPWEB";
+    var statusname = "за MilkyWay";
     this.client.user.setPresence({
       game: {
         name: statusname,

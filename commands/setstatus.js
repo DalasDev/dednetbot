@@ -17,8 +17,8 @@ module.exports = class extends Command {
 
   run(message, args) {
 
-      if(!message.member.roles.some(r=>["Discord NPC Developer", "God Father"].includes(r.name)))
-        return;
+    if(!message.member.roles.some(r=>["Discord Admin", "Owner MilkyWay"].includes(r.name)))
+      return;
 
       message.delete().catch(O_o=>{});
 
