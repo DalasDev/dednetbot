@@ -8,9 +8,7 @@ const app = express();
 const ms = require("ms");
 var CronJob = require("cron").CronJob;
 var router = express.Router();
-var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 var servers = {};
 var prefix = botconfig.prefix;
 
