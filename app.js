@@ -12,10 +12,7 @@ var CronJob = require("cron").CronJob;
 var router = express.Router();
 var mongoose = require("mongoose");
 bot.commands = new Discord.Collection();
-mongoose.connect(
-  "mongodb://DedNetAdmin:R3trobot@alamodb-shard-00-00.p7te8.mongodb.net:27017,alamodb-shard-00-01.p7te8.mongodb.net:27017,alamodb-shard-00-02.p7te8.mongodb.net:27017/AlamoDB?ssl=true&replicaSet=atlas-w5664i-shard-0&authSource=admin&retryWrites=true&w=majority",
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 
 var Spy = require("./schemas/spy_model.js");
 var User = require("./schemas/user_model.js");
@@ -234,4 +231,4 @@ bot.on("ready", async () => {
   bot.user.setStatus("online");
   idle_repeat();
 });
-bot.login("Njc0MjA2OTgyMjk0NDcwNjcx.XjlOLg.sNnT7dqfB1C0otcZx4vcj1HgyaY");
+bot.login(process.env.BOT_TOKEN);
