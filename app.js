@@ -12,32 +12,6 @@ bot.commands = new Discord.Collection();
 var servers = {};
 var prefix = botconfig.prefix;
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-
-app.set("view engine", "handlebars");
-
-app.use(express.static("public"));
-
-// app.use("/", (req, res) => {
-//  res.sendFile(__dirname + "/public/index.html");
-// });
-
-// GET роут
-// app.get('/', function (req, res) {
-//   app.use('/', indexpage);
-// });
-
-// app.get('/warnings', function (req, res) {
-//   app.use('/warnings', warns);
-// });
-
-// POST роут
-// app.post('/', function (req, res) {
-//   res.send('/public/main/index.html');
-// });
-
-const invites = {};
-
 fs.readdir("./commands/", (err, files) => {
   if (err) console.log(err);
   let jsfile = files.filter((f) => f.split(".").pop() === "js");
@@ -54,49 +28,8 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
-bot.on("message", async (message) => {
-  if (message.channel.type === "dm") return;
-
-  if (message.content.charAt(0) === prefix) {
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    var args = messageArray.slice(1);
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-
-    if (commandfile) {
-      commandfile.run(bot, message, args);
-    }
-  }
-});
-
-//message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
-
-// bot.on("guildMemberAdd", (member) => {
-//   let channel = member.guild.channels.get("633756175615262730");
-
-//   let embed = new Discord.RichEmbed()
-//     .setColor("#4CAF50")
-//     .setAuthor(
-//       member.user.username + ", зашел на сервер!",
-//       member.user.avatarURL
-//     )
-//     .setTimestamp()
-//     .setDescription(
-//       "Приветствуем, желаем всего самого хорошего и приятной игры на сервере!"
-//     );
-
-//   channel.send({ embed });
-// });
-
 //Выполняеться когда бот готов к работе
 bot.on("ready", async () => {
-  setTimeout(() => {
-    bot.guilds.cache.forEach((g) => {
-      g.fetchInvites().then((guildInvites) => {
-        invites[g.id] = guildInvites;
-      });
-    });
-  }, 1000);
 
   //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
