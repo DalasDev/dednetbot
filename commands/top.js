@@ -38,6 +38,7 @@ module.exports.run = async (bot, message, args) => {
   embed.addField("Твоя позиция", text);
 
   message.member.send({ embed: embed });
+  message.delete();
 };
 
 module.exports.help = {
