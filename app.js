@@ -12,8 +12,6 @@ bot.commands = new Discord.Collection();
 var servers = {};
 var prefix = botconfig.prefix;
 
-mongoose.Promise = global.Promise;
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 
 app.set("view engine", "handlebars");
