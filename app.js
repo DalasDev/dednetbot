@@ -12,6 +12,21 @@ bot.commands = new Discord.Collection();
 var servers = {};
 var prefix = botconfig.prefix;
 
+bot.on("message", async (message) => {
+  if (message.channel.type === "dm") return;
+
+  if (message.content.charAt(0) === prefix) {
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    var args = messageArray.slice(1);
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+
+    if (commandfile) {
+      commandfile.run(bot, message, args);
+    }
+  }
+});
+
 fs.readdir("./commands/", (err, files) => {
   if (err) console.log(err);
   let jsfile = files.filter((f) => f.split(".").pop() === "js");
@@ -26,6 +41,7 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 });
+
 
 
 //Выполняеться когда бот готов к работе
