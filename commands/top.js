@@ -5,9 +5,6 @@ module.exports.run = async (bot, message, args) => {
   const mem = await Member.findOne({ id: message.member.id });
   const top = await Member.find().sort({ invites: -1 }).limit(10);
 
-  let num = await Member.find({
-    invites: { $gte: mem.invites },
-  }).countDocuments();
   if (mem) {
     var less = await Member.find({
       invites: { $lte: mem.invites - 1 },
@@ -20,6 +17,10 @@ module.exports.run = async (bot, message, args) => {
       .sort({ invites: 1 })
       .limit(2);
     gr = gr.reverse();
+
+    var num = await Member.find({
+      invites: { $gte: mem.invites },
+    }).countDocuments();
   }
 
   let embed = new MessageEmbed()
