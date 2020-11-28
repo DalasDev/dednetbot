@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.roles.some(r=>["Fredbot"].includes(r.name)))
+  if(!message.member.roles.cache.some(r=>["Fredbot"].includes(r.name)))
     return;
 
   let x = 0;
