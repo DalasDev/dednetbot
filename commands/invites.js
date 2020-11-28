@@ -16,10 +16,7 @@ module.exports.run = async (bot, message, args) => {
     .setDescription(`Всего приглашений: ${mem.invites}`)
     .setColor(message.member.displayHexColor)
     .addField(`Пользователи`, `${mem.members.map((x) => `<@${x}>`) || "Пусто"}`)
-    .setFooter(
-      `Ты на ${place} месте`,
-      message.author.displayAvatarURL({ dynamic: true })
-    );
+    .setFooter(`Место: ${place}`, a.user.displayAvatarURL({ dynamic: true }));
 
   message.member.send({ embed: embed });
   message.delete();
