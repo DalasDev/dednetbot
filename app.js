@@ -220,7 +220,7 @@ bot.on("ready", async () => {
   //Консоль лог что бот онлайн
   console.log(`[app.js] ${bot.user.username} онлайн`);
   //Установка игр
-  var statusname = "за сервером DedNet";
+  var statusname = "за сервером Alamo";
   bot.user.setPresence({
     game: {
       name: statusname,
