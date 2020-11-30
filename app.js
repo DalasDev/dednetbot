@@ -72,7 +72,7 @@ bot.on("guildMemberAdd", async (member) => {
 
     if (!user.inviter) mem.invites++;
     member.guild.channels.cache
-      .get("782192035775774770")
+      .get("783064948300578826")
       .send(
         `${member.user.tag} зашел по ссылке ${invite.code}, которая принадлежит ${inviter.tag}. Было испольовано ${mem.invites} раз.`
       );
@@ -194,7 +194,7 @@ bot.on("message", async (message) => {
 
 bot.on("guildMemberRemove", (member) => {
   member.guild.channels.cache
-    .get("782165776630939649")
+    .get("783065126839386162")
     .send(`${member.user.tag} ливнул с сервера`);
 });
 //message.author.id == '363730744553766913' || message.author.id == '381457099789565953'
