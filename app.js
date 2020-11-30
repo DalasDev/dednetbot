@@ -74,7 +74,7 @@ bot.on("guildMemberAdd", async (member) => {
     member.guild.channels.cache
       .get("783064948300578826")
       .send(
-        `${member.user.tag} зашел по ссылке ${invite.code}, которая принадлежит ${inviter.tag}. Было испольовано ${mem.invites} раз.`
+        `${member.user.tag} зашел по ссылке ${invite.code}, которая принадлежит ${inviter.tag}. Было использовано ${mem.invites} раз.`
       );
 
     if (user.inviter) return;
