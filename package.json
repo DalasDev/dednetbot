@@ -11,7 +11,7 @@
     "cron": "^1.4.1",
     "discord.js": "^12.5.1",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "hastebin-gen": "^2.0.5",
     "is-url": "^1.2.4",
     "mongoose": "^5.2.13",
